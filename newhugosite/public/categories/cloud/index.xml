@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Cloud on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/cloud/</link>
     <description>Recent content in Cloud on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 01 Oct 2020 18:58:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
@@ -20,21 +20,30 @@
       <link>http://localhost:1313/post/adding-health-checks-ui/</link>
       <pubDate>Mon, 21 Sep 2020 18:17:00 +0000</pubDate>
       <guid>http://localhost:1313/post/adding-health-checks-ui/</guid>
-      <description>This is the second article about Health Checks and Application Monitoring.&#xA;Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!&#xA;Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
+      <description>This is the second article about Health Checks and Application Monitoring.
+Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
+Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
     </item>
     <item>
       <title>Deploying .Net container App to Heroku cloud</title>
       <link>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</link>
       <pubDate>Sun, 18 Aug 2019 18:15:42 +0000</pubDate>
       <guid>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</guid>
-      <description>I&amp;rsquo;m tired of searching every time I need to deploy to heroku cloud. Being that said I&amp;rsquo;m finally writing down the steps do deploy a docker container app to Heroku cloud.&#xA;By the way, Heroku Cloud it is really cool.&#xA;###Requirements to deploy&#xA;Docker client (windows or linux) installed Link Heroku CLI (command line interface) installed Link Application with a Dockerfile ###Changes you have to make in your Dockerfile&#xA;First remove the Entrypoint and EXPOSE statments of your Dockerfile.</description>
+      <description>I&amp;rsquo;m tired of searching every time I need to deploy to heroku cloud. Being that said I&amp;rsquo;m finally writing down the steps do deploy a docker container app to Heroku cloud.
+By the way, Heroku Cloud it is really cool.
+###Requirements to deploy
+Docker client (windows or linux) installed Link Heroku CLI (command line interface) installed Link Application with a Dockerfile ###Changes you have to make in your Dockerfile
+First remove the Entrypoint and EXPOSE statments of your Dockerfile.</description>
     </item>
     <item>
       <title>Console Application para upload de arquivo no Azure Blob Storage</title>
       <link>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/</link>
       <pubDate>Tue, 10 Jan 2017 19:08:07 +0000</pubDate>
       <guid>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/</guid>
-      <description>Projeto para&#xA;Configuration para utilizarmos como injeção de dependência.&#xA;namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.&#xA;namespace Demo.AzureBlob.DependencyInjection { public static class ServiceCollectionExtensions { public static IServiceCollection AddAzureBlobService(this IServiceCollection services, IConfiguration configuration) { return services.AddAzureBlobService(configuration, x =&amp;gt; { x.AllowOverwrite = configuration.GetValue&amp;lt;bool&amp;gt;(&amp;#34;Az:AllowOverwrite&amp;#34;); x.</description>
+      <description>Projeto para
+Configuration para utilizarmos como injeção de dependência.
+namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.
+namespace Demo.AzureBlob.DependencyInjection { public static class ServiceCollectionExtensions { public static IServiceCollection AddAzureBlobService(this IServiceCollection services, IConfiguration configuration) { return services.AddAzureBlobService(configuration, x =&amp;gt; { x.AllowOverwrite = configuration.GetValue&amp;lt;bool&amp;gt;(&amp;#34;Az:AllowOverwrite&amp;#34;); x.</description>
     </item>
   </channel>
 </rss>

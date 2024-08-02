@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Application Insights on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/Application-Insights/</link>
     <description>Recent content in Application Insights on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 Sep 2020 15:14:09 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/Application-Insights/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,18 @@
       <link>http://localhost:1313/post/endpoint-monitoring-with-azure-application-insights/</link>
       <pubDate>Mon, 28 Sep 2020 15:14:09 +0000</pubDate>
       <guid>http://localhost:1313/post/endpoint-monitoring-with-azure-application-insights/</guid>
-      <description>Let&amp;rsquo;s explore the use of Microsoft Azure Application Insights to monitor the health of our application using the endpoint /healthcheck.&#xA;Applications Insights it&amp;rsquo;s a great tool for monitoring, error logging, performance monitoring, dependency mapping, and other things. In other words, it&amp;rsquo;s a full APM - Application Performance Management - ready for you to use in Production Environments.&#xA;Application Insights, a feature of Azure Monitor, is an extensible Application Performance Management (APM) service for developers and DevOps professionals.</description>
+      <description>Let&amp;rsquo;s explore the use of Microsoft Azure Application Insights to monitor the health of our application using the endpoint /healthcheck.
+Applications Insights it&amp;rsquo;s a great tool for monitoring, error logging, performance monitoring, dependency mapping, and other things. In other words, it&amp;rsquo;s a full APM - Application Performance Management - ready for you to use in Production Environments.
+Application Insights, a feature of Azure Monitor, is an extensible Application Performance Management (APM) service for developers and DevOps professionals.</description>
     </item>
     <item>
       <title>Adding Health Checks UI</title>
       <link>http://localhost:1313/post/adding-health-checks-ui/</link>
       <pubDate>Mon, 21 Sep 2020 18:17:00 +0000</pubDate>
       <guid>http://localhost:1313/post/adding-health-checks-ui/</guid>
-      <description>This is the second article about Health Checks and Application Monitoring.&#xA;Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!&#xA;Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
+      <description>This is the second article about Health Checks and Application Monitoring.
+Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
+Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.130.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>rmauro.dev {blog}</title>
+
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Azure App Service e Cloudflare com SSL Full (strict)
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>[english version]
+Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.
+Ao final teremos a seguinte configuração:
+CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-12-15 20:36:45 +0000 UTC'>December 15, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Azure App Service e Cloudflare com SSL Full (strict)" href="http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Console Application - Upload no Azure Blob Storage
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Pequeno Console Application demonstrando como fazer upload no Azure Blob Storage já incluindo o mime-type metadado.
+No inicio de cada sniped deixo comentado o nome e pasta do arquivo. No fim do artigo deixo o fonte no github.
+Setup inicial //Configurations/AzureBlobConfiguration.cs namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-12-14 18:52:42 +0000 UTC'>December 14, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Console Application - Upload no Azure Blob Storage" href="http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage-2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Practice of SQL Injection
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>First, do you know (or remember) what SQL Injection is? (para versão em português)
+According to OWASP.org (https://www.owasp.org/index.php/SQL_Injection).
+A SQL injection attack consists of insertion or “injection” of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.
+That is, a web service technique invasion through SQL commands.As long as the web service (website, webservice, REST API, amoung others) is susceptible to the SQL Injection attack, you can execute unforeseen SQL commands on the system....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-12-14 18:38:29 +0000 UTC'>December 14, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Practice of SQL Injection" href="http://localhost:1313/post/practice-of-sql-injection/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">SQL Injection na Prática - Executando o Ataque
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Primeiro, você sabe (ou lembra-se) o que é SQL Injection? (for english version)
+Segundo OWASP.org (https://www.owasp.org/index.php/SQL_Injection).
+A SQL injection attack consists of insertion or “injection” of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.
+Ou seja, é uma técnica de invasão de serviços web através de comandos SQL. Desde que o serviço web (website, webservice, REST API, etc) esteja sucetível ao ataque SQL Injection, você consegue executar comandos SQL não previstos no sistema....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-12-03 01:58:29 +0000 UTC'>December 3, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to SQL Injection na Prática - Executando o Ataque" href="http://localhost:1313/post/sql-injection-na-pratica/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Supporting IAsyncEnumerable with LINQ
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>https://channel9.msdn.com/Shows/On-NET/Supporting-IAsyncEnumerable-with-LINQ</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-11-07 16:12:15 +0000 UTC'>November 7, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Supporting IAsyncEnumerable with LINQ" href="http://localhost:1313/post/supporting-iasyncenumerable-with-linq/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Começando com Machine Learning - Escrevendo um Perceptron
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Você sabe o que é um Perceptron?
+Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.
+Segundo wikipedia:
+In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.
+Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números)....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-11-03 03:04:13 +0000 UTC'>November 3, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Começando com Machine Learning - Escrevendo um Perceptron" href="http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Criando imagem Docker NodeJs customizada e publicando no Heroku
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Nesse artigo vamos criar uma imagem Docker com uma simple aplicação NodeJs a partir da imagem padrão NodeJs, depois vamos publicar na nuvem Heroku.
+Heroku: https://heroku.com/ Docker: https://www.docker.com/
+Neste tutorial, você aprenderá como:
+Comandos básicos do Docker Criar uma imagem customizada no Docker Publicar uma imagem Docker na nuvem Heroku Pré-requisitos Docker Heroku CLI ##Preparando para criar a imagem Docker
+Primeiro abra seu console favorito (estou utilizando o powershell do Windows) e digite:...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-10-29 16:15:07 +0000 UTC'>October 29, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Criando imagem Docker NodeJs customizada e publicando no Heroku" href="http://localhost:1313/post/criando-imagem-docker-nodejs-customizada-e-publicando-no-heroku/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Criando imagem Docker customizada e publicando no Heroku
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Nesse artigo vamos criar uma imagem Docker com uma simple aplicação NodeJs a partir da imagem padrão NodeJs, depois vamos publicar na nuvem Heroku.
+Heroku: https://heroku.com/ Docker: https://www.docker.com/
+Neste tutorial, você aprenderá como:
+Comandos básicos do Docker Criar uma imagem customizada no Docker Publicar uma imagem Docker na nuvem Heroku Pré-requisitos Docker Heroku CLI ##Preparando para criar a imagem Docker
+Primeiro abra seu console favorito (estou utilizando o powershell do Windows) e digite:...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-10-29 00:29:00 +0000 UTC'>October 29, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Criando imagem Docker customizada e publicando no Heroku" href="http://localhost:1313/post/criando-imagem-docker-customizada-e-publicando-no-heroku/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Asp.Net Core com MongoDb e Mongo Atlas - C#
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
+Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
+Neste tutorial, você aprenderá como:
+Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-10-19 21:39:28 +0000 UTC'>October 19, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Asp.Net Core com MongoDb e Mongo Atlas - C#" href="http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">C# Conversions - Casting, implicit and explicit conversion
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Fist the data types available.
+int whole numbers long whole numbers (bigger range) float floating-point numbers double double precision decimal monetary values char single character bool boolean DateTime moments in time	string sequence of characters Table of implicit conversion made by C#.
+From To sbyte short int long float double decimal byte short ushort int uint long ulong float double decimal short int long float double decimal ushort int uint long ulong float double decimal int long float double decimal uint long ulong float double decimal long ulong float double decimal float double char ushort int uint long ulong float double decimal By the way, you cannot implicitly convert a long value to an int, because this conversion risks losing information (the long value might be outside the range supported by the int type)....</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-09-29 20:35:05 +0000 UTC'>September 29, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to C# Conversions - Casting, implicit and explicit conversion" href="http://localhost:1313/post/csharp-implicit-conversion-cast-explicit-conversion/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1313/page/12/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/page/14/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

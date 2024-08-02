@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>.NET 8 on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/.NET-8/</link>
     <description>Recent content in .NET 8 on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Jun 2024 14:11:50 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/.NET-8/index.xml" rel="self" type="application/rss+xml" />
@@ -13,21 +13,27 @@
       <link>http://localhost:1313/post/query-specification-pattern-with-ef-core/</link>
       <pubDate>Mon, 24 Jun 2024 14:11:50 +0000</pubDate>
       <guid>http://localhost:1313/post/query-specification-pattern-with-ef-core/</guid>
-      <description>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.&#xA;Here’s what you need to know:&#xA;1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution.</description>
+      <description>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.
+Here’s what you need to know:
+1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution.</description>
     </item>
     <item>
       <title>Getting started with ONION Architecture in C#</title>
       <link>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</link>
       <pubDate>Tue, 24 Oct 2023 19:46:26 +0000</pubDate>
       <guid>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</guid>
-      <description>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.&#xA;We&amp;rsquo;ll take a deep dive into the layers of Onion Architecture while building a &amp;ldquo;TODO List&amp;rdquo; application to illustrate its principles.&#xA;What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application&amp;rsquo;s core business logic from external concerns.</description>
+      <description>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.
+We&amp;rsquo;ll take a deep dive into the layers of Onion Architecture while building a &amp;ldquo;TODO List&amp;rdquo; application to illustrate its principles.
+What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application&amp;rsquo;s core business logic from external concerns.</description>
     </item>
     <item>
       <title>C# Get JWT Token from Request .NET 6</title>
       <link>http://localhost:1313/post/csharp-get-jwt-token-request/</link>
       <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
       <guid>http://localhost:1313/post/csharp-get-jwt-token-request/</guid>
-      <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;&#xA;&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;&#xA;</description>
+      <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;
+&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;
+</description>
     </item>
     <item>
       <title>C# JWT Authentication .NET 6</title>

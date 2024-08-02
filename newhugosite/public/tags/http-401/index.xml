@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Http-401 on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/http-401/</link>
     <description>Recent content in Http-401 on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 28 Jun 2024 22:37:46 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/http-401/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,9 @@
       <link>http://localhost:1313/post/http-401-unauthorized/</link>
       <pubDate>Fri, 28 Jun 2024 22:37:46 +0000</pubDate>
       <guid>http://localhost:1313/post/http-401-unauthorized/</guid>
-      <description>HTTP status code 401, also known as &amp;ldquo;Unauthorized,&amp;rdquo; is a crucial response status in web development and API communications.&#xA;It indicates that the client&amp;rsquo;s request has not been fulfilled because it lacks valid authentication credentials.&#xA;A typical scenario involving a 401 status code is when accessing a protected endpoint in a REST API. The client needs to include a valid token or API key in the request headers. If this authentication token is expired, invalid, or absent, the server will deny access, returning a 401 response.</description>
+      <description>HTTP status code 401, also known as &amp;ldquo;Unauthorized,&amp;rdquo; is a crucial response status in web development and API communications.
+It indicates that the client&amp;rsquo;s request has not been fulfilled because it lacks valid authentication credentials.
+A typical scenario involving a 401 status code is when accessing a protected endpoint in a REST API. The client needs to include a valid token or API key in the request headers. If this authentication token is expired, invalid, or absent, the server will deny access, returning a 401 response.</description>
     </item>
   </channel>
 </rss>

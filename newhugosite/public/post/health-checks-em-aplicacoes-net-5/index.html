@@ -1,156 +1,138 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Health Checks em Aplicações .NET 5 | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Health Checks em Aplicações .NET 5 | rmauro.dev {blog}</title>
+<meta name="keywords" content="pt, .NET 5, C#, HealthCheck">
+<meta name="description" content="Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
 Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.
 https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
 Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/health-checks-em-aplicacoes-net-5/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/health-checks-em-aplicacoes-net-5/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      Health Checks em Aplicações .NET 5
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2021-07-16 02:10:38 +0000 UTC'>July 16, 2021</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/health-checks-em-aplicacoes-net-5/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/health-checks-em-aplicacoes-net-5/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="Health Checks em Aplicações .NET 5">
-  <meta property="og:description" content="Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
-Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.
-https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
-Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2021-07-16T02:10:38+00:00">
-    <meta property="article:modified_time" content="2021-07-16T02:10:38+00:00">
-    <meta property="article:tag" content="Pt">
-    <meta property="article:tag" content=".NET 5">
-    <meta property="article:tag" content="C#">
-    <meta property="article:tag" content="HealthCheck">
-
-  <meta itemprop="name" content="Health Checks em Aplicações .NET 5">
-  <meta itemprop="description" content="Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
-Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.
-https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
-Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.">
-  <meta itemprop="datePublished" content="2021-07-16T02:10:38+00:00">
-  <meta itemprop="dateModified" content="2021-07-16T02:10:38+00:00">
-  <meta itemprop="wordCount" content="611">
-  <meta itemprop="keywords" content="Pt,.NET 5,C#,HealthCheck">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Health Checks em Aplicações .NET 5">
-  <meta name="twitter:description" content="Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
-Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.
-https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
-Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">Health Checks em Aplicações .NET 5</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2021-07-16T02:10:38Z">July 16, 2021</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="padrão-de-monitoramento-de-endpoint-de-saúde">Padrão de monitoramento de Endpoint de saúde</h2>
+  </header> 
+  <div class="post-content"><h2 id="padrão-de-monitoramento-de-endpoint-de-saúde">Padrão de monitoramento de Endpoint de saúde<a hidden class="anchor" aria-hidden="true" href="#padrão-de-monitoramento-de-endpoint-de-saúde">#</a></h2>
 <p><code>Health Checks</code> em aplicações <strong>.NET 5</strong> é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a <strong>saúde de nosso aplicativo.</strong></p>
 <blockquote>
 <p>Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.</p>
 </blockquote>
-<figure><img src="https://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/v1/ghost-blog-images/endpoint-monitoring-pattern.png">
+<figure>
+    <img loading="lazy" src="https://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/v1/ghost-blog-images/endpoint-monitoring-pattern.png"/> 
 </figure>
 
 <p><a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring">https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring</a></p>
-<h2 id="introdução">Introdução</h2>
+<h2 id="introdução">Introdução<a hidden class="anchor" aria-hidden="true" href="#introdução">#</a></h2>
 <p>Nesta série de artigos iremos explorar mais sobre <strong>Endpoint Monitoring</strong> para aplicações web.</p>
 <ol>
 <li><strong>Health Checks em Aplicações .NET 5</strong> [esta postagem]</li>
@@ -169,7 +151,7 @@ Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitor
 <li>Implementações personalizadas (algo exclusivo para seu sistema).</li>
 </ul>
 <p>Existe um validador para tudo que você precisa. Porém, caso não encontre uma implementação adequada podemos criar um validador customizado.</p>
-<h2 id="adicionando-um-_health-check_-básico-ao-aspnet">Adicionando um <em>Health Check</em> básico ao ASP.NET</h2>
+<h2 id="adicionando-um-_health-check_-básico-ao-aspnet">Adicionando um <em>Health Check</em> básico ao ASP.NET<a hidden class="anchor" aria-hidden="true" href="#adicionando-um-_health-check_-básico-ao-aspnet">#</a></h2>
 <p>Primeiro, modifique o método <code>ConfigureServices</code> como descrito abaixo. Isso irá adicionar o serviço de <code>HealthChecks</code> ao container de injeção de dependência.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
 </span></span><span style="display:flex;"><span>{
@@ -197,14 +179,15 @@ Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitor
 </span></span><span style="display:flex;"><span>        });
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Compile o projeto, execute e acesse a url <code>http://{YOUR-URL}/healthcheck</code>. Devemos ver algo como a imagem abaixo.</p>
-<figure><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/basic-health-check.png"
-    alt="HealthCheck Healthy"><figcaption>
-      <p>HealthCheck Healthy</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/basic-health-check.png"
+         alt="HealthCheck Healthy"/> <figcaption>
+            <p>HealthCheck Healthy</p>
+        </figcaption>
 </figure>
 
 <p>Tudo pronto para adicionarmos serviços à lista de monitoramento. Vamos adicionar o serviço <strong>Mongo Db</strong> à lista serviços monitorados.</p>
-<h2 id="adicionando-mongo-db-a-lista-de-serviços-monitorados">Adicionando Mongo Db a lista de serviços monitorados</h2>
+<h2 id="adicionando-mongo-db-a-lista-de-serviços-monitorados">Adicionando Mongo Db a lista de serviços monitorados<a hidden class="anchor" aria-hidden="true" href="#adicionando-mongo-db-a-lista-de-serviços-monitorados">#</a></h2>
 <p>Vamos escolher o item adequado da lista <em>do xabaril</em>. <em>O</em> repositório Github do <em>xabaril</em> existem diversa implementações de <code>AspNetCore.Diagnostics.HealthChecks</code> prontos para uso, inclusive o <strong>Mongo Db</strong>.</p>
 <ul>
 <li>AspNetCore.HealthChecks.System</li>
@@ -230,13 +213,14 @@ Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitor
 </span></span><span style="display:flex;"><span>        failureStatus: HealthStatus.Unhealthy); <span style="color:#75715e">//adding MongoDb Health Check</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Depois disso, estamos prontos para começar a monitorar a conectividade do <strong>Mongo Db</strong>. Se executarmos o aplicativo novamente, veremos a seguinte saída - caso tenha configurado corretamente e tenha conectividade ao serviço <strong>Mongo Db</strong>.</p>
-<figure><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/basic-health-check.png"
-    alt="HealthCheck com Mongo Db"><figcaption>
-      <p>HealthCheck com Mongo Db</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/basic-health-check.png"
+         alt="HealthCheck com Mongo Db"/> <figcaption>
+            <p>HealthCheck com Mongo Db</p>
+        </figcaption>
 </figure>
 
-<h2 id="adicionando-um-segundo-_endpoint_-com-mais-detalhes">Adicionando um segundo <em>endpoint</em> com mais detalhes</h2>
+<h2 id="adicionando-um-segundo-_endpoint_-com-mais-detalhes">Adicionando um segundo <em>endpoint</em> com mais detalhes<a hidden class="anchor" aria-hidden="true" href="#adicionando-um-segundo-_endpoint_-com-mais-detalhes">#</a></h2>
 <p>Vamos criar um segundo <em>endpoint</em> com mais informações sobre o status, como qual verificação de integridade está falhando e <em>tags</em>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Linq;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -271,130 +255,101 @@ Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitor
 </span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Execute novamente e acesse endereço <code>/healthcheck-details</code>.</p>
-<figure><img src="https://res-1.cloudinary.com/dgoa5llvh/image/upload/q_auto/v1/ghost-blog-images/second-endpoint-monitor.jpg"
-    alt="HealthCheck Detalhes"><figcaption>
-      <p>HealthCheck Detalhes</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="https://res-1.cloudinary.com/dgoa5llvh/image/upload/q_auto/v1/ghost-blog-images/second-endpoint-monitor.jpg"
+         alt="HealthCheck Detalhes"/> <figcaption>
+            <p>HealthCheck Detalhes</p>
+        </figcaption>
 </figure>
 
 <p>Agora você pode personalizar a resposta do seu <em>endpoint</em>  <em>HealthCheck</em> conforme necessidade.</p>
 <p>No próximo artigo, mostrarei como colocar uma Iterface Gráfica sobre o <em>HealthCheck</em>.</p>
-<h2 id="código-fonte-para-download">Código fonte para Download</h2>
+<h2 id="código-fonte-para-download">Código fonte para Download<a hidden class="anchor" aria-hidden="true" href="#código-fonte-para-download">#</a></h2>
 <p><a href="https://github.com/ricardodemauro/HerosApi-Blog">https://github.com/ricardodemauro/HerosApi-Blog</a></p>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/pt/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Pt</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/.NET-5/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 5</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/HealthCheck/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">HealthCheck</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/adding-health-checks-ui/">Adding Health Checks UI</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/api-key-authentication-extending-the-native-implementation/">API Key Authentication - Extending the native implementation</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-function-v3-com-entityframework-core-3-1/">Azure Function V3 com EntityFramework Core 3.1</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/aspnetcore-com-mongo-db-e-mongo-atlas/">Asp.Net Core com MongoDb e Mongo Atlas - C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/api-key-authentication-estendendo-a-implementacao-nativa/">API Key Authentication - Estendendo a implementação nativa - .NET 5</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/add-build-time-to-your-csharp-assembly/">Add Build Time to your C# Assembly</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/crud-in-dotnet5-csharp-with-mongo-db/">CRUD in .NET 5 C# with MongoDb</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/">End to end C# Application with .NET 5 API and MongoDB</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/">Native Dependency Injection in Azure Functions with C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/enabling-http-2-on-kestrel/">Simple Web Application with HTTP 2 over Kestrel</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/az-203-conteudo-programatico/">AZ-203 - AGENDA - 01/2020</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-app-service-e-cloudflare-com-ssl-full-strict/">Azure App Service e Cloudflare com SSL Full (strict)</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/pt/">Pt</a></li>
+      <li><a href="http://localhost:1313/tags/.NET-5/">.NET 5</a></li>
+      <li><a href="http://localhost:1313/tags/C%23/">C#</a></li>
+      <li><a href="http://localhost:1313/tags/HealthCheck/">HealthCheck</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

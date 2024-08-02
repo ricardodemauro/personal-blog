@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>ChatGPT on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/ChatGPT/</link>
     <description>Recent content in ChatGPT on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 15 Apr 2023 20:21:04 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/ChatGPT/index.xml" rel="self" type="application/rss+xml" />

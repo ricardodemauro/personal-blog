@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Javascript on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/Javascript/</link>
     <description>Recent content in Javascript on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 15 Jul 2021 23:15:13 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/Javascript/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,20 @@
       <link>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</link>
       <pubDate>Thu, 15 Jul 2021 23:15:13 +0000</pubDate>
       <guid>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</guid>
-      <description>Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo &amp;ldquo;API Key&amp;rdquo;. Isso tudo com apenas três linhas de código.&#xA;Aqui queremos a famosa solução simples e estúpida (simple and stupid) e não uma implementação distorcida utilizando MVC [Attributes] ou um middleware customizado para lidar com a autenticação.&#xA;Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1.</description>
+      <description>Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo &amp;ldquo;API Key&amp;rdquo;. Isso tudo com apenas três linhas de código.
+Aqui queremos a famosa solução simples e estúpida (simple and stupid) e não uma implementação distorcida utilizando MVC [Attributes] ou um middleware customizado para lidar com a autenticação.
+Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1.</description>
     </item>
     <item>
       <title>Começando com Machine Learning - Escrevendo um Perceptron</title>
       <link>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</link>
       <pubDate>Sun, 03 Nov 2019 03:04:13 +0000</pubDate>
       <guid>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</guid>
-      <description>Você sabe o que é um Perceptron?&#xA;Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.&#xA;Segundo wikipedia:&#xA;In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.&#xA;Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).</description>
+      <description>Você sabe o que é um Perceptron?
+Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.
+Segundo wikipedia:
+In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.
+Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).</description>
     </item>
   </channel>
 </rss>

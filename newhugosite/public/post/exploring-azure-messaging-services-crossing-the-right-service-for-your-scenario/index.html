@@ -1,303 +1,268 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Exploring Azure Messaging Services - Crossing the Right Service for Your Scenario | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Azure offers a variety of messaging services tailored to meet different communication patterns and application needs. In this blog post, we’ll dive into the key messaging services available on Azure and explore the best scenarios for using each one.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Exploring Azure Messaging Services - Crossing the Right Service for Your Scenario | rmauro.dev {blog}</title>
+<meta name="keywords" content="Azure, Azure-Services">
+<meta name="description" content="Azure offers a variety of messaging services tailored to meet different communication patterns and application needs. In this blog post, we’ll dive into the key messaging services available on Azure and explore the best scenarios for using each one.
 1. Azure Service Bus Azure Service Bus is a fully managed enterprise message broker with features like message queues and publish-subscribe topics. It ensures reliable messaging between services, enabling decoupling and asynchronous communication.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/exploring-azure-messaging-services-crossing-the-right-service-for-your-scenario/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/exploring-azure-messaging-services-crossing-the-right-service-for-your-scenario/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      Exploring Azure Messaging Services - Crossing the Right Service for Your Scenario
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2024-07-23 00:04:01 +0000 UTC'>July 23, 2024</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/exploring-azure-messaging-services-crossing-the-right-service-for-your-scenario/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/exploring-azure-messaging-services-crossing-the-right-service-for-your-scenario/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="Exploring Azure Messaging Services - Crossing the Right Service for Your Scenario">
-  <meta property="og:description" content="Azure offers a variety of messaging services tailored to meet different communication patterns and application needs. In this blog post, we’ll dive into the key messaging services available on Azure and explore the best scenarios for using each one.
-1. Azure Service Bus Azure Service Bus is a fully managed enterprise message broker with features like message queues and publish-subscribe topics. It ensures reliable messaging between services, enabling decoupling and asynchronous communication.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2024-07-23T00:04:01+00:00">
-    <meta property="article:modified_time" content="2024-07-23T00:04:01+00:00">
-    <meta property="article:tag" content="Azure">
-    <meta property="article:tag" content="Azure-Services">
-
-  <meta itemprop="name" content="Exploring Azure Messaging Services - Crossing the Right Service for Your Scenario">
-  <meta itemprop="description" content="Azure offers a variety of messaging services tailored to meet different communication patterns and application needs. In this blog post, we’ll dive into the key messaging services available on Azure and explore the best scenarios for using each one.
-1. Azure Service Bus Azure Service Bus is a fully managed enterprise message broker with features like message queues and publish-subscribe topics. It ensures reliable messaging between services, enabling decoupling and asynchronous communication.">
-  <meta itemprop="datePublished" content="2024-07-23T00:04:01+00:00">
-  <meta itemprop="dateModified" content="2024-07-23T00:04:01+00:00">
-  <meta itemprop="wordCount" content="685">
-  <meta itemprop="keywords" content="Azure,Azure-Services">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Exploring Azure Messaging Services - Crossing the Right Service for Your Scenario">
-  <meta name="twitter:description" content="Azure offers a variety of messaging services tailored to meet different communication patterns and application needs. In this blog post, we’ll dive into the key messaging services available on Azure and explore the best scenarios for using each one.
-1. Azure Service Bus Azure Service Bus is a fully managed enterprise message broker with features like message queues and publish-subscribe topics. It ensures reliable messaging between services, enabling decoupling and asynchronous communication.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">Exploring Azure Messaging Services - Crossing the Right Service for Your Scenario</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2024-07-23T00:04:01Z">July 23, 2024</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Azure offers a variety of messaging services tailored to meet different communication patterns and application needs. In this blog post, we’ll dive into the key messaging services available on Azure and explore the best scenarios for using each one.</p>
-<h2 id="1-azure-service-bus">1. Azure Service Bus</h2>
+  </header> 
+  <div class="post-content"><p>Azure offers a variety of messaging services tailored to meet different communication patterns and application needs. In this blog post, we’ll dive into the key messaging services available on Azure and explore the best scenarios for using each one.</p>
+<h2 id="1-azure-service-bus">1. Azure Service Bus<a hidden class="anchor" aria-hidden="true" href="#1-azure-service-bus">#</a></h2>
 <p>Azure Service Bus is a fully managed enterprise message broker with features like message queues and publish-subscribe topics. It ensures reliable messaging between services, enabling decoupling and asynchronous communication.</p>
-<h3 id="best-scenarios">Best Scenarios</h3>
+<h3 id="best-scenarios">Best Scenarios<a hidden class="anchor" aria-hidden="true" href="#best-scenarios">#</a></h3>
 <ul>
 <li><strong>Decoupling Services:</strong> When you need to decouple different parts of an application to improve scalability and resilience.</li>
 <li><strong>Asynchronous Workflows:</strong> For scenarios where tasks need to be processed asynchronously, such as order processing systems.</li>
 <li><strong>Reliable Messaging:</strong> When guaranteed delivery and message sequencing are critical.</li>
 </ul>
-<h3 id="example-use-case">Example Use Case</h3>
+<h3 id="example-use-case">Example Use Case<a hidden class="anchor" aria-hidden="true" href="#example-use-case">#</a></h3>
 <p>A retail application uses Service Bus to handle order processing. When an order is placed, it&rsquo;s added to a queue. Worker services pick up orders from the queue and process them, ensuring reliable and scalable order management.</p>
-<h2 id="2-azure-event-hubs">2. Azure Event Hubs</h2>
+<h2 id="2-azure-event-hubs">2. Azure Event Hubs<a hidden class="anchor" aria-hidden="true" href="#2-azure-event-hubs">#</a></h2>
 <p>Azure Event Hubs is a big data streaming platform and event ingestion service capable of processing millions of events per second. It’s designed for high-throughput data streams.</p>
-<h3 id="best-scenarios-1">Best Scenarios</h3>
+<h3 id="best-scenarios-1">Best Scenarios<a hidden class="anchor" aria-hidden="true" href="#best-scenarios-1">#</a></h3>
 <ul>
 <li><strong>Telemetry Data Collection:</strong> Ideal for collecting and processing telemetry data from IoT devices.</li>
 <li><strong>Log Aggregation:</strong> Suitable for aggregating and processing large volumes of log data.</li>
 <li><strong>Real-time Analytics:</strong> For applications requiring real-time analytics on large data streams.</li>
 </ul>
-<h3 id="example-use-case-1">Example Use Case</h3>
+<h3 id="example-use-case-1">Example Use Case<a hidden class="anchor" aria-hidden="true" href="#example-use-case-1">#</a></h3>
 <p>An IoT application collects sensor data from thousands of devices. Event Hubs ingests the data and streams it to real-time analytics services for monitoring and insights.</p>
-<h2 id="3-azure-event-grid">3. Azure Event Grid</h2>
+<h2 id="3-azure-event-grid">3. Azure Event Grid<a hidden class="anchor" aria-hidden="true" href="#3-azure-event-grid">#</a></h2>
 <p>Azure Event Grid is an event routing service that enables event-driven architectures. It routes events from sources like Azure services, custom applications, and third-party services to event handlers.</p>
-<h3 id="best-scenarios-2">Best Scenarios</h3>
+<h3 id="best-scenarios-2">Best Scenarios<a hidden class="anchor" aria-hidden="true" href="#best-scenarios-2">#</a></h3>
 <ul>
 <li><strong>Event-driven Architectures:</strong> When building applications that need to react to events in real-time.</li>
 <li><strong>Serverless Workflows:</strong> For integrating with Azure Functions and Logic Apps to create serverless workflows.</li>
 <li><strong>Automating Responses:</strong> Automating responses to infrastructure changes or application events.</li>
 </ul>
-<h3 id="example-use-case-2">Example Use Case</h3>
+<h3 id="example-use-case-2">Example Use Case<a hidden class="anchor" aria-hidden="true" href="#example-use-case-2">#</a></h3>
 <p>A serverless application uses Event Grid to trigger Azure Functions in response to blob storage changes. When a new file is uploaded, Event Grid routes the event to a function that processes the file.</p>
-<h2 id="4-azure-queue-storage">4. Azure Queue Storage</h2>
+<h2 id="4-azure-queue-storage">4. Azure Queue Storage<a hidden class="anchor" aria-hidden="true" href="#4-azure-queue-storage">#</a></h2>
 <p>Azure Queue Storage is a simple, cost-effective solution for storing large numbers of messages. It&rsquo;s accessible from anywhere via authenticated calls.</p>
-<h3 id="best-scenarios-3">Best Scenarios</h3>
+<h3 id="best-scenarios-3">Best Scenarios<a hidden class="anchor" aria-hidden="true" href="#best-scenarios-3">#</a></h3>
 <ul>
 <li><strong>Basic Message Queueing:</strong> For simple message queueing needs without the complexity of other services.</li>
 <li><strong>Background Processing:</strong> Suitable for offloading background tasks from the main application.</li>
 </ul>
-<h3 id="example-use-case-3">Example Use Case</h3>
+<h3 id="example-use-case-3">Example Use Case<a hidden class="anchor" aria-hidden="true" href="#example-use-case-3">#</a></h3>
 <p>A web application uses Queue Storage to manage user signup workflows. When a user signs up, a message is added to the queue, and a background service processes the signup tasks.</p>
-<h2 id="5-azure-notification-hubs">5. Azure Notification Hubs</h2>
+<h2 id="5-azure-notification-hubs">5. Azure Notification Hubs<a hidden class="anchor" aria-hidden="true" href="#5-azure-notification-hubs">#</a></h2>
 <p>Azure Notification Hubs is a service for sending push notifications to mobile devices. It supports multiple platforms, including iOS, Android, and Windows.</p>
-<h3 id="best-scenarios-4">Best Scenarios</h3>
+<h3 id="best-scenarios-4">Best Scenarios<a hidden class="anchor" aria-hidden="true" href="#best-scenarios-4">#</a></h3>
 <ul>
 <li><strong>Mobile Notifications:</strong> For applications that need to send notifications to mobile users.</li>
 <li><strong>Cross-platform Messaging:</strong> When sending messages to users across different device platforms.</li>
 </ul>
-<h3 id="example-use-case-4">Example Use Case</h3>
+<h3 id="example-use-case-4">Example Use Case<a hidden class="anchor" aria-hidden="true" href="#example-use-case-4">#</a></h3>
 <p>A mobile app for a news service uses Notification Hubs to send breaking news alerts to users on iOS and Android devices.</p>
-<h2 id="6-azure-signalr-service">6. Azure SignalR Service</h2>
+<h2 id="6-azure-signalr-service">6. Azure SignalR Service<a hidden class="anchor" aria-hidden="true" href="#6-azure-signalr-service">#</a></h2>
 <p>Azure SignalR Service is a fully managed service that adds real-time web functionality to applications. It supports high-frequency data updates, notifications, and interactive live experiences.</p>
-<h3 id="best-scenarios-5">Best Scenarios</h3>
+<h3 id="best-scenarios-5">Best Scenarios<a hidden class="anchor" aria-hidden="true" href="#best-scenarios-5">#</a></h3>
 <ul>
 <li><strong>Real-time Web Applications:</strong> For applications requiring real-time updates, like chat applications or live dashboards.</li>
 <li><strong>Collaborative Apps:</strong> Ideal for collaborative applications where multiple users need to see real-time changes.</li>
 </ul>
-<h3 id="example-use-case-5">Example Use Case</h3>
+<h3 id="example-use-case-5">Example Use Case<a hidden class="anchor" aria-hidden="true" href="#example-use-case-5">#</a></h3>
 <p>A live sports application uses SignalR Service to provide real-time updates on game scores and player statistics to users.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>Choosing the right Azure messaging service depends on your application&rsquo;s specific needs and communication patterns. Azure Service Bus is ideal for decoupling and reliable messaging, while Event Hubs excels in high-throughput data streaming. Event Grid supports event-driven architectures, Queue Storage offers simple message queueing, Notification Hubs handles mobile push notifications, and SignalR Service enables real-time web functionality.
 By understanding these services and their best use cases, you can make informed decisions to build scalable, resilient, and efficient applications.</p>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/Azure/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/Azure-Services/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure-Services</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/ai-900-journey-to-get-the-exam/">AI-900 - Journey to get the exam</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/">Native Dependency Injection in Azure Functions with C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/endpoint-monitoring-with-azure-application-insights/">Endpoint Monitoring with Azure Application Insights</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/az203-official-course-delivered-yes/">Yet Another AZ-203 Microsoft Official Course Delivered.</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/create-azure-app-service-though-az-cli/">Create Azure App Service though AZ Cli</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/create-azure-virtual-machine-using-powershell/">Create Azure Virtual Machine Using PowerShell</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-storage-disks/">Azure Storage Disks - Managed and unmanaged disks</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-function-v3-com-entityframework-core-3-1/">Azure Function V3 com EntityFramework Core 3.1</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-app-service-e-cloudflare-com-ssl-full-strict/">Azure App Service e Cloudflare com SSL Full (strict)</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/demo-webjob-azure-cron-expressions/">Demo WebJob Azure - CRON expressions</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/Azure/">Azure</a></li>
+      <li><a href="http://localhost:1313/tags/Azure-Services/">Azure-Services</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

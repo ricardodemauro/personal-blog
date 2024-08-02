@@ -1,158 +1,137 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes | rmauro.dev {blog}</title>
+<meta name="keywords" content="oracle, oracle-sql, oracle-functions">
+<meta name="description" content="In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
 In this introduction let&rsquo;s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.
 Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/gather-oracle-stats-for-schema-tables-indexes/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/gather-oracle-stats-for-schema-tables-indexes/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes
+    </h1>
+    <div class="post-meta"><span title='2024-06-25 19:40:32 +0000 UTC'>June 25, 2024</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/gather-oracle-stats-for-schema-tables-indexes/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/gather-oracle-stats-for-schema-tables-indexes/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes">
-  <meta property="og:description" content="In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
-In this introduction let’s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.
-Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2024-06-25T19:40:32+00:00">
-    <meta property="article:modified_time" content="2024-06-25T19:40:32+00:00">
-    <meta property="article:tag" content="Oracle">
-    <meta property="article:tag" content="Oracle-Sql">
-    <meta property="article:tag" content="Oracle-Functions">
-
-  <meta itemprop="name" content="Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes">
-  <meta itemprop="description" content="In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
-In this introduction let’s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.
-Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command.">
-  <meta itemprop="datePublished" content="2024-06-25T19:40:32+00:00">
-  <meta itemprop="dateModified" content="2024-06-25T19:40:32+00:00">
-  <meta itemprop="wordCount" content="415">
-  <meta itemprop="keywords" content="Oracle,Oracle-Sql,Oracle-Functions">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes">
-  <meta name="twitter:description" content="In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
-In this introduction let’s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.
-Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2024-06-25T19:40:32Z">June 25, 2024</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.</p>
+  </header> 
+  <div class="post-content"><p>In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.</p>
 <p>In this introduction let&rsquo;s explore how to gather statistics for <strong>Schemas</strong>, <strong>Tables</strong>, and <strong>Indexes</strong> using Oracle simple commands.</p>
-<h3 id="table-of-contents">Table of Contents</h3>
+<h3 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h3>
 <ul>
 <li><a href="#gather-schema-stats-with-gatherschemastats">Gather Schema Stats</a></li>
 <li><a href="#gather-table-stats-with-gathertablestats">Gather Table Stats</a></li>
 <li><a href="#gather-index-stats-with-gatherindexstats">Gather Index Stats</a></li>
 </ul>
-<h2 id="gather-schema-stats-with-gather_schema_stats">Gather Schema Stats with GATHER_SCHEMA_STATS</h2>
+<h2 id="gather-schema-stats-with-gather_schema_stats">Gather Schema Stats with GATHER_SCHEMA_STATS<a hidden class="anchor" aria-hidden="true" href="#gather-schema-stats-with-gather_schema_stats">#</a></h2>
 <p>To collect statistics for an entire schema, use the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- GATHER STATS FROM SCHEMA USING DEFAULT OPTIONS
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">EXEC</span> DBMS_STATS.GATHER_SCHEMA_STATS(<span style="color:#e6db74">&#39;SCHEMA_NAME&#39;</span>); 
-</span></span></code></pre></div><h3 id="considerations">Considerations</h3>
+</span></span></code></pre></div><h3 id="considerations">Considerations<a hidden class="anchor" aria-hidden="true" href="#considerations">#</a></h3>
 <ul>
 <li>For partitioned tables, use <code>CASCADE=&gt;TRUE</code> to gather statistics for all partitions</li>
 </ul>
-<h3 id="full-syntax-of-gather_schema_stats">Full Syntax of GATHER_SCHEMA_STATS</h3>
+<h3 id="full-syntax-of-gather_schema_stats">Full Syntax of GATHER_SCHEMA_STATS<a hidden class="anchor" aria-hidden="true" href="#full-syntax-of-gather_schema_stats">#</a></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>DBMS_STATS.GATHER_SCHEMA_STATS ( 
 </span></span><span style="display:flex;"><span>   ownname          VARCHAR2, 
 </span></span><span style="display:flex;"><span>   estimate_percent NUMBER   <span style="color:#66d9ef">DEFAULT</span> to_estimate_percent_type 
@@ -171,19 +150,19 @@ Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gath
 </span></span><span style="display:flex;"><span>                                     get_param(<span style="color:#e6db74">&#39;NO_INVALIDATE&#39;</span>)),
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">force</span>             BOOLEAN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,
 </span></span><span style="display:flex;"><span>  obj_filter_list  ObjectTab <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>);
-</span></span></code></pre></div><h4 id="heading"></h4>
-<h2 id="gather-table-stats-with-gather_table_stats">Gather Table Stats with GATHER_TABLE_STATS</h2>
+</span></span></code></pre></div><h4 id="heading"><a hidden class="anchor" aria-hidden="true" href="#heading">#</a></h4>
+<h2 id="gather-table-stats-with-gather_table_stats">Gather Table Stats with GATHER_TABLE_STATS<a hidden class="anchor" aria-hidden="true" href="#gather-table-stats-with-gather_table_stats">#</a></h2>
 <p>To gather statistics of individual tables use the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">EXEC</span> DBMS_STATS.GATHER_TABLE_STATS(
 </span></span><span style="display:flex;"><span>    ownname     <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;SCHEMA_NAME&#39;</span>,
 </span></span><span style="display:flex;"><span>    tabname     <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;TABLE_NAME&#39;</span>
 </span></span><span style="display:flex;"><span>);
-</span></span></code></pre></div><h3 id="considerations-1">Considerations</h3>
+</span></span></code></pre></div><h3 id="considerations-1">Considerations<a hidden class="anchor" aria-hidden="true" href="#considerations-1">#</a></h3>
 <ul>
 <li>Small tables: Use a larger sample size</li>
 <li>Large tables: Consider parallelism and incremental statistics</li>
 </ul>
-<h3 id="full-syntax-of-gather_table_stats">Full Syntax of GATHER_TABLE_STATS</h3>
+<h3 id="full-syntax-of-gather_table_stats">Full Syntax of GATHER_TABLE_STATS<a hidden class="anchor" aria-hidden="true" href="#full-syntax-of-gather_table_stats">#</a></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>DBMS_STATS.GATHER_TABLE_STATS (
 </span></span><span style="display:flex;"><span>   ownname          VARCHAR2, 
 </span></span><span style="display:flex;"><span>   tabname          VARCHAR2, 
@@ -204,18 +183,18 @@ Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gath
 </span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">force</span>            BOOLEAN  <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,
 </span></span><span style="display:flex;"><span>   context          DBMS_STATS.CCONTEXT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>, <span style="color:#75715e">-- non operative
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#66d9ef">options</span>          VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> get_param(<span style="color:#e6db74">&#39;OPTIONS&#39;</span>));
-</span></span></code></pre></div><h2 id="gather-index-stats-with-gather_index_stats">Gather Index Stats with GATHER_INDEX_STATS</h2>
+</span></span></code></pre></div><h2 id="gather-index-stats-with-gather_index_stats">Gather Index Stats with GATHER_INDEX_STATS<a hidden class="anchor" aria-hidden="true" href="#gather-index-stats-with-gather_index_stats">#</a></h2>
 <p>To gather Indexes statistics use the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">EXEC</span> DBMS_STATS.GATHER_INDEX_STATS(
 </span></span><span style="display:flex;"><span>    ownname     <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;SCHEMA_NAME&#39;</span>,
 </span></span><span style="display:flex;"><span>    indname     <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;INDEX_NAME&#39;</span>
 </span></span><span style="display:flex;"><span>);
-</span></span></code></pre></div><h3 id="considerations-2">Considerations</h3>
+</span></span></code></pre></div><h3 id="considerations-2">Considerations<a hidden class="anchor" aria-hidden="true" href="#considerations-2">#</a></h3>
 <ul>
 <li>Unique indexes: Gather statistics for uniqueness checks</li>
 <li>Bitmap indexes: Handle them differently due to their nature</li>
 </ul>
-<h3 id="full-syntax-of-gather_index_stats">Full Syntax of GATHER_INDEX_STATS</h3>
+<h3 id="full-syntax-of-gather_index_stats">Full Syntax of GATHER_INDEX_STATS<a hidden class="anchor" aria-hidden="true" href="#full-syntax-of-gather_index_stats">#</a></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>DBMS_STATS.GATHER_INDEX_STATS (
 </span></span><span style="display:flex;"><span>   ownname          VARCHAR2, 
 </span></span><span style="display:flex;"><span>   indname          VARCHAR2, 
@@ -230,84 +209,93 @@ Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gath
 </span></span><span style="display:flex;"><span>   no_invalidate    BOOLEAN  <span style="color:#66d9ef">DEFAULT</span> to_no_invalidate_type 
 </span></span><span style="display:flex;"><span>                                               (GET_PARAM(<span style="color:#e6db74">&#39;NO_INVALIDATE&#39;</span>)),
 </span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">force</span>            BOOLEAN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>);
-</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>Gathering statistics is not just a routine task—it’s a critical part of maintaining a healthy database. By following best practices and understanding the nuances, you’ll ensure optimal query performance.</p>
 <p>For further details check the <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_STATS.html">official documentation</a>.</p>
 <p>Remember to apply these techniques in your database environment, and happy querying! 🚀</p>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/oracle/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/oracle-sql/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Sql</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/oracle-functions/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Functions</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/oracle-pivot-command-turn-rows-into-columns/">Oracle PIVOT Command - Turn Rows into Columns</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/oracle-json-table-transforming-json-into-relational-format/">Oracle JSON_TABLE Transforming JSON into Table</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/oracle-merge-to-update-sql/">Oracle MERGE Statement SQL</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/oracle-odp-net-with-truly-async-methods-in-csharp/">Oracle ODP.NET with truly Async Methods in C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/">Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/oracle-database-on-docker-for-development/">Oracle Database on Docker for Development</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/oracle/">Oracle</a></li>
+      <li><a href="http://localhost:1313/tags/oracle-sql/">Oracle-Sql</a></li>
+      <li><a href="http://localhost:1313/tags/oracle-functions/">Oracle-Functions</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

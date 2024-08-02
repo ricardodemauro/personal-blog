@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Slowloris on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/slowloris/</link>
     <description>Recent content in Slowloris on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 07 Jul 2024 06:16:34 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/slowloris/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,10 @@
       <link>http://localhost:1313/post/slow-loris-attack/</link>
       <pubDate>Sun, 07 Jul 2024 06:16:34 +0000</pubDate>
       <guid>http://localhost:1313/post/slow-loris-attack/</guid>
-      <description>Denial-of-Service (DoS) attacks are a critical threat to web server security. One particularly insidious type is the Slowloris attack, which can incapacitate a server with minimal resources.&#xA;Remember, this guide is for educational purposes only, and any unauthorized testing on live servers is illegal and unethical.&#xA;What is a Slow Loris Attack? A Slow Loris attack involves sending numerous incomplete HTTP requests to a target server.&#xA;By maintaining these connections open with periodic headers but never completing them, the server&amp;rsquo;s resources are tied up, preventing legitimate users from accessing the server.</description>
+      <description>Denial-of-Service (DoS) attacks are a critical threat to web server security. One particularly insidious type is the Slowloris attack, which can incapacitate a server with minimal resources.
+Remember, this guide is for educational purposes only, and any unauthorized testing on live servers is illegal and unethical.
+What is a Slow Loris Attack? A Slow Loris attack involves sending numerous incomplete HTTP requests to a target server.
+By maintaining these connections open with periodic headers but never completing them, the server&amp;rsquo;s resources are tied up, preventing legitimate users from accessing the server.</description>
     </item>
   </channel>
 </rss>

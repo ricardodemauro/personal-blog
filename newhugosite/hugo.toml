@@ -1,6 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-theme = 'ananke'
+theme = 'PaperMod'
+
 
 disablePathToLower = true
 title = "rmauro.dev {blog}"

@@ -1,276 +1,301 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="">
-    <meta name="generator" content="Hugo 0.130.0">
-    
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+<html lang="en" dir="auto">
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>.NET 5 | rmauro.dev {blog}</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/categories/.NET-5/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/.NET-5/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/.NET-5/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
-    
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    
-      
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-    
+    </style>
+</noscript>
+</head>
 
-    
-    
-      <link href="/categories/.NET-5/index.xml" rel="alternate" type="application/rss+xml" title="rmauro.dev {blog}" />
-      <link href="/categories/.NET-5/index.xml" rel="feed" type="application/rss+xml" title="rmauro.dev {blog}" />
-      
-    
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-    
-      <link rel="canonical" href="http://localhost:1313/categories/.NET-5/">
-    
+</script>
 
-    <meta property="og:url" content="http://localhost:1313/categories/.NET-5/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content=".NET 5">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    .NET 5
+  </h1>
+</header>
 
-  <meta itemprop="name" content=".NET 5">
-  <meta itemprop="datePublished" content="2021-07-16T02:10:38+00:00">
-  <meta itemprop="dateModified" content="2021-07-16T02:10:38+00:00">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content=".NET 5">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-
-  <header>
-    <div class="pb3-m pb6-l bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
-</div>
-
-    </div>
-  </div>
-</nav>
-
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          .NET 5
-        </h1>
-        
-      </div>
-    </div>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Health Checks em Aplicações .NET 5
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
   </header>
-
-
-    <main class="pb7" role="main">
-      
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links mid-gray">
-      <p>Below you will find pages that utilize the taxonomy term “.NET 5”</p>
-    </div>
-  </article>
-  <div class="mw8 center">
-    <section class="flex-ns flex-wrap justify-around mt5">
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 16, 2021
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/health-checks-em-aplicacoes-net-5/" class="link black dim">
-        Health Checks em Aplicações .NET 5
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
+  <div class="entry-content">
+    <p>Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
 Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.
 https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
-Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.
-    </div>
-  <a href="/post/health-checks-em-aplicacoes-net-5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web....</p>
   </div>
+  <footer class="entry-footer"><span title='2021-07-16 02:10:38 +0000 UTC'>July 16, 2021</span></footer>
+  <a class="entry-link" aria-label="post link to Health Checks em Aplicações .NET 5" href="http://localhost:1313/post/health-checks-em-aplicacoes-net-5/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 15, 2021
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/api-key-authentication-estendendo-a-implementacao-nativa/" class="link black dim">
-        API Key Authentication - Estendendo a implementação nativa - .NET 5
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo &ldquo;API Key&rdquo;. Isso tudo com apenas três linhas de código.
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">API Key Authentication - Estendendo a implementação nativa - .NET 5
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo “API Key”. Isso tudo com apenas três linhas de código.
 Aqui queremos a famosa solução simples e estúpida (simple and stupid) e não uma implementação distorcida utilizando MVC [Attributes] ou um middleware customizado para lidar com a autenticação.
-Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1.
-    </div>
-  <a href="/post/api-key-authentication-estendendo-a-implementacao-nativa/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1....</p>
   </div>
+  <footer class="entry-footer"><span title='2021-07-15 23:15:13 +0000 UTC'>July 15, 2021</span></footer>
+  <a class="entry-link" aria-label="post link to API Key Authentication - Estendendo a implementação nativa - .NET 5" href="http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 25, 2021
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/adding-health-checks-to-net-core-application/" class="link black dim">
-        Health Checks on your ASP.NET Core Application
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Health Checks on your ASP.NET Core Application
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
 Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
 Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
-Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.
-    </div>
-  <a href="/post/adding-health-checks-to-net-core-application/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs....</p>
   </div>
+  <footer class="entry-footer"><span title='2021-04-25 17:14:00 +0000 UTC'>April 25, 2021</span></footer>
+  <a class="entry-link" aria-label="post link to Health Checks on your ASP.NET Core Application" href="http://localhost:1313/post/adding-health-checks-to-net-core-application/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 18, 2021
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/crud-in-dotnet5-csharp-with-mongo-db/" class="link black dim">
-        CRUD in .NET 5 C# with MongoDb
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-  <a href="/post/crud-in-dotnet5-csharp-with-mongo-db/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CRUD in .NET 5 C# with MongoDb
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
   </div>
+  <footer class="entry-footer"><span title='2021-04-18 23:44:42 +0000 UTC'>April 18, 2021</span></footer>
+  <a class="entry-link" aria-label="post link to CRUD in .NET 5 C# with MongoDb" href="http://localhost:1313/post/crud-in-dotnet5-csharp-with-mongo-db/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 28, 2021
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/api-key-authentication-extending-the-native-implementation/" class="link black dim">
-        API Key Authentication - Extending the native implementation
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      In this article, we&rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
-services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it&rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.
-    </div>
-  <a href="/post/api-key-authentication-extending-the-native-implementation/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">API Key Authentication - Extending the native implementation
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In this article, we’re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
+services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it’s hard to find a good implementation of API Key Authentication out there on the internet....</p>
   </div>
+  <footer class="entry-footer"><span title='2021-03-28 21:43:45 +0000 UTC'>March 28, 2021</span></footer>
+  <a class="entry-link" aria-label="post link to API Key Authentication - Extending the native implementation" href="http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        September 21, 2020
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/adding-health-checks-ui/" class="link black dim">
-        Adding Health Checks UI
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      This is the second article about Health Checks and Application Monitoring.
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Adding Health Checks UI
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This is the second article about Health Checks and Application Monitoring.
 Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
-Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.
-    </div>
-  <a href="/post/adding-health-checks-ui/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article....</p>
   </div>
+  <footer class="entry-footer"><span title='2020-09-21 18:17:00 +0000 UTC'>September 21, 2020</span></footer>
+  <a class="entry-link" aria-label="post link to Adding Health Checks UI" href="http://localhost:1313/post/adding-health-checks-ui/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        August 18, 2019
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/deploying-net-container-app-to-heroku-cloud/" class="link black dim">
-        Deploying .Net container App to Heroku cloud
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      I&rsquo;m tired of searching every time I need to deploy to heroku cloud. Being that said I&rsquo;m finally writing down the steps do deploy a docker container app to Heroku cloud.
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Deploying .Net container App to Heroku cloud
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I’m tired of searching every time I need to deploy to heroku cloud. Being that said I’m finally writing down the steps do deploy a docker container app to Heroku cloud.
 By the way, Heroku Cloud it is really cool.
 ###Requirements to deploy
 Docker client (windows or linux) installed Link Heroku CLI (command line interface) installed Link Application with a Dockerfile ###Changes you have to make in your Dockerfile
-First remove the Entrypoint and EXPOSE statments of your Dockerfile.
-    </div>
-  <a href="/post/deploying-net-container-app-to-heroku-cloud/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+First remove the Entrypoint and EXPOSE statments of your Dockerfile....</p>
   </div>
-
-        </div>
-      
-    </section>
-  </div>
-
+  <footer class="entry-footer"><span title='2019-08-18 18:15:42 +0000 UTC'>August 18, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Deploying .Net container App to Heroku cloud" href="http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/"></a>
+</article>
     </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
-  </div>
-</footer>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
 
-  </body>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

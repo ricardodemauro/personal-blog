@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Design Patterns on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/Design-Patterns/</link>
     <description>Recent content in Design Patterns on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Jul 2024 06:35:01 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/Design-Patterns/index.xml" rel="self" type="application/rss+xml" />
@@ -13,28 +13,37 @@
       <link>http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/</link>
       <pubDate>Fri, 12 Jul 2024 06:35:01 +0000</pubDate>
       <guid>http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/</guid>
-      <description>The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.&#xA;It ensures that a class has only one instance and provides a global point of access to that instance.&#xA;Let&amp;rsquo;s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.&#xA;**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.</description>
+      <description>The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
+It ensures that a class has only one instance and provides a global point of access to that instance.
+Let&amp;rsquo;s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
+**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.</description>
     </item>
     <item>
       <title>Understanding the Monad Design Pattern</title>
       <link>http://localhost:1313/post/understanding-the-monad-design-pattern/</link>
       <pubDate>Sun, 07 Jul 2024 07:40:03 +0000</pubDate>
       <guid>http://localhost:1313/post/understanding-the-monad-design-pattern/</guid>
-      <description>Monads are a powerful concept in functional programming that help manage side effects and maintain clean, composable code.&#xA;In this post, we&amp;rsquo;ll explore the Maybe monad design pattern using JavaScript, which is used to handle operations that might fail or return null/undefined.&#xA;What is a Monad? In simple terms, a monad is a design pattern that allows you to wrap values, chain operations, and handle side effects in a consistent way.</description>
+      <description>Monads are a powerful concept in functional programming that help manage side effects and maintain clean, composable code.
+In this post, we&amp;rsquo;ll explore the Maybe monad design pattern using JavaScript, which is used to handle operations that might fail or return null/undefined.
+What is a Monad? In simple terms, a monad is a design pattern that allows you to wrap values, chain operations, and handle side effects in a consistent way.</description>
     </item>
     <item>
       <title>Query Specification Pattern with EF Core</title>
       <link>http://localhost:1313/post/query-specification-pattern-with-ef-core/</link>
       <pubDate>Mon, 24 Jun 2024 14:11:50 +0000</pubDate>
       <guid>http://localhost:1313/post/query-specification-pattern-with-ef-core/</guid>
-      <description>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.&#xA;Here’s what you need to know:&#xA;1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution.</description>
+      <description>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.
+Here’s what you need to know:
+1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution.</description>
     </item>
     <item>
       <title>Health Check in .NET 6 C#</title>
       <link>http://localhost:1313/post/aspnet-health-check-for-oracle/</link>
       <pubDate>Mon, 03 Oct 2022 16:22:14 +0000</pubDate>
       <guid>http://localhost:1313/post/aspnet-health-check-for-oracle/</guid>
-      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.&#xA;In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.&#xA;🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
+      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.
+In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.
+🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
     </item>
   </channel>
 </rss>

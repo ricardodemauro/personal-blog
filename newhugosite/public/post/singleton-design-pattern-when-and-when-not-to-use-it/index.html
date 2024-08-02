@@ -1,161 +1,139 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Singleton Design Pattern - When Not to Use It | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Singleton Design Pattern - When Not to Use It | rmauro.dev {blog}</title>
+<meta name="keywords" content="Design Patterns, Singleton">
+<meta name="description" content="The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
 It ensures that a class has only one instance and provides a global point of access to that instance.
 Let&rsquo;s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
 **📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      Singleton Design Pattern - When Not to Use It
+    </h1>
+    <div class="post-meta"><span title='2024-07-12 06:35:01 +0000 UTC'>July 12, 2024</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="Singleton Design Pattern - When Not to Use It">
-  <meta property="og:description" content="The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
-It ensures that a class has only one instance and provides a global point of access to that instance.
-Let’s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
-**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2024-07-12T06:35:01+00:00">
-    <meta property="article:modified_time" content="2024-07-12T06:35:01+00:00">
-    <meta property="article:tag" content="Design Patterns">
-    <meta property="article:tag" content="Singleton">
-
-  <meta itemprop="name" content="Singleton Design Pattern - When Not to Use It">
-  <meta itemprop="description" content="The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
-It ensures that a class has only one instance and provides a global point of access to that instance.
-Let’s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
-**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.">
-  <meta itemprop="datePublished" content="2024-07-12T06:35:01+00:00">
-  <meta itemprop="dateModified" content="2024-07-12T06:35:01+00:00">
-  <meta itemprop="wordCount" content="555">
-  <meta itemprop="keywords" content="Design Patterns,Singleton">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Singleton Design Pattern - When Not to Use It">
-  <meta name="twitter:description" content="The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
-It ensures that a class has only one instance and provides a global point of access to that instance.
-Let’s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
-**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">Singleton Design Pattern - When Not to Use It</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2024-07-12T06:35:01Z">July 12, 2024</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.</p>
+  </header> 
+  <div class="post-content"><p>The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.</p>
 <p>It ensures that a class has only one instance and provides a global point of access to that instance.</p>
 <p>Let&rsquo;s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.</p>
-<h2 id="table-of-contents">**📢**Table of Contents</h2>
+<h2 id="table-of-contents">**📢**Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
 <ul>
 <li><a href="#%F0%9F%A7%BEsingleton-design-pattern">Singleton Design Pattern</a></li>
 <li><a href="#when-to-use-the-singleton-pattern">When to Use the Singleton Pattern</a></li>
 <li><a href="#when-not-to-use-the-singleton-pattern">When Not to Use the Singleton Pattern</a></li>
 </ul>
-<h2 id="singleton-design-pattern">**🧾**Singleton Design Pattern</h2>
+<h2 id="singleton-design-pattern">**🧾**Singleton Design Pattern<a hidden class="anchor" aria-hidden="true" href="#singleton-design-pattern">#</a></h2>
 <p>The Singleton pattern restricts the instantiation of a class to one single instance.</p>
 <p>This is particularly useful when exactly one object is needed to coordinate actions across the system.</p>
 <p>The pattern involves a private constructor, a static method or property that returns the instance, and typically a static variable to hold the single instance.</p>
-<figure><img src="https://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/SINGLE.png">
+<figure>
+    <img loading="lazy" src="https://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/SINGLE.png"/> 
 </figure>
 
-<h3 id="c-implementation-of-singleton">C# Implementation of Singleton</h3>
+<h3 id="c-implementation-of-singleton">C# Implementation of Singleton<a hidden class="anchor" aria-hidden="true" href="#c-implementation-of-singleton">#</a></h3>
 <p>A basic implementation of the Singleton pattern in C#.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span> 
 </span></span><span style="display:flex;"><span>{ 
@@ -183,7 +161,7 @@ Let’s explore its implementation in C# and discuss scenarios where it is appro
 <li>The static <code>Instance</code> property provides a global access point to the Singleton instance.</li>
 <li>A lock is used to ensure thread safety when creating the instance.</li>
 </ul>
-<h2 id="when-to-use-the-singleton-pattern">When to Use the Singleton Pattern</h2>
+<h2 id="when-to-use-the-singleton-pattern">When to Use the Singleton Pattern<a hidden class="anchor" aria-hidden="true" href="#when-to-use-the-singleton-pattern">#</a></h2>
 <p>Best scenario of usage is when things don&rsquo;t change. It needs to be static at all time.</p>
 <p>Example:</p>
 <ol>
@@ -193,7 +171,7 @@ Let’s explore its implementation in C# and discuss scenarios where it is appro
 <li><strong>Cache Management.</strong> A Singleton can manage a cache to ensure that data is stored and retrieved consistently across different parts of an application.</li>
 </ol>
 <p><strong>Attention:</strong> Cache should <strong>NOT</strong> be be Singleton. The proxy object to access cache can be Singleton. Manage your cache using an external systems such as Redis Cache for better performance.</p>
-<h2 id="when-not-to-use-the-singleton-pattern">When Not to Use the Singleton Pattern</h2>
+<h2 id="when-not-to-use-the-singleton-pattern">When Not to Use the Singleton Pattern<a hidden class="anchor" aria-hidden="true" href="#when-not-to-use-the-singleton-pattern">#</a></h2>
 <p>When need changes.</p>
 <ol>
 <li><strong>High Concurrency.</strong> Singletons can become a bottleneck in highly concurrent systems where multiple threads need to access the Singleton instance simultaneously.</li>
@@ -201,69 +179,93 @@ Let’s explore its implementation in C# and discuss scenarios where it is appro
 <li><strong>Memory Management.</strong> Since Singletons are often kept alive for the lifetime of an application, they can contribute to higher memory usage and potential memory leaks if not managed carefully.</li>
 <li><strong>Hidden Dependencies.</strong> Overuse of Singletons can lead to hidden dependencies between classes, making the codebase harder to understand and refactor.</li>
 </ol>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>The Singleton design pattern is a powerful tool in a developer&rsquo;s arsenal, but it should be used judiciously.</p>
 <p>It can provide a simple and elegant solution for scenarios that require a single instance of a class, such as configuration management or logging.</p>
 <p>However, it&rsquo;s important to consider the potential downsides, particularly regarding concurrency, testing, and maintainability.</p>
 <p>For more insights and detailed examples of design patterns, check out other articles on <a href="__GHOST_URL__/">rmauro.dev</a>.</p>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/Design-Patterns/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Design Patterns</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/Singleton/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Singleton</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/understanding-the-monad-design-pattern/">Understanding the Monad Design Pattern</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/query-specification-pattern-with-ef-core/">Query Specification Pattern with EF Core</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/aspnet-health-check-for-oracle/">Health Check in .NET 6 C#</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/Design-Patterns/">Design Patterns</a></li>
+      <li><a href="http://localhost:1313/tags/Singleton/">Singleton</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

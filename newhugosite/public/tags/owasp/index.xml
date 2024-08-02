@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Owasp on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/owasp/</link>
     <description>Recent content in Owasp on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 15 Dec 2019 20:36:45 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/owasp/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,20 @@
       <link>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</link>
       <pubDate>Sun, 15 Dec 2019 20:36:45 +0000</pubDate>
       <guid>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</guid>
-      <description>[english version]&#xA;Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.&#xA;Ao final teremos a seguinte configuração:&#xA;CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.</description>
+      <description>[english version]
+Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.
+Ao final teremos a seguinte configuração:
+CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.</description>
     </item>
     <item>
       <title>SQL Injection na Prática - Executando o Ataque</title>
       <link>http://localhost:1313/post/sql-injection-na-pratica/</link>
       <pubDate>Tue, 03 Dec 2019 01:58:29 +0000</pubDate>
       <guid>http://localhost:1313/post/sql-injection-na-pratica/</guid>
-      <description>Primeiro, você sabe (ou lembra-se) o que é SQL Injection? (for english version)&#xA;Segundo OWASP.org (https://www.owasp.org/index.php/SQL_Injection).&#xA;A SQL injection attack consists of insertion or &amp;ldquo;injection&amp;rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.&#xA;Ou seja, é uma técnica de invasão de serviços web através de comandos SQL. Desde que o serviço web (website, webservice, REST API, etc) esteja sucetível ao ataque SQL Injection, você consegue executar comandos SQL não previstos no sistema.</description>
+      <description>Primeiro, você sabe (ou lembra-se) o que é SQL Injection? (for english version)
+Segundo OWASP.org (https://www.owasp.org/index.php/SQL_Injection).
+A SQL injection attack consists of insertion or &amp;ldquo;injection&amp;rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.
+Ou seja, é uma técnica de invasão de serviços web através de comandos SQL. Desde que o serviço web (website, webservice, REST API, etc) esteja sucetível ao ataque SQL Injection, você consegue executar comandos SQL não previstos no sistema.</description>
     </item>
   </channel>
 </rss>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Microsoft.Extensions.Resilience on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/Microsoft.Extensions.Resilience/</link>
     <description>Recent content in Microsoft.Extensions.Resilience on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Jul 2024 01:57:30 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/Microsoft.Extensions.Resilience/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,8 @@
       <link>http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/</link>
       <pubDate>Fri, 05 Jul 2024 01:57:30 +0000</pubDate>
       <guid>http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/</guid>
-      <description>In this hands-on blog post, we&amp;rsquo;ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.&#xA;Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.</description>
+      <description>In this hands-on blog post, we&amp;rsquo;ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
+Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.</description>
     </item>
   </channel>
 </rss>

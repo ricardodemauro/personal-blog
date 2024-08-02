@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Docker on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/Docker/</link>
     <description>Recent content in Docker on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 30 May 2022 17:15:12 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/Docker/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,20 @@
       <link>http://localhost:1313/post/oracle-database-on-docker-for-development/</link>
       <pubDate>Mon, 30 May 2022 17:15:12 +0000</pubDate>
       <guid>http://localhost:1313/post/oracle-database-on-docker-for-development/</guid>
-      <description>&lt;p&gt;Lets set up an Oracle Database instance for development purpose using Docker is very easy. And it also runs in WSL2 over Windows.&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s use the oracleinanutshell/oracle-xe-11g image.&lt;/p&gt;&#xA;</description>
+      <description>&lt;p&gt;Lets set up an Oracle Database instance for development purpose using Docker is very easy. And it also runs in WSL2 over Windows.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s use the oracleinanutshell/oracle-xe-11g image.&lt;/p&gt;
+</description>
     </item>
     <item>
       <title>Deploying .Net container App to Heroku cloud</title>
       <link>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</link>
       <pubDate>Sun, 18 Aug 2019 18:15:42 +0000</pubDate>
       <guid>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</guid>
-      <description>I&amp;rsquo;m tired of searching every time I need to deploy to heroku cloud. Being that said I&amp;rsquo;m finally writing down the steps do deploy a docker container app to Heroku cloud.&#xA;By the way, Heroku Cloud it is really cool.&#xA;###Requirements to deploy&#xA;Docker client (windows or linux) installed Link Heroku CLI (command line interface) installed Link Application with a Dockerfile ###Changes you have to make in your Dockerfile&#xA;First remove the Entrypoint and EXPOSE statments of your Dockerfile.</description>
+      <description>I&amp;rsquo;m tired of searching every time I need to deploy to heroku cloud. Being that said I&amp;rsquo;m finally writing down the steps do deploy a docker container app to Heroku cloud.
+By the way, Heroku Cloud it is really cool.
+###Requirements to deploy
+Docker client (windows or linux) installed Link Heroku CLI (command line interface) installed Link Application with a Dockerfile ###Changes you have to make in your Dockerfile
+First remove the Entrypoint and EXPOSE statments of your Dockerfile.</description>
     </item>
   </channel>
 </rss>

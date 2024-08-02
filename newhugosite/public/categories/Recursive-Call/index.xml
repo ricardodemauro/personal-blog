@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Recursive-Call on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/Recursive-Call/</link>
     <description>Recent content in Recursive-Call on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 19 Jul 2024 19:18:44 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/Recursive-Call/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,9 @@
       <link>http://localhost:1313/post/recursive-calls-in-csharp/</link>
       <pubDate>Fri, 19 Jul 2024 19:18:44 +0000</pubDate>
       <guid>http://localhost:1313/post/recursive-calls-in-csharp/</guid>
-      <description>Recursion functions are like a magical mirror that reflects upon itself. It&amp;rsquo;s a concept where a function calls itself, creating a mesmerizing loop of self-referential elegance.&#xA;Let&amp;rsquo;s break it down how recursive functions works using Factorial Calculation as sample.&#xA;What is a Factorial? Before we dive into the code, let&amp;rsquo;s unravel the mystery of factorials. A factorial of a non-negative integer N, denoted as N!, is the product of all positive integers from 1 to N.</description>
+      <description>Recursion functions are like a magical mirror that reflects upon itself. It&amp;rsquo;s a concept where a function calls itself, creating a mesmerizing loop of self-referential elegance.
+Let&amp;rsquo;s break it down how recursive functions works using Factorial Calculation as sample.
+What is a Factorial? Before we dive into the code, let&amp;rsquo;s unravel the mystery of factorials. A factorial of a non-negative integer N, denoted as N!, is the product of all positive integers from 1 to N.</description>
     </item>
   </channel>
 </rss>

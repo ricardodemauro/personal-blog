@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Hangfire on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/Hangfire/</link>
     <description>Recent content in Hangfire on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 01 Jul 2024 20:36:57 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/Hangfire/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,8 @@
       <link>http://localhost:1313/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/</link>
       <pubDate>Mon, 01 Jul 2024 20:36:57 +0000</pubDate>
       <guid>http://localhost:1313/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/</guid>
-      <description>Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.&#xA;Whether you&amp;rsquo;re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we&amp;rsquo;ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure.</description>
+      <description>Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.
+Whether you&amp;rsquo;re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we&amp;rsquo;ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure.</description>
     </item>
   </channel>
 </rss>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>NoSql on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/NoSql/</link>
     <description>Recent content in NoSql on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 19 Apr 2021 01:12:09 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/NoSql/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,9 @@
       <link>http://localhost:1313/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/</link>
       <pubDate>Mon, 19 Apr 2021 01:12:09 +0000</pubDate>
       <guid>http://localhost:1313/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/</guid>
-      <description>MongoDB is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents.&#xA;MongoDb is very easy to get started - That is why I love MongoDb. I think it&amp;rsquo;s the best to get started as a software developer.&#xA;If you are like me - like MongoDb - or you&amp;rsquo;re just studying it.</description>
+      <description>MongoDB is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents.
+MongoDb is very easy to get started - That is why I love MongoDb. I think it&amp;rsquo;s the best to get started as a software developer.
+If you are like me - like MongoDb - or you&amp;rsquo;re just studying it.</description>
     </item>
     <item>
       <title>CRUD in .NET 5 C# with MongoDb</title>
@@ -27,7 +29,10 @@
       <link>http://localhost:1313/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/</link>
       <pubDate>Sun, 04 Oct 2020 01:49:44 +0000</pubDate>
       <guid>http://localhost:1313/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/</guid>
-      <description>In this blog post let&amp;rsquo;s work with the brand new .NET 5 (witch is still under release candidate mode).&#xA;During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).&#xA;Let&amp;rsquo;s work with:&#xA;Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I&amp;rsquo;m trying to move away from Postman) Microsoft Announces .</description>
+      <description>In this blog post let&amp;rsquo;s work with the brand new .NET 5 (witch is still under release candidate mode).
+During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).
+Let&amp;rsquo;s work with:
+Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I&amp;rsquo;m trying to move away from Postman) Microsoft Announces .</description>
     </item>
   </channel>
 </rss>

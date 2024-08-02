@@ -1,926 +1,347 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="">
-    <meta name="generator" content="Hugo 0.130.0">
-    
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+<html lang="en" dir="auto">
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>C# | rmauro.dev {blog}</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/tags/C%23/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/C%23/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/C%23/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
-    
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    
-      
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-    
+    </style>
+</noscript>
+</head>
 
-    
-    
-      <link href="/tags/C%23/index.xml" rel="alternate" type="application/rss+xml" title="rmauro.dev {blog}" />
-      <link href="/tags/C%23/index.xml" rel="feed" type="application/rss+xml" title="rmauro.dev {blog}" />
-      
-    
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-    
-      <link rel="canonical" href="http://localhost:1313/tags/C%23/">
-    
+</script>
 
-    <meta property="og:url" content="http://localhost:1313/tags/C%23/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="C#">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-
-  <meta itemprop="name" content="C#">
-  <meta itemprop="datePublished" content="2024-07-19T19:18:44+00:00">
-  <meta itemprop="dateModified" content="2024-07-19T19:18:44+00:00">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="C#">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-
-  <header>
-    <div class="pb3-m pb6-l bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
-</div>
-
-    </div>
-  </div>
-</nav>
-
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          C#
-        </h1>
-        
-      </div>
-    </div>
-  </header>
-
-
-    <main class="pb7" role="main">
-      
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links mid-gray">
-      <p>Below you will find pages that utilize the taxonomy term “C#”</p>
-    </div>
-  </article>
-  <div class="mw8 center">
-    <section class="flex-ns flex-wrap justify-around mt5">
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 19, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/recursive-calls-in-csharp/" class="link black dim">
-        Recursive Calls in C#: A Deep Dive
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Recursion functions are like a magical mirror that reflects upon itself. It&rsquo;s a concept where a function calls itself, creating a mesmerizing loop of self-referential elegance.
-Let&rsquo;s break it down how recursive functions works using Factorial Calculation as sample.
-What is a Factorial? Before we dive into the code, let&rsquo;s unravel the mystery of factorials. A factorial of a non-negative integer N, denoted as N!, is the product of all positive integers from 1 to N.
-    </div>
-  <a href="/post/recursive-calls-in-csharp/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 17, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/exit-codes-in-csharp-applications/" class="link black dim">
-        Exit Codes in C# Applications
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      When developing console applications in C#, it&rsquo;s important to communicate the success or failure of your program back to the operating system.
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    C#
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Recursive Calls in C#: A Deep Dive
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Recursion functions are like a magical mirror that reflects upon itself. It’s a concept where a function calls itself, creating a mesmerizing loop of self-referential elegance.
+Let’s break it down how recursive functions works using Factorial Calculation as sample.
+What is a Factorial? Before we dive into the code, let’s unravel the mystery of factorials. A factorial of a non-negative integer N, denoted as N!, is the product of all positive integers from 1 to N....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-07-19 19:18:44 +0000 UTC'>July 19, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Recursive Calls in C#: A Deep Dive" href="http://localhost:1313/post/recursive-calls-in-csharp/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Exit Codes in C# Applications
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>When developing console applications in C#, it’s important to communicate the success or failure of your program back to the operating system.
 This is achieved through exit codes, which are integers returned by the program when it finishes execution.
 An exit code of 0 typically signifies success, while any non-zero value indicates an error.
-Setting Exit Codes in C# In C#, you can set the exit code using the Environment.ExitCode property or the Environment.
-    </div>
-  <a href="/post/exit-codes-in-csharp-applications/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+Setting Exit Codes in C# In C#, you can set the exit code using the Environment.ExitCode property or the Environment....</p>
   </div>
+  <footer class="entry-footer"><span title='2024-07-17 17:32:06 +0000 UTC'>July 17, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Exit Codes in C# Applications" href="http://localhost:1313/post/exit-codes-in-csharp-applications/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 10, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/reading-appsettings-json-from-a-console-application/" class="link black dim">
-        Reading appsettings.json from a Console Application
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      When developing C# .NET applications, it&rsquo;s common to store configuration settings in a JSON file, typically named appsettings.json.
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Reading appsettings.json from a Console Application
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>When developing C# .NET applications, it’s common to store configuration settings in a JSON file, typically named appsettings.json.
 This approach is not only useful for ASP.NET applications but can also be effectively used in C# Console Applications.
-Before we start, let&rsquo;s make sure to have:
+Before we start, let’s make sure to have:
 .NET SDK installed on your machine. A basic understanding of C# and .NET. 🚗 Step-by-Step Guide First, create a new .NET console application.
-dotnet new console -n ConfigDemo cd ConfigDemo To read from appsettings.
-    </div>
-  <a href="/post/reading-appsettings-json-from-a-console-application/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+dotnet new console -n ConfigDemo cd ConfigDemo To read from appsettings....</p>
   </div>
+  <footer class="entry-footer"><span title='2024-07-10 14:18:00 +0000 UTC'>July 10, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Reading appsettings.json from a Console Application" href="http://localhost:1313/post/reading-appsettings-json-from-a-console-application/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 5, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/set-up-entity-framework-core-in-memory-store/" class="link black dim">
-        Set up Entity Framework Core In Memory Database Provider
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      One of the useful features of EF Core is the In-Memory Database Provider, which is perfect for testing purposes. In this guide, we will walk through setting up EF Core with an in-memory database, demonstrating how to configure and use it effectively.
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Set up Entity Framework Core In Memory Database Provider
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>One of the useful features of EF Core is the In-Memory Database Provider, which is perfect for testing purposes. In this guide, we will walk through setting up EF Core with an in-memory database, demonstrating how to configure and use it effectively.
 Step-by-Step Guide Start by creating a new .NET console using the .NET CLI and add the required packages.
-dotnet new console -n EfCoreInMemoryDemo cd EfCoreInMemoryDemo dotnet add package Microsoft.
-    </div>
-  <a href="/post/set-up-entity-framework-core-in-memory-store/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+dotnet new console -n EfCoreInMemoryDemo cd EfCoreInMemoryDemo dotnet add package Microsoft....</p>
   </div>
+  <footer class="entry-footer"><span title='2024-07-05 02:30:13 +0000 UTC'>July 5, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Set up Entity Framework Core In Memory Database Provider" href="http://localhost:1313/post/set-up-entity-framework-core-in-memory-store/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 5, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/" class="link black dim">
-        HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      In this hands-on blog post, we&rsquo;ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
-Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.
-    </div>
-  <a href="/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In this hands-on blog post, we’ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
+Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers....</p>
   </div>
+  <footer class="entry-footer"><span title='2024-07-05 01:57:30 +0000 UTC'>July 5, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience" href="http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 1, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/" class="link black dim">
-        Hangfire Implementing Background Jobs
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.
-Whether you&rsquo;re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we&rsquo;ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure.
-    </div>
-  <a href="/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hangfire Implementing Background Jobs
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.
+Whether you’re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we’ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure....</p>
   </div>
+  <footer class="entry-footer"><span title='2024-07-01 20:36:57 +0000 UTC'>July 1, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Hangfire Implementing Background Jobs" href="http://localhost:1313/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        June 24, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/query-specification-pattern-with-ef-core/" class="link black dim">
-        Query Specification Pattern with EF Core
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Query Specification Pattern with EF Core
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.
 Here’s what you need to know:
-1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution.
-    </div>
-  <a href="/post/query-specification-pattern-with-ef-core/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution....</p>
   </div>
+  <footer class="entry-footer"><span title='2024-06-24 14:11:50 +0000 UTC'>June 24, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Query Specification Pattern with EF Core" href="http://localhost:1313/post/query-specification-pattern-with-ef-core/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        October 24, 2023
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/getting-started-with-onion-architecture-in-csharp/" class="link black dim">
-        Getting started with ONION Architecture in C#
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.
-We&rsquo;ll take a deep dive into the layers of Onion Architecture while building a &ldquo;TODO List&rdquo; application to illustrate its principles.
-What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application&rsquo;s core business logic from external concerns.
-    </div>
-  <a href="/post/getting-started-with-onion-architecture-in-csharp/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Getting started with ONION Architecture in C#
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.
+We’ll take a deep dive into the layers of Onion Architecture while building a “TODO List” application to illustrate its principles.
+What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application’s core business logic from external concerns....</p>
   </div>
+  <footer class="entry-footer"><span title='2023-10-24 19:46:26 +0000 UTC'>October 24, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Getting started with ONION Architecture in C#" href="http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 29, 2023
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/csharp-get-jwt-token-request/" class="link black dim">
-        C# Get JWT Token from Request .NET 6
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>This blog post will explore extracting a JWT token from incoming requests using C#.</p>
-<p>How to Get JWT Token from Request using C#</p>
-
-    </div>
-  <a href="/post/csharp-get-jwt-token-request/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">C# Get JWT Token from Request .NET 6
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog post will explore extracting a JWT token from incoming requests using C#.
+How to Get JWT Token from Request using C#
+</p>
   </div>
+  <footer class="entry-footer"><span title='2023-05-29 23:28:28 +0000 UTC'>May 29, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to C# Get JWT Token from Request .NET 6" href="http://localhost:1313/post/csharp-get-jwt-token-request/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 28, 2023
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/jwt-authentication-with-csharp-dotnet/" class="link black dim">
-        C# JWT Authentication .NET 6
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      In this article, we will work on implementing C# JWT Authentication using .NET 7 - which also works for .NET 6, and preview .NET 8 - using ASP.NET Core.
-    </div>
-  <a href="/post/jwt-authentication-with-csharp-dotnet/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">C# JWT Authentication .NET 6
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In this article, we will work on implementing C# JWT Authentication using .NET 7 - which also works for .NET 6, and preview .NET 8 - using ASP.NET Core.</p>
   </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 15, 2023
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/" class="link black dim">
-        DALL-E Art-Generator with C# .NET
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      In this blog post, we will explore the steps to develop a C# application using DALL-E model to generate images from text.
-    </div>
-  <a href="/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 4, 2023
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/serilog-custom-enricher-on-aspnet-core/" class="link black dim">
-        Getting Started with Serilog Custom Enrichers
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      One of the key features of Serilog is the ability to Enrich Log Events with additional contextual information that can help in troubleshooting and debugging.
-In this blog post, we will explore how to create a Custom Enricher with Serilog to add custom properties to log events.
-    </div>
-  <a href="/post/serilog-custom-enricher-on-aspnet-core/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 2, 2023
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/" class="link black dim">
-        Getting Started with Chat GPT integration in a .NET C# Console Application
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      With the use of C#, we can develop a console application that uses the Chat GPT model to generate human-like responses to input.
-    </div>
-  <a href="/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        November 10, 2022
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/define-implicit-explicit-operator-csharp-tips/" class="link black dim">
-        Define Implicit and Explicit Operator - C# Tips
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      C# allows us to define Implicit and Explicit operators. Unlike casting Implicit __ and Explicit operators defines how C# should behave when encountering an equals sign.
-Implicit operator execution can be invoked when assigning a variable or calling a method.
-To use Explicit operator we should do the same as casting an object. It&rsquo;s similar to a cast an object.
-public record class Email(string Value) { //define implicit operator public static implicit operator string(Email value) =&gt; value.
-    </div>
-  <a href="/post/define-implicit-explicit-operator-csharp-tips/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        October 6, 2022
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/simpleexecutiontracker/" class="link black dim">
-        Measure Code Execution Time with .NET C#
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      As a programmer, we may need to find out the execution time used by a particular segment of the C# code, in order to optimize the performance. For example, we may want to know how much time is taken for reading multiple files in the file system, or fetching data from the database, or executing some business logic.
-Provides a set of methods and properties that you can use to accurately measure elapsed time.
-    </div>
-  <a href="/post/simpleexecutiontracker/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        October 3, 2022
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/aspnet-health-check-for-oracle/" class="link black dim">
-        Health Check in .NET 6 C#
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.
-In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.
-🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?
-    </div>
-  <a href="/post/aspnet-health-check-for-oracle/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        October 2, 2022
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/getting-started-with-benchmark-net-c-sharp/" class="link black dim">
-        Getting Started with Benchmark.Net C#
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-  <a href="/post/getting-started-with-benchmark-net-c-sharp/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        September 26, 2022
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/calculate-time-ago-with-csharp/" class="link black dim">
-        Calculate Time Ago with .NET C#
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-  <a href="/post/calculate-time-ago-with-csharp/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 4, 2022
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/create-a-minimal-api-with-dotnet-6/" class="link black dim">
-        Create a Minimal API with .NET 6
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      One of the new features of .NET 6 is the arrival of a new template, which will replace the default and bring a good reduction in code writing. Including the removal of the Startup.cs file.
-.NET 6 was released as LTS (long-term stable) which means support for 3 years. So we have to learn about this new baby. Don&rsquo;t forget the new C# 10 features as well.
-Minimal APIs are architected to create HTTP APIs with minimal dependencies.
-    </div>
-  <a href="/post/create-a-minimal-api-with-dotnet-6/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        June 26, 2022
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/setup-serilog-in-net6-as-logging-provider/" class="link black dim">
-        Set up Serilog in .NET 6 as a logging provider
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Let&rsquo;s set up Serilog as Logging Provider in the native logging system in .NET so you can use the Microsoft ILogger interface.
-    </div>
-  <a href="/post/setup-serilog-in-net6-as-logging-provider/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        June 10, 2022
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/" class="link black dim">
-        Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Oracle C# drive is already pretty fast with the default configuration. But we can always tweak it a little to make it even faster. By controlling the FetchSize property in ODP.NET we can make fewer round trips to Oracle Database and fetch the data faster.
-Let&rsquo;s take a look at how it&rsquo;s done and make your data access faster.
-Setup the Environment Before we get started let&rsquo;s set up our environment for testing.
-    </div>
-  <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        June 5, 2022
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/adding-startup-back-to-net-6-project/" class="link black dim">
-        Adding Startup.cs back to .NET 6 Project
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      When .NET 6 was released, the first big change was the lack of Startup.cs. This is very nice and all. But sometimes we just want it back, and here is how.
-First, create a new file called Startup.cs at the root of your project with the following content - don&rsquo;t forget the namespace.
-public class Startup { readonly IConfiguration configuration; public Startup(IConfiguration configuration) { this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration)); } public void ConfigureServices(IServiceCollection services) { services.
-    </div>
-  <a href="/post/adding-startup-back-to-net-6-project/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        July 16, 2021
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/health-checks-em-aplicacoes-net-5/" class="link black dim">
-        Health Checks em Aplicações .NET 5
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
-Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.
-https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
-Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.
-    </div>
-  <a href="/post/health-checks-em-aplicacoes-net-5/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 25, 2021
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/adding-health-checks-to-net-core-application/" class="link black dim">
-        Health Checks on your ASP.NET Core Application
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
-Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
-Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
-Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.
-    </div>
-  <a href="/post/adding-health-checks-to-net-core-application/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        April 22, 2021
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/add-build-time-to-your-csharp-assembly/" class="link black dim">
-        Add Build Time to your C# Assembly
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      
-    </div>
-  <a href="/post/add-build-time-to-your-csharp-assembly/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        March 28, 2021
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/api-key-authentication-extending-the-native-implementation/" class="link black dim">
-        API Key Authentication - Extending the native implementation
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      In this article, we&rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
-services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it&rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.
-    </div>
-  <a href="/post/api-key-authentication-extending-the-native-implementation/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        October 4, 2020
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/" class="link black dim">
-        End to end C# Application with .NET 5 API and MongoDB
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      In this blog post let&rsquo;s work with the brand new .NET 5 (witch is still under release candidate mode).
-During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).
-Let&rsquo;s work with:
-Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I&rsquo;m trying to move away from Postman) Microsoft Announces .
-    </div>
-  <a href="/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        October 1, 2020
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/" class="link black dim">
-        Native Dependency Injection in Azure Functions with C#
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Adding Dependency Injection feature to Azure Functions without third part libraries.
-    </div>
-  <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        September 21, 2020
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/adding-health-checks-ui/" class="link black dim">
-        Adding Health Checks UI
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      This is the second article about Health Checks and Application Monitoring.
-Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
-Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.
-    </div>
-  <a href="/post/adding-health-checks-ui/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        September 16, 2020
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/enabling-http-2-on-kestrel/" class="link black dim">
-        Simple Web Application with HTTP 2 over Kestrel
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      In this blog post we&rsquo;re going to create a simple web application with HTTP 2 enable on Kestrel.
-Prerequisites to follow this article:
-OpenSSL for Windows - to generate a self signed certificate First let generate a self signed SSL certificate. If you have an existing one you can skip this step.
-On an existing .Net application open the Program.cs file.
-public class Program { public static void Main(string[] args) { CreateHostBuilder(args).
-    </div>
-  <a href="/post/enabling-http-2-on-kestrel/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        September 9, 2020
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/compress-zip-files-in-memory-using-csharp/" class="link black dim">
-        Compress files in memory (.zip) using C#
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Here is a code snippet of how to compress one or many files to a zip archive in memory using C#.
-It works in .Net Core and .Net Full Framework
-public static byte[] GetZipArchive(params InMemoryFile[] files) { byte[] archiveFile; using (var archiveStream = new MemoryStream()) { using (var archive = new ZipArchive(archiveStream, ZipArchiveMode.Create, true)) { foreach (var file in files) { var zipArchiveEntry = archive.CreateEntry(file.FileName, CompressionLevel.Fastest); using var zipStream = zipArchiveEntry.
-    </div>
-  <a href="/post/compress-zip-files-in-memory-using-csharp/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        September 8, 2020
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/getting-the-file-name-without-extenion-in-csharp/" class="link black dim">
-        Getting the file name without extension in C# - #TIP
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      These days I was asking myself how to get the file name without the extension. I confess I was tempted to use a regex to solve this problem :)
-But no worries. There is a method in System.IO.Path specific for this situation.
-using System.IO; /// /// Get file name without extension /// static string GetFileName(string path) { return Path.GetFileNameWithoutExtension(path); } /// /// Get file name without extension /// static string GetFileName(FileInfo fileInfo) { return Path.
-    </div>
-  <a href="/post/getting-the-file-name-without-extenion-in-csharp/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 31, 2019
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/azure-function-v3-com-entityframework-core-3-1/" class="link black dim">
-        Azure Function V3 com EntityFramework Core 3.1
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
-Ao final vamos ter a seguinte configuração:
-Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos
-Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.
-Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.
-    </div>
-  <a href="/post/azure-function-v3-com-entityframework-core-3-1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        October 19, 2019
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/aspnetcore-com-mongo-db-e-mongo-atlas/" class="link black dim">
-        Asp.Net Core com MongoDb e Mongo Atlas - C#
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
-Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
-Neste tutorial, você aprenderá como:
-Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.
-    </div>
-  <a href="/post/aspnetcore-com-mongo-db-e-mongo-atlas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        September 29, 2019
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/" class="link black dim">
-        C# Conversions - Casting, implicit and explicit conversion
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Fist the data types available.
-int whole numbers long whole numbers (bigger range) float floating-point numbers double double precision decimal monetary values char single character bool boolean DateTime moments in time	string sequence of characters Table of implicit conversion made by C#.
-From To sbyte short int long float double decimal byte short ushort int uint long ulong float double decimal short int long float double decimal ushort int uint long ulong float double decimal int long float double decimal uint long ulong float double decimal long ulong float double decimal float double char ushort int uint long ulong float double decimal By the way, you cannot implicitly convert a long value to an int, because this conversion risks losing information (the long value might be outside the range supported by the int type).
-    </div>
-  <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 31, 2019
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/c-datetime-tostring-format/" class="link black dim">
-        C# DateTime Cheat sheet - ToString() Format
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Cheat sheet with C# DateTime formats.
-using System; using System.Globalization; public class Program { public static void Main(string[] args) { DateTime dt = DateTime.Now; string[] format = { &#34;d&#34;, &#34;D&#34;, &#34;f&#34;, &#34;F&#34;, &#34;g&#34;, &#34;G&#34;, &#34;m&#34;, &#34;r&#34;, &#34;s&#34;, &#34;t&#34;, &#34;T&#34;, &#34;u&#34;, &#34;U&#34;, &#34;y&#34;, &#34;dddd, MMMM dd yyyy&#34;, &#34;ddd, MMM d \&#34;&#39;\&#34;yy&#34;, &#34;dddd, MMMM dd&#34;, &#34;M/yy&#34;, &#34;dd-MM-yy&#34;, }; string date; for (int i = 0; i &lt; format.Length; i++) { date = dt.
-    </div>
-  <a href="/post/c-datetime-tostring-format/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        January 10, 2017
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/" class="link black dim">
-        Console Application para upload de arquivo no Azure Blob Storage
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Projeto para
-Configuration para utilizarmos como injeção de dependência.
-namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.
-namespace Demo.AzureBlob.DependencyInjection { public static class ServiceCollectionExtensions { public static IServiceCollection AddAzureBlobService(this IServiceCollection services, IConfiguration configuration) { return services.AddAzureBlobService(configuration, x =&gt; { x.AllowOverwrite = configuration.GetValue&lt;bool&gt;(&#34;Az:AllowOverwrite&#34;); x.
-    </div>
-  <a href="/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-
-        </div>
-      
-    </section>
-  </div>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
-  </div>
+  <footer class="entry-footer"><span title='2023-04-28 03:44:59 +0000 UTC'>April 28, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to C# JWT Authentication .NET 6" href="http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="http://localhost:1313/tags/C%23/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
 </footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
 
-  </body>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

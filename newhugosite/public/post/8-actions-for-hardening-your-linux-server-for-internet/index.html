@@ -1,146 +1,123 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>SSH Exposed to Internet - 8 steps check list | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Exposing virtual machines to the internet it&rsquo;s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>SSH Exposed to Internet - 8 steps check list | rmauro.dev {blog}</title>
+<meta name="keywords" content="Linux, security, SSH, hardening, Internet">
+<meta name="description" content="Exposing virtual machines to the internet it&rsquo;s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.
 Let&rsquo;s go through some often and ease configurations that will make it an attacker hard if trying to access your machine.
 💬 In this issue Creating a non-root user and use eventually elevated privileged Enabling UFW Uncomplicated Firewall Unattended Upgrades Hardening the SSH Access Use SSH Keys instead of Password Change the default Port for SSH Disable Password Login Disable Root Login over SSH Use config file in SSH client for easier connection 👉 Information we&rsquo;ll use in our lab User: _root_Password: generated with a _password generator_Description: Our Root userUser: _secondary_Password: generated with a _password generator_Description: Non Root user for daily basis accessOperating System: Ubuntu Server 20.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/8-actions-for-hardening-your-linux-server-for-internet/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/8-actions-for-hardening-your-linux-server-for-internet/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      SSH Exposed to Internet - 8 steps check list
+    </h1>
+    <div class="post-meta"><span title='2022-09-11 20:57:43 +0000 UTC'>September 11, 2022</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/8-actions-for-hardening-your-linux-server-for-internet/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/8-actions-for-hardening-your-linux-server-for-internet/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="SSH Exposed to Internet - 8 steps check list">
-  <meta property="og:description" content="Exposing virtual machines to the internet it’s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.
-Let’s go through some often and ease configurations that will make it an attacker hard if trying to access your machine.
-💬 In this issue Creating a non-root user and use eventually elevated privileged Enabling UFW Uncomplicated Firewall Unattended Upgrades Hardening the SSH Access Use SSH Keys instead of Password Change the default Port for SSH Disable Password Login Disable Root Login over SSH Use config file in SSH client for easier connection 👉 Information we’ll use in our lab User: _root_Password: generated with a _password generator_Description: Our Root userUser: _secondary_Password: generated with a _password generator_Description: Non Root user for daily basis accessOperating System: Ubuntu Server 20.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2022-09-11T20:57:43+00:00">
-    <meta property="article:modified_time" content="2022-09-11T20:57:43+00:00">
-    <meta property="article:tag" content="Linux">
-    <meta property="article:tag" content="Security">
-    <meta property="article:tag" content="SSH">
-    <meta property="article:tag" content="Hardening">
-    <meta property="article:tag" content="Internet">
-
-  <meta itemprop="name" content="SSH Exposed to Internet - 8 steps check list">
-  <meta itemprop="description" content="Exposing virtual machines to the internet it’s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.
-Let’s go through some often and ease configurations that will make it an attacker hard if trying to access your machine.
-💬 In this issue Creating a non-root user and use eventually elevated privileged Enabling UFW Uncomplicated Firewall Unattended Upgrades Hardening the SSH Access Use SSH Keys instead of Password Change the default Port for SSH Disable Password Login Disable Root Login over SSH Use config file in SSH client for easier connection 👉 Information we’ll use in our lab User: _root_Password: generated with a _password generator_Description: Our Root userUser: _secondary_Password: generated with a _password generator_Description: Non Root user for daily basis accessOperating System: Ubuntu Server 20.">
-  <meta itemprop="datePublished" content="2022-09-11T20:57:43+00:00">
-  <meta itemprop="dateModified" content="2022-09-11T20:57:43+00:00">
-  <meta itemprop="wordCount" content="1053">
-  <meta itemprop="keywords" content="Linux,Security,SSH,Hardening,Internet">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="SSH Exposed to Internet - 8 steps check list">
-  <meta name="twitter:description" content="Exposing virtual machines to the internet it’s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.
-Let’s go through some often and ease configurations that will make it an attacker hard if trying to access your machine.
-💬 In this issue Creating a non-root user and use eventually elevated privileged Enabling UFW Uncomplicated Firewall Unattended Upgrades Hardening the SSH Access Use SSH Keys instead of Password Change the default Port for SSH Disable Password Login Disable Root Login over SSH Use config file in SSH client for easier connection 👉 Information we’ll use in our lab User: _root_Password: generated with a _password generator_Description: Our Root userUser: _secondary_Password: generated with a _password generator_Description: Non Root user for daily basis accessOperating System: Ubuntu Server 20.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">SSH Exposed to Internet - 8 steps check list</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2022-09-11T20:57:43Z">September 11, 2022</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Exposing virtual machines to the internet it&rsquo;s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.</p>
+  </header> 
+  <div class="post-content"><p>Exposing virtual machines to the internet it&rsquo;s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.</p>
 <p>Let&rsquo;s go through some often and ease configurations that will make it an attacker hard if trying to access your machine.</p>
-<h2 id="-in-this-issue">💬 In this issue</h2>
+<h2 id="-in-this-issue">💬 In this issue<a hidden class="anchor" aria-hidden="true" href="#-in-this-issue">#</a></h2>
 <ul>
 <li><a href="#creating-a-non-root-user">Creating a non-root user and use eventually elevated privileged</a></li>
 <li><a href="#enabling-ufw-uncomplicated-firewall">Enabling UFW Uncomplicated Firewall</a></li>
@@ -155,29 +132,30 @@ Let’s go through some often and ease configurations that will make it an attac
 </ul>
 </li>
 </ul>
-<h3 id="-information-well-use-in-our-lab">👉 Information we&rsquo;ll use in our lab</h3>
+<h3 id="-information-well-use-in-our-lab">👉 Information we&rsquo;ll use in our lab<a hidden class="anchor" aria-hidden="true" href="#-information-well-use-in-our-lab">#</a></h3>
 <p>User: _root_Password:  generated with a _password generator_Description: Our <strong>Root</strong> userUser: _secondary_Password: generated with a _password generator_Description: Non <strong>Root</strong> user for daily basis accessOperating System: Ubuntu Server 20.04 - but it also working for different flavors of Linux.</p>
 <hr>
-<h2 id="creating-a-non-root-user">Creating a non-root user</h2>
+<h2 id="creating-a-non-root-user">Creating a non-root user<a hidden class="anchor" aria-hidden="true" href="#creating-a-non-root-user">#</a></h2>
 <p>First thing first: Never use the root user for non-privilege tasks. To accomplish that let&rsquo;s create a non-root user and use the <strong>sudo</strong> command to elevate our privileges only when necessary.</p>
 <p>Logged as the <strong>root</strong> user let&rsquo;s create a non-root user called <strong>secondary</strong>. Execute the following command in our <em>bash shell.</em></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># create a regular user with name secondary</span>
 </span></span><span style="display:flex;"><span>$ adduser secondary
 </span></span></code></pre></div><p>We should answer some questions (starting with the password) and we shall have the user.</p>
-<figure><img src="http://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/1-728rufa7phmxmgy8f15w.png"
-    alt="Creating the secondary user"><figcaption>
-      <p>Creating the secondary user</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="http://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/1-728rufa7phmxmgy8f15w.png"
+         alt="Creating the secondary user"/> <figcaption>
+            <p>Creating the secondary user</p>
+        </figcaption>
 </figure>
 
 <p>Now we have a user with fewer privileges. The next step is to grant the use <strong>sudo</strong> command when necessary.</p>
-<h3 id="add-to-sudo-group">Add to Sudo Group</h3>
+<h3 id="add-to-sudo-group">Add to Sudo Group<a hidden class="anchor" aria-hidden="true" href="#add-to-sudo-group">#</a></h3>
 <p>Run <code>usermod</code>command to include <strong>secondary</strong> into <strong>sudo</strong> group.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># includes the secondary into sudo group</span>
 </span></span><span style="display:flex;"><span>$ usermod -aG sudo secondary
 </span></span></code></pre></div><p>Now we&rsquo;re able to use <strong>sudo</strong> in front of a command to run as administrative rights.</p>
 <hr>
-<h2 id="enabling-ufw-uncomplicated-firewall">Enabling UFW Uncomplicated Firewall</h2>
+<h2 id="enabling-ufw-uncomplicated-firewall">Enabling UFW Uncomplicated Firewall<a hidden class="anchor" aria-hidden="true" href="#enabling-ufw-uncomplicated-firewall">#</a></h2>
 <p>UFW is the default firewall system (under the hood is the great IPTables) in Ubuntu Server.With the use of <strong>ufw</strong> it&rsquo;s very simple to allow or block a port.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo ufw allow <span style="color:#ae81ff">22</span>
 </span></span></code></pre></div><p>Don&rsquo;t forget to use <strong>sudo -</strong> we should be using the <strong>secondary</strong> user instead of the <strong>root</strong></p>
@@ -186,15 +164,16 @@ Let’s go through some often and ease configurations that will make it an attac
 </span></span><span style="display:flex;"><span>$ sudo ufw enable
 </span></span></code></pre></div><p>Deny all incoming by default, allow outgoing, and finally enable the <strong>ufw</strong> service</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo ufw status
-</span></span></code></pre></div><figure><img src="http://res-1.cloudinary.com/dgoa5llvh/image/upload/q_auto/2-50yzbzo1xuj2huan0o45.png"
-    alt="Displaying Status of ufw Service"><figcaption>
-      <p>Displaying Status of <em>ufw </em>Service</p>
-    </figcaption>
+</span></span></code></pre></div><figure>
+    <img loading="lazy" src="http://res-1.cloudinary.com/dgoa5llvh/image/upload/q_auto/2-50yzbzo1xuj2huan0o45.png"
+         alt="Displaying Status of ufw Service"/> <figcaption>
+            <p>Displaying Status of <em>ufw </em>Service</p>
+        </figcaption>
 </figure>
 
 <p>Great. Now we have <strong>ufw</strong> up and running.</p>
 <hr>
-<h2 id="adding-unattended-upgrades">Adding Unattended Upgrades</h2>
+<h2 id="adding-unattended-upgrades">Adding Unattended Upgrades<a hidden class="anchor" aria-hidden="true" href="#adding-unattended-upgrades">#</a></h2>
 <p>Unattended-Upgrade is a service that regularly checks and updates the OS packages.</p>
 <blockquote>
 <p>The purpose of unattended-upgrades is to keep the computer current with the latest security (and other) updates automatically.<a href="https://wiki.debian.org/UnattendedUpgrades">https://wiki.debian.org/UnattendedUpgrades</a></p>
@@ -203,27 +182,29 @@ Let’s go through some often and ease configurations that will make it an attac
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>$ sudo systemctl status unattended-upgrades.service
 </span></span></code></pre></div><p>After installing just enable the service and we should be good.</p>
-<figure><img src="http://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/3-42id1z6idjks8bmqeb7c.png"
-    alt="Unattended upgrades Status"><figcaption>
-      <p>Unattended upgrades Status</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="http://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/3-42id1z6idjks8bmqeb7c.png"
+         alt="Unattended upgrades Status"/> <figcaption>
+            <p>Unattended upgrades Status</p>
+        </figcaption>
 </figure>
 
 <p>The default configuration will automatically retrieve new package updates for most of the packages included in the Ubuntu repositories.</p>
 <hr>
-<h2 id="hardening-the-ssh-configuration">Hardening the SSH Configuration</h2>
+<h2 id="hardening-the-ssh-configuration">Hardening the SSH Configuration<a hidden class="anchor" aria-hidden="true" href="#hardening-the-ssh-configuration">#</a></h2>
 <p>Most Linux servers are administered remotely using SSH using OpenSSH technology. Which is the default SSH server software used within Ubuntu.</p>
 <p>This is one of the major vectors of attack by hackers on Linux exposed on the internet. Let&rsquo;s work on improving the configurations of our SSH server.</p>
 <hr>
-<h2 id="using-ssh-keys-instead-of-passwords">Using SSH keys instead of passwords</h2>
+<h2 id="using-ssh-keys-instead-of-passwords">Using SSH keys instead of passwords<a hidden class="anchor" aria-hidden="true" href="#using-ssh-keys-instead-of-passwords">#</a></h2>
 <p>SSH keys are the recommended way to log into any Linux server environment remotely.</p>
 <p>Back in our client machine (not on the server) let&rsquo;s create a pair of keys - private and public keys. This also works on Windows 10/11.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh-keygen
 </span></span></code></pre></div><p>You can specify a different location to save the keys if you like.</p>
-<figure><img src="http://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/4-c8a57fo3adz85715isd4.png"
-    alt="Generating the Public and Private Keys"><figcaption>
-      <p>Generating the Public and Private Keys</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="http://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/4-c8a57fo3adz85715isd4.png"
+         alt="Generating the Public and Private Keys"/> <figcaption>
+            <p>Generating the Public and Private Keys</p>
+        </figcaption>
 </figure>
 
 <p>The next step is to copy the SSH key to the Ubuntu server.</p>
@@ -246,7 +227,7 @@ Let’s go through some often and ease configurations that will make it an attac
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># ssh -i (indicates where is the key)</span>
 </span></span><span style="display:flex;"><span>$ ssh -i $HOME/.ssh/id_rsa secondary@<span style="color:#f92672">{</span>SERVER-IP<span style="color:#f92672">}</span>
 </span></span></code></pre></div><hr>
-<h2 id="changing-default-port-for-ssh">Changing default Port for SSH</h2>
+<h2 id="changing-default-port-for-ssh">Changing default Port for SSH<a hidden class="anchor" aria-hidden="true" href="#changing-default-port-for-ssh">#</a></h2>
 <p>Open the SSH configuration file <strong>sshd_config</strong> with a text editor.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo nano /etc/ssh/sshd_config
 </span></span></code></pre></div><p>Look for the entry <code>Port 22</code> - it could be commented on. Replace it with the desired value - port between 1024 and 65536</p>
@@ -256,17 +237,17 @@ Port 2222
 </code></pre><p>Save and Restart the OpenSSH service.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo systemctl restart ssh
 </span></span></code></pre></div><hr>
-<h2 id="disable-password-authentication-over-ssh">Disable Password Authentication over SSH</h2>
+<h2 id="disable-password-authentication-over-ssh">Disable Password Authentication over SSH<a hidden class="anchor" aria-hidden="true" href="#disable-password-authentication-over-ssh">#</a></h2>
 <p>Change property to <strong>PasswordAuthentication no</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>. . .
 </span></span><span style="display:flex;"><span>PasswordAuthentication no
 </span></span><span style="display:flex;"><span>. . .
-</span></span></code></pre></div><h2 id="disable-root-user-login">Disable Root User Login</h2>
+</span></span></code></pre></div><h2 id="disable-root-user-login">Disable Root User Login<a hidden class="anchor" aria-hidden="true" href="#disable-root-user-login">#</a></h2>
 <p>Change property to <strong>PermitRootLogin no</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>. . .
 </span></span><span style="display:flex;"><span>PermitRootLogin no
 </span></span><span style="display:flex;"><span>. . .
-</span></span></code></pre></div><h3 id="tweaking-some-other-sshd_config-configurations">Tweaking some other sshd_config Configurations</h3>
+</span></span></code></pre></div><h3 id="tweaking-some-other-sshd_config-configurations">Tweaking some other sshd_config Configurations<a hidden class="anchor" aria-hidden="true" href="#tweaking-some-other-sshd_config-configurations">#</a></h3>
 <p>Open the config file <strong>sshd_config</strong> one more time</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo nano /etc/ssh/sshd_config
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>. . .
@@ -282,7 +263,7 @@ Port 2222
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># restart the service and load the new configuration</span>
 </span></span><span style="display:flex;"><span>$ sudo systemctl restart ssh
 </span></span></code></pre></div><hr>
-<h2 id="using-ssh-config-file-on-ssh-client">Using ssh config file on SSH Client</h2>
+<h2 id="using-ssh-config-file-on-ssh-client">Using ssh config file on SSH Client<a hidden class="anchor" aria-hidden="true" href="#using-ssh-config-file-on-ssh-client">#</a></h2>
 <p>Adding a config file in the <code>.ssh</code> folder on the ssh client allows us to define the key, host, user, and other configurations by default per connection.</p>
 <p><em><strong>In our Client&rsquo;s machine</strong></em></p>
 <p>Create the <strong>config</strong> file in <strong>~/.ssh/config</strong> location</p>
@@ -306,94 +287,97 @@ Port 2222
 </span></span></code></pre></div><p>Then we can connect using only the connection name</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh ssh-server
 </span></span></code></pre></div><hr>
-<h2 id="-final-thoughts">😎 Final thoughts</h2>
+<h2 id="-final-thoughts">😎 Final thoughts<a hidden class="anchor" aria-hidden="true" href="#-final-thoughts">#</a></h2>
 <p>Wow, finally we made it. That is enough!</p>
 <p>Of course, we can keep going hardening it even more adding more protection - it never stops.</p>
 <p>Share in the comments section what you would do to make it even better or different.</p>
-<h2 id="-enjoy-this-article">❤️ Enjoy this article?</h2>
+<h2 id="-enjoy-this-article">❤️ Enjoy this article?<a hidden class="anchor" aria-hidden="true" href="#-enjoy-this-article">#</a></h2>
 <p><strong>Forward to a friend</strong> and let them know.</p>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/Linux/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Linux</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/security/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Security</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/SSH/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">SSH</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/hardening/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Hardening</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/Internet/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Internet</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/change-default-port-of-ssh-server/">Change Default Port 22 of SSH Server</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-app-service-e-cloudflare-com-ssl-full-strict/">Azure App Service e Cloudflare com SSL Full (strict)</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/practice-of-sql-injection/">Practice of SQL Injection</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/sql-injection-na-pratica/">SQL Injection na Prática - Executando o Ataque</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/hsts-definition-and-how-to-enable-it-in-iis/">HSTS - What&#39;s it and how to enable it in IIS</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/Linux/">Linux</a></li>
+      <li><a href="http://localhost:1313/tags/security/">Security</a></li>
+      <li><a href="http://localhost:1313/tags/SSH/">SSH</a></li>
+      <li><a href="http://localhost:1313/tags/hardening/">Hardening</a></li>
+      <li><a href="http://localhost:1313/tags/Internet/">Internet</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

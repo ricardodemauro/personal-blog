@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>DotNet | rmauro.dev {blog}</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/tags/DotNet/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/DotNet/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/DotNet/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    DotNet
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Getting Started with Serilog Custom Enrichers
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>One of the key features of Serilog is the ability to Enrich Log Events with additional contextual information that can help in troubleshooting and debugging.
+In this blog post, we will explore how to create a Custom Enricher with Serilog to add custom properties to log events.</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-04-04 00:05:15 +0000 UTC'>April 4, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Getting Started with Serilog Custom Enrichers" href="http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Getting Started with Chat GPT integration in a .NET C# Console Application
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>With the use of C#, we can develop a console application that uses the Chat GPT model to generate human-like responses to input.</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-04-02 16:42:29 +0000 UTC'>April 2, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Getting Started with Chat GPT integration in a .NET C# Console Application" href="http://localhost:1313/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Measure Code Execution Time with .NET C#
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>As a programmer, we may need to find out the execution time used by a particular segment of the C# code, in order to optimize the performance. For example, we may want to know how much time is taken for reading multiple files in the file system, or fetching data from the database, or executing some business logic.
+Provides a set of methods and properties that you can use to accurately measure elapsed time....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-10-06 14:29:39 +0000 UTC'>October 6, 2022</span></footer>
+  <a class="entry-link" aria-label="post link to Measure Code Execution Time with .NET C#" href="http://localhost:1313/post/simpleexecutiontracker/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Getting Started with Benchmark.Net C#
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
+  </div>
+  <footer class="entry-footer"><span title='2022-10-02 18:04:18 +0000 UTC'>October 2, 2022</span></footer>
+  <a class="entry-link" aria-label="post link to Getting Started with Benchmark.Net C#" href="http://localhost:1313/post/getting-started-with-benchmark-net-c-sharp/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Calculate Time Ago with .NET C#
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
+  </div>
+  <footer class="entry-footer"><span title='2022-09-26 14:00:52 +0000 UTC'>September 26, 2022</span></footer>
+  <a class="entry-link" aria-label="post link to Calculate Time Ago with .NET C#" href="http://localhost:1313/post/calculate-time-ago-with-csharp/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Create a Minimal API with .NET 6
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>One of the new features of .NET 6 is the arrival of a new template, which will replace the default and bring a good reduction in code writing. Including the removal of the Startup.cs file.
+.NET 6 was released as LTS (long-term stable) which means support for 3 years. So we have to learn about this new baby. Don’t forget the new C# 10 features as well.
+Minimal APIs are architected to create HTTP APIs with minimal dependencies....</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-07-04 20:16:53 +0000 UTC'>July 4, 2022</span></footer>
+  <a class="entry-link" aria-label="post link to Create a Minimal API with .NET 6" href="http://localhost:1313/post/create-a-minimal-api-with-dotnet-6/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Set up Serilog in .NET 6 as a logging provider
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Let’s set up Serilog as Logging Provider in the native logging system in .NET so you can use the Microsoft ILogger interface.</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-06-26 22:04:20 +0000 UTC'>June 26, 2022</span></footer>
+  <a class="entry-link" aria-label="post link to Set up Serilog in .NET 6 as a logging provider" href="http://localhost:1313/post/setup-serilog-in-net6-as-logging-provider/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Health Checks on your ASP.NET Core Application
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
+Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
+Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs....</p>
+  </div>
+  <footer class="entry-footer"><span title='2021-04-25 17:14:00 +0000 UTC'>April 25, 2021</span></footer>
+  <a class="entry-link" aria-label="post link to Health Checks on your ASP.NET Core Application" href="http://localhost:1313/post/adding-health-checks-to-net-core-application/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Add Build Time to your C# Assembly
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
+  </div>
+  <footer class="entry-footer"><span title='2021-04-22 02:38:58 +0000 UTC'>April 22, 2021</span></footer>
+  <a class="entry-link" aria-label="post link to Add Build Time to your C# Assembly" href="http://localhost:1313/post/add-build-time-to-your-csharp-assembly/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Enable Local Cache in Azure Web App
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>##What is Local Cache in Azure WebApp?
+Local cache in Azure Web is really a cache that caches the storage of your Web App.
+##How to enable it?
+To enable local cache you should go to your Azure Subscription them navigate to your Web App that you wishs to enable local cache.
+Go to “Configuration” section then “Application Setttings” and under “Application settings”
+You enable Local Cache on a per-web-app basis by using this app setting: WEBSITE_LOCAL_CACHE_OPTION = Always...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-06-01 19:01:27 +0000 UTC'>June 1, 2019</span></footer>
+  <a class="entry-link" aria-label="post link to Enable Local Cache in Azure Web App" href="http://localhost:1313/post/enable-local-cache-in-azure-web-app/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1313/tags/DotNet/">
+      «&nbsp;Prev&nbsp;
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

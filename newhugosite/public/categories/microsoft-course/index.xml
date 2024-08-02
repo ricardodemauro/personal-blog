@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Microsoft-Course on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/microsoft-course/</link>
     <description>Recent content in Microsoft-Course on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 22 Jan 2020 00:46:31 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/microsoft-course/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,10 @@
       <link>http://localhost:1313/post/az203-official-course-delivered-yes/</link>
       <pubDate>Wed, 22 Jan 2020 00:46:31 +0000</pubDate>
       <guid>http://localhost:1313/post/az203-official-course-delivered-yes/</guid>
-      <description>Yet Another AZ-203 Microsoft Official Course Delivered.&#xA;Another AZ-203 official Microsoft course delivered with success! Class members feedback was great. And I loved to make over 22 new colleagues these two weeks.&#xA;I should say, this course is awesome. The level of topics is at beginning easy, them going to middle level and a lot of times pretty hard! :)&#xA;Ps.: Mostly as online class members! Over 32 students online.</description>
+      <description>Yet Another AZ-203 Microsoft Official Course Delivered.
+Another AZ-203 official Microsoft course delivered with success! Class members feedback was great. And I loved to make over 22 new colleagues these two weeks.
+I should say, this course is awesome. The level of topics is at beginning easy, them going to middle level and a lot of times pretty hard! :)
+Ps.: Mostly as online class members! Over 32 students online.</description>
     </item>
   </channel>
 </rss>

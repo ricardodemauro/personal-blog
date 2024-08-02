@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>HealthCheck on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/HealthCheck/</link>
     <description>Recent content in HealthCheck on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 03 Oct 2022 16:22:14 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/HealthCheck/index.xml" rel="self" type="application/rss+xml" />
@@ -13,28 +13,38 @@
       <link>http://localhost:1313/post/aspnet-health-check-for-oracle/</link>
       <pubDate>Mon, 03 Oct 2022 16:22:14 +0000</pubDate>
       <guid>http://localhost:1313/post/aspnet-health-check-for-oracle/</guid>
-      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.&#xA;In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.&#xA;🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
+      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.
+In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.
+🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
     </item>
     <item>
       <title>Health Checks em Aplicações .NET 5</title>
       <link>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</link>
       <pubDate>Fri, 16 Jul 2021 02:10:38 +0000</pubDate>
       <guid>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</guid>
-      <description>Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.&#xA;Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.&#xA;https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.</description>
+      <description>Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
+Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.
+https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.</description>
     </item>
     <item>
       <title>Health Checks on your ASP.NET Core Application</title>
       <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
       <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
       <guid>http://localhost:1313/post/adding-health-checks-to-net-core-application/</guid>
-      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.&#xA;Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.&#xA;Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
+      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
+Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
+Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
     </item>
     <item>
       <title>Adding Health Checks UI</title>
       <link>http://localhost:1313/post/adding-health-checks-ui/</link>
       <pubDate>Mon, 21 Sep 2020 18:17:00 +0000</pubDate>
       <guid>http://localhost:1313/post/adding-health-checks-ui/</guid>
-      <description>This is the second article about Health Checks and Application Monitoring.&#xA;Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!&#xA;Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
+      <description>This is the second article about Health Checks and Application Monitoring.
+Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
+Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
     </item>
   </channel>
 </rss>

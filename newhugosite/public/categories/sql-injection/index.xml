@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Sql-Injection on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/sql-injection/</link>
     <description>Recent content in Sql-Injection on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Jul 2024 23:22:28 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/sql-injection/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,21 @@
       <link>http://localhost:1313/post/sql-injection-with-sqlmap/</link>
       <pubDate>Sat, 06 Jul 2024 23:22:28 +0000</pubDate>
       <guid>http://localhost:1313/post/sql-injection-with-sqlmap/</guid>
-      <description>SQLMap is a powerful and popular open-source tool used to detect and exploit SQL injection vulnerabilities.&#xA;Let&amp;rsquo;s dive into a basic usage of SQLMap.&#xA;Pre-Requirements Linux Installation sudo apt-get install sqlmap Windows Installation Download and install from SQLMap from the official website SQL Map&#xA;Basic Usage In the terminal or command prompt. Run SQLMap with a target URL that is suspected of being vulnerable to SQL injection:&#xA;sqlmap -u &amp;#34;http://example.com/page?id=1&amp;#34; Basic Options -u URL, --url=URL: Specifies the URL to test.</description>
+      <description>SQLMap is a powerful and popular open-source tool used to detect and exploit SQL injection vulnerabilities.
+Let&amp;rsquo;s dive into a basic usage of SQLMap.
+Pre-Requirements Linux Installation sudo apt-get install sqlmap Windows Installation Download and install from SQLMap from the official website SQL Map
+Basic Usage In the terminal or command prompt. Run SQLMap with a target URL that is suspected of being vulnerable to SQL injection:
+sqlmap -u &amp;#34;http://example.com/page?id=1&amp;#34; Basic Options -u URL, --url=URL: Specifies the URL to test.</description>
     </item>
     <item>
       <title>SQL Injection na Prática - Executando o Ataque</title>
       <link>http://localhost:1313/post/sql-injection-na-pratica/</link>
       <pubDate>Tue, 03 Dec 2019 01:58:29 +0000</pubDate>
       <guid>http://localhost:1313/post/sql-injection-na-pratica/</guid>
-      <description>Primeiro, você sabe (ou lembra-se) o que é SQL Injection? (for english version)&#xA;Segundo OWASP.org (https://www.owasp.org/index.php/SQL_Injection).&#xA;A SQL injection attack consists of insertion or &amp;ldquo;injection&amp;rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.&#xA;Ou seja, é uma técnica de invasão de serviços web através de comandos SQL. Desde que o serviço web (website, webservice, REST API, etc) esteja sucetível ao ataque SQL Injection, você consegue executar comandos SQL não previstos no sistema.</description>
+      <description>Primeiro, você sabe (ou lembra-se) o que é SQL Injection? (for english version)
+Segundo OWASP.org (https://www.owasp.org/index.php/SQL_Injection).
+A SQL injection attack consists of insertion or &amp;ldquo;injection&amp;rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.
+Ou seja, é uma técnica de invasão de serviços web através de comandos SQL. Desde que o serviço web (website, webservice, REST API, etc) esteja sucetível ao ataque SQL Injection, você consegue executar comandos SQL não previstos no sistema.</description>
     </item>
   </channel>
 </rss>

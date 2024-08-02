@@ -1,151 +1,129 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Azure Function V3 com EntityFramework Core 3.1 | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Azure Function V3 com EntityFramework Core 3.1 | rmauro.dev {blog}</title>
+<meta name="keywords" content="C#, pt, Azure, AZ-203">
+<meta name="description" content="Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
 Ao final vamos ter a seguinte configuração:
 Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos
 Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.
 Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      Azure Function V3 com EntityFramework Core 3.1
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2019-12-31 16:47:03 +0000 UTC'>December 31, 2019</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="Azure Function V3 com EntityFramework Core 3.1">
-  <meta property="og:description" content="Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
-Ao final vamos ter a seguinte configuração:
-Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos
-Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.
-Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2019-12-31T16:47:03+00:00">
-    <meta property="article:modified_time" content="2019-12-31T16:47:03+00:00">
-    <meta property="article:tag" content="C#">
-    <meta property="article:tag" content="Pt">
-    <meta property="article:tag" content="Azure">
-    <meta property="article:tag" content="AZ-203">
-
-  <meta itemprop="name" content="Azure Function V3 com EntityFramework Core 3.1">
-  <meta itemprop="description" content="Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
-Ao final vamos ter a seguinte configuração:
-Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos
-Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.
-Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.">
-  <meta itemprop="datePublished" content="2019-12-31T16:47:03+00:00">
-  <meta itemprop="dateModified" content="2019-12-31T16:47:03+00:00">
-  <meta itemprop="wordCount" content="376">
-  <meta itemprop="keywords" content="C#,Pt,Azure,AZ-203">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Azure Function V3 com EntityFramework Core 3.1">
-  <meta name="twitter:description" content="Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
-Ao final vamos ter a seguinte configuração:
-Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos
-Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.
-Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">Azure Function V3 com EntityFramework Core 3.1</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2019-12-31T16:47:03Z">December 31, 2019</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.</p>
+  </header> 
+  <div class="post-content"><p>Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.</p>
 <p>Ao final vamos ter a seguinte configuração:</p>
 <ul>
 <li>Azure Function V3</li>
@@ -159,11 +137,13 @@ Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Fu
 <li>Conta Azure (opcional) para publicar</li>
 </ul>
 <p>Código fonte disponível no <a href="https://github.com/ricardodemauro/az-function-ef-3">Github</a>.</p>
-<h2 id="criando-novo-projeto">Criando novo projeto</h2>
+<h2 id="criando-novo-projeto">Criando novo projeto<a hidden class="anchor" aria-hidden="true" href="#criando-novo-projeto">#</a></h2>
 <p>Primeiro crie um novo projeto a partir do template Azure Function.</p>
-<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/az-01.png" alt="az-01"></p>
+<p><img loading="lazy" src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/az-01.png" alt="az-01"  />
+</p>
 <p>Vamos chamar nosso projeto de <strong>FuncStudents</strong>.</p>
-<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/az-02.png" alt="az-02"></p>
+<p><img loading="lazy" src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/az-02.png" alt="az-02"  />
+</p>
 <p>Agora configure conforme abaixo e depois clique em <strong>Create</strong></p>
 <ul>
 <li>Azure Function v3 (.Net Core)</li>
@@ -171,10 +151,11 @@ Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Fu
 <li>Storage Account: None</li>
 <li>Authorization Level: Anonymous</li>
 </ul>
-<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/az-03.png" alt="az-03"></p>
-<h2 id="configurando-o-entity-framework-core">Configurando o Entity Framework Core</h2>
+<p><img loading="lazy" src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/az-03.png" alt="az-03"  />
+</p>
+<h2 id="configurando-o-entity-framework-core">Configurando o Entity Framework Core<a hidden class="anchor" aria-hidden="true" href="#configurando-o-entity-framework-core">#</a></h2>
 <p>Antes de adicionar os pacotes nuget vamos criar nosso modelo <code>Student</code>.</p>
-<h3 id="adicionando-o-modelo">Adicionando o modelo</h3>
+<h3 id="adicionando-o-modelo">Adicionando o modelo<a hidden class="anchor" aria-hidden="true" href="#adicionando-o-modelo">#</a></h3>
 <p>Crie uma pasta com nome <code>Models</code> e criar a classe <code>Student.cs</code> conforme abaixo.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
@@ -195,7 +176,7 @@ Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Fu
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> CourseName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="configurando-entity-framework-core">Configurando Entity Framework Core</h3>
+</span></span></code></pre></div><h3 id="configurando-entity-framework-core">Configurando Entity Framework Core<a hidden class="anchor" aria-hidden="true" href="#configurando-entity-framework-core">#</a></h3>
 <p>Agora vamos adicionar os pacotes:</p>
 <ul>
 <li>Microsoft.EntityFrameworkCore - version 3.1.0</li>
@@ -227,7 +208,7 @@ Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Fu
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/None&gt;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/ItemGroup&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/Project&gt;</span>
-</span></span></code></pre></div><h3 id="configurando-o-datacontext">Configurando o DataContext</h3>
+</span></span></code></pre></div><h3 id="configurando-o-datacontext">Configurando o DataContext<a hidden class="anchor" aria-hidden="true" href="#configurando-o-datacontext">#</a></h3>
 <p>Agora que temos os pacotes instalados é hora de configurar o nosso <code>DataContext</code>.</p>
 <p>Crie uma pasta chamada <strong>Data</strong> na raiz do projeto e criar o arquivo <code>ApplicationDbContext.cs</code> conforme abaixo.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> FuncStudents.Models;
@@ -246,129 +227,99 @@ Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Fu
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="configurando-o-container-de-injeção-de-dependência">Configurando o Container de Injeção de Dependência</h3>
+</span></span></code></pre></div><h3 id="configurando-o-container-de-injeção-de-dependência">Configurando o Container de Injeção de Dependência<a hidden class="anchor" aria-hidden="true" href="#configurando-o-container-de-injeção-de-dependência">#</a></h3>
 <p>Agora que configuramos o <code>DbContext</code> com um <code>DbSet</code> <strong>Students</strong>, é hora de configurarmos o container de injeção de dependência.</p>
 <p>Antes de criarmos nosso arquivo de <strong>Startup</strong> vamos adicionar o seguinte pacote <code>Microsoft.Azure.Functions.Extensions</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Microsoft.Azure.Functions.Extensions&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;1.0.0&#34;</span> <span style="color:#f92672">/&gt;</span>
 </span></span></code></pre></div><p>Depois de instalado o pacote. Crie o arquivo <code>Startup.cs</code> com o conteúdo a seguir.</p>
-<h2 id="referências">Referências</h2>
+<h2 id="referências">Referências<a hidden class="anchor" aria-hidden="true" href="#referências">#</a></h2>
 <ul>
 <li><a href="https://docs.microsoft.com/pt-br/azure/azure-functions/">Azure Functions Docs</a></li>
 </ul>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/pt/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Pt</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/Azure/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/AZ-203/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">AZ-203</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/azure-app-service-e-cloudflare-com-ssl-full-strict/">Azure App Service e Cloudflare com SSL Full (strict)</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/aspnetcore-com-mongo-db-e-mongo-atlas/">Asp.Net Core com MongoDb e Mongo Atlas - C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/demo-webjob-azure-cron-expressions/">Demo WebJob Azure - CRON expressions</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/enable-azure-disk-encryption-though-az-cli/">Enable Azure Disk Encryption though az-cli</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/create-azure-vm-though-powershell/">Create Azure VM though PowerShell</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/">Console Application para upload de arquivo no Azure Blob Storage</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/sql-injection-na-pratica/">SQL Injection na Prática - Executando o Ataque</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/comecando-com-machine-learning-escrevendo-um-perceptron/">Começando com Machine Learning - Escrevendo um Perceptron</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/C%23/">C#</a></li>
+      <li><a href="http://localhost:1313/tags/pt/">Pt</a></li>
+      <li><a href="http://localhost:1313/tags/Azure/">Azure</a></li>
+      <li><a href="http://localhost:1313/tags/AZ-203/">AZ-203</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

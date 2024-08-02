@@ -1,141 +1,120 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>API Key Authentication - Extending the native implementation | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="In this article, we&rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>API Key Authentication - Extending the native implementation | rmauro.dev {blog}</title>
+<meta name="keywords" content=".NET 5, DotNet Core, C#, Authentication, Authorization, en">
+<meta name="description" content="In this article, we&rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
 services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it&rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      API Key Authentication - Extending the native implementation
+    </h1>
+    <div class="post-meta"><span title='2021-03-28 21:43:45 +0000 UTC'>March 28, 2021</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="API Key Authentication - Extending the native implementation">
-  <meta property="og:description" content="In this article, we’re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
-services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it’s hard to find a good implementation of API Key Authentication out there on the internet.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2021-03-28T21:43:45+00:00">
-    <meta property="article:modified_time" content="2021-03-28T21:43:45+00:00">
-    <meta property="article:tag" content=".NET 5">
-    <meta property="article:tag" content="DotNet Core">
-    <meta property="article:tag" content="C#">
-    <meta property="article:tag" content="Authentication">
-    <meta property="article:tag" content="Authorization">
-    <meta property="article:tag" content="En">
-
-  <meta itemprop="name" content="API Key Authentication - Extending the native implementation">
-  <meta itemprop="description" content="In this article, we’re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
-services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it’s hard to find a good implementation of API Key Authentication out there on the internet.">
-  <meta itemprop="datePublished" content="2021-03-28T21:43:45+00:00">
-  <meta itemprop="dateModified" content="2021-03-28T21:43:45+00:00">
-  <meta itemprop="wordCount" content="856">
-  <meta itemprop="keywords" content=".NET 5,DotNet Core,C#,Authentication,Authorization,En">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="API Key Authentication - Extending the native implementation">
-  <meta name="twitter:description" content="In this article, we’re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
-services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it’s hard to find a good implementation of API Key Authentication out there on the internet.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">API Key Authentication - Extending the native implementation</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2021-03-28T21:43:45Z">March 28, 2021</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In this article, we&rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using <em>MVC</em>  <code>[Attributes]</code> or any customized <em>middleware</em> to handle the Authentication.</p>
+  </header> 
+  <div class="post-content"><p>In this article, we&rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using <em>MVC</em>  <code>[Attributes]</code> or any customized <em>middleware</em> to handle the Authentication.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName)
 </span></span><span style="display:flex;"><span>    .AddApiKey(opt =&gt; <span style="color:#75715e">//here is our handler</span>
 </span></span><span style="display:flex;"><span>    {
@@ -144,10 +123,10 @@ services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; 
 </span></span><span style="display:flex;"><span>    });
 </span></span></code></pre></div><p>Ok, ok, ok. I know it&rsquo;s hard to find a good implementation of API Key Authentication out there on the internet. I think it&rsquo;s also hard to ourself&rsquo;s needing of API Key Authentication on daily basis.But now you found it now! Hope you like it. Leave a comment :)</p>
 <p><strong>Disclaimer:</strong> Maybe I&rsquo;m writing this article mad with someone hahahahaha. Please forgive me.</p>
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
 <p>The native implementation of ASP.NET Authentication allows us to extend it and create our validation logic. With the <code>AddScheme</code> builder, we&rsquo;re going to implement the APIKey Authentication.</p>
 <p>Everything begins with the <code>services.AddAuthentication</code> code. This builder provides us the ability to use the method <code>AddScheme</code>. Here is where our Auth ApiKey handler goes.</p>
-<h2 id="starting-with-the-code">Starting with the Code</h2>
+<h2 id="starting-with-the-code">Starting with the Code<a hidden class="anchor" aria-hidden="true" href="#starting-with-the-code">#</a></h2>
 <p>Let&rsquo;s start by creating the file <code>ApiKeyAuthNOptions.cs</code>. This file will contain all configurations of our <code>ApiKeyAuthN</code> service, such as the <code>QueryStringKey</code> and <code>ApiKey</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.AspNetCore.Authentication;
 </span></span><span style="display:flex;"><span>
@@ -233,7 +212,7 @@ services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; 
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> principal;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>The implementation of <code>BuildPrincipal</code> is up to you. You should customize the ClaimsIdentity with the Claims you find necessary in your application, such as <em>Role, PhoneNumber, Issuer, Partner Id,</em> among others.</p>
-<h2 id="wrapping-thing-up---were-almost-there">Wrapping thing up - We&rsquo;re almost there</h2>
+<h2 id="wrapping-thing-up---were-almost-there">Wrapping thing up - We&rsquo;re almost there<a hidden class="anchor" aria-hidden="true" href="#wrapping-thing-up---were-almost-there">#</a></h2>
 <p>We have everything we need to start the authentication. Open your <code>Startup.cs</code> file and add the following contents.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
 </span></span><span style="display:flex;"><span>{
@@ -288,22 +267,24 @@ services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; 
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>We also added <code>WriteClaims</code> method to see the user&rsquo;s <em>Claims</em>.</p>
-<h2 id="lets-run-it">Let&rsquo;s run it.</h2>
+<h2 id="lets-run-it">Let&rsquo;s run it.<a hidden class="anchor" aria-hidden="true" href="#lets-run-it">#</a></h2>
 <p>Without API Key</p>
-<figure><img src="https://res-2.cloudinary.com/dgoa5llvh/image/upload/q_auto/API-Key-Failed-To-Load.png"
-    alt="Failed to load without API Key"><figcaption>
-      <p>Failed to load without API Key</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="https://res-2.cloudinary.com/dgoa5llvh/image/upload/q_auto/API-Key-Failed-To-Load.png"
+         alt="Failed to load without API Key"/> <figcaption>
+            <p>Failed to load without API Key</p>
+        </figcaption>
 </figure>
 
 <p>With API Key added</p>
-<figure><img src="https://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/API-Key-Show-Claims.png"
-    alt="Claims of API Key"><figcaption>
-      <p>Claims of API Key</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="https://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/API-Key-Show-Claims.png"
+         alt="Claims of API Key"/> <figcaption>
+            <p>Claims of API Key</p>
+        </figcaption>
 </figure>
 
-<h2 id="making-it-easier-to-use">Making it easier to use</h2>
+<h2 id="making-it-easier-to-use">Making it easier to use<a hidden class="anchor" aria-hidden="true" href="#making-it-easier-to-use">#</a></h2>
 <p>Let&rsquo;s create an extension method builder for our AddApiKey handler.Create the file <code>ApiKeyAuthNExtensions.cs</code> with the following contents.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> APIAuthentication.Resource.Infrastructure;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
@@ -361,128 +342,92 @@ services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; 
   
 </figure>
 <p>Disclaimer: There is a good implementation in the format of <strong>nuget</strong> package here: <a href="https://github.com/mihirdilip/aspnetcore-authentication-apikey">https://github.com/mihirdilip/aspnetcore-authentication-apikey</a>.</p>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/.NET-5/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 5</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/DotNet-Core/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet Core</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/Authentication/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Authentication</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/Authorization/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Authorization</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/adding-health-checks-ui/">Adding Health Checks UI</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/">End to end C# Application with .NET 5 API and MongoDB</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/">Native Dependency Injection in Azure Functions with C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/aspnetcore-com-mongo-db-e-mongo-atlas/">Asp.Net Core com MongoDb e Mongo Atlas - C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/endpoint-monitoring-with-azure-application-insights/">Endpoint Monitoring with Azure Application Insights</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/generating-a-self-signed-certificate-using-powershell/">Generating a Self-Signed Certificate using Powershell</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/enabling-http-2-on-kestrel/">Simple Web Application with HTTP 2 over Kestrel</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/az203-official-course-delivered-yes/">Yet Another AZ-203 Microsoft Official Course Delivered.</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/create-azure-virtual-machine-using-powershell/">Create Azure Virtual Machine Using PowerShell</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/.NET-5/">.NET 5</a></li>
+      <li><a href="http://localhost:1313/tags/DotNet-Core/">DotNet Core</a></li>
+      <li><a href="http://localhost:1313/tags/C%23/">C#</a></li>
+      <li><a href="http://localhost:1313/tags/Authentication/">Authentication</a></li>
+      <li><a href="http://localhost:1313/tags/Authorization/">Authorization</a></li>
+      <li><a href="http://localhost:1313/tags/en/">En</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

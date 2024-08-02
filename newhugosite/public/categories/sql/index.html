@@ -1,207 +1,238 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="">
-    <meta name="generator" content="Hugo 0.130.0">
-    
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+<html lang="en" dir="auto">
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Sql | rmauro.dev {blog}</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/categories/sql/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/sql/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/sql/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
+            .list {
+                background: var(--theme);
+            }
 
-    
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-    
-      
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-    
+    </style>
+</noscript>
+</head>
 
-    
-    
-      <link href="/categories/sql/index.xml" rel="alternate" type="application/rss+xml" title="rmauro.dev {blog}" />
-      <link href="/categories/sql/index.xml" rel="feed" type="application/rss+xml" title="rmauro.dev {blog}" />
-      
-    
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-    
-      <link rel="canonical" href="http://localhost:1313/categories/sql/">
-    
+</script>
 
-    <meta property="og:url" content="http://localhost:1313/categories/sql/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="Sql">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Sql
+  </h1>
+</header>
 
-  <meta itemprop="name" content="Sql">
-  <meta itemprop="datePublished" content="2024-06-27T21:20:45+00:00">
-  <meta itemprop="dateModified" content="2024-06-27T21:20:45+00:00">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Sql">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-
-  <header>
-    <div class="pb3-m pb6-l bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
-</div>
-
-    </div>
-  </div>
-</nav>
-
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          Sql
-        </h1>
-        
-      </div>
-    </div>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Oracle Remove Duplicate from Table
+    </h2>
   </header>
-
-
-    <main class="pb7" role="main">
-      
-  <article class="cf pa3 pa4-m pa4-l">
-    <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links mid-gray">
-      <p>Below you will find pages that utilize the taxonomy term “Sql”</p>
-    </div>
-  </article>
-  <div class="mw8 center">
-    <section class="flex-ns flex-wrap justify-around mt5">
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        June 27, 2024
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/oracle-remove-duplicate-from-table/" class="link black dim">
-        Oracle Remove Duplicate from Table
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Let&rsquo;s explore a one effective method to remove duplicate rows from an Oracle table.
-Duplicate data can be a common problem when working with databases, and it&rsquo;s crucial to eliminate such redundancy to ensure data accuracy and improve query performance.
+  <div class="entry-content">
+    <p>Let’s explore a one effective method to remove duplicate rows from an Oracle table.
+Duplicate data can be a common problem when working with databases, and it’s crucial to eliminate such redundancy to ensure data accuracy and improve query performance.
 Using this simple query we can find and DELETE duplicate rows from Oracle TABLE.
-DELETE FROM your_table WHERE rowid NOT IN ( SELECT MIN(rowid) FROM your_table GROUP BY column1 , column2 , column3 ); This solution uses the GROUP BY clause, which clusters the records based on the uniqueness of specified columns.
-    </div>
-  <a href="/post/oracle-remove-duplicate-from-table/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+DELETE FROM your_table WHERE rowid NOT IN ( SELECT MIN(rowid) FROM your_table GROUP BY column1 , column2 , column3 ); This solution uses the GROUP BY clause, which clusters the records based on the uniqueness of specified columns....</p>
   </div>
+  <footer class="entry-footer"><span title='2024-06-27 21:20:45 +0000 UTC'>June 27, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Oracle Remove Duplicate from Table" href="http://localhost:1313/post/oracle-remove-duplicate-from-table/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        August 6, 2023
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/oracle-pivot-command-turn-rows-into-columns/" class="link black dim">
-        Oracle PIVOT Command - Turn Rows into Columns
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Discover the technical prowess of Oracle&rsquo;s PIVOT command, a robust feature that efficiently converts rows into columns.
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Oracle PIVOT Command - Turn Rows into Columns
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Discover the technical prowess of Oracle’s PIVOT command, a robust feature that efficiently converts rows into columns.
 This blog post delves into the syntax, use cases, and practical examples to illustrate how PIVOT simplifies data analysis and reporting in Oracle databases.
-Understanding the PIVOT Command The PIVOT command is an extension of the SQL SELECT statement in Oracle. It lets you rotate rows into columns, effectively transposing data to achieve a more structured and readable output.
-    </div>
-  <a href="/post/oracle-pivot-command-turn-rows-into-columns/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+Understanding the PIVOT Command The PIVOT command is an extension of the SQL SELECT statement in Oracle. It lets you rotate rows into columns, effectively transposing data to achieve a more structured and readable output....</p>
   </div>
+  <footer class="entry-footer"><span title='2023-08-06 23:13:31 +0000 UTC'>August 6, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Oracle PIVOT Command - Turn Rows into Columns" href="http://localhost:1313/post/oracle-pivot-command-turn-rows-into-columns/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 24, 2023
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/oracle-json-table-transforming-json-into-relational-format/" class="link black dim">
-        Oracle JSON_TABLE Transforming JSON into Table
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      The function JSON_TABLE allows us to transform JSON data into a table relational format.
-This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.
-    </div>
-  <a href="/post/oracle-json-table-transforming-json-into-relational-format/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Oracle JSON_TABLE Transforming JSON into Table
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The function JSON_TABLE allows us to transform JSON data into a table relational format.
+This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.</p>
   </div>
+  <footer class="entry-footer"><span title='2023-05-24 17:35:29 +0000 UTC'>May 24, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Oracle JSON_TABLE Transforming JSON into Table" href="http://localhost:1313/post/oracle-json-table-transforming-json-into-relational-format/"></a>
+</article>
 
-        </div>
-      
-        <div class="relative w-100  mb4 bg-white">
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        May 21, 2023
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="/post/oracle-merge-to-update-sql/" class="link black dim">
-        Oracle MERGE Statement SQL
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Oracle MERGE statement is one of those powerful commands which allows you to perform INSERT and UPDATE operations in a single statement based on specific conditions.
-    </div>
-  <a href="/post/oracle-merge-to-update-sql/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Oracle MERGE Statement SQL
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Oracle MERGE statement is one of those powerful commands which allows you to perform INSERT and UPDATE operations in a single statement based on specific conditions.</p>
   </div>
-
-        </div>
-      
-    </section>
-  </div>
-
+  <footer class="entry-footer"><span title='2023-05-21 18:45:58 +0000 UTC'>May 21, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Oracle MERGE Statement SQL" href="http://localhost:1313/post/oracle-merge-to-update-sql/"></a>
+</article>
     </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
-  </div>
-</footer>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
 
-  </body>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

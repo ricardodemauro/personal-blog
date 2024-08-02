@@ -1,140 +1,127 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="In this hands-on blog post, we&rsquo;ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience | rmauro.dev {blog}</title>
+<meta name="keywords" content="Microsoft.Extensions.Resilience, C#, DotNet, DotNet Core">
+<meta name="description" content="In this hands-on blog post, we&rsquo;ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
 Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2024-07-05 01:57:30 +0000 UTC'>July 5, 2024</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience">
-  <meta property="og:description" content="In this hands-on blog post, we’ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
-Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2024-07-05T01:57:30+00:00">
-    <meta property="article:modified_time" content="2024-07-05T01:57:30+00:00">
-    <meta property="article:tag" content="Microsoft.Extensions.Resilience">
-    <meta property="article:tag" content="C#">
-    <meta property="article:tag" content="DotNet">
-    <meta property="article:tag" content="DotNet Core">
-
-  <meta itemprop="name" content="HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience">
-  <meta itemprop="description" content="In this hands-on blog post, we’ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
-Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.">
-  <meta itemprop="datePublished" content="2024-07-05T01:57:30+00:00">
-  <meta itemprop="dateModified" content="2024-07-05T01:57:30+00:00">
-  <meta itemprop="wordCount" content="609">
-  <meta itemprop="keywords" content="Microsoft.Extensions.Resilience,C#,DotNet,DotNet Core">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience">
-  <meta name="twitter:description" content="In this hands-on blog post, we’ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
-Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2024-07-05T01:57:30Z">July 5, 2024</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In this hands-on blog post, we&rsquo;ll explore how to use the <code>Microsoft.Extensions.Resilience</code> package to enhance the resilience of HTTP client requests in a .NET application.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+  </header> 
+  <div class="post-content"><p>In this hands-on blog post, we&rsquo;ll explore how to use the <code>Microsoft.Extensions.Resilience</code> package to enhance the resilience of HTTP client requests in a .NET application.</p>
+<h2 id="table-of-contents">Table of Contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h2>
 <ol>
 <li>Introduction</li>
 <li>Prerequisites</li>
@@ -143,23 +130,23 @@ Table of Contents Introduction Prerequisites Setting Up the Project Configuring 
 <li>Testing the Resilience Strategies</li>
 <li>Conclusion</li>
 </ol>
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
 <p>As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.</p>
 <p>The <code>Microsoft.Extensions.Resilience</code> package provides a straightforward way to integrate these strategies into your .NET applications. In this article, we&rsquo;ll walk through the steps to configure and use these resilience features in an HTTP client.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a hidden class="anchor" aria-hidden="true" href="#prerequisites">#</a></h2>
 <p>Before we begin, make sure you have the following installed:</p>
 <ul>
 <li>.NET 8 SDK</li>
 <li>An IDE such as Visual Studio or Visual Studio Code</li>
 </ul>
-<h2 id="setting-up-the-project">Setting Up the Project</h2>
+<h2 id="setting-up-the-project">Setting Up the Project<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-project">#</a></h2>
 <p>Open your terminal or command prompt and run the following command to create a new ASP.NET Core Web API project.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new webapi -n ResilientHttpClientDemo
 </span></span><span style="display:flex;"><span>cd ResilientHttpClientDemo
 </span></span></code></pre></div><p>Add the <code>Microsoft.Extensions.Resilience</code> and <code>Microsoft.Extensions.Http</code> packages to the project.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package Microsoft.Extensions.Reilience
 </span></span><span style="display:flex;"><span>dotnet add package Microsoft.Extensions.Http
-</span></span></code></pre></div><h2 id="configuring-resilience-policies">Configuring Resilience Policies</h2>
+</span></span></code></pre></div><h2 id="configuring-resilience-policies">Configuring Resilience Policies<a hidden class="anchor" aria-hidden="true" href="#configuring-resilience-policies">#</a></h2>
 <p>Open the <code>Program.cs</code> file and configure your HTTP client to use resilience policies:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.DependencyInjection; 
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Http.Resilience;
@@ -201,12 +188,12 @@ Table of Contents Introduction Prerequisites Setting Up the Project Configuring 
 </span></span><span style="display:flex;"><span>    	.HandleTransientHttpError() 
 </span></span><span style="display:flex;"><span>        .CircuitBreakerAsync(<span style="color:#ae81ff">5</span>, TimeSpan.FromSeconds(<span style="color:#ae81ff">30</span>)); 
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="defined-policies">Defined Policies</h3>
+</span></span></code></pre></div><h3 id="defined-policies">Defined Policies<a hidden class="anchor" aria-hidden="true" href="#defined-policies">#</a></h3>
 <ul>
 <li><strong>Retry Policy:</strong> This policy retries the HTTP request up to 3 times with an exponential backoff (2, 4, 8 seconds) for transient errors or a 404 Not Found status.</li>
 <li><strong>Circuit Breaker Policy:</strong> This policy breaks the circuit for 30 seconds if 5 consecutive transient errors occur, preventing further requests during this period to allow time for recovery.</li>
 </ul>
-<h2 id="testing-the-resilience-strategies">Testing the Resilience Strategies</h2>
+<h2 id="testing-the-resilience-strategies">Testing the Resilience Strategies<a hidden class="anchor" aria-hidden="true" href="#testing-the-resilience-strategies">#</a></h2>
 <p>To see these resilience strategies in action, you can create a simple endpoint that simulates transient faults. Add a new controller to your project:</p>
 <p><strong>Create a New Controller</strong></p>
 <p>In the <code>Controllers</code> folder, create a new file named <code>TestController.cs</code>:</p>
@@ -227,124 +214,94 @@ Table of Contents Introduction Prerequisites Setting Up the Project Configuring 
 <li>‌</li>
 </ul>
 <p>Visit <code>http://localhost:5000</code> in your browser. You should see that even though some requests initially fail, the retry policy eventually allows successful requests to be made. Additionally, if multiple consecutive failures occur, the circuit breaker will temporarily prevent further requests.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
 <p>In this hands-on article, we&rsquo;ve explored how to enhance the resilience of HTTP client requests in a .NET application using the <code>Microsoft.Extensions.Resilience</code> package.</p>
 <p>By implementing retry and circuit breaker policies, we&rsquo;ve improved the robustness of our application, making it more tolerant of transient faults and ensuring a better user experience. These resilience strategies are essential tools for any developer looking to build reliable and fault-tolerant applications.</p>
 <p>Stay tuned for more hands-on tutorials and tips on building resilient applications at <a href="__GHOST_URL__/">rmauro.dev</a>.</p>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/Microsoft.Extensions.Resilience/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Microsoft.Extensions.Resilience</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/DotNet/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/DotNet-Core/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet Core</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/query-specification-pattern-with-ef-core/">Query Specification Pattern with EF Core</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/getting-started-with-onion-architecture-in-csharp/">Getting started with ONION Architecture in C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/csharp-get-jwt-token-request/">C# Get JWT Token from Request .NET 6</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/jwt-authentication-with-csharp-dotnet/">C# JWT Authentication .NET 6</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/serilog-custom-enricher-on-aspnet-core/">Getting Started with Serilog Custom Enrichers</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/">Getting Started with Chat GPT integration in a .NET C# Console Application</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/simpleexecutiontracker/">Measure Code Execution Time with .NET C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/getting-started-with-benchmark-net-c-sharp/">Getting Started with Benchmark.Net C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/calculate-time-ago-with-csharp/">Calculate Time Ago with .NET C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/create-a-minimal-api-with-dotnet-6/">Create a Minimal API with .NET 6</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/setup-serilog-in-net6-as-logging-provider/">Set up Serilog in .NET 6 as a logging provider</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/add-build-time-to-your-csharp-assembly/">Add Build Time to your C# Assembly</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/api-key-authentication-extending-the-native-implementation/">API Key Authentication - Extending the native implementation</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/adding-health-checks-ui/">Adding Health Checks UI</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/Microsoft.Extensions.Resilience/">Microsoft.Extensions.Resilience</a></li>
+      <li><a href="http://localhost:1313/tags/C%23/">C#</a></li>
+      <li><a href="http://localhost:1313/tags/DotNet/">DotNet</a></li>
+      <li><a href="http://localhost:1313/tags/DotNet-Core/">DotNet Core</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

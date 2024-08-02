@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Monad-Pattern on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/Monad-Pattern/</link>
     <description>Recent content in Monad-Pattern on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 07 Jul 2024 07:40:03 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/Monad-Pattern/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,9 @@
       <link>http://localhost:1313/post/understanding-the-monad-design-pattern/</link>
       <pubDate>Sun, 07 Jul 2024 07:40:03 +0000</pubDate>
       <guid>http://localhost:1313/post/understanding-the-monad-design-pattern/</guid>
-      <description>Monads are a powerful concept in functional programming that help manage side effects and maintain clean, composable code.&#xA;In this post, we&amp;rsquo;ll explore the Maybe monad design pattern using JavaScript, which is used to handle operations that might fail or return null/undefined.&#xA;What is a Monad? In simple terms, a monad is a design pattern that allows you to wrap values, chain operations, and handle side effects in a consistent way.</description>
+      <description>Monads are a powerful concept in functional programming that help manage side effects and maintain clean, composable code.
+In this post, we&amp;rsquo;ll explore the Maybe monad design pattern using JavaScript, which is used to handle operations that might fail or return null/undefined.
+What is a Monad? In simple terms, a monad is a design pattern that allows you to wrap values, chain operations, and handle side effects in a consistent way.</description>
     </item>
   </channel>
 </rss>

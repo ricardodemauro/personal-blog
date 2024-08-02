@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Web on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/Web/</link>
     <description>Recent content in Web on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 26 Jun 2024 13:58:43 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/Web/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,10 @@
       <link>http://localhost:1313/post/http-status-codes-explained-from-200-ok-to-429-too-many-requests/</link>
       <pubDate>Wed, 26 Jun 2024 13:58:43 +0000</pubDate>
       <guid>http://localhost:1313/post/http-status-codes-explained-from-200-ok-to-429-too-many-requests/</guid>
-      <description>HTTP (Hypertext Transfer Protocol) status codes are three-digit numbers returned by web servers (such as Apache, IIS, Nginx, Kestrel, among others) to indicate the outcome of a client’s request.&#xA;These codes serve as communication tools between web clients (usually browsers and mobile applications) and servers about the outcome of the HTTP request.&#xA;Let’s discuss HTTP status codes in a developer’s context ️🔨.&#xA;When to Use Them Whenever a client makes a request (e.</description>
+      <description>HTTP (Hypertext Transfer Protocol) status codes are three-digit numbers returned by web servers (such as Apache, IIS, Nginx, Kestrel, among others) to indicate the outcome of a client’s request.
+These codes serve as communication tools between web clients (usually browsers and mobile applications) and servers about the outcome of the HTTP request.
+Let’s discuss HTTP status codes in a developer’s context ️🔨.
+When to Use Them Whenever a client makes a request (e.</description>
     </item>
   </channel>
 </rss>

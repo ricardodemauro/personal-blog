@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>.NET 6 on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/.NET-6/</link>
     <description>Recent content in .NET 6 on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 Oct 2023 19:46:26 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/.NET-6/index.xml" rel="self" type="application/rss+xml" />
@@ -13,21 +13,29 @@
       <link>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</link>
       <pubDate>Tue, 24 Oct 2023 19:46:26 +0000</pubDate>
       <guid>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</guid>
-      <description>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.&#xA;We&amp;rsquo;ll take a deep dive into the layers of Onion Architecture while building a &amp;ldquo;TODO List&amp;rdquo; application to illustrate its principles.&#xA;What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application&amp;rsquo;s core business logic from external concerns.</description>
+      <description>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.
+We&amp;rsquo;ll take a deep dive into the layers of Onion Architecture while building a &amp;ldquo;TODO List&amp;rdquo; application to illustrate its principles.
+What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application&amp;rsquo;s core business logic from external concerns.</description>
     </item>
     <item>
       <title>Oracle ODP.NET with truly Async Methods in C#</title>
       <link>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</link>
       <pubDate>Thu, 24 Aug 2023 18:01:18 +0000</pubDate>
       <guid>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</guid>
-      <description>Oracle&amp;rsquo;s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.&#xA;Under PreRelease until today : 2023-08-24&#xA;Oracle.ManagedDataAccess.Core - pre release&#xA;Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let&amp;rsquo;s take a moment to understand the power of asynchronous programming in C#.&#xA;The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.</description>
+      <description>Oracle&amp;rsquo;s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
+Under PreRelease until today : 2023-08-24
+Oracle.ManagedDataAccess.Core - pre release
+Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let&amp;rsquo;s take a moment to understand the power of asynchronous programming in C#.
+The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.</description>
     </item>
     <item>
       <title>C# Get JWT Token from Request .NET 6</title>
       <link>http://localhost:1313/post/csharp-get-jwt-token-request/</link>
       <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
       <guid>http://localhost:1313/post/csharp-get-jwt-token-request/</guid>
-      <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;&#xA;&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;&#xA;</description>
+      <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;
+&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;
+</description>
     </item>
     <item>
       <title>C# JWT Authentication .NET 6</title>
@@ -48,21 +56,25 @@
       <link>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</link>
       <pubDate>Tue, 04 Apr 2023 00:05:15 +0000</pubDate>
       <guid>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</guid>
-      <description>One of the key features of Serilog is the ability to Enrich Log Events with additional contextual information that can help in troubleshooting and debugging.&#xA;In this blog post, we will explore how to create a Custom Enricher with Serilog to add custom properties to log events.</description>
+      <description>One of the key features of Serilog is the ability to Enrich Log Events with additional contextual information that can help in troubleshooting and debugging.
+In this blog post, we will explore how to create a Custom Enricher with Serilog to add custom properties to log events.</description>
     </item>
     <item>
       <title>Measure Code Execution Time with .NET C#</title>
       <link>http://localhost:1313/post/simpleexecutiontracker/</link>
       <pubDate>Thu, 06 Oct 2022 14:29:39 +0000</pubDate>
       <guid>http://localhost:1313/post/simpleexecutiontracker/</guid>
-      <description>As a programmer, we may need to find out the execution time used by a particular segment of the C# code, in order to optimize the performance. For example, we may want to know how much time is taken for reading multiple files in the file system, or fetching data from the database, or executing some business logic.&#xA;Provides a set of methods and properties that you can use to accurately measure elapsed time.</description>
+      <description>As a programmer, we may need to find out the execution time used by a particular segment of the C# code, in order to optimize the performance. For example, we may want to know how much time is taken for reading multiple files in the file system, or fetching data from the database, or executing some business logic.
+Provides a set of methods and properties that you can use to accurately measure elapsed time.</description>
     </item>
     <item>
       <title>Health Check in .NET 6 C#</title>
       <link>http://localhost:1313/post/aspnet-health-check-for-oracle/</link>
       <pubDate>Mon, 03 Oct 2022 16:22:14 +0000</pubDate>
       <guid>http://localhost:1313/post/aspnet-health-check-for-oracle/</guid>
-      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.&#xA;In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.&#xA;🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
+      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.
+In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.
+🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
     </item>
     <item>
       <title>Calculate Time Ago with .NET C#</title>
@@ -76,7 +88,9 @@
       <link>http://localhost:1313/post/create-a-minimal-api-with-dotnet-6/</link>
       <pubDate>Mon, 04 Jul 2022 20:16:53 +0000</pubDate>
       <guid>http://localhost:1313/post/create-a-minimal-api-with-dotnet-6/</guid>
-      <description>One of the new features of .NET 6 is the arrival of a new template, which will replace the default and bring a good reduction in code writing. Including the removal of the Startup.cs file.&#xA;.NET 6 was released as LTS (long-term stable) which means support for 3 years. So we have to learn about this new baby. Don&amp;rsquo;t forget the new C# 10 features as well.&#xA;Minimal APIs are architected to create HTTP APIs with minimal dependencies.</description>
+      <description>One of the new features of .NET 6 is the arrival of a new template, which will replace the default and bring a good reduction in code writing. Including the removal of the Startup.cs file.
+.NET 6 was released as LTS (long-term stable) which means support for 3 years. So we have to learn about this new baby. Don&amp;rsquo;t forget the new C# 10 features as well.
+Minimal APIs are architected to create HTTP APIs with minimal dependencies.</description>
     </item>
     <item>
       <title>Set up Serilog in .NET 6 as a logging provider</title>
@@ -90,14 +104,19 @@
       <link>http://localhost:1313/post/adding-startup-back-to-net-6-project/</link>
       <pubDate>Sun, 05 Jun 2022 14:20:46 +0000</pubDate>
       <guid>http://localhost:1313/post/adding-startup-back-to-net-6-project/</guid>
-      <description>When .NET 6 was released, the first big change was the lack of Startup.cs. This is very nice and all. But sometimes we just want it back, and here is how.&#xA;First, create a new file called Startup.cs at the root of your project with the following content - don&amp;rsquo;t forget the namespace.&#xA;public class Startup { readonly IConfiguration configuration; public Startup(IConfiguration configuration) { this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration)); } public void ConfigureServices(IServiceCollection services) { services.</description>
+      <description>When .NET 6 was released, the first big change was the lack of Startup.cs. This is very nice and all. But sometimes we just want it back, and here is how.
+First, create a new file called Startup.cs at the root of your project with the following content - don&amp;rsquo;t forget the namespace.
+public class Startup { readonly IConfiguration configuration; public Startup(IConfiguration configuration) { this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration)); } public void ConfigureServices(IServiceCollection services) { services.</description>
     </item>
     <item>
       <title>Health Checks on your ASP.NET Core Application</title>
       <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
       <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
       <guid>http://localhost:1313/post/adding-health-checks-to-net-core-application/</guid>
-      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.&#xA;Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.&#xA;Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
+      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
+Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
+Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
     </item>
   </channel>
 </rss>

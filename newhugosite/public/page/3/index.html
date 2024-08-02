@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head>
+	<meta name="generator" content="Hugo 0.130.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>rmauro.dev {blog}</title>
+
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
+In this introduction let’s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.
+Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-06-25 19:40:32 +0000 UTC'>June 25, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes" href="http://localhost:1313/post/gather-oracle-stats-for-schema-tables-indexes/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Query Specification Pattern with EF Core
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.
+Here’s what you need to know:
+1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-06-24 14:11:50 +0000 UTC'>June 24, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Query Specification Pattern with EF Core" href="http://localhost:1313/post/query-specification-pattern-with-ef-core/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Getting started with ONION Architecture in C#
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.
+We’ll take a deep dive into the layers of Onion Architecture while building a “TODO List” application to illustrate its principles.
+What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application’s core business logic from external concerns....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-10-24 19:46:26 +0000 UTC'>October 24, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Getting started with ONION Architecture in C#" href="http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Oracle ODP.NET with truly Async Methods in C#
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Oracle’s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
+Under PreRelease until today : 2023-08-24
+Oracle.ManagedDataAccess.Core - pre release
+Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let’s take a moment to understand the power of asynchronous programming in C#.
+The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-08-24 18:01:18 +0000 UTC'>August 24, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Oracle ODP.NET with truly Async Methods in C#" href="http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">C# Oracle ODP.NET with Async Methods
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Introduce the significance of asynchronous programming in C# and its role in enhancing application performance and responsiveness. Highlight the arrival of Oracle ODP.NET 23c Dev, a game-changer for developers working with Oracle databases, offering genuine async/await support.
+**Async/Await in C#:**Explain the async/await pattern in C# and its importance in developing non-blocking, responsive applications. Discuss the advantages of asynchronous programming, including efficient resource utilization and improved user experiences.
+**Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction:**Delve into the exciting developments in the Oracle ODP....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-08-15 19:17:39 +0000 UTC'>August 15, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to C# Oracle ODP.NET with Async Methods" href="http://localhost:1313/post/oracle-odp/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Oracle Async ODP.NET
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
+  </div>
+  <footer class="entry-footer"><span title='2023-08-15 17:49:26 +0000 UTC'>August 15, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Oracle Async ODP.NET" href="http://localhost:1313/post/oracle-async-odp-net/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Oracle PIVOT Command - Turn Rows into Columns
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Discover the technical prowess of Oracle’s PIVOT command, a robust feature that efficiently converts rows into columns.
+This blog post delves into the syntax, use cases, and practical examples to illustrate how PIVOT simplifies data analysis and reporting in Oracle databases.
+Understanding the PIVOT Command The PIVOT command is an extension of the SQL SELECT statement in Oracle. It lets you rotate rows into columns, effectively transposing data to achieve a more structured and readable output....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-08-06 23:13:31 +0000 UTC'>August 6, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Oracle PIVOT Command - Turn Rows into Columns" href="http://localhost:1313/post/oracle-pivot-command-turn-rows-into-columns/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">C# Get JWT Token from Request .NET 6
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This blog post will explore extracting a JWT token from incoming requests using C#.
+How to Get JWT Token from Request using C#
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-05-29 23:28:28 +0000 UTC'>May 29, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to C# Get JWT Token from Request .NET 6" href="http://localhost:1313/post/csharp-get-jwt-token-request/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Oracle JSON_TABLE Transforming JSON into Table
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>The function JSON_TABLE allows us to transform JSON data into a table relational format.
+This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-05-24 17:35:29 +0000 UTC'>May 24, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Oracle JSON_TABLE Transforming JSON into Table" href="http://localhost:1313/post/oracle-json-table-transforming-json-into-relational-format/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Oracle MERGE Statement SQL
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Oracle MERGE statement is one of those powerful commands which allows you to perform INSERT and UPDATE operations in a single statement based on specific conditions.</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-05-21 18:45:58 +0000 UTC'>May 21, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Oracle MERGE Statement SQL" href="http://localhost:1313/post/oracle-merge-to-update-sql/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="http://localhost:1313/page/2/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/page/4/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

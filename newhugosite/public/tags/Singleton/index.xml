@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Singleton on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/Singleton/</link>
     <description>Recent content in Singleton on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Jul 2024 06:35:01 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/Singleton/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,10 @@
       <link>http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/</link>
       <pubDate>Fri, 12 Jul 2024 06:35:01 +0000</pubDate>
       <guid>http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/</guid>
-      <description>The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.&#xA;It ensures that a class has only one instance and provides a global point of access to that instance.&#xA;Let&amp;rsquo;s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.&#xA;**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.</description>
+      <description>The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
+It ensures that a class has only one instance and provides a global point of access to that instance.
+Let&amp;rsquo;s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
+**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.</description>
     </item>
   </channel>
 </rss>

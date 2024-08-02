@@ -1,173 +1,146 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Oracle ODP.NET with truly Async Methods in C# | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Oracle&rsquo;s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Oracle ODP.NET with truly Async Methods in C# | rmauro.dev {blog}</title>
+<meta name="keywords" content="oracle, DotNet, oracle-sql, .NET 6, .NET 7">
+<meta name="description" content="Oracle&rsquo;s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
 Under PreRelease until today : 2023-08-24
 Oracle.ManagedDataAccess.Core - pre release
 Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let&rsquo;s take a moment to understand the power of asynchronous programming in C#.
 The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      Oracle ODP.NET with truly Async Methods in C#
+    </h1>
+    <div class="post-meta"><span title='2023-08-24 18:01:18 +0000 UTC'>August 24, 2023</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="Oracle ODP.NET with truly Async Methods in C#">
-  <meta property="og:description" content="Oracle’s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
-Under PreRelease until today : 2023-08-24
-Oracle.ManagedDataAccess.Core - pre release
-Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let’s take a moment to understand the power of asynchronous programming in C#.
-The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2023-08-24T18:01:18+00:00">
-    <meta property="article:modified_time" content="2023-08-24T18:01:18+00:00">
-    <meta property="article:tag" content="Oracle">
-    <meta property="article:tag" content="DotNet">
-    <meta property="article:tag" content="Oracle-Sql">
-    <meta property="article:tag" content=".NET 6">
-    <meta property="article:tag" content=".NET 7">
-
-  <meta itemprop="name" content="Oracle ODP.NET with truly Async Methods in C#">
-  <meta itemprop="description" content="Oracle’s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
-Under PreRelease until today : 2023-08-24
-Oracle.ManagedDataAccess.Core - pre release
-Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let’s take a moment to understand the power of asynchronous programming in C#.
-The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.">
-  <meta itemprop="datePublished" content="2023-08-24T18:01:18+00:00">
-  <meta itemprop="dateModified" content="2023-08-24T18:01:18+00:00">
-  <meta itemprop="wordCount" content="499">
-  <meta itemprop="keywords" content="Oracle,DotNet,Oracle-Sql,.NET 6,.NET 7">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Oracle ODP.NET with truly Async Methods in C#">
-  <meta name="twitter:description" content="Oracle’s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
-Under PreRelease until today : 2023-08-24
-Oracle.ManagedDataAccess.Core - pre release
-Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let’s take a moment to understand the power of asynchronous programming in C#.
-The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">Oracle ODP.NET with truly Async Methods in C#</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2023-08-24T18:01:18Z">August 24, 2023</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Oracle&rsquo;s ODP.NET 23c Dev (or <em>Oracle.ManagedDataAccess.Core</em>) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.</p>
+  </header> 
+  <div class="post-content"><p>Oracle&rsquo;s ODP.NET 23c Dev (or <em>Oracle.ManagedDataAccess.Core</em>) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.</p>
 <p>Under <em>PreRelease</em> until today : 2023-08-24</p>
-<figure><img src="https://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/oracle-pre-release.png"
-    alt="Oracle.ManagedDataAccess.Core - pre release"><figcaption>
-      <p>Oracle.ManagedDataAccess.Core - pre release</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="https://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/oracle-pre-release.png"
+         alt="Oracle.ManagedDataAccess.Core - pre release"/> <figcaption>
+            <p>Oracle.ManagedDataAccess.Core - pre release</p>
+        </figcaption>
 </figure>
 
-<h2 id="asyncawait-in-c">Async/Await in C#</h2>
+<h2 id="asyncawait-in-c">Async/Await in C#<a hidden class="anchor" aria-hidden="true" href="#asyncawait-in-c">#</a></h2>
 <p>Before delving into the specifics of ODP.NET 23c Dev for C#, let&rsquo;s take a moment to understand the power of asynchronous programming in C#.</p>
 <p>The <em>async/await</em> pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.</p>
 <p>This results in improved responsiveness, smoother user experiences, and efficient utilization of system resources.</p>
-<h2 id="oracle-odpnet-23c-dev-a-new-era-of-asynchronous-database-interaction">Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction</h2>
+<h2 id="oracle-odpnet-23c-dev-a-new-era-of-asynchronous-database-interaction">Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction<a hidden class="anchor" aria-hidden="true" href="#oracle-odpnet-23c-dev-a-new-era-of-asynchronous-database-interaction">#</a></h2>
 <p>While previous versions of ODP.NET have <em>async</em> methods, a closer inspection reveals that they were mere wrappers around <code>Task.FromResult</code> calls.</p>
 <blockquote>
 <p>These methods lacked true asynchronous behavior, limiting their potential in achieving optimal performance gains and making even worse then synchronous calls.</p>
 </blockquote>
 <p>With the eagerly anticipated ODP.NET 23c Dev release, Oracle has taken a significant step forward by offering genuine <em>async/await</em> support, transforming the landscape of database interactions.</p>
-<figure><img src="https://res-4.cloudinary.com/dgoa5llvh/image/upload/q_auto/oracle-pre-release-2.png"
-    alt="Pre Release until today - 2023-08-24"><figcaption>
-      <p>Pre Release until today - 2023-08-24</p>
-    </figcaption>
+<figure>
+    <img loading="lazy" src="https://res-4.cloudinary.com/dgoa5llvh/image/upload/q_auto/oracle-pre-release-2.png"
+         alt="Pre Release until today - 2023-08-24"/> <figcaption>
+            <p>Pre Release until today - 2023-08-24</p>
+        </figcaption>
 </figure>
 
 <p>The issue <a href="https://github.com/oracle/dotnet-db-samples/issues/211">#144</a> on Github was open since November 2021. We&rsquo;re expecting this feature for a very long time.</p>
@@ -190,13 +163,13 @@ The async/await pattern enables developers to write non-blocking code, freeing t
   </a>
   
 </figure>
-<h2 id="key-async-methods-in-odpnet-23c-dev">Key Async Methods in ODP.NET 23c Dev</h2>
+<h2 id="key-async-methods-in-odpnet-23c-dev">Key Async Methods in ODP.NET 23c Dev<a hidden class="anchor" aria-hidden="true" href="#key-async-methods-in-odpnet-23c-dev">#</a></h2>
 <p>Let&rsquo;s explore two pivotal <em>async</em> methods that are now available in their true asynchronous glory.</p>
 <ul>
 <li><strong>OpenAsync</strong>: Unlike its predecessor, the new <code>OpenAsync</code> method in ODP.NET 23c Dev truly opens a connection to the Oracle database asynchronously.</li>
 <li><strong>ExecuteReaderAsync</strong>: This method allows developers to execute queries and retrieve data from the Oracle database asynchronously.</li>
 </ul>
-<h2 id="sample-async-database-interactions">Sample Async Database Interactions</h2>
+<h2 id="sample-async-database-interactions">Sample Async Database Interactions<a hidden class="anchor" aria-hidden="true" href="#sample-async-database-interactions">#</a></h2>
 <p>Let&rsquo;s dive into some code examples that illustrate the difference between the old and the new:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Opening a connection asynchronously (previous version)</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Oracle.ManagedDataAccess.Client;
@@ -228,133 +201,100 @@ The async/await pattern enables developers to write non-blocking code, freeing t
 </span></span><span style="display:flex;"><span>    	<span style="color:#75715e">// Process data asynchronously</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="embracing-the-future-leveraging-odpnet-23c-dev-for-superior-performance">Embracing the Future: Leveraging ODP.NET 23c Dev for Superior Performance</h2>
+</span></span></code></pre></div><h2 id="embracing-the-future-leveraging-odpnet-23c-dev-for-superior-performance">Embracing the Future: Leveraging ODP.NET 23c Dev for Superior Performance<a hidden class="anchor" aria-hidden="true" href="#embracing-the-future-leveraging-odpnet-23c-dev-for-superior-performance">#</a></h2>
 <p>The introduction of true asynchronous support in ODP.NET 23c Dev is a significant milestone for developers working with Oracle databases.</p>
 <p>By embracing these new <em>async</em> methods, you can create applications that are more responsive, efficient, and user-friendly.</p>
 <p>As you transition to the latest version of ODP.NET, you&rsquo;ll unlock the full potential of asynchronous programming and usher in a new era of high-performance database interactions.</p>
-<h2 id="references">References</h2>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/">Async/Await in C# - Microsoft Docs</a></li>
 <li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/23/odpnt/featAsyncPipelining.html#GUID-27CA3823-92BA-489A-9356-9EAA7B86A4FE">Oracle Data Provider for .NET (ODP.NET) Documentation</a></li>
 </ul>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/oracle/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/DotNet/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/oracle-sql/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Sql</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/.NET-6/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 6</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/.NET-7/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 7</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/csharp-get-jwt-token-request/">C# Get JWT Token from Request .NET 6</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/jwt-authentication-with-csharp-dotnet/">C# JWT Authentication .NET 6</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/oracle-pivot-command-turn-rows-into-columns/">Oracle PIVOT Command - Turn Rows into Columns</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/oracle-json-table-transforming-json-into-relational-format/">Oracle JSON_TABLE Transforming JSON into Table</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/oracle-merge-to-update-sql/">Oracle MERGE Statement SQL</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/serilog-custom-enricher-on-aspnet-core/">Getting Started with Serilog Custom Enrichers</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/simpleexecutiontracker/">Measure Code Execution Time with .NET C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/calculate-time-ago-with-csharp/">Calculate Time Ago with .NET C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/create-a-minimal-api-with-dotnet-6/">Create a Minimal API with .NET 6</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/setup-serilog-in-net6-as-logging-provider/">Set up Serilog in .NET 6 as a logging provider</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/">DALL-E Art-Generator with C# .NET</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/">Getting Started with Chat GPT integration in a .NET C# Console Application</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/aspnet-health-check-for-oracle/">Health Check in .NET 6 C#</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/getting-started-with-benchmark-net-c-sharp/">Getting Started with Benchmark.Net C#</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/oracle/">Oracle</a></li>
+      <li><a href="http://localhost:1313/tags/DotNet/">DotNet</a></li>
+      <li><a href="http://localhost:1313/tags/oracle-sql/">Oracle-Sql</a></li>
+      <li><a href="http://localhost:1313/tags/.NET-6/">.NET 6</a></li>
+      <li><a href="http://localhost:1313/tags/.NET-7/">.NET 7</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

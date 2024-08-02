@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>100DaysOfCode on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/100DaysOfCode/</link>
     <description>Recent content in 100DaysOfCode on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Jun 2022 14:38:46 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/100DaysOfCode/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,18 @@
       <link>http://localhost:1313/post/optmizing-data-access-with-oracle-managed-ado-net/</link>
       <pubDate>Fri, 10 Jun 2022 14:38:46 +0000</pubDate>
       <guid>http://localhost:1313/post/optmizing-data-access-with-oracle-managed-ado-net/</guid>
-      <description>Oracle C# drive is already pretty fast with the default configuration. But we can always tweak it a little to make it even faster. By controlling the FetchSize property in ODP.NET we can make fewer round trips to Oracle Database and fetch the data faster.&#xA;Let&amp;rsquo;s take a look at how it&amp;rsquo;s done and make your data access faster.&#xA;Setup the Environment Before we get started let&amp;rsquo;s set up our environment for testing.</description>
+      <description>Oracle C# drive is already pretty fast with the default configuration. But we can always tweak it a little to make it even faster. By controlling the FetchSize property in ODP.NET we can make fewer round trips to Oracle Database and fetch the data faster.
+Let&amp;rsquo;s take a look at how it&amp;rsquo;s done and make your data access faster.
+Setup the Environment Before we get started let&amp;rsquo;s set up our environment for testing.</description>
     </item>
     <item>
       <title>AI-900 - Journey to get the exam</title>
       <link>http://localhost:1313/post/ai-900-journey-to-get-the-exam/</link>
       <pubDate>Sun, 16 May 2021 00:00:28 +0000</pubDate>
       <guid>http://localhost:1313/post/ai-900-journey-to-get-the-exam/</guid>
-      <description>Hi,&#xA;Today I started learning about the AI-900 course. My deadline is July-24-2021 to know everything about this course. I have to teach it as an MCT.&#xA;Exam AI-900: Microsoft Azure AI Fundamentals - Learn Exam AI-900: Microsoft Azure AI Fundamentals krsanty Microsoft Docs {map[author:krsanty caption:AI-900 Exam description:Exam AI-900: Microsoft Azure AI Fundamentals icon: publisher:Microsoft Docs thumbnail:https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png title:Exam AI-900: Microsoft Azure AI Fundamentals - Learn url:https://docs.microsoft.com/pt-br/learn/certifications/exams/ai-900] Page(/post/ai-900-journey-to-get-the-exam) &amp;lt;nil&amp;gt; bookmark true 0 {{{} 0} {0 0}} {{{} 0} {0 0}} 517 { 0 0 0} &amp;lt;nil&amp;gt;} Join me in learning this awesome topic.</description>
+      <description>Hi,
+Today I started learning about the AI-900 course. My deadline is July-24-2021 to know everything about this course. I have to teach it as an MCT.
+Exam AI-900: Microsoft Azure AI Fundamentals - Learn Exam AI-900: Microsoft Azure AI Fundamentals krsanty Microsoft Docs {map[author:krsanty caption:AI-900 Exam description:Exam AI-900: Microsoft Azure AI Fundamentals icon: publisher:Microsoft Docs thumbnail:https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png title:Exam AI-900: Microsoft Azure AI Fundamentals - Learn url:https://docs.microsoft.com/pt-br/learn/certifications/exams/ai-900] Page(/post/ai-900-journey-to-get-the-exam) &amp;lt;nil&amp;gt; bookmark true 0 {{{} 0} {0 0}} {{{} 0} {0 0}} 517 { 0 0 0} &amp;lt;nil&amp;gt;} Join me in learning this awesome topic.</description>
     </item>
   </channel>
 </rss>

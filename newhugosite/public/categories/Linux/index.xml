@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Linux on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/Linux/</link>
     <description>Recent content in Linux on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 11 Sep 2022 20:57:43 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/Linux/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,9 @@
       <link>http://localhost:1313/post/8-actions-for-hardening-your-linux-server-for-internet/</link>
       <pubDate>Sun, 11 Sep 2022 20:57:43 +0000</pubDate>
       <guid>http://localhost:1313/post/8-actions-for-hardening-your-linux-server-for-internet/</guid>
-      <description>Exposing virtual machines to the internet it&amp;rsquo;s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.&#xA;Let&amp;rsquo;s go through some often and ease configurations that will make it an attacker hard if trying to access your machine.&#xA;💬 In this issue Creating a non-root user and use eventually elevated privileged Enabling UFW Uncomplicated Firewall Unattended Upgrades Hardening the SSH Access Use SSH Keys instead of Password Change the default Port for SSH Disable Password Login Disable Root Login over SSH Use config file in SSH client for easier connection 👉 Information we&amp;rsquo;ll use in our lab User: _root_Password: generated with a _password generator_Description: Our Root userUser: _secondary_Password: generated with a _password generator_Description: Non Root user for daily basis accessOperating System: Ubuntu Server 20.</description>
+      <description>Exposing virtual machines to the internet it&amp;rsquo;s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.
+Let&amp;rsquo;s go through some often and ease configurations that will make it an attacker hard if trying to access your machine.
+💬 In this issue Creating a non-root user and use eventually elevated privileged Enabling UFW Uncomplicated Firewall Unattended Upgrades Hardening the SSH Access Use SSH Keys instead of Password Change the default Port for SSH Disable Password Login Disable Root Login over SSH Use config file in SSH client for easier connection 👉 Information we&amp;rsquo;ll use in our lab User: _root_Password: generated with a _password generator_Description: Our Root userUser: _secondary_Password: generated with a _password generator_Description: Non Root user for daily basis accessOperating System: Ubuntu Server 20.</description>
     </item>
   </channel>
 </rss>

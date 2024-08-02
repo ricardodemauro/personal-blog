@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Authentication on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/Authentication/</link>
     <description>Recent content in Authentication on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 29 May 2023 23:28:28 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/Authentication/index.xml" rel="self" type="application/rss+xml" />
@@ -13,21 +13,26 @@
       <link>http://localhost:1313/post/csharp-get-jwt-token-request/</link>
       <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
       <guid>http://localhost:1313/post/csharp-get-jwt-token-request/</guid>
-      <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;&#xA;&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;&#xA;</description>
+      <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;
+&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;
+</description>
     </item>
     <item>
       <title>API Key Authentication - Estendendo a implementação nativa - .NET 5</title>
       <link>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</link>
       <pubDate>Thu, 15 Jul 2021 23:15:13 +0000</pubDate>
       <guid>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</guid>
-      <description>Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo &amp;ldquo;API Key&amp;rdquo;. Isso tudo com apenas três linhas de código.&#xA;Aqui queremos a famosa solução simples e estúpida (simple and stupid) e não uma implementação distorcida utilizando MVC [Attributes] ou um middleware customizado para lidar com a autenticação.&#xA;Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1.</description>
+      <description>Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo &amp;ldquo;API Key&amp;rdquo;. Isso tudo com apenas três linhas de código.
+Aqui queremos a famosa solução simples e estúpida (simple and stupid) e não uma implementação distorcida utilizando MVC [Attributes] ou um middleware customizado para lidar com a autenticação.
+Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1.</description>
     </item>
     <item>
       <title>API Key Authentication - Extending the native implementation</title>
       <link>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</link>
       <pubDate>Sun, 28 Mar 2021 21:43:45 +0000</pubDate>
       <guid>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</guid>
-      <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.&#xA;services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
+      <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
+services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
     </item>
   </channel>
 </rss>

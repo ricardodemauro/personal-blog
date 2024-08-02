@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Http-Status-Code on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/http-status-code/</link>
     <description>Recent content in Http-Status-Code on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 28 Jun 2024 22:45:07 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/http-status-code/index.xml" rel="self" type="application/rss+xml" />
@@ -13,21 +13,25 @@
       <link>http://localhost:1313/post/400-bad-request/</link>
       <pubDate>Fri, 28 Jun 2024 22:45:07 +0000</pubDate>
       <guid>http://localhost:1313/post/400-bad-request/</guid>
-      <description>HTTP status code 400, known as &amp;ldquo;Bad Request,&amp;rdquo; indicates that the server cannot process the client&amp;rsquo;s request due to client-side errors. These errors can include malformed request syntax, invalid request message framing, or deceptive request routing.&#xA;A common scenario for a 400 status code is when the client sends a request with incorrect parameters, such as an invalid query string or body data that doesn&amp;rsquo;t conform to the expected format. This response helps in debugging issues during API development, signaling the need to correct the request before resubmission.</description>
+      <description>HTTP status code 400, known as &amp;ldquo;Bad Request,&amp;rdquo; indicates that the server cannot process the client&amp;rsquo;s request due to client-side errors. These errors can include malformed request syntax, invalid request message framing, or deceptive request routing.
+A common scenario for a 400 status code is when the client sends a request with incorrect parameters, such as an invalid query string or body data that doesn&amp;rsquo;t conform to the expected format. This response helps in debugging issues during API development, signaling the need to correct the request before resubmission.</description>
     </item>
     <item>
       <title>HTTP 403 Forbidden</title>
       <link>http://localhost:1313/post/http-403-forbidden/</link>
       <pubDate>Fri, 28 Jun 2024 22:41:37 +0000</pubDate>
       <guid>http://localhost:1313/post/http-403-forbidden/</guid>
-      <description>HTTP status code 403, or &amp;ldquo;Forbidden,&amp;rdquo; indicates that the server understands the client&amp;rsquo;s request but refuses to authorize it. Unlike a 401 status code, which signifies missing or invalid authentication, a 403 status means that the client&amp;rsquo;s credentials are recognized but they do not have permission to access the requested resource.&#xA;This status is often encountered when a user tries to access a restricted area of a website or an API endpoint for which they lack the necessary privileges.</description>
+      <description>HTTP status code 403, or &amp;ldquo;Forbidden,&amp;rdquo; indicates that the server understands the client&amp;rsquo;s request but refuses to authorize it. Unlike a 401 status code, which signifies missing or invalid authentication, a 403 status means that the client&amp;rsquo;s credentials are recognized but they do not have permission to access the requested resource.
+This status is often encountered when a user tries to access a restricted area of a website or an API endpoint for which they lack the necessary privileges.</description>
     </item>
     <item>
       <title>HTTP 401 Unauthorized</title>
       <link>http://localhost:1313/post/http-401-unauthorized/</link>
       <pubDate>Fri, 28 Jun 2024 22:37:46 +0000</pubDate>
       <guid>http://localhost:1313/post/http-401-unauthorized/</guid>
-      <description>HTTP status code 401, also known as &amp;ldquo;Unauthorized,&amp;rdquo; is a crucial response status in web development and API communications.&#xA;It indicates that the client&amp;rsquo;s request has not been fulfilled because it lacks valid authentication credentials.&#xA;A typical scenario involving a 401 status code is when accessing a protected endpoint in a REST API. The client needs to include a valid token or API key in the request headers. If this authentication token is expired, invalid, or absent, the server will deny access, returning a 401 response.</description>
+      <description>HTTP status code 401, also known as &amp;ldquo;Unauthorized,&amp;rdquo; is a crucial response status in web development and API communications.
+It indicates that the client&amp;rsquo;s request has not been fulfilled because it lacks valid authentication credentials.
+A typical scenario involving a 401 status code is when accessing a protected endpoint in a REST API. The client needs to include a valid token or API key in the request headers. If this authentication token is expired, invalid, or absent, the server will deny access, returning a 401 response.</description>
     </item>
   </channel>
 </rss>

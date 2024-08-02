@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>.NET 5 on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/.NET-5/</link>
     <description>Recent content in .NET 5 on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 16 Jul 2021 02:10:38 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/.NET-5/index.xml" rel="self" type="application/rss+xml" />
@@ -13,21 +13,29 @@
       <link>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</link>
       <pubDate>Fri, 16 Jul 2021 02:10:38 +0000</pubDate>
       <guid>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</guid>
-      <description>Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.&#xA;Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.&#xA;https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.</description>
+      <description>Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.
+Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.
+https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.</description>
     </item>
     <item>
       <title>API Key Authentication - Estendendo a implementação nativa - .NET 5</title>
       <link>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</link>
       <pubDate>Thu, 15 Jul 2021 23:15:13 +0000</pubDate>
       <guid>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</guid>
-      <description>Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo &amp;ldquo;API Key&amp;rdquo;. Isso tudo com apenas três linhas de código.&#xA;Aqui queremos a famosa solução simples e estúpida (simple and stupid) e não uma implementação distorcida utilizando MVC [Attributes] ou um middleware customizado para lidar com a autenticação.&#xA;Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1.</description>
+      <description>Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo &amp;ldquo;API Key&amp;rdquo;. Isso tudo com apenas três linhas de código.
+Aqui queremos a famosa solução simples e estúpida (simple and stupid) e não uma implementação distorcida utilizando MVC [Attributes] ou um middleware customizado para lidar com a autenticação.
+Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1.</description>
     </item>
     <item>
       <title>Health Checks on your ASP.NET Core Application</title>
       <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
       <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
       <guid>http://localhost:1313/post/adding-health-checks-to-net-core-application/</guid>
-      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.&#xA;Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.&#xA;Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
+      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
+Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
+Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
     </item>
     <item>
       <title>CRUD in .NET 5 C# with MongoDb</title>
@@ -41,21 +49,28 @@
       <link>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</link>
       <pubDate>Sun, 28 Mar 2021 21:43:45 +0000</pubDate>
       <guid>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</guid>
-      <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.&#xA;services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
+      <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
+services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
     </item>
     <item>
       <title>Adding Health Checks UI</title>
       <link>http://localhost:1313/post/adding-health-checks-ui/</link>
       <pubDate>Mon, 21 Sep 2020 18:17:00 +0000</pubDate>
       <guid>http://localhost:1313/post/adding-health-checks-ui/</guid>
-      <description>This is the second article about Health Checks and Application Monitoring.&#xA;Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!&#xA;Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
+      <description>This is the second article about Health Checks and Application Monitoring.
+Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
+Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
     </item>
     <item>
       <title>Deploying .Net container App to Heroku cloud</title>
       <link>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</link>
       <pubDate>Sun, 18 Aug 2019 18:15:42 +0000</pubDate>
       <guid>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</guid>
-      <description>I&amp;rsquo;m tired of searching every time I need to deploy to heroku cloud. Being that said I&amp;rsquo;m finally writing down the steps do deploy a docker container app to Heroku cloud.&#xA;By the way, Heroku Cloud it is really cool.&#xA;###Requirements to deploy&#xA;Docker client (windows or linux) installed Link Heroku CLI (command line interface) installed Link Application with a Dockerfile ###Changes you have to make in your Dockerfile&#xA;First remove the Entrypoint and EXPOSE statments of your Dockerfile.</description>
+      <description>I&amp;rsquo;m tired of searching every time I need to deploy to heroku cloud. Being that said I&amp;rsquo;m finally writing down the steps do deploy a docker container app to Heroku cloud.
+By the way, Heroku Cloud it is really cool.
+###Requirements to deploy
+Docker client (windows or linux) installed Link Heroku CLI (command line interface) installed Link Application with a Dockerfile ###Changes you have to make in your Dockerfile
+First remove the Entrypoint and EXPOSE statments of your Dockerfile.</description>
     </item>
   </channel>
 </rss>

@@ -1,148 +1,128 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>Asp.Net Core com MongoDb e Mongo Atlas - C# | rmauro.dev {blog}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Asp.Net Core com MongoDb e Mongo Atlas - C# | rmauro.dev {blog}</title>
+<meta name="keywords" content="DotNet Core, MongoDb, perceptron, C#, pt">
+<meta name="description" content="Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
 Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
 Neste tutorial, você aprenderá como:
 Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.">
-    <meta name="generator" content="Hugo 0.130.0">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="rmauro.dev {blog} (Alt + H)">rmauro.dev {blog}</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
     
-    
-    
-    
-      <meta name="robots" content="noindex, nofollow">
-    
-    
+    <h1 class="post-title entry-hint-parent">
+      Asp.Net Core com MongoDb e Mongo Atlas - C#
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2019-10-19 21:39:28 +0000 UTC'>October 19, 2019</span>
 
-    
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
-
-
-
-    
-
-    
-      
-
-    
-
-    
-
-    
-      <link rel="canonical" href="http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/">
-    
-
-    <meta property="og:url" content="http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/">
-  <meta property="og:site_name" content="rmauro.dev {blog}">
-  <meta property="og:title" content="Asp.Net Core com MongoDb e Mongo Atlas - C#">
-  <meta property="og:description" content="Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
-Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
-Neste tutorial, você aprenderá como:
-Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2019-10-19T21:39:28+00:00">
-    <meta property="article:modified_time" content="2019-10-19T21:39:28+00:00">
-    <meta property="article:tag" content="DotNet Core">
-    <meta property="article:tag" content="MongoDb">
-    <meta property="article:tag" content="Perceptron">
-    <meta property="article:tag" content="C#">
-    <meta property="article:tag" content="Pt">
-
-  <meta itemprop="name" content="Asp.Net Core com MongoDb e Mongo Atlas - C#">
-  <meta itemprop="description" content="Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
-Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
-Neste tutorial, você aprenderá como:
-Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.">
-  <meta itemprop="datePublished" content="2019-10-19T21:39:28+00:00">
-  <meta itemprop="dateModified" content="2019-10-19T21:39:28+00:00">
-  <meta itemprop="wordCount" content="2764">
-  <meta itemprop="keywords" content="DotNet Core,MongoDb,Perceptron,C#,Pt">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Asp.Net Core com MongoDb e Mongo Atlas - C#">
-  <meta name="twitter:description" content="Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
-Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
-Neste tutorial, você aprenderá como:
-Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.">
-
-	
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
-      
-        rmauro.dev {blog}
-      
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-<div class="ananke-socials">
-  
 </div>
-
-    </div>
-  </div>
-</nav>
-
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-    <header class="mt4 w-100">
-      <aside class="instapaper_ignoref b helvetica tracked ttu">
-          
-        Posts
-      </aside>
-      
-
-
-
-
-
-
-
-
-
-
-  <div id="sharing" class="mt3 ananke-socials">
-    
-  </div>
-
-
-      <h1 class="f1 athelas mt3 mb1">Asp.Net Core com MongoDb e Mongo Atlas - C#</h1>
-      
-      
-      
-      <time class="f6 mv4 dib tracked" datetime="2019-10-19T21:39:28Z">October 19, 2019</time>
-      
-
-      
-      
-    </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do <a href="https://www.mongodb.com/what-is-mongodb">MongoDB</a>.</p>
+  </header> 
+  <div class="post-content"><p>Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do <a href="https://www.mongodb.com/what-is-mongodb">MongoDB</a>.</p>
 <p>Baseado no artigo <a href="https://docs.microsoft.com/pt-br/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0">Microsoft Docs</a>, criado por <a href="https://twitter.com/K2Prk">Pratik Khandelwal</a> e <a href="https://twitter.com/Scott_Addie">Scott Addie</a>
 Modificado por <a href="https://twitter.com/RicardoDeMauro">Ricardo Mauro</a>
 Tempo de leitura: 18 minutos</p>
@@ -154,7 +134,7 @@ Tempo de leitura: 18 minutos</p>
 <li>Executar operações CRUD do MongoDB a partir de uma API Web Asp.Net Core 3</li>
 </ul>
 </blockquote>
-<h2 id="pré-requisitos">Pré-requisitos</h2>
+<h2 id="pré-requisitos">Pré-requisitos<a hidden class="anchor" aria-hidden="true" href="#pré-requisitos">#</a></h2>
 <ul>
 <li><a href="https://www.microsoft.com/net/download/all">SDK do .NET Core 3.0 ou posterior</a></li>
 <li><a href="https://code.visualstudio.com/download">Visual Studio Code</a></li>
@@ -207,7 +187,7 @@ Tempo de leitura: 18 minutos</p>
 </li>
 </ul>
 <p>###<a name="setup-env"></a>Preparando o ambiente para nossa aplicação</p>
-<h4 id="1---criando-o-primeiro-usuário">1 - Criando o primeiro usuário</h4>
+<h4 id="1---criando-o-primeiro-usuário">1 - Criando o primeiro usuário<a hidden class="anchor" aria-hidden="true" href="#1---criando-o-primeiro-usuário">#</a></h4>
 <ol>
 <li>
 <p>Clicar em <code>Database Access</code>.</p>
@@ -224,7 +204,7 @@ Tempo de leitura: 18 minutos</p>
 &gt;     User privileges = read and write to any database
 </code></pre><p>Por último clicar em <code>Add User</code>.</p>
 <p>A criação do usuário pode tomar algum tempo.</p>
-<h4 id="2---criando-regra-no-firewall">2 - Criando regra no firewall</h4>
+<h4 id="2---criando-regra-no-firewall">2 - Criando regra no firewall<a hidden class="anchor" aria-hidden="true" href="#2---criando-regra-no-firewall">#</a></h4>
 <ol>
 <li>
 <p>Primeiro clicar em <code>Network Access</code>.</p>
@@ -241,7 +221,7 @@ Observe que utilizaremos isso para facilidade de acesso, porém não é recomend
 </li>
 </ol>
 <p>Essa mudança também pode levar algum tempo para surtir efeito.</p>
-<h4 id="3---coletando-string-de-conexão-connectionstring">3 - Coletando string de conexão (connectionString)</h4>
+<h4 id="3---coletando-string-de-conexão-connectionstring">3 - Coletando string de conexão (connectionString)<a hidden class="anchor" aria-hidden="true" href="#3---coletando-string-de-conexão-connectionstring">#</a></h4>
 <ol>
 <li>
 <p>Clicar em <code>Clusters</code> no menu lateral esquerdo.</p>
@@ -253,7 +233,8 @@ Observe que utilizaremos isso para facilidade de acesso, porém não é recomend
 <p>No popup aberto clicar em <code>Connect your application</code>.</p>
 </li>
 </ol>
-<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/connect-cluster.png" alt="connect-cluster"></p>
+<p><img loading="lazy" src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/connect-cluster.png" alt="connect-cluster"  />
+</p>
 <ol start="4">
 <li>
 <p>Na sessão <code>Driver</code> selecionar <code>C# / .NET</code> e em <code>version</code> selecionar <code>2.5 or later</code>.</p>
@@ -284,7 +265,8 @@ Observe que utilizaremos isso para facilidade de acesso, porém não é recomend
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new webapi -o AlunosApi
 </span></span></code></pre></div><p>Um novo projeto de API Web do ASP.NET Core será criado na pasta AlunosAPI dentro do Visual Code.</p>
-<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-1.png" alt="status-1"></p>
+<p><img loading="lazy" src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-1.png" alt="status-1"  />
+</p>
 <p>Caso o apareça uma caixa de diálogo perguntando se <strong>Os ativos necessários para criar e depurar estão ausentes do &lsquo;AlunosAPI&rsquo;. Deseja adicioná-los?</strong> . Selecione <strong>Sim</strong> na barra superior.</p>
 <ol start="2">
 <li>Novamente no mesmo <strong>Terminal Integrado</strong> execute os seguintes comandos para instalar o driver .NET para MongoDB:</li>
@@ -293,18 +275,20 @@ Observe que utilizaremos isso para facilidade de acesso, porém não é recomend
 </span></span><span style="display:flex;"><span>dotnet add AlunosApi.csproj package MongoDB.Driver
 </span></span></code></pre></div><p>Isso irá adicionar as DLL&rsquo;s do MongoDb ao nosso projeto.</p>
 <hr>
-<h2 id="removendo-conteúdo-desnecessário-ao-nosso-projeto">Removendo conteúdo desnecessário ao nosso projeto</h2>
+<h2 id="removendo-conteúdo-desnecessário-ao-nosso-projeto">Removendo conteúdo desnecessário ao nosso projeto<a hidden class="anchor" aria-hidden="true" href="#removendo-conteúdo-desnecessário-ao-nosso-projeto">#</a></h2>
 <p>Remova os arquivos abaixo.</p>
 <ul>
 <li>WeatherForecast.cs</li>
 <li>Controllers/WeatherForecastController.cs</li>
 </ul>
-<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-2.png" alt="status-2"></p>
-<h2 id="adicionando-o-modelo-de-entidade-ao-nosso-projeto">Adicionando o modelo de entidade ao nosso projeto</h2>
+<p><img loading="lazy" src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-2.png" alt="status-2"  />
+</p>
+<h2 id="adicionando-o-modelo-de-entidade-ao-nosso-projeto">Adicionando o modelo de entidade ao nosso projeto<a hidden class="anchor" aria-hidden="true" href="#adicionando-o-modelo-de-entidade-ao-nosso-projeto">#</a></h2>
 <p>Primeiro adicione uma pasta chamada <em>Models</em> à raiz do projeto.</p>
 <p>Botão direito na pasta <strong>AlunosAPI</strong> e depois <strong>Nova pasta</strong> ou <strong>New folder</strong> com nome <strong>Models</strong> (atenção as letras maiúsculas e minúsculas).</p>
 <p>Depois crie uma classe com nome <code>Aluno</code> ao diretório <em>Models</em>. Botão direito na pasta <strong>Models</strong> depois <code>New C# Class</code>.</p>
-<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-3.png" alt="status-3"></p>
+<p><img loading="lazy" src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-3.png" alt="status-3"  />
+</p>
 <p>Por último substitua o conteúdo do arquivo criado pelo conteúdo abaixo.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> MongoDB.Bson;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> MongoDB.Bson.Serialization.Attributes;
@@ -330,7 +314,7 @@ Observe que utilizaremos isso para facilidade de acesso, porém não é recomend
 <li>É anotada com <a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm">[BsonRepresentation(BsonType.ObjectId)]</a> para permitir a passagem do parâmetro como o tipo <code>string</code> em vez de uma estrutura <a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm">ObjectId</a>. O Mongo processa a conversão de <code>string</code> para <code>ObjectId</code>.</li>
 </ul>
 <p>A propriedade <code>Nome</code> é anotada com o atributo <a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm">[BsonElement]</a>. O valor do atributo de <code>Name</code> representa o nome da propriedade da coleção do MongoDB.</p>
-<h2 id="a-nameadding-a-configuration-modela-adicionando-o-modelo-de-configuração"><a name="adding-a-configuration-model"></a> Adicionando o modelo de configuração</h2>
+<h2 id="a-nameadding-a-configuration-modela-adicionando-o-modelo-de-configuração"><a name="adding-a-configuration-model"></a> Adicionando o modelo de configuração<a hidden class="anchor" aria-hidden="true" href="#a-nameadding-a-configuration-modela-adicionando-o-modelo-de-configuração">#</a></h2>
 <p>Primeiro substitua o conteúdo do arquivo <em>appsettings.json</em> pelo abaixo:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Logging&#34;</span><span style="color:#f92672">:</span> {
@@ -394,9 +378,10 @@ Observe que utilizaremos isso para facilidade de acesso, porém não é recomend
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0</span> Warning<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0</span> Error<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
 </span></span></code></pre></div><p>Caso possua Erro(s) reviso o código até aqui.</p>
-<h4 id="estrutura-do-projeto-até-aqui">Estrutura do projeto até aqui</h4>
-<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/ex1-3.png" alt="ex1-3"></p>
-<h2 id="adicionando-um-serviço-de-operações-crud">Adicionando um serviço de operações CRUD</h2>
+<h4 id="estrutura-do-projeto-até-aqui">Estrutura do projeto até aqui<a hidden class="anchor" aria-hidden="true" href="#estrutura-do-projeto-até-aqui">#</a></h4>
+<p><img loading="lazy" src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/ex1-3.png" alt="ex1-3"  />
+</p>
+<h2 id="adicionando-um-serviço-de-operações-crud">Adicionando um serviço de operações CRUD<a hidden class="anchor" aria-hidden="true" href="#adicionando-um-serviço-de-operações-crud">#</a></h2>
 <ol>
 <li>Cria o diretório <em>Services</em> abaixo da pasta <strong>AlunosApi</strong> (raiz do projeto).</li>
 <li>Adicione uma classe chamada <code>AlunosService</code> ao diretório <em>Services</em> recem criado com o seguinte código:</li>
@@ -491,7 +476,7 @@ Saída deve ser algo como:</p>
 <li><a href="https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm">InsertOne</a> – insere o objeto fornecido como um novo documento na coleção.</li>
 <li><a href="https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm">ReplaceOne</a> – substitui o único documento que corresponde aos critérios de pesquisa fornecidos com o objeto fornecido.</li>
 </ul>
-<h2 id="a-nameadd-a-controlleraadicionando-um-controlador-controller"><a name="add-a-controller"></a>Adicionando um controlador (controller)</h2>
+<h2 id="a-nameadd-a-controlleraadicionando-um-controlador-controller"><a name="add-a-controller"></a>Adicionando um controlador (controller)<a hidden class="anchor" aria-hidden="true" href="#a-nameadd-a-controlleraadicionando-um-controlador-controller">#</a></h2>
 <p>Adicione uma classe <code>AlunosController</code> ao diretório <em>Controllers</em> (caso pasta não exista crie uma na raiz do projeto) com o seguinte código:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> AlunosApi.Models;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> AlunosApi.Services;
@@ -566,13 +551,15 @@ Saída deve ser algo como:</p>
 <li>Contém métodos de ação para dar suporte a solicitações GET, POST, PUT e DELETE HTTP.</li>
 <li>Chama o <a href="xref:System.Web.Http.ApiController.CreatedAtRoute*">xref:System.Web.Http.ApiController.CreatedAtRoute*</a> no método de ação <code>Create</code> para retornar uma resposta <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP 201</a>. O código de status 201 é a resposta padrão para um método HTTP POST que cria um recurso no servidor. <code>CreatedAtRoute</code> também adiciona um cabeçalho <code>Location</code> à resposta. O cabeçalho <code>Location</code> especifica o URI do livro recém-criado.</li>
 </ul>
-<h4 id="estrutura-do-projeto-até-aqui-1">Estrutura do projeto até aqui</h4>
-<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/ex2.png" alt="ex2"></p>
-<h2 id="a-nametest-the-web-apiatestando-a-api-web"><a name="test-the-web-api"></a>Testando a API Web</h2>
+<h4 id="estrutura-do-projeto-até-aqui-1">Estrutura do projeto até aqui<a hidden class="anchor" aria-hidden="true" href="#estrutura-do-projeto-até-aqui-1">#</a></h4>
+<p><img loading="lazy" src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/ex2.png" alt="ex2"  />
+</p>
+<h2 id="a-nametest-the-web-apiatestando-a-api-web"><a name="test-the-web-api"></a>Testando a API Web<a hidden class="anchor" aria-hidden="true" href="#a-nametest-the-web-apiatestando-a-api-web">#</a></h2>
 <p>Primeiro <strong>compile</strong> e execute o nosso aplicativo. Para isso clique em <code>Debug</code> na barra superior do Visual Code e depois <code>Start Debugging</code>.
 Isso demorar um pouco na primeira executação. Você pode acompanhar o status do compilação através do terminal.</p>
 <p>Caso seja sua primeira vez executando um aplicativo .Net no Visual Code, lhe será apresentado a seguinte janela.</p>
-<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-4-1.png" alt="status-4-1"></p>
+<p><img loading="lazy" src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-4-1.png" alt="status-4-1"  />
+</p>
 <p>Selecione a opção <strong>.NET Core</strong>. Isso irá fazer o Visual Code gerar os arquivos de configuração necessários para depurar a aplicação.
 Execute novamente <code>Debug</code> e <code>Start Debugging</code>.</p>
 <p>Quando pronto uma janela de navegador deverá abrir automaticamente com o endereço <em>https://localhost:5001</em>.</p>
@@ -590,7 +577,8 @@ Isso é ótimo, conseguimos validar os seguintes items:</p>
 </ul>
 <p>####Executando testes mais elaborados</p>
 <p>Para testes mais elaborados vamos utilizar a ferramenta <a href="https://insomnia.rest/download/">Insomnia</a>. Faça o download e instale-o caso você não o tenha.</p>
-<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/insomia.png" alt="insomia"></p>
+<p><img loading="lazy" src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/insomia.png" alt="insomia"  />
+</p>
 <p>Você também pode utilizar outras ferramentas, como POSTMan ou ARC. Neste caso decidi pelo Insomia.</p>
 <p>Salve o conteúdo abaixo com o nome alunos-insomia.yaml. Este arquivo contém os testes de GET / POST / PUT e DELETE (deixei pronto para facilitar).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">export</span>
@@ -757,98 +745,106 @@ Isso é ótimo, conseguimos validar os seguintes items:</p>
 </blockquote>
 <p>Perfeito, agora clique em <strong>Import from file</strong> e importe o arquivo que acabamos de gravar.</p>
 <p>Faça o primeiro teste, clique no item <strong>Get Alunos</strong>, devemos obter o mesmo array vazio.</p>
-<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-5.png" alt="status-5"></p>
+<p><img loading="lazy" src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-5.png" alt="status-5"  />
+</p>
 <blockquote>
 <p>Novamente pode lhe ser alertado sobre <em>SSL Validation</em>. Por isso também vamos aceitar o alerto clicando em <em>Disable SSL Validation</em>, depois na sessão <em>Network</em> desmarcar o item <strong>Validate certificates</strong>.</p>
 </blockquote>
 <p>Agora teste as demais opções, como <strong>Create Aluno</strong> e depois volte ao <strong>Get Alunos</strong> para ver o aluno criado.</p>
 <p>Tente utilizar o <strong>Update Aluno</strong> (não se esqueça de atualizar na rota (URL) com o Id do aluno).</p>
 <hr>
-<h2 id="a-namenext-stepsapróximas-etapas"><a name="next-steps"></a>Próximas etapas</h2>
+<h2 id="a-namenext-stepsapróximas-etapas"><a name="next-steps"></a>Próximas etapas<a hidden class="anchor" aria-hidden="true" href="#a-namenext-stepsapróximas-etapas">#</a></h2>
 <p>Para saber mais sobre a criação de APIs Web do ASP.NET Core, confira os seguintes recursos:</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=7uJt_sOenyo&amp;feature=youtu.be">Versão do artigo original no YouTube</a></li>
 <li>Artigo original: <a href="https://docs.microsoft.com/pt-br/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0">Microsoft Docs</a></li>
 <li>Inclua novos modelos como &ldquo;Turma&rdquo;, &ldquo;Curso&rdquo;, etc.</li>
 </ul>
-<ul class="pa0">
-  
-   <li class="list di">
-     <a href="/tags/DotNet-Core/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet Core</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/MongoDb/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">MongoDb</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/perceptron/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Perceptron</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
-   </li>
-  
-   <li class="list di">
-     <a href="/tags/pt/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Pt</a>
-   </li>
-  
-</ul>
-<div class="mt6 instapaper_ignoref">
-      
-      
-      </div>
-    </div>
-
-    <aside class="w-30-l mt6-l">
 
 
-
-
-  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
-    <p class="f5 b mb3">Related</p>
-    <ul class="pa0 list">
-	   
-	     <li  class="mb2">
-          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/">Console Application para upload de arquivo no Azure Blob Storage</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
-        </li>
-	    
-    </ul>
-</div>
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
-    &copy;  rmauro.dev {blog} 2024 
-  </a>
-    <div>
-<div class="ananke-socials">
-  
-</div>
-</div>
   </div>
-</footer>
 
-  </body>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/DotNet-Core/">DotNet Core</a></li>
+      <li><a href="http://localhost:1313/tags/MongoDb/">MongoDb</a></li>
+      <li><a href="http://localhost:1313/tags/perceptron/">Perceptron</a></li>
+      <li><a href="http://localhost:1313/tags/C%23/">C#</a></li>
+      <li><a href="http://localhost:1313/tags/pt/">Pt</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">rmauro.dev {blog}</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
 </html>

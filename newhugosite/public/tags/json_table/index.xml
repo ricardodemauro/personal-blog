@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Json_table on rmauro.dev {blog}</title>
     <link>http://localhost:1313/tags/json_table/</link>
     <description>Recent content in Json_table on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 24 May 2023 17:35:29 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/json_table/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,8 @@
       <link>http://localhost:1313/post/oracle-json-table-transforming-json-into-relational-format/</link>
       <pubDate>Wed, 24 May 2023 17:35:29 +0000</pubDate>
       <guid>http://localhost:1313/post/oracle-json-table-transforming-json-into-relational-format/</guid>
-      <description>The function JSON_TABLE allows us to transform JSON data into a table relational format.&#xA;This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.</description>
+      <description>The function JSON_TABLE allows us to transform JSON data into a table relational format.
+This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.</description>
     </item>
   </channel>
 </rss>

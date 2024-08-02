@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Machine-Learning on rmauro.dev {blog}</title>
     <link>http://localhost:1313/categories/machine-learning/</link>
     <description>Recent content in Machine-Learning on rmauro.dev {blog}</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.130.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 15 Apr 2023 20:21:04 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
@@ -20,7 +20,11 @@
       <link>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</link>
       <pubDate>Sun, 03 Nov 2019 03:04:13 +0000</pubDate>
       <guid>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</guid>
-      <description>Você sabe o que é um Perceptron?&#xA;Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.&#xA;Segundo wikipedia:&#xA;In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.&#xA;Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).</description>
+      <description>Você sabe o que é um Perceptron?
+Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.
+Segundo wikipedia:
+In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.
+Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).</description>
     </item>
   </channel>
 </rss>
