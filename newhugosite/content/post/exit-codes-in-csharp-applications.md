@@ -88,7 +88,9 @@ In this case, `Environment.Exit(0)` is called if the code executes successfully,
 ## Best Practices
 
 1. **Standardize Exit Codes**: Decide on a standard set of exit codes for your application, where `0` represents success, and specific non-zero values represent different types of errors.
+
 2. **Consistent Usage**: Ensure that exit codes are set consistently throughout your application, especially when handling exceptions.
+
 3. **Documentation**: Document the exit codes used by your application, so users or other developers know what each code signifies.
 
 By properly using exit codes, you can make your C# console applications more robust and easier to integrate into larger systems and automated processes.
@@ -101,7 +103,7 @@ Feel free to leave comments or questions below if you have any!
 
 **Keywords**: C#, Exit Codes, Console Application, Error Handling, Environment.Exit, Environment.ExitCode
 
-For more articles like this, visit [rmauro.dev](__GHOST_URL__/).
+For more articles like this, visit [rmauro.dev](https://rmauro.dev).
 
 
 
