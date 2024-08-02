@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Feature Flags in .NET 6 Minimal APIs | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Feature flags, also known as feature toggles, are a powerful technique for managing the release of new features in software applications.
+They allow developers to turn features on or off for specific users or groups of users, enabling them to test new features in production without affecting all users.
+This blog post will discuss the need for feature flags and how to implement them in a C# application.
+to check">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/feature-flags-in-net-6-minimal-apis/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/feature-flags-in-net-6-minimal-apis/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Feature Flags in .NET 6 Minimal APIs">
+  <meta property="og:description" content="Feature flags, also known as feature toggles, are a powerful technique for managing the release of new features in software applications.
+They allow developers to turn features on or off for specific users or groups of users, enabling them to test new features in production without affecting all users.
+This blog post will discuss the need for feature flags and how to implement them in a C# application.
+to check">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-08-02T13:18:26+00:00">
+    <meta property="article:modified_time" content="2022-08-02T13:18:26+00:00">
+
+  <meta itemprop="name" content="Feature Flags in .NET 6 Minimal APIs">
+  <meta itemprop="description" content="Feature flags, also known as feature toggles, are a powerful technique for managing the release of new features in software applications.
+They allow developers to turn features on or off for specific users or groups of users, enabling them to test new features in production without affecting all users.
+This blog post will discuss the need for feature flags and how to implement them in a C# application.
+to check">
+  <meta itemprop="datePublished" content="2022-08-02T13:18:26+00:00">
+  <meta itemprop="dateModified" content="2022-08-02T13:18:26+00:00">
+  <meta itemprop="wordCount" content="414">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Feature Flags in .NET 6 Minimal APIs">
+  <meta name="twitter:description" content="Feature flags, also known as feature toggles, are a powerful technique for managing the release of new features in software applications.
+They allow developers to turn features on or off for specific users or groups of users, enabling them to test new features in production without affecting all users.
+This blog post will discuss the need for feature flags and how to implement them in a C# application.
+to check">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Feature Flags in .NET 6 Minimal APIs</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2022-08-02T13:18:26Z">August 2, 2022</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Feature flags, also known as feature toggles, are a powerful technique for managing the release of new features in software applications.</p>
+<p>They allow developers to turn features on or off for specific users or groups of users, enabling them to test new features in production without affecting all users.</p>
+<p>This blog post will discuss the need for feature flags and how to implement them in a C# application.</p>
+<p>to check</p>
+<figure class="kg-card kg-bookmark-card">
+  <a href="https://supersharp.tech/posts/07-featureflags-and-aspcore.html" class="kg-bookmark-container">
+    <div class="kg-bookmark-content">
+      <div class="kg-bookmark-title">Feature flags and Asp.NET core | SuperSharp | a tech super hero !</div>
+      <div class="kg-bookmark-description">In this article, we will take a quick look at feature flags and how we can change and optimize the way of our delivery.</div>
+      <div class="kg-bookmark-metadata">
+        <img src="https://supersharp.tech/favicon.ico" class="kg-bookmark-icon">
+        
+        <span class="kg-bookmark-publisher">a tech super hero !</span>
+      </div>
+    </div>
+    
+    <div class="kg-bookmark-thumbnail">
+      <img src="https://supersharp.tech/logo.png">
+    </div>
+    
+  </a>
+  
+</figure>
+<p>Development: To implement feature flags in a C# application, we can use a library such as FeatureToggle. FeatureToggle is a lightweight, open-source library that provides a simple API for implementing feature flags in C# applications.</p>
+<p>To get started, we need to install the FeatureToggle package using NuGet. Open Visual Studio and select the project you want to add feature flags to. Right-click the project and select &ldquo;Manage NuGet Packages&rdquo;. Search for &ldquo;FeatureToggle&rdquo; and install the package.</p>
+<p>Next, we can create a feature flag by creating a new class that inherits from the <code>SimpleFeatureToggle</code> class provided by the FeatureToggle library. For example, let&rsquo;s create a feature flag for a new payment feature:</p>
+<pre tabindex="0"><code>public class PaymentFeatureToggle : SimpleFeatureToggle
+{
+}
+</code></pre><p>We can then use the feature flag in our application by checking its value. For example, we can use the <code>IsEnabled</code> property to determine if the payment feature is enabled:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">new</span> PaymentFeatureToggle().IsEnabled)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Use the new payment feature</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Use the old payment feature</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can also use feature flags to enable features for specific users or groups of users. For example, we can create a feature flag for beta users:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BetaUserFeatureToggle</span> : SimpleFeatureToggle
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Feature flags are a powerful technique for managing the release of new features in software applications. They enable developers to test new features in production without affecting all users, and they can also be used to enable features for specific users or groups of users. In this blog post, we have discussed the need for feature flags and how to implement them in a C# application using the FeatureToggle library. By using feature flags, we can improve the quality and reliability of our applications and provide a better experience for our users by releasing new features gradually and selectively.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

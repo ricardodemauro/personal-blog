@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Criando imagem Docker customizada e publicando no Heroku | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Nesse artigo vamos criar uma imagem Docker com uma simple aplicação NodeJs a partir da imagem padrão NodeJs, depois vamos publicar na nuvem Heroku.
+Heroku: https://heroku.com/ Docker: https://www.docker.com/
+Neste tutorial, você aprenderá como:
+Comandos básicos do Docker Criar uma imagem customizada no Docker Publicar uma imagem Docker na nuvem Heroku Pré-requisitos Docker Heroku CLI ##Preparando para criar a imagem Docker
+Primeiro abra seu console favorito (estou utilizando o powershell do Windows) e digite:">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/criando-imagem-docker-customizada-e-publicando-no-heroku/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/criando-imagem-docker-customizada-e-publicando-no-heroku/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Criando imagem Docker customizada e publicando no Heroku">
+  <meta property="og:description" content="Nesse artigo vamos criar uma imagem Docker com uma simple aplicação NodeJs a partir da imagem padrão NodeJs, depois vamos publicar na nuvem Heroku.
+Heroku: https://heroku.com/ Docker: https://www.docker.com/
+Neste tutorial, você aprenderá como:
+Comandos básicos do Docker Criar uma imagem customizada no Docker Publicar uma imagem Docker na nuvem Heroku Pré-requisitos Docker Heroku CLI ##Preparando para criar a imagem Docker
+Primeiro abra seu console favorito (estou utilizando o powershell do Windows) e digite:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-10-29T00:29:00+00:00">
+    <meta property="article:modified_time" content="2019-10-29T00:29:00+00:00">
+
+  <meta itemprop="name" content="Criando imagem Docker customizada e publicando no Heroku">
+  <meta itemprop="description" content="Nesse artigo vamos criar uma imagem Docker com uma simple aplicação NodeJs a partir da imagem padrão NodeJs, depois vamos publicar na nuvem Heroku.
+Heroku: https://heroku.com/ Docker: https://www.docker.com/
+Neste tutorial, você aprenderá como:
+Comandos básicos do Docker Criar uma imagem customizada no Docker Publicar uma imagem Docker na nuvem Heroku Pré-requisitos Docker Heroku CLI ##Preparando para criar a imagem Docker
+Primeiro abra seu console favorito (estou utilizando o powershell do Windows) e digite:">
+  <meta itemprop="datePublished" content="2019-10-29T00:29:00+00:00">
+  <meta itemprop="dateModified" content="2019-10-29T00:29:00+00:00">
+  <meta itemprop="wordCount" content="983">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Criando imagem Docker customizada e publicando no Heroku">
+  <meta name="twitter:description" content="Nesse artigo vamos criar uma imagem Docker com uma simple aplicação NodeJs a partir da imagem padrão NodeJs, depois vamos publicar na nuvem Heroku.
+Heroku: https://heroku.com/ Docker: https://www.docker.com/
+Neste tutorial, você aprenderá como:
+Comandos básicos do Docker Criar uma imagem customizada no Docker Publicar uma imagem Docker na nuvem Heroku Pré-requisitos Docker Heroku CLI ##Preparando para criar a imagem Docker
+Primeiro abra seu console favorito (estou utilizando o powershell do Windows) e digite:">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Criando imagem Docker customizada e publicando no Heroku</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-10-29T00:29:00Z">October 29, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Nesse artigo vamos criar uma imagem Docker com uma simple aplicação <code>NodeJs</code> a partir da imagem padrão <code>NodeJs</code>, depois vamos publicar na nuvem <strong>Heroku</strong>.</p>
+<p>Heroku: <a href="https://heroku.com/">https://heroku.com/</a>
+Docker: <a href="https://www.docker.com/">https://www.docker.com/</a></p>
+<p>Neste tutorial, você aprenderá como:</p>
+<blockquote>
+<ul>
+<li>Comandos básicos do <code>Docker</code></li>
+<li>Criar uma imagem customizada no <code>Docker</code></li>
+<li>Publicar uma imagem <code>Docker</code> na nuvem <code>Heroku</code></li>
+</ul>
+</blockquote>
+<h2 id="pré-requisitos">Pré-requisitos</h2>
+<ul>
+<li><a href="https://docs.docker.com/docker-for-windows/install/">Docker</a></li>
+<li><a href="https://devcenter.heroku.com/articles/heroku-cli">Heroku CLI</a></li>
+</ul>
+<p>##Preparando para criar a imagem Docker</p>
+<p>Primeiro abra seu console favorito (estou utilizando o <code>powershell</code> do Windows) e digite:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt;docker ps
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</span></span></code></pre></div><p>Isso irá validar se o Docker está instalado e rodando corretamente.</p>
+<p>Vamos ao que interessa.</p>
+<p>1 - Vamos baixar a imagem do ubuntu base.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt;docker pull ubuntu
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Using default tag: latest
+</span></span><span style="display:flex;"><span>latest: Pulling from library/ubuntu
+</span></span><span style="display:flex;"><span>22e816666fd6: Downloading <span style="color:#f92672">[==========</span>&gt;                                        <span style="color:#f92672">]</span>  5.831MB/26.69MB                                         079b6d2a1e53: Download complete                                                                                                          11048ebae908: Download complete                                                                                                          c58094023a2e: Download complete                                                                   
+</span></span></code></pre></div><p>Quando finalizado teremos a imagem do <em>Ubuntu</em> pronta para customizarmos.</p>
+<p>2 - Agora verifique se a imagem que acabamos de baixar está na lista de imagens disponíveis.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt;docker images
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+</span></span><span style="display:flex;"><span>ubuntu                                   latest              cf0f3ca922e0        <span style="color:#ae81ff">10</span> days ago         64.2MB
+</span></span></code></pre></div><p>3 - Vamos criar um container com a imagem recem baixada</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt;docker run -t -i ubuntu /bin/bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@1f81d43b7f5a:/#                                                                  
+</span></span></code></pre></div><p>Esse comando irá criar um container <code>ubuntu</code> com o processo <code>bash</code> rodando. O parâmetro <code>-i -t</code> nos permitirá rodar comandos dentro do container rodando (-i &ldquo;iterativo&rdquo; e -t &ldquo;Allocate a pseudo-TTY&rdquo; - irá permitir comandos Ctrl Z e C).</p>
+<p>Perceba que você agora está executando comandos dentro do <code>Ubuntu</code> no <code>bash</code>, ou seja, você está dentro do container que acabamos de criar.</p>
+<p>Aqui podemos customizar nossa imagem com os componentes necessários.</p>
+<p>Agora execute o comando <code>Ctrl + Z</code> e <code>Ctrl + C</code> (no windows) ou <code>Ctrl + P</code> e <code>Ctrl + Q</code> (no linux). Isso irá fazer sair do container, mas sem pará-lo. Se você quiser sair do container e pará-lo, digite <code>exit</code> no <code>bash</code> do container.</p>
+<p>Mas por enquanto execute somente o <code>Ctrl + Z</code> e <code>Ctrl + C</code> para sair do container sem pará-lo.</p>
+<p>4 - Rode o comando</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt;docker ps
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</span></span><span style="display:flex;"><span>58402372a956        ubuntu              <span style="color:#e6db74">&#34;/bin/bash&#34;</span>         <span style="color:#ae81ff">4</span> minutes ago       Up <span style="color:#ae81ff">4</span> minutes                            relaxed_wu                                                            
+</span></span></code></pre></div><p>Perceba que temos um container rodando, no meu caso é o <code>58402372a956</code>, o seu deve ser algo diferente.</p>
+<p>##Criando a imagem customizada</p>
+<p>1 - Vamos voltar novamente ao container. Rode o comando</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt;docker attach 58402372a956
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@58402372a956:/#                                                               
+</span></span></code></pre></div><p>Substitua o id do container pelo seu.</p>
+<p>2 - Vamos instalar o <code>NodeJs</code> na nossa imagem. Para isso é fácil, rode o comando.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root@fbe348641467:/# apt-get update
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease <span style="color:#f92672">[</span>88.7 kB<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Get:2 http://archive.ubuntu.com/ubuntu bionic InRelease <span style="color:#f92672">[</span><span style="color:#ae81ff">242</span> kB<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>0% <span style="color:#f92672">[</span><span style="color:#ae81ff">2</span> InRelease <span style="color:#ae81ff">102</span> kB/242 kB 42%<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>Connecting to security.ubuntu.com <span style="color:#f92672">(</span><span style="color:#ae81ff">9</span>                                                            
+</span></span></code></pre></div><p>3 - Aguarde o termino da atualização dos pacotes e rode o seguinte comando (não se esqueça de pressionar <code>Y</code> quando lhe for solicitado confirmação).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root@fbe348641467:/# apt-get install curl -y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@fbe348641467:/# curl -sL https://deb.nodesource.com/setup_12.x | bash -
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>root@fbe348641467:/# apt-get install nodejs -y                                                         
+</span></span></code></pre></div><h3 id="configurando-o-nginx-para-uma-porta-dinâmica">Configurando o nginx para uma porta dinâmica</h3>
+<p>Precisamos configurar o <code>nginx</code> para rodar em uma porta dinâmica, isso porque o Heroku atribui uma porta dinamicamente para cada container que ele executa e não tem como saber antecipamente qual porta será atribuida.</p>
+<p>Vamos editar o arquivo de configuração do <code>nginx</code> para executar a partir de uma porta dinâmica.
+Primeira vamos instalar o <code>nano</code>, um editor de texto. Execute o seguinte comando.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt-get install nano
+</span></span></code></pre></div><p>Após instalado execute:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nano /etc/nginx/sites-enabled/default
+</span></span></code></pre></div><p>Modifique a parte do arquivo que configura a porta de escuta.</p>
+<pre tabindex="0"><code>server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+</code></pre><p>Para porta dinâmica (vindo de variáveis de ambiente).</p>
+<pre tabindex="0"><code>server {
+        listen ${{PORT}} default_server;
+        listen [::]:${{PORT}} default_server;
+</code></pre><p>Para salvar o arquivo execute os comandos <code>Ctrl + O</code> e <code>Enter</code> e depois <code>Ctrl + X</code> para fechar o arquivo.</p>
+<p>Agora rode o comando abaixo para iniciar o serviço do <code>nginx</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>root@b677895b7d6b:/# /etc/init.d/nginx start
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> * Starting nginx nginx                                                         
+</span></span></code></pre></div><p>Rodando o comando <code>top</code> podemos ver os processos do <code>nginx</code> já rodando. Para sair do <code>top</code> execute <code>Ctrl + C</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>top - 01:29:08 up  1:08,  <span style="color:#ae81ff">0</span> users,  load average: 0.07, 0.10, 0.04
+</span></span><span style="display:flex;"><span>Tasks:   <span style="color:#ae81ff">5</span> total,   <span style="color:#ae81ff">1</span> running,   <span style="color:#ae81ff">4</span> sleeping,   <span style="color:#ae81ff">0</span> stopped,   <span style="color:#ae81ff">0</span> zombie
+</span></span><span style="display:flex;"><span>%Cpu<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>:  0.0 us,  0.2 sy,  0.0 ni, 99.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+</span></span><span style="display:flex;"><span>KiB Mem :  <span style="color:#ae81ff">2047012</span> total,  <span style="color:#ae81ff">1182460</span> free,   <span style="color:#ae81ff">340496</span> used,   <span style="color:#ae81ff">524056</span> buff/cache
+</span></span><span style="display:flex;"><span>KiB Swap:  <span style="color:#ae81ff">1048572</span> total,  <span style="color:#ae81ff">1048572</span> free,        <span style="color:#ae81ff">0</span> used.  <span style="color:#ae81ff">1557032</span> avail Mem
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1</span> root      <span style="color:#ae81ff">20</span>   <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">18504</span>   <span style="color:#ae81ff">3492</span>   <span style="color:#ae81ff">3064</span> S   0.0  0.2   0:00.05 bash
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">783</span> root      <span style="color:#ae81ff">20</span>   <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">141108</span>   <span style="color:#ae81ff">1548</span>     <span style="color:#ae81ff">64</span> S   0.0  0.1   0:00.00 nginx
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">784</span> www-data  <span style="color:#ae81ff">20</span>   <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">141484</span>   <span style="color:#ae81ff">3396</span>   <span style="color:#ae81ff">1692</span> S   0.0  0.2   0:00.00 nginx
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">785</span> www-data  <span style="color:#ae81ff">20</span>   <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">141484</span>   <span style="color:#ae81ff">3396</span>   <span style="color:#ae81ff">1692</span> S   0.0  0.2   0:00.00 nginx
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">787</span> root      <span style="color:#ae81ff">20</span>   <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">36624</span>   <span style="color:#ae81ff">3260</span>   <span style="color:#ae81ff">2792</span> R   0.0  0.2   0:00.02 top                                                      
+</span></span></code></pre></div><h3 id="comitando-o-novo-container">Comitando o novo container</h3>
+<p>Agora saia do container sem pará-lo (<code>Ctrl + Z</code> e <code>Ctrl + C</code>) e execute os comandos abaixo.</p>
+<p><code>docker ps</code> irá listar os containers rodando. Pegue o id do container <code>ubuntu</code> e execute o segundo comando <code>docker commit {ID DO SEU CONTAINER} {SEU-ALIAS}/nginx</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt; docker ps                           
+</span></span><span style="display:flex;"><span>                                                                                                                                       CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</span></span><span style="display:flex;"><span>b677895b7d6b        ubuntu              <span style="color:#e6db74">&#34;/bin/bash&#34;</span>         <span style="color:#ae81ff">12</span> minutes ago      Up <span style="color:#ae81ff">12</span> minutes                           elated_pare
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt; docker commit b677895b7d6b rmauro/nginx                                                                                                                                    sha256:ba0b7b2a3e3df417305e9ff27e055a00af729075696ccf4f7e1f2248d22428b5
+</span></span></code></pre></div><p>Rode o comando <code>docker images</code> e você verá a nova imagem criada.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt; docker images
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+</span></span><span style="display:flex;"><span>rmauro/nginx                             latest              ba0b7b2a3e3d        <span style="color:#ae81ff">4</span> minutes ago       152MB
+</span></span><span style="display:flex;"><span>ubuntu                                   latest              cf0f3ca922e0        <span style="color:#ae81ff">10</span> days ago         64.2MB
+</span></span><span style="display:flex;"><span>PS C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\r</span>icardo&gt;                                                                                            
+</span></span></code></pre></div><p>##Testando o container localmente
+Podemos testar local antes de subir no heroku e isso que vamos fazer.</p>
+<p>1 - Execute o comando a seguir.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"></code></pre></div><p>##Subindo a imagem para o Heroku
+####Criando o Dyno no Heroku</p>
+<p>Se você não tem conta no heroku, crie uma e acesse o dashboard.</p>
+<p><img src="__GHOST_URL__/content/images/2019/10/heroku-1.png" alt="Heroku-dashboard">
+<a href="https://dashboard.heroku.com/apps">https://dashboard.heroku.com/apps</a></p>
+<p>1 - Crie um novo <strong>App</strong> com um nome único, no meu caso será <strong>rmauro-nginx</strong>.</p>
+<p><img src="__GHOST_URL__/content/images/2019/10/heroku-2.png" alt="Heroku-app"></p>
+<p>Após criado app heroku já podemos executar os comandos para subir a aplicação.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

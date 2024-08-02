@@ -6,8 +6,15 @@
     <description>Recent content in Owasp on rmauro.dev {blog}</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Dec 2019 01:58:29 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Dec 2019 20:36:45 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/owasp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure App Service e Cloudflare com SSL Full (strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 20:36:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</guid>
+      <description>[english version]&#xA;Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.&#xA;Ao final teremos a seguinte configuração:&#xA;CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.</description>
+    </item>
     <item>
       <title>SQL Injection na Prática - Executando o Ataque</title>
       <link>http://localhost:1313/post/sql-injection-na-pratica/</link>

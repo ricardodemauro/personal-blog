@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>End to end Application with .NET 5 - Part I | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="In this blog post let&rsquo;s work with the brand new .NET 5 (witch is still under release candidate mode).
+During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).
+Let&rsquo;s work with:
+Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I&rsquo;m trying to move away from Postman) Microsoft Announces .">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/end-to-end-net-5-setting-up-mongo-db/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/end-to-end-net-5-setting-up-mongo-db/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="End to end Application with .NET 5 - Part I">
+  <meta property="og:description" content="In this blog post let’s work with the brand new .NET 5 (witch is still under release candidate mode).
+During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).
+Let’s work with:
+Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I’m trying to move away from Postman) Microsoft Announces .">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-10-06T23:22:38+00:00">
+    <meta property="article:modified_time" content="2020-10-06T23:22:38+00:00">
+
+  <meta itemprop="name" content="End to end Application with .NET 5 - Part I">
+  <meta itemprop="description" content="In this blog post let’s work with the brand new .NET 5 (witch is still under release candidate mode).
+During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).
+Let’s work with:
+Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I’m trying to move away from Postman) Microsoft Announces .">
+  <meta itemprop="datePublished" content="2020-10-06T23:22:38+00:00">
+  <meta itemprop="dateModified" content="2020-10-06T23:22:38+00:00">
+  <meta itemprop="wordCount" content="681">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="End to end Application with .NET 5 - Part I">
+  <meta name="twitter:description" content="In this blog post let’s work with the brand new .NET 5 (witch is still under release candidate mode).
+During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).
+Let’s work with:
+Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I’m trying to move away from Postman) Microsoft Announces .">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">End to end Application with .NET 5 - Part I</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-10-06T23:22:38Z">October 6, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In this blog post let&rsquo;s work with the <strong>brand new .NET 5</strong> (witch is still under <em>release candidate</em> mode).</p>
+<p>During this tutorial we`re going to create a Web API with <strong>.NET 5</strong> integrated with <strong>Mongo DB</strong> (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).</p>
+<p>Let&rsquo;s work with:</p>
+<ul>
+<li>Setting up the Project</li>
+<li>Use configuration files (appsettings.json)</li>
+<li>Environment Variables - <strong>ASPNETCORE_ENVIRONMENT</strong></li>
+<li>Two tier separation of concerns</li>
+<li>Use of Dependency Injection thought native container</li>
+<li>Controller Actions with attributes - [FromBody], [FromRoute]</li>
+<li>And API Tests with <a href="https://insomnia.rest/">Insominia</a> (I&rsquo;m trying to move away from Postman)</li>
+</ul>
+<h4 id="microsoft-announces-net-5-not-core-anymore">Microsoft Announces .NET 5 (not core anymore)</h4>
+<blockquote>
+<p>Today, we’re announcing that the next release after .NET Core 3.0 will be .NET 5. This will be the next big release in the .NET family.
+<a href="https://devblogs.microsoft.com/dotnet/introducing-net-5/">https://devblogs.microsoft.com/dotnet/introducing-net-5/</a></p>
+</blockquote>
+<h2 id="table-contents">Table Contents</h2>
+<ul>
+<li><a href="#setup-requirements">Before we start - Setup Requirements</a></li>
+<li><a href="#registering-mongo-atlas">Configuring MongoDB in the Mongo Atlas cloud</a></li>
+<li><a href="#creating-first-web-app">Creating the ASP.NET 5 project</a></li>
+<li><a href="#adding-a-configuration-model">Adding the configuration template</a></li>
+<li><a href="#adding-crud-operations-service">Adding a CRUD operations service</a></li>
+<li><a href="#add-a-controller">Adding a Controller</a></li>
+<li><a href="#test-the-web-api">Testing the Web API</a></li>
+</ul>
+<h2 id="a-namesetup-requirementsa-before-we-start---setup-requirements"><a name="setup-requirements"></a> Before we start - Setup Requirements</h2>
+<ul>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/5.0">.NET Core 5 SDK</a></li>
+<li><a href="https://visualstudio.microsoft.com/vs/preview/">Visual Studio Preview</a></li>
+</ul>
+<h2 id="a-nameregistering-mongo-atlas-a-configuring-mongodb-in-the-mongo-atlas-cloud"><a name="registering-mongo-atlas"> </a> Configuring MongoDB in the Mongo Atlas Cloud</h2>
+<p>Access the <a href="https://www.mongodb.com/cloud/atlas">Mongo Atlas Clout</a> at <a href="https://www.mongodb.com/cloud/atlas">https://www.mongodb.com/cloud/atlas</a></p>
+<p>If you already have a Mongo Atlas account you can skip to this <a href="#setup-env">section</a></p>
+<p>Click on <strong>Try free</strong> if you do not have an account, or <strong>Sign In</strong> if you already have a Mongo Atlas account.</p>
+<h4 id="a-namecreating-accounta-creating-an-account-to-access-mongo-atlas"><a name="creating-account"></a> Creating an account to access Mongo Atlas</h4>
+<p>Fill in the basic data (email, first name, last name and password).
+And activate the account by the received email (Welcome to MongoDB) by clicking on <strong>Sign in</strong>.</p>
+<h4 id="a-namesign-in-a-if-you-already-have-an-account---sign-in"><a name="sign-in"> </a> If you already have an account - Sign In</h4>
+<p>Log in using your username and password.</p>
+<h3 id="a-namepreparing-environmnet-mongo-atlas-a-preparing-the-environment"><a name="preparing-environmnet-mongo-atlas"> </a> Preparing the environment</h3>
+<p>The cluster is where the Mongo Db databases will be stored (we can create more than one). In our case, we will use the bank created by default when we created the first cluster.</p>
+<ol>
+<li>Click on <strong>Build a Cluster</strong>.</li>
+<li>Select the free cluster (<strong>Starter Clusters</strong>) and then click on <strong>Create a cluster</strong>.</li>
+<li>In <em>Cloud Provider</em> select <strong>Azure</strong> and leave the pre-selected <code>Virginia (eastus2)</code> region selected.</li>
+<li>For the other options, we will leave the default values.</li>
+<li>Now click on <strong>Create Cluster</strong> and wait for the creation of the cluster to finish.</li>
+</ol>
+<p>The blue top bar indicates the status of the cluster creation. It may take a while to finish.</p>
+<h4 id="a-nameabout-the-dashboard-a-overview-about-the-dashboard"><a name="about-the-dashboard"> </a> Overview about the Dashboard</h4>
+<p>On the left side we have the possible configuration options, such as <em>Database Access</em> and <em>Network Access</em>.</p>
+<ul>
+<li><code>Clusters</code> is where we see general data about the cluster and is where we will get the <em>connection string</em>.</li>
+<li><code>Database Access</code> is where we manage user (s) and password (s) to access the database (s).</li>
+<li><code>Network Access</code> is where we manage firewall rules (we release IP).</li>
+<li>I leave other options for you to explore later.</li>
+</ul>
+<h3 id="a-namesetup-enva-preparing-the-environment-for-our-application"><a name="setup-env"></a> Preparing the environment for our application</h3>
+<h4 id="creating-the-first-user">Creating the first user</h4>
+<ol>
+<li>Click on <strong>Database Access</strong>.</li>
+<li>Then click on <strong>ADD NEW USER</strong> on the right side of the screen (green button).</li>
+<li>Use the following configuration:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; Username <span style="color:#f92672">=</span> students
+</span></span><span style="display:flex;"><span>&gt; Password <span style="color:#f92672">=</span> students
+</span></span><span style="display:flex;"><span>&gt; User privileges <span style="color:#f92672">=</span> read and write to any database
+</span></span></code></pre></div><p>Finally click on <strong>Add User</strong>.
+Users creation can take some time.</p>
+<h4 id="setting-up-the-firewall-rule">Setting up the firewall rule</h4>
+<ol>
+<li>First click on <code>Network Access</code>.</li>
+<li>Then on <code>Add IP Address</code>.</li>
+<li>Now in <code>Allow Access From Anywhere</code> (this allows access from any IP)
+Note that we will use this for ease of access, but it is not recommended for production environments.</li>
+<li>Finally click on <strong>Confirm</strong>.</li>
+</ol>
+<p>This change may also take some time to take effect.</p>
+<h4 id="3---collecting-connection-string">3 - Collecting connection string</h4>
+<ol>
+<li>Click on <code>Clusters</code> on the left side menu.</li>
+<li>Then click on the <code>CONNECT</code> button in the <code>SANDBOX</code> section.</li>
+<li>In the open popup click on <code>Connect your application</code>.</li>
+</ol>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/mongo-get-connection-string.png" alt="mongo-get-connection-string"></p>
+<ol start="4">
+<li>In the <code>Driver</code> section select <code>C#/.NET</code> and in <code>version</code> select <code>2.5 or later</code>.</li>
+<li>Copy <code>connectionString</code> to notepad and replace <code>&lt;password&gt;</code> with the password we created (students) and also replace<code>&lt;username&gt;</code>if it is not already filled out.</li>
+</ol>
+<p>Result should look something like:</p>
+<blockquote>
+<p>mongodb+srv://students:students@cluster0-XXXXX.azure.mongodb.net/test?retryWrites=true&amp;w=majority</p>
+</blockquote>
+<p>Awesome! We have our database ready for the C# application. Now let&rsquo;s start creating the Web API.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Simple Web Application with HTTP 2 over Kestrel | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="In this blog post we&rsquo;re going to create a simple web application with HTTP 2 enable on Kestrel.
+Prerequisites to follow this article:
+OpenSSL for Windows - to generate a self signed certificate First let generate a self signed SSL certificate. If you have an existing one you can skip this step.
+On an existing .Net application open the Program.cs file.
+public class Program { public static void Main(string[] args) { CreateHostBuilder(args).">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/enabling-http-2-on-kestrel/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/enabling-http-2-on-kestrel/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Simple Web Application with HTTP 2 over Kestrel">
+  <meta property="og:description" content="In this blog post we’re going to create a simple web application with HTTP 2 enable on Kestrel.
+Prerequisites to follow this article:
+OpenSSL for Windows - to generate a self signed certificate First let generate a self signed SSL certificate. If you have an existing one you can skip this step.
+On an existing .Net application open the Program.cs file.
+public class Program { public static void Main(string[] args) { CreateHostBuilder(args).">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-09-16T22:16:16+00:00">
+    <meta property="article:modified_time" content="2020-09-16T22:16:16+00:00">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="Https">
+
+  <meta itemprop="name" content="Simple Web Application with HTTP 2 over Kestrel">
+  <meta itemprop="description" content="In this blog post we’re going to create a simple web application with HTTP 2 enable on Kestrel.
+Prerequisites to follow this article:
+OpenSSL for Windows - to generate a self signed certificate First let generate a self signed SSL certificate. If you have an existing one you can skip this step.
+On an existing .Net application open the Program.cs file.
+public class Program { public static void Main(string[] args) { CreateHostBuilder(args).">
+  <meta itemprop="datePublished" content="2020-09-16T22:16:16+00:00">
+  <meta itemprop="dateModified" content="2020-09-16T22:16:16+00:00">
+  <meta itemprop="wordCount" content="86">
+  <meta itemprop="keywords" content="C#,Https">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Simple Web Application with HTTP 2 over Kestrel">
+  <meta name="twitter:description" content="In this blog post we’re going to create a simple web application with HTTP 2 enable on Kestrel.
+Prerequisites to follow this article:
+OpenSSL for Windows - to generate a self signed certificate First let generate a self signed SSL certificate. If you have an existing one you can skip this step.
+On an existing .Net application open the Program.cs file.
+public class Program { public static void Main(string[] args) { CreateHostBuilder(args).">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Simple Web Application with HTTP 2 over Kestrel</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-09-16T22:16:16Z">September 16, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In this blog post we&rsquo;re going to create a simple web application with HTTP 2 enable on <a href="https://docs.microsoft.com/pt-br/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-3.1">Kestrel</a>.</p>
+<p>Prerequisites to follow this article:</p>
+<ul>
+<li>OpenSSL for Windows - to generate a self signed certificate</li>
+</ul>
+<p>First let generate a self signed SSL certificate. If you have an existing one you can skip this step.</p>
+<p>On an existing .Net application open the <code>Program.cs</code> file.</p>
+<pre tabindex="0"><code>public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =&gt;
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =&gt;
+            {
+                webBuilder.UseStartup&lt;Startup&gt;();
+            });
+}
+</code></pre><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/https/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Https</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-function-v3-com-entityframework-core-3-1/">Azure Function V3 com EntityFramework Core 3.1</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-e-cloudflare-com-ssl-full-strict/">Azure App Service e Cloudflare com SSL Full (strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/aspnetcore-com-mongo-db-e-mongo-atlas/">Asp.Net Core com MongoDb e Mongo Atlas - C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/hsts-definition-and-how-to-enable-it-in-iis/">HSTS - What&#39;s it and how to enable it in IIS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/">Console Application para upload de arquivo no Azure Blob Storage</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

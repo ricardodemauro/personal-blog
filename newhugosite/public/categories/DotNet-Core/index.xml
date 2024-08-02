@@ -16,6 +16,13 @@
       <description>One of the useful features of EF Core is the In-Memory Database Provider, which is perfect for testing purposes. In this guide, we will walk through setting up EF Core with an in-memory database, demonstrating how to configure and use it effectively.&#xA;Step-by-Step Guide Start by creating a new .NET console using the .NET CLI and add the required packages.&#xA;dotnet new console -n EfCoreInMemoryDemo cd EfCoreInMemoryDemo dotnet add package Microsoft.</description>
     </item>
     <item>
+      <title>HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience</title>
+      <link>http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/</link>
+      <pubDate>Fri, 05 Jul 2024 01:57:30 +0000</pubDate>
+      <guid>http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/</guid>
+      <description>In this hands-on blog post, we&amp;rsquo;ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.&#xA;Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.</description>
+    </item>
+    <item>
       <title>Health Checks on your ASP.NET Core Application</title>
       <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
       <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
@@ -42,6 +49,13 @@
       <pubDate>Tue, 08 Sep 2020 17:47:00 +0000</pubDate>
       <guid>http://localhost:1313/post/getting-the-file-name-without-extenion-in-csharp/</guid>
       <description>These days I was asking myself how to get the file name without the extension. I confess I was tempted to use a regex to solve this problem :)&#xA;But no worries. There is a method in System.IO.Path specific for this situation.&#xA;using System.IO; /// /// Get file name without extension /// static string GetFileName(string path) { return Path.GetFileNameWithoutExtension(path); } /// /// Get file name without extension /// static string GetFileName(FileInfo fileInfo) { return Path.</description>
+    </item>
+    <item>
+      <title>Asp.Net Core com MongoDb e Mongo Atlas - C#</title>
+      <link>http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/</link>
+      <pubDate>Sat, 19 Oct 2019 21:39:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/</guid>
+      <description>Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.&#xA;Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos&#xA;Neste tutorial, você aprenderá como:&#xA;Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.</description>
     </item>
     <item>
       <title>Deploying .Net container App to Heroku cloud</title>

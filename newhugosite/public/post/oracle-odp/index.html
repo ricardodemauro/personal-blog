@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>C# Oracle ODP.NET with Async Methods | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Introduce the significance of asynchronous programming in C# and its role in enhancing application performance and responsiveness. Highlight the arrival of Oracle ODP.NET 23c Dev, a game-changer for developers working with Oracle databases, offering genuine async/await support.
+**Async/Await in C#:**Explain the async/await pattern in C# and its importance in developing non-blocking, responsive applications. Discuss the advantages of asynchronous programming, including efficient resource utilization and improved user experiences.
+**Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction:**Delve into the exciting developments in the Oracle ODP.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/oracle-odp/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/oracle-odp/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="C# Oracle ODP.NET with Async Methods">
+  <meta property="og:description" content="Introduce the significance of asynchronous programming in C# and its role in enhancing application performance and responsiveness. Highlight the arrival of Oracle ODP.NET 23c Dev, a game-changer for developers working with Oracle databases, offering genuine async/await support.
+**Async/Await in C#:**Explain the async/await pattern in C# and its importance in developing non-blocking, responsive applications. Discuss the advantages of asynchronous programming, including efficient resource utilization and improved user experiences.
+**Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction:**Delve into the exciting developments in the Oracle ODP.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-08-15T19:17:39+00:00">
+    <meta property="article:modified_time" content="2023-08-15T19:17:39+00:00">
+
+  <meta itemprop="name" content="C# Oracle ODP.NET with Async Methods">
+  <meta itemprop="description" content="Introduce the significance of asynchronous programming in C# and its role in enhancing application performance and responsiveness. Highlight the arrival of Oracle ODP.NET 23c Dev, a game-changer for developers working with Oracle databases, offering genuine async/await support.
+**Async/Await in C#:**Explain the async/await pattern in C# and its importance in developing non-blocking, responsive applications. Discuss the advantages of asynchronous programming, including efficient resource utilization and improved user experiences.
+**Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction:**Delve into the exciting developments in the Oracle ODP.">
+  <meta itemprop="datePublished" content="2023-08-15T19:17:39+00:00">
+  <meta itemprop="dateModified" content="2023-08-15T19:17:39+00:00">
+  <meta itemprop="wordCount" content="449">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="C# Oracle ODP.NET with Async Methods">
+  <meta name="twitter:description" content="Introduce the significance of asynchronous programming in C# and its role in enhancing application performance and responsiveness. Highlight the arrival of Oracle ODP.NET 23c Dev, a game-changer for developers working with Oracle databases, offering genuine async/await support.
+**Async/Await in C#:**Explain the async/await pattern in C# and its importance in developing non-blocking, responsive applications. Discuss the advantages of asynchronous programming, including efficient resource utilization and improved user experiences.
+**Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction:**Delve into the exciting developments in the Oracle ODP.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">C# Oracle ODP.NET with Async Methods</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-08-15T19:17:39Z">August 15, 2023</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Introduce the significance of asynchronous programming in C# and its role in enhancing application performance and responsiveness. Highlight the arrival of Oracle ODP.NET 23c Dev, a game-changer for developers working with Oracle databases, offering genuine async/await support.</p>
+<p>**Async/Await in C#:**Explain the async/await pattern in C# and its importance in developing non-blocking, responsive applications. Discuss the advantages of asynchronous programming, including efficient resource utilization and improved user experiences.</p>
+<p>**Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction:**Delve into the exciting developments in the Oracle ODP.NET 23c Dev release. Emphasize the introduction of true asynchronous methods for enhanced database interactions. Mention the previous versions of ODP.NET that featured async methods as mere wrappers of <code>Task.FromResult</code> calls, and explain the limitations of this approach.</p>
+<p><strong>Differentiating True Async Methods:</strong></p>
+<ul>
+<li>Briefly discuss the async methods in earlier ODP.NET versions, highlighting their limitations as wrappers of <code>Task.FromResult</code> and lack of true asynchronous behavior.</li>
+<li>Introduce the new async methods in ODP.NET 23c Dev, emphasizing their genuine async/await implementation and how they overcome the shortcomings of previous versions.</li>
+</ul>
+<p><strong>Key Async Methods in ODP.NET 23c Dev:</strong></p>
+<ul>
+<li><code>OpenAsync</code>: Detail the true async behavior of this method, enabling developers to open Oracle database connections asynchronously without blocking the main thread.</li>
+<li><code>ExecuteReaderAsync</code>: Explain how this method facilitates asynchronous execution of queries and data retrieval, resulting in more responsive and efficient database interactions.</li>
+</ul>
+<p>**Unveiling the Code: Sample Async Database Interactions:**Provide illustrative code examples showcasing the differences between the previous async methods and the new async methods in ODP.NET 23c Dev.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Sample code for opening a connection asynchronously (previous version)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Oracle.ManagedDataAccess.Client;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> Task OpenConnectionAsync(<span style="color:#66d9ef">string</span> connectionString)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> (OracleConnection connection = <span style="color:#66d9ef">new</span> OracleConnection(connectionString))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> connection.OpenAsync();
+</span></span><span style="display:flex;"><span>        Console.WriteLine(<span style="color:#e6db74">&#34;Connection opened asynchronously.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sample code for executing a query and reading data asynchronously (new ODP.NET 23c Dev version)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Oracle.ManagedDataAccess.Client;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> Task ExecuteQueryAsync(<span style="color:#66d9ef">string</span> connectionString, <span style="color:#66d9ef">string</span> query)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> (OracleConnection connection = <span style="color:#66d9ef">new</span> OracleConnection(connectionString))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> connection.OpenAsync();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">using</span> (OracleCommand command = <span style="color:#66d9ef">new</span> OracleCommand(query, connection))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">using</span> (OracleDataReader reader = <span style="color:#66d9ef">await</span> command.ExecuteReaderAsync())
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">await</span> reader.ReadAsync())
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Process data asynchronously</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>**Embracing the Future: Leveraging ODP.NET 23c Dev for Superior Performance:**Summarize the advantages of adopting the new async methods in ODP.NET 23c Dev for more efficient, responsive, and high-performance database interactions. Encourage developers to transition to the latest version to unlock the true potential of asynchronous programming.</p>
+<p>**References:**Provide references to relevant documentation, articles, or resources related to async programming in C# and Oracle ODP.NET.</p>
+<p>Feel free to expand on each section further and adjust the content as needed to create a comprehensive and informative article. If you have any more specific details you&rsquo;d like to include or any other assistance you require, please let me know!</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

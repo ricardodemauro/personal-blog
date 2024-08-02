@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Asp.Net Core com MongoDb e Mongo Atlas - C# | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
+Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
+Neste tutorial, você aprenderá como:
+Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Asp.Net Core com MongoDb e Mongo Atlas - C#">
+  <meta property="og:description" content="Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
+Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
+Neste tutorial, você aprenderá como:
+Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-10-19T21:39:28+00:00">
+    <meta property="article:modified_time" content="2019-10-19T21:39:28+00:00">
+    <meta property="article:tag" content="DotNet Core">
+    <meta property="article:tag" content="MongoDb">
+    <meta property="article:tag" content="Perceptron">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="Pt">
+
+  <meta itemprop="name" content="Asp.Net Core com MongoDb e Mongo Atlas - C#">
+  <meta itemprop="description" content="Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
+Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
+Neste tutorial, você aprenderá como:
+Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.">
+  <meta itemprop="datePublished" content="2019-10-19T21:39:28+00:00">
+  <meta itemprop="dateModified" content="2019-10-19T21:39:28+00:00">
+  <meta itemprop="wordCount" content="2764">
+  <meta itemprop="keywords" content="DotNet Core,MongoDb,Perceptron,C#,Pt">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Asp.Net Core com MongoDb e Mongo Atlas - C#">
+  <meta name="twitter:description" content="Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.
+Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos
+Neste tutorial, você aprenderá como:
+Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Asp.Net Core com MongoDb e Mongo Atlas - C#</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-10-19T21:39:28Z">October 19, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do <a href="https://www.mongodb.com/what-is-mongodb">MongoDB</a>.</p>
+<p>Baseado no artigo <a href="https://docs.microsoft.com/pt-br/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0">Microsoft Docs</a>, criado por <a href="https://twitter.com/K2Prk">Pratik Khandelwal</a> e <a href="https://twitter.com/Scott_Addie">Scott Addie</a>
+Modificado por <a href="https://twitter.com/RicardoDeMauro">Ricardo Mauro</a>
+Tempo de leitura: 18 minutos</p>
+<p>Neste tutorial, você aprenderá como:</p>
+<blockquote>
+<ul>
+<li>Configurar o Mongo Atlas e MongoDb</li>
+<li>Definir usuário e senha de acesso no Mongo Atlas</li>
+<li>Executar operações CRUD do MongoDB a partir de uma API Web Asp.Net Core 3</li>
+</ul>
+</blockquote>
+<h2 id="pré-requisitos">Pré-requisitos</h2>
+<ul>
+<li><a href="https://www.microsoft.com/net/download/all">SDK do .NET Core 3.0 ou posterior</a></li>
+<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp">C# para Visual Studio Code</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions">C# Extensions para Visual Studio Code</a></li>
+</ul>
+<hr>
+<p>##<a name="registering-mongo-atlas"></a>Configurando o MongoDB na nuvem Mongo Atlas</p>
+<p>Acessar o <a href="https://www.mongodb.com/cloud/atlas">Mongo Atlas</a> &ndash;<a href="https://www.mongodb.com/cloud/atlas">https://www.mongodb.com/cloud/atlas</a>.</p>
+<p>Clique em <code>Try free</code> caso você não possua conta, ou <code>Sign In</code> se você já possui uma conta no Mongo Atlas.</p>
+<p>####<a name="creating-account"></a> Criando uma conta para acesso ao Mongo Atlas</p>
+<p>Preencha os dados básicos (email, first name, last name e password).</p>
+<p>E ative a conta pelo e-mail recebido (Welcome to MongoDB) clicando em <code>Sign in</code>.</p>
+<p>####<a name="sign-in"></a> Sign In</p>
+<p>Entre com seu usuário e senha.</p>
+<p>###<a name="preparing-environmnet-mongo-atlas"></a>Preparando o ambiente</p>
+<p>O cluster é onde será armazenado os banco de dados Mongo Db (podemos criar mais de um). No nosso caso iremos utilizar o banco criado por padrão quando criamos o primeiro cluster.</p>
+<ol>
+<li>
+<p>Clicar em <code>Build a Cluster</code>.</p>
+</li>
+<li>
+<p>Selecionar o cluster free (<code>Starter Clusters</code>) e depois clicar em <code>Create a cluster</code>.</p>
+</li>
+<li>
+<p>Em <em>Cloud Provider</em> selecionar <code>Azure</code> e deixar selecionada região pré-selecionada <code>Virginia (eastus2)</code>.</p>
+</li>
+<li>
+<p>Para as demais opções vamos deixar os valores padrões.</p>
+</li>
+<li>
+<p>Agora clique em <code>Create Cluster</code> e aguarde o termino da criação do cluster.</p>
+</li>
+</ol>
+<p>A barra superior azul indica o status da criação do cluster. Pode demorar um pouco até o termino.</p>
+<p>####<a name="little-context"></a>Um pouco de contexto - O que vemos aqui?</p>
+<p>Do lado esquerdo temos as opções possíveis de configuração, como <em>Database Access</em> e <em>Network Access</em>.</p>
+<ul>
+<li>
+<p><code>Clusters</code> é onde vemos dados gerais sobre o cluster e é onde iremos obter a <em>string de conexão</em>.</p>
+</li>
+<li>
+<p><code>Database Access</code> é onde gerenciamos usuário(s) e senha(s) para acesso a(s) base(s) de dados.</p>
+</li>
+<li>
+<p><code>Network Access</code> é onde gerenciamos regras de firewall (liberamos IP).</p>
+</li>
+<li>
+<p>Demais opções deixo para vocês explorarem depois.</p>
+</li>
+</ul>
+<p>###<a name="setup-env"></a>Preparando o ambiente para nossa aplicação</p>
+<h4 id="1---criando-o-primeiro-usuário">1 - Criando o primeiro usuário</h4>
+<ol>
+<li>
+<p>Clicar em <code>Database Access</code>.</p>
+</li>
+<li>
+<p>Depois clicar em <code>ADD NEW USER</code> do lado direito da tela (botão verde).</p>
+</li>
+<li>
+<p>Inserir os seguintes dados:</p>
+</li>
+</ol>
+<pre tabindex="0"><code>&gt;     Username = alunos
+&gt;     Password = alunos
+&gt;     User privileges = read and write to any database
+</code></pre><p>Por último clicar em <code>Add User</code>.</p>
+<p>A criação do usuário pode tomar algum tempo.</p>
+<h4 id="2---criando-regra-no-firewall">2 - Criando regra no firewall</h4>
+<ol>
+<li>
+<p>Primeiro clicar em <code>Network Access</code>.</p>
+</li>
+<li>
+<p>Depois em <code>ADD IP ADDRESS</code>.</p>
+</li>
+<li>
+<p>Agora em <code>ALLOW ACCESS FROM ANYWHERE</code> (isso permite acesso de qualquer IP)
+Observe que utilizaremos isso para facilidade de acesso, porém não é recomendado para ambientes de produção.</p>
+</li>
+<li>
+<p>Por fim clicar em <code>Confirm</code>.</p>
+</li>
+</ol>
+<p>Essa mudança também pode levar algum tempo para surtir efeito.</p>
+<h4 id="3---coletando-string-de-conexão-connectionstring">3 - Coletando string de conexão (connectionString)</h4>
+<ol>
+<li>
+<p>Clicar em <code>Clusters</code> no menu lateral esquerdo.</p>
+</li>
+<li>
+<p>Depois clicar no botão <code>CONNECT</code> na sessão <code>SANDBOX</code>.</p>
+</li>
+<li>
+<p>No popup aberto clicar em <code>Connect your application</code>.</p>
+</li>
+</ol>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/connect-cluster.png" alt="connect-cluster"></p>
+<ol start="4">
+<li>
+<p>Na sessão <code>Driver</code> selecionar <code>C# / .NET</code> e em <code>version</code> selecionar <code>2.5 or later</code>.</p>
+</li>
+<li>
+<p>Copiar a <code>connectionString</code> para o notepad e substituir o <code>&lt;password&gt;</code> pela senha que criamos (alunos) e substituir também <code>&lt;usuario&gt;</code> caso já não esteja preenchido.</p>
+</li>
+</ol>
+<p>Resultado deverá ser algo como:</p>
+<blockquote>
+<p>mongodb+srv://alunos:alunos@cluster0-XXXXX.azure.mongodb.net/test?retryWrites=true&amp;w=majority</p>
+</blockquote>
+<p>Ótimo! Temos o nosso banco de dados pronto para nossa aplicação. Já podemos começar a criação da API Web com ASP.NET Core.</p>
+<p>##<a name="creating-first-web-app"></a> Criando o projeto da Web API do ASP.NET Core</p>
+<ol>
+<li>
+<p>Primeiro crie uma pasta vazia chamada <strong>MongoWebApi</strong> dentro da pasta <strong>Documentos</strong>. Este será nosso local de trabalho (ou workspace em inglês), neste pasta será depositado todos os nossos código-fonte csharp, arquivos de configuração, compilados (nossas dll&rsquo;s) e etc.</p>
+</li>
+<li>
+<p>Agora abra o <strong>Visual Code</strong> e abra a nossa pasta de trabalho (<strong>Arquivo</strong> - <strong>Abrir pasta&hellip;</strong> ou se inglês <strong>File</strong> - <strong>Open Folder&hellip;</strong>) que acabamos de criar.</p>
+</li>
+<li>
+<p>Abra o terminal utilizando o menu superior <strong>Terminal</strong> depois <strong>Novo Terminal</strong> ou <strong>New Terminal</strong> em inglês.</p>
+</li>
+<li>
+<p>No terminal aberto digite</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new webapi -o AlunosApi
+</span></span></code></pre></div><p>Um novo projeto de API Web do ASP.NET Core será criado na pasta AlunosAPI dentro do Visual Code.</p>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-1.png" alt="status-1"></p>
+<p>Caso o apareça uma caixa de diálogo perguntando se <strong>Os ativos necessários para criar e depurar estão ausentes do &lsquo;AlunosAPI&rsquo;. Deseja adicioná-los?</strong> . Selecione <strong>Sim</strong> na barra superior.</p>
+<ol start="2">
+<li>Novamente no mesmo <strong>Terminal Integrado</strong> execute os seguintes comandos para instalar o driver .NET para MongoDB:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd AlunosAPI
+</span></span><span style="display:flex;"><span>dotnet add AlunosApi.csproj package MongoDB.Driver
+</span></span></code></pre></div><p>Isso irá adicionar as DLL&rsquo;s do MongoDb ao nosso projeto.</p>
+<hr>
+<h2 id="removendo-conteúdo-desnecessário-ao-nosso-projeto">Removendo conteúdo desnecessário ao nosso projeto</h2>
+<p>Remova os arquivos abaixo.</p>
+<ul>
+<li>WeatherForecast.cs</li>
+<li>Controllers/WeatherForecastController.cs</li>
+</ul>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-2.png" alt="status-2"></p>
+<h2 id="adicionando-o-modelo-de-entidade-ao-nosso-projeto">Adicionando o modelo de entidade ao nosso projeto</h2>
+<p>Primeiro adicione uma pasta chamada <em>Models</em> à raiz do projeto.</p>
+<p>Botão direito na pasta <strong>AlunosAPI</strong> e depois <strong>Nova pasta</strong> ou <strong>New folder</strong> com nome <strong>Models</strong> (atenção as letras maiúsculas e minúsculas).</p>
+<p>Depois crie uma classe com nome <code>Aluno</code> ao diretório <em>Models</em>. Botão direito na pasta <strong>Models</strong> depois <code>New C# Class</code>.</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-3.png" alt="status-3"></p>
+<p>Por último substitua o conteúdo do arquivo criado pelo conteúdo abaixo.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> MongoDB.Bson;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> MongoDB.Bson.Serialization.Attributes;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> AlunosApi.Models
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Aluno</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">		[BsonId]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">		[BsonRepresentation(BsonType.ObjectId)]</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">		[BsonElement(&#34;Name&#34;)]</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Nome { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Email { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}    
+</span></span></code></pre></div><p>Na classe anterior, a propriedade <code>Id</code>:</p>
+<ul>
+<li>É necessária para mapear o objeto CLR (Common Language Runtime) para a coleção do MongoDB.</li>
+<li>É anotada com <a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm">[BsonId]</a> para ser designada como a chave primária do documento.</li>
+<li>É anotada com <a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm">[BsonRepresentation(BsonType.ObjectId)]</a> para permitir a passagem do parâmetro como o tipo <code>string</code> em vez de uma estrutura <a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm">ObjectId</a>. O Mongo processa a conversão de <code>string</code> para <code>ObjectId</code>.</li>
+</ul>
+<p>A propriedade <code>Nome</code> é anotada com o atributo <a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm">[BsonElement]</a>. O valor do atributo de <code>Name</code> representa o nome da propriedade da coleção do MongoDB.</p>
+<h2 id="a-nameadding-a-configuration-modela-adicionando-o-modelo-de-configuração"><a name="adding-a-configuration-model"></a> Adicionando o modelo de configuração</h2>
+<p>Primeiro substitua o conteúdo do arquivo <em>appsettings.json</em> pelo abaixo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Logging&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;LogLevel&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;Default&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Information&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;Microsoft&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Warning&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;Microsoft.Hosting.Lifetime&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Information&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;AllowedHosts&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;*&#34;</span>,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;AlunosDatabaseSettings&#34;</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;AlunosCollectionName&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Alunos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ConnectionString&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;{VALOR COPIADO NO NOTEPAD}&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;DatabaseName&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;AlunosDb&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Não esqueca de substituir o <strong>{VALOR COPIADO NO NOTEPAD}</strong> pelo valor real.</p>
+<p>Agora crie o arquivo <em>AlunosDatabaseSettings.cs</em> no diretório <em>Models</em> com o código a seguir:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> AlunosApi.Models
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlunosDatabaseSettings</span> : IDatabaseSettings
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> AlunosCollectionName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> ConnectionString { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> DatabaseName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IDatabaseSettings</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">string</span> AlunosCollectionName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">string</span> ConnectionString { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">string</span> DatabaseName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>A classe <code>AlunosDatabaseSettings</code> é usada para armazenar os valores de propriedade <code>AlunosDatabaseSettings</code> do arquivo <em>appsettings.json</em>. Os nomes de propriedade JSON e C# são nomeados de forma idêntica para facilitar o processo de mapeamento.</p>
+<p>A seguir adicione o código ao <code>Startup.ConfigureServices</code> (arquivo Startup.cs na raiz do projeto):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// requires using Microsoft.Extensions.Options</span>
+</span></span><span style="display:flex;"><span>	services.Configure&lt;AlunosDatabaseSettings&gt;(Configuration.GetSection(nameof(AlunosDatabaseSettings)));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	services.AddSingleton&lt;IDatabaseSettings&gt;(sp =&gt;sp.GetRequiredService&lt;IOptions&lt;AlunosDatabaseSettings&gt;&gt;().Value);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//... código pré-existente (não apagar)</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Explicando o código anterior:</p>
+<ul>
+<li>A instância de configuração à qual a seção <code>AlunosDatabaseSettings</code> do arquivo <em>appsettings.json</em> é associada é registrada no contêiner de DI (Injeção de Dependência). Por exemplo, a propriedade <code>ConnectionString</code> de um objeto <code>AlunosDatabaseSettings</code> é populada com a propriedade <code>AlunosDatabaseSettings:ConnectionString</code> no <em>appsettings.json</em>.</li>
+<li>A interface <code>IDatabaseSettings</code> é registrada na DI com um <a href="xref:fundamentals/dependency-injection#service-lifetimes">tempo de vida do serviço</a> singleton. Quando inserida, a instância da interface é resolvida para um objeto <code>AlunosDatabaseSettings</code>.</li>
+</ul>
+<p>Agora adicione o seguinte trecho de código na parte superior do <em>Startup.cs</em> para resolver as referências <code>AlunosDatabaseSettings</code> e <code>IDatabaseSettings</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> AlunosApi.Models;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Options;
+</span></span></code></pre></div><p>Agora execute o comando no terminal integrado <code>dotnet build</code> para validar o código produzido até agora.</p>
+<p>A saída do comando deve ser algo como:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; dotnet build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Build succeeded.
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0</span> Warning<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0</span> Error<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>Caso possua Erro(s) reviso o código até aqui.</p>
+<h4 id="estrutura-do-projeto-até-aqui">Estrutura do projeto até aqui</h4>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/ex1-3.png" alt="ex1-3"></p>
+<h2 id="adicionando-um-serviço-de-operações-crud">Adicionando um serviço de operações CRUD</h2>
+<ol>
+<li>Cria o diretório <em>Services</em> abaixo da pasta <strong>AlunosApi</strong> (raiz do projeto).</li>
+<li>Adicione uma classe chamada <code>AlunosService</code> ao diretório <em>Services</em> recem criado com o seguinte código:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> AlunosApi.Models;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> MongoDB.Driver;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Linq;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> AlunosApi.Services
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlunosService</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> IMongoCollection&lt;Aluno&gt; _alunos;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> AlunosService(IDatabaseSettings settings)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> client = <span style="color:#66d9ef">new</span> MongoClient(settings.ConnectionString);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> database = client.GetDatabase(settings.DatabaseName);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            _alunos = database.GetCollection&lt;Aluno&gt;(settings.AlunosCollectionName);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> List&lt;Aluno&gt; Get() =&gt; _alunos.Find(aluno =&gt; <span style="color:#66d9ef">true</span>).ToList();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Aluno Get(<span style="color:#66d9ef">string</span> id) =&gt; _alunos.Find&lt;Aluno&gt;(aluno =&gt; aluno.Id == id).FirstOrDefault();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Aluno Create(Aluno aluno)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _alunos.InsertOne(aluno);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> aluno;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Update(<span style="color:#66d9ef">string</span> id, Aluno alunoIn) =&gt; _alunos.ReplaceOne(aluno =&gt; aluno.Id == id, alunoIn);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Remove(Aluno alunoIn) =&gt; _alunos.DeleteOne(aluno =&gt; aluno.Id == alunoIn.Id);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Remove(<span style="color:#66d9ef">string</span> id) =&gt; _alunos.DeleteOne(aluno =&gt; aluno.Id == id);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>No código anterior, uma instância <code>IDatabaseSettings</code> é recuperada da DI por meio da injeção de construtor. Essa técnica fornece acesso para os valores de configuração do <em>appsettings.json</em> que foram adicionados na seção <a href="#adding-a-configuration-model">Adicionando o modelo de configuração</a>.</p>
+<ol>
+<li>Agora adicione o código a seguir a <code>Startup.ConfigureServices</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//--código pré-existente (não apagar)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//adicionar antes de services.AddControllers();</span>
+</span></span><span style="display:flex;"><span>	services.AddSingleton&lt;AlunosService&gt;();
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//--código pré-existente (não apagar)</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>No código anterior, a classe <code>AlunosService</code> é registrada com a DI para dar suporte à injeção de construtor nas classes consumidoras. O tempo de vida do serviço singleton é mais apropriado porque <code>AlunosService</code> usa uma dependência direta de <code>MongoClient</code>. De acordo com as <a href="https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use">Diretrizes oficiais de reutilização do cliente Mongo</a>, o <code>MongoClient</code> deve ser registrado na DI com um tempo de vida do serviço singleton.</p>
+<ol>
+<li>Não se esqueça de adicionar o seguinte código na parte superior do <em>Startup.cs</em> para resolver a referências <code>AlunosService</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> AlunosApi.Services;
+</span></span></code></pre></div><p>Rode o novamente comando <code>dotnet build</code> no <strong>Terminal</strong> para verificarmos o estado do nosso código até aqui.
+Saída deve ser algo como:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; dotnet build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Build succeeded.
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0</span> Warning<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0</span> Error<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Time Elapsed 00:00:05.22
+</span></span></code></pre></div><p>A classe <code>AlunosService</code> usa os seguintes membros <code>MongoDB.Driver</code> para executar operações CRUD em relação ao banco de dados:</p>
+<ul>
+<li><a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoClient.htm">MongoClient</a> – lê a instância do servidor para executar operações de banco de dados. O construtor dessa classe é fornecido na cadeia de conexão do MongoDB:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> AlunosService(IDatabaseSettings settings)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> client = <span style="color:#66d9ef">new</span> MongoClient(settings.ConnectionString);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> database = client.GetDatabase(settings.DatabaseName);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _alunos = database.GetCollection&lt;Aluno&gt;(settings.AlunosCollectionName);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p><a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_IMongoDatabase.htm">IMongoDatabase</a> – representa o banco de dados Mongo para execução de operações. Este tutorial usa o método <a href="https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoDatabase_GetCollection__1.htm">GetCollection&lt;\TDocument&gt;(coleção)</a> genérico na interface para obter acesso aos dados em uma coleção específica. Execute operações CRUD em relação à coleção depois que esse método for chamado. Na chamada de método <code>GetCollection&lt;TDocument&gt;(collection)</code>:</p>
+<ul>
+<li><code>collection</code> representa o nome da coleção.</li>
+<li><code>TDocument</code> representa o tipo de objeto CLR armazenado na coleção.</li>
+</ul>
+</li>
+</ul>
+<p><code>GetCollection&lt;TDocument&gt;(collection)</code> retorna um objeto <a href="https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoCollection.htm">MongoCollection</a> que representa a coleção. Neste tutorial, os seguintes métodos são invocados na coleção:</p>
+<ul>
+<li><a href="https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_DeleteOne.htm">DeleteOne</a> – exclui um único documento que correspondem aos critérios de pesquisa fornecidos.</li>
+<li><a href="https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollectionExtensions_Find__1_1.htm">Find&lt;\TDocument&gt;</a> – retorna todos os documentos na coleção que correspondem aos critérios de pesquisa fornecidos.</li>
+<li><a href="https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm">InsertOne</a> – insere o objeto fornecido como um novo documento na coleção.</li>
+<li><a href="https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm">ReplaceOne</a> – substitui o único documento que corresponde aos critérios de pesquisa fornecidos com o objeto fornecido.</li>
+</ul>
+<h2 id="a-nameadd-a-controlleraadicionando-um-controlador-controller"><a name="add-a-controller"></a>Adicionando um controlador (controller)</h2>
+<p>Adicione uma classe <code>AlunosController</code> ao diretório <em>Controllers</em> (caso pasta não exista crie uma na raiz do projeto) com o seguinte código:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> AlunosApi.Models;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> AlunosApi.Services;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.AspNetCore.Mvc;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> AlunosApi.Controllers
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [Route(&#34;api/[controller]</span><span style="color:#e6db74">&#34;)]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#a6e22e">    [ApiController]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AlunosController</span> : Controller
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> AlunosService _alunosService;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> AlunosController(AlunosService alunosService)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _alunosService = alunosService;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [HttpGet]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ActionResult&lt;List&lt;Aluno&gt;&gt; Get() =&gt; _alunosService.Get();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [HttpGet(&#34;{id:length(24)}&#34;, Name = &#34;GetAluno&#34;)]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ActionResult&lt;Aluno&gt; Get(<span style="color:#66d9ef">string</span> id)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> aluno = _alunosService.Get(id);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (aluno == <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> NotFound();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> aluno;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [HttpPost]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ActionResult&lt;Aluno&gt; Create(Aluno aluno)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _alunosService.Create(aluno);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> CreatedAtRoute(<span style="color:#e6db74">&#34;GetAluno&#34;</span>, <span style="color:#66d9ef">new</span> { id = aluno.Id.ToString() }, aluno);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [HttpPut(&#34;{id:length(24)}&#34;)]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> IActionResult Update(<span style="color:#66d9ef">string</span> id, Aluno alunoIn)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> aluno = _alunosService.Get(id);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (aluno == <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> NotFound();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            _alunosService.Update(id, alunoIn);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> NoContent();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [HttpDelete(&#34;{id:length(24)}&#34;)]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> IActionResult Delete(<span style="color:#66d9ef">string</span> id)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> aluno = _alunosService.Get(id);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (aluno == <span style="color:#66d9ef">null</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> NotFound();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            _alunosService.Remove(aluno.Id);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> NoContent();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>O controlador da API Web:</p>
+<ul>
+<li>Usa a classe <code>AlunosService</code> para executar operações CRUD.</li>
+<li>Contém métodos de ação para dar suporte a solicitações GET, POST, PUT e DELETE HTTP.</li>
+<li>Chama o <a href="xref:System.Web.Http.ApiController.CreatedAtRoute*">xref:System.Web.Http.ApiController.CreatedAtRoute*</a> no método de ação <code>Create</code> para retornar uma resposta <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP 201</a>. O código de status 201 é a resposta padrão para um método HTTP POST que cria um recurso no servidor. <code>CreatedAtRoute</code> também adiciona um cabeçalho <code>Location</code> à resposta. O cabeçalho <code>Location</code> especifica o URI do livro recém-criado.</li>
+</ul>
+<h4 id="estrutura-do-projeto-até-aqui-1">Estrutura do projeto até aqui</h4>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/ex2.png" alt="ex2"></p>
+<h2 id="a-nametest-the-web-apiatestando-a-api-web"><a name="test-the-web-api"></a>Testando a API Web</h2>
+<p>Primeiro <strong>compile</strong> e execute o nosso aplicativo. Para isso clique em <code>Debug</code> na barra superior do Visual Code e depois <code>Start Debugging</code>.
+Isso demorar um pouco na primeira executação. Você pode acompanhar o status do compilação através do terminal.</p>
+<p>Caso seja sua primeira vez executando um aplicativo .Net no Visual Code, lhe será apresentado a seguinte janela.</p>
+<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-4-1.png" alt="status-4-1"></p>
+<p>Selecione a opção <strong>.NET Core</strong>. Isso irá fazer o Visual Code gerar os arquivos de configuração necessários para depurar a aplicação.
+Execute novamente <code>Debug</code> e <code>Start Debugging</code>.</p>
+<p>Quando pronto uma janela de navegador deverá abrir automaticamente com o endereço <em>https://localhost:5001</em>.</p>
+<blockquote>
+<p>Na primeira execução pode lhe ser alertado sobre um certificado digital não confiável. Você pode aceitar o risco do certificado digital. Isso ocorre devido ao certificado digital de <em>tempo de desenvolvimento</em> (não confiável em ambiente produtio) do Asp.Net Core (utilizado somente em tempo <strong>Desenvolvimento</strong>). Por isso podemos confiar.</p>
+</blockquote>
+<p>Agora navegue até <code>https://localhost:5001/api/alunos</code> para testar o método de ação <code>GET</code> sem parâmetros. A seguinte resposta JSON deve ser exibida:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>   []
+</span></span></code></pre></div><p>Perfeito! Esse retorno de array vazio é esperado pois não temos registros no Mongo Db (ainda !!!).
+Isso é ótimo, conseguimos validar os seguintes items:</p>
+<ul>
+<li>Controller Alunos</li>
+<li>Leitura do Arquivo de Configuração</li>
+<li>Acesso ao Mongo Db através do Mongo Atlas</li>
+</ul>
+<p>####Executando testes mais elaborados</p>
+<p>Para testes mais elaborados vamos utilizar a ferramenta <a href="https://insomnia.rest/download/">Insomnia</a>. Faça o download e instale-o caso você não o tenha.</p>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/insomia.png" alt="insomia"></p>
+<p>Você também pode utilizar outras ferramentas, como POSTMan ou ARC. Neste caso decidi pelo Insomia.</p>
+<p>Salve o conteúdo abaixo com o nome alunos-insomia.yaml. Este arquivo contém os testes de GET / POST / PUT e DELETE (deixei pronto para facilitar).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">export</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">__export_format</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">__export_date</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">-</span><span style="color:#ae81ff">10</span><span style="color:#f92672">-</span><span style="color:#ae81ff">20</span><span style="color:#a6e22e">T23</span><span style="color:#f92672">:</span><span style="color:#ae81ff">22</span><span style="color:#f92672">:</span><span style="color:#ae81ff">17.814</span><span style="color:#a6e22e">Z</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">__export_source</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">insomnia</span>.<span style="color:#a6e22e">desktop</span>.<span style="color:#a6e22e">app</span><span style="color:#f92672">:</span><span style="color:#a6e22e">v7</span>.<span style="color:#ae81ff">0.3</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">resources</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span> <span style="color:#a6e22e">_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">req_005b4fcbbf534bd68589fb228859c347</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">authentication</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715982</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isPrivate</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">metaSortKey</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1571613582546.125</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">DELETE</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modified</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715982</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Delete</span> <span style="color:#a6e22e">Aluno</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parameters</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parentId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fld_fa1061f900604e57a83ac239a9dae413</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingDisableRenderRequestBody</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingEncodeUrl</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingRebuildPath</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingSendCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingStoreCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//localhost:5001/api/alunos/5daceb3f53f8fc3450886919
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">request</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span> <span style="color:#a6e22e">_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fld_fa1061f900604e57a83ac239a9dae413</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715912</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">environment</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">environmentPropertyOrder</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">metaSortKey</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1571613617577</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modified</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613716019</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Alunos</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parentId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">wrk_832b63dceba24667bbd70ddf633362fb</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">request_group</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span> <span style="color:#a6e22e">_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">wrk_832b63dceba24667bbd70ddf633362fb</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571527078826</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modified</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571527078825</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Insomnia</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parentId</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">workspace</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span> <span style="color:#a6e22e">_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">req_fc5d374d60b342e0bb59434c4b810f2a</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">authentication</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715997</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isPrivate</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">metaSortKey</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1571613582496.125</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">GET</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modified</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715997</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Get</span> <span style="color:#a6e22e">Aluno</span> <span style="color:#a6e22e">Por</span> <span style="color:#a6e22e">Id</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parameters</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parentId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fld_fa1061f900604e57a83ac239a9dae413</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingDisableRenderRequestBody</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingEncodeUrl</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingRebuildPath</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingSendCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingStoreCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//localhost:5001/api/alunos/5daceb3f53f8fc3450886919
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">request</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span> <span style="color:#a6e22e">_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">req_2320b4b3a6b54b01a2fa61c313e041a9</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">authentication</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">mimeType</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">application</span><span style="color:#f92672">/</span><span style="color:#a6e22e">json</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#f92672">|-</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;5daceb3f53f8fc3450886919&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;nome&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Aluno 1 - Update&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;email&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;aluno1-update@faculdadeimpacta.com.br&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715964</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">-</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">pair_a670675f0243435a9d3445694c7b58cb</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Content</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Type</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">application</span><span style="color:#f92672">/</span><span style="color:#a6e22e">json</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isPrivate</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">metaSortKey</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1571613582446.125</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">PUT</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modified</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715964</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Update</span> <span style="color:#a6e22e">Aluno</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parameters</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parentId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fld_fa1061f900604e57a83ac239a9dae413</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingDisableRenderRequestBody</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingEncodeUrl</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingRebuildPath</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingSendCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingStoreCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//localhost:5001/api/alunos/5daceb3f53f8fc3450886919
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">request</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span> <span style="color:#a6e22e">_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">req_5dc593023227433bac88c0f00ee9851d</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">authentication</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">mimeType</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">application</span><span style="color:#f92672">/</span><span style="color:#a6e22e">json</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">text</span><span style="color:#f92672">:</span> <span style="color:#f92672">|-</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>        	<span style="color:#e6db74">&#34;nome&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Aluno 1&#34;</span>,
+</span></span><span style="display:flex;"><span>        	<span style="color:#e6db74">&#34;email&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;aluno1@faculdadeimpacta.com.br&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715946</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">-</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">pair_d62363541a994b13b9566c92cd572b96</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Content</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Type</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">application</span><span style="color:#f92672">/</span><span style="color:#a6e22e">json</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isPrivate</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">metaSortKey</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1571613582396.125</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">POST</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modified</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715946</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Create</span> <span style="color:#a6e22e">Aluno</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parameters</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parentId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fld_fa1061f900604e57a83ac239a9dae413</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingDisableRenderRequestBody</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingEncodeUrl</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingRebuildPath</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingSendCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingStoreCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//localhost:5001/api/alunos
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">request</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span> <span style="color:#a6e22e">_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">req_31184175d6b5455e86d2e9e0ec34e57e</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">authentication</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715929</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isPrivate</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">metaSortKey</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1571613582346.125</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">GET</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modified</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571613715929</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Get</span> <span style="color:#a6e22e">Alunos</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parameters</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parentId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">fld_fa1061f900604e57a83ac239a9dae413</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingDisableRenderRequestBody</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingEncodeUrl</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingRebuildPath</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingSendCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">settingStoreCookies</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//localhost:5001/api/alunos
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">request</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span> <span style="color:#a6e22e">_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">env_7f3527ea80965a06126f1429c010d91e789910d7</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571527079133</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {}
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dataPropertyOrder</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isPrivate</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">metaSortKey</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571527079133</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modified</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571527079133</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Base</span> <span style="color:#a6e22e">Environment</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parentId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">wrk_832b63dceba24667bbd70ddf633362fb</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">environment</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span> <span style="color:#a6e22e">_id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">jar_7f3527ea80965a06126f1429c010d91e789910d7</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cookies</span><span style="color:#f92672">:</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">created</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571527079152</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">modified</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1571527079152</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Default</span> <span style="color:#a6e22e">Jar</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">parentId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">wrk_832b63dceba24667bbd70ddf633362fb</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">_type</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cookie_jar</span>
+</span></span></code></pre></div><blockquote>
+<p>alunos-insomia.yaml</p>
+</blockquote>
+<p>Perfeito, agora clique em <strong>Import from file</strong> e importe o arquivo que acabamos de gravar.</p>
+<p>Faça o primeiro teste, clique no item <strong>Get Alunos</strong>, devemos obter o mesmo array vazio.</p>
+<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/status-5.png" alt="status-5"></p>
+<blockquote>
+<p>Novamente pode lhe ser alertado sobre <em>SSL Validation</em>. Por isso também vamos aceitar o alerto clicando em <em>Disable SSL Validation</em>, depois na sessão <em>Network</em> desmarcar o item <strong>Validate certificates</strong>.</p>
+</blockquote>
+<p>Agora teste as demais opções, como <strong>Create Aluno</strong> e depois volte ao <strong>Get Alunos</strong> para ver o aluno criado.</p>
+<p>Tente utilizar o <strong>Update Aluno</strong> (não se esqueça de atualizar na rota (URL) com o Id do aluno).</p>
+<hr>
+<h2 id="a-namenext-stepsapróximas-etapas"><a name="next-steps"></a>Próximas etapas</h2>
+<p>Para saber mais sobre a criação de APIs Web do ASP.NET Core, confira os seguintes recursos:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=7uJt_sOenyo&amp;feature=youtu.be">Versão do artigo original no YouTube</a></li>
+<li>Artigo original: <a href="https://docs.microsoft.com/pt-br/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0">Microsoft Docs</a></li>
+<li>Inclua novos modelos como &ldquo;Turma&rdquo;, &ldquo;Curso&rdquo;, etc.</li>
+</ul>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/DotNet-Core/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet Core</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/MongoDb/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">MongoDb</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/perceptron/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Perceptron</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/pt/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Pt</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/">Console Application para upload de arquivo no Azure Blob Storage</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Install .NET 7 on Raspberry PI | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="The Raspberry Pi is a little single-board computer that is well-known for its adaptability and low price. It can be applied to a variety of applications, including media centers, home automation, robotics, and programming. We will walk you through the process of installing.NET 3.1 on Raspberry Pi OS, the operating system created specifically for Raspberry Pi, in this blog post.
+⚡Installation Process To install .NET 7 on a Raspberry Pi OS, we need to update the operating system, install some dependencies, download and install the .">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/install-net-7-on-raspberry-pi/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/install-net-7-on-raspberry-pi/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Install .NET 7 on Raspberry PI">
+  <meta property="og:description" content="The Raspberry Pi is a little single-board computer that is well-known for its adaptability and low price. It can be applied to a variety of applications, including media centers, home automation, robotics, and programming. We will walk you through the process of installing.NET 3.1 on Raspberry Pi OS, the operating system created specifically for Raspberry Pi, in this blog post.
+⚡Installation Process To install .NET 7 on a Raspberry Pi OS, we need to update the operating system, install some dependencies, download and install the .">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-11-13T20:21:17+00:00">
+    <meta property="article:modified_time" content="2022-11-13T20:21:17+00:00">
+
+  <meta itemprop="name" content="Install .NET 7 on Raspberry PI">
+  <meta itemprop="description" content="The Raspberry Pi is a little single-board computer that is well-known for its adaptability and low price. It can be applied to a variety of applications, including media centers, home automation, robotics, and programming. We will walk you through the process of installing.NET 3.1 on Raspberry Pi OS, the operating system created specifically for Raspberry Pi, in this blog post.
+⚡Installation Process To install .NET 7 on a Raspberry Pi OS, we need to update the operating system, install some dependencies, download and install the .">
+  <meta itemprop="datePublished" content="2022-11-13T20:21:17+00:00">
+  <meta itemprop="dateModified" content="2022-11-13T20:21:17+00:00">
+  <meta itemprop="wordCount" content="257">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Install .NET 7 on Raspberry PI">
+  <meta name="twitter:description" content="The Raspberry Pi is a little single-board computer that is well-known for its adaptability and low price. It can be applied to a variety of applications, including media centers, home automation, robotics, and programming. We will walk you through the process of installing.NET 3.1 on Raspberry Pi OS, the operating system created specifically for Raspberry Pi, in this blog post.
+⚡Installation Process To install .NET 7 on a Raspberry Pi OS, we need to update the operating system, install some dependencies, download and install the .">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Install .NET 7 on Raspberry PI</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2022-11-13T20:21:17Z">November 13, 2022</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>The Raspberry Pi is a little single-board computer that is well-known for its adaptability and low price. It can be applied to a variety of applications, including media centers, home automation, robotics, and programming. We will walk you through the process of installing.NET 3.1 on Raspberry Pi OS, the operating system created specifically for Raspberry Pi, in this blog post.</p>
+<h2 id="installation-process">⚡Installation Process</h2>
+<p>To install .NET 7 on a Raspberry Pi OS, we need to update the operating system, install some dependencies, download and install the .NET SDK, set environment variables, and verify the installation. The process involves opening the terminal and running several commands, which we have outlined in detail in the previous section.</p>
+<h3 id="step-1-update-our-existing-packages">Step 1 Update our existing packages</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update <span style="color:#f92672">&amp;&amp;</span> sudo apt upgrade
+</span></span></code></pre></div><h3 id="step-2">Step 2</h3>
+<p>Download and run the <strong>Microsoft Installation Script</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sSL https://dot.net/v1/dotnet-install.sh | bash
+</span></span></code></pre></div><p>Once finished we need</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x ./dotnet-install.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>./dotnet-install.sh -c Current
+</span></span></code></pre></div><h2 id="-in-conclusion">😎 In Conclusion</h2>
+<p>Installing .NET 3.1 on Raspberry Pi OS may seem daunting, especially if you&rsquo;re new to Linux-based systems. However, by following the steps outlined in this blog post, you should be able to install .NET 3.1 on your Raspberry Pi with ease. The Raspberry Pi is a versatile and affordable computer that can be used for a wide range of projects, and the installation of .NET 3.1 on Raspberry Pi OS will enable you to develop and run applications on your Raspberry Pi.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sSL https://dot.net/v1/dotnet-install.sh | bash
+</span></span></code></pre></div><blockquote>
+<p>Reference to execute on <a href="https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script">https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script</a></p>
+</blockquote>
+<p>Set as executable</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod +x ./dotnet-install.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>./dotnet-install.sh -c Current
+</span></span></code></pre></div><ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

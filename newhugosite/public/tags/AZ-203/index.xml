@@ -37,6 +37,20 @@
       <description>##Managed disks&#xA;The Azure platform manages the disk and the backing storage You don&amp;rsquo;t have to worry about storage account limits and thresholds ##Unmanaged disks&#xA;You manually create and manage virtual hard disks (VHDs) in your Storage account You will need to consider account throughput and capacity limits when using this model Managed disks - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure.</description>
     </item>
     <item>
+      <title>AZ-203 - AGENDA - 01/2020</title>
+      <link>http://localhost:1313/post/az-203-conteudo-programatico/</link>
+      <pubDate>Fri, 03 Jan 2020 20:24:05 +0000</pubDate>
+      <guid>http://localhost:1313/post/az-203-conteudo-programatico/</guid>
+      <description>Agenda do curso AZ-203.</description>
+    </item>
+    <item>
+      <title>Azure Function V3 com EntityFramework Core 3.1</title>
+      <link>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</link>
+      <pubDate>Tue, 31 Dec 2019 16:47:03 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</guid>
+      <description>Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.&#xA;Ao final vamos ter a seguinte configuração:&#xA;Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos&#xA;Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.&#xA;Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.</description>
+    </item>
+    <item>
       <title>Azure Kubernets - az cli</title>
       <link>http://localhost:1313/post/azure-kubernets-az-cli/</link>
       <pubDate>Mon, 03 Jun 2019 00:31:00 +0000</pubDate>

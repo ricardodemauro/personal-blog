@@ -6,8 +6,15 @@
     <description>Recent content in .NET 6 on rmauro.dev {blog}</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Aug 2023 18:01:18 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Oct 2023 19:46:26 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/.NET-6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting started with ONION Architecture in C#</title>
+      <link>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</link>
+      <pubDate>Tue, 24 Oct 2023 19:46:26 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</guid>
+      <description>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.&#xA;We&amp;rsquo;ll take a deep dive into the layers of Onion Architecture while building a &amp;ldquo;TODO List&amp;rdquo; application to illustrate its principles.&#xA;What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application&amp;rsquo;s core business logic from external concerns.</description>
+    </item>
     <item>
       <title>Oracle ODP.NET with truly Async Methods in C#</title>
       <link>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</link>
@@ -42,6 +49,20 @@
       <pubDate>Tue, 04 Apr 2023 00:05:15 +0000</pubDate>
       <guid>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</guid>
       <description>One of the key features of Serilog is the ability to Enrich Log Events with additional contextual information that can help in troubleshooting and debugging.&#xA;In this blog post, we will explore how to create a Custom Enricher with Serilog to add custom properties to log events.</description>
+    </item>
+    <item>
+      <title>Measure Code Execution Time with .NET C#</title>
+      <link>http://localhost:1313/post/simpleexecutiontracker/</link>
+      <pubDate>Thu, 06 Oct 2022 14:29:39 +0000</pubDate>
+      <guid>http://localhost:1313/post/simpleexecutiontracker/</guid>
+      <description>As a programmer, we may need to find out the execution time used by a particular segment of the C# code, in order to optimize the performance. For example, we may want to know how much time is taken for reading multiple files in the file system, or fetching data from the database, or executing some business logic.&#xA;Provides a set of methods and properties that you can use to accurately measure elapsed time.</description>
+    </item>
+    <item>
+      <title>Health Check in .NET 6 C#</title>
+      <link>http://localhost:1313/post/aspnet-health-check-for-oracle/</link>
+      <pubDate>Mon, 03 Oct 2022 16:22:14 +0000</pubDate>
+      <guid>http://localhost:1313/post/aspnet-health-check-for-oracle/</guid>
+      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.&#xA;In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.&#xA;🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
     </item>
     <item>
       <title>Calculate Time Ago with .NET C#</title>

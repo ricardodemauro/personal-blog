@@ -6,14 +6,35 @@
     <description>Recent content on rmauro.dev {blog}</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Jul 2024 21:52:26 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jul 2024 17:00:19 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Semantic Kernel - Connect with GPT-4o and OLLAMA 3</title>
+      <link>http://localhost:1313/post/semantic-kernal-part-i-set-up-with-chatgpto-and-ollama-3/</link>
+      <pubDate>Mon, 29 Jul 2024 17:00:19 +0000</pubDate>
+      <guid>http://localhost:1313/post/semantic-kernal-part-i-set-up-with-chatgpto-and-ollama-3/</guid>
+      <description> Semantic Kernel - Connect with GPT-4o and OLLAMA 3 Semantic Kernel II - Adding Planners Semantic Kernel III - Adding Hooks Semantic Kernel IV - RAG Semantic Kernel V - Latest Planner Semantic Kernel VI - Integrating with Bot Framework Semantic Kernel VII - Adding to Discord Channel Coding Software is hard Coding </description>
+    </item>
     <item>
       <title>Set up GitHub with SSH Config</title>
       <link>http://localhost:1313/post/github-ssh-key-authentication-and-ssh-config/</link>
       <pubDate>Sat, 27 Jul 2024 21:52:26 +0000</pubDate>
       <guid>http://localhost:1313/post/github-ssh-key-authentication-and-ssh-config/</guid>
       <description>By setting up SSH keys for GitHub, you can securely connect to your repositories without the hassle of repeatedly entering your username and password.&#xA;This guide will walk you through the process of setting up and using SSH keys with GitHub via the SSH config file.&#xA;While many developers use the ssh-agent to manage their SSH keys, an alternative method involves configuring the SSH config file for even smoother operations.</description>
+    </item>
+    <item>
+      <title>Exploring Azure Messaging Services - Crossing the Right Service for Your Scenario</title>
+      <link>http://localhost:1313/post/exploring-azure-messaging-services-crossing-the-right-service-for-your-scenario/</link>
+      <pubDate>Tue, 23 Jul 2024 00:04:01 +0000</pubDate>
+      <guid>http://localhost:1313/post/exploring-azure-messaging-services-crossing-the-right-service-for-your-scenario/</guid>
+      <description>Azure offers a variety of messaging services tailored to meet different communication patterns and application needs. In this blog post, we’ll dive into the key messaging services available on Azure and explore the best scenarios for using each one.&#xA;1. Azure Service Bus Azure Service Bus is a fully managed enterprise message broker with features like message queues and publish-subscribe topics. It ensures reliable messaging between services, enabling decoupling and asynchronous communication.</description>
+    </item>
+    <item>
+      <title>Programming with Oracle ODP.NET - 8 Tips</title>
+      <link>http://localhost:1313/post/8-tips-when-working-with-oracle-odp-driver-async/</link>
+      <pubDate>Fri, 19 Jul 2024 21:47:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/8-tips-when-working-with-oracle-odp-driver-async/</guid>
+      <description>When using async/await with the Oracle ODP.NET driver, there are several tips and tricks you can use to optimize performance and ensure proper functionality. Here are some key points to consider:&#xA;1. Use Async Methods Ensure you are using the asynchronous versions of the ODP.NET methods, such as ExecuteNonQueryAsync, ExecuteReaderAsync, and ExecuteScalarAsync. This will help you take full advantage of the async/await pattern.&#xA;2. Configure the Connection String Properly configure your connection string to support asynchronous operations.</description>
     </item>
     <item>
       <title>Recursive Calls in C#: A Deep Dive</title>
@@ -65,11 +86,25 @@
       <description>SQLMap is a powerful and popular open-source tool used to detect and exploit SQL injection vulnerabilities.&#xA;Let&amp;rsquo;s dive into a basic usage of SQLMap.&#xA;Pre-Requirements Linux Installation sudo apt-get install sqlmap Windows Installation Download and install from SQLMap from the official website SQL Map&#xA;Basic Usage In the terminal or command prompt. Run SQLMap with a target URL that is suspected of being vulnerable to SQL injection:&#xA;sqlmap -u &amp;#34;http://example.com/page?id=1&amp;#34; Basic Options -u URL, --url=URL: Specifies the URL to test.</description>
     </item>
     <item>
+      <title>Create AI Bot with Semantic Kernel in C#</title>
+      <link>http://localhost:1313/post/getting-started-with-semantic-kernel-in-c/</link>
+      <pubDate>Fri, 05 Jul 2024 19:57:48 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-started-with-semantic-kernel-in-c/</guid>
+      <description>Semantic Kernel is a powerful tool that allows you to build AI agents capable of interacting with AI services and running your code. AI services such as Open AI, Azure AI, Ollama offline agent, among others.L&#xA;Whether you&amp;rsquo;re a Python or C# developer, this guide will help you take your first steps with Semantic Kernel. Let&amp;rsquo;s dive in!&#xA;Installing the SDK Before we begin, you&amp;rsquo;ll need to install the necessary packages.</description>
+    </item>
+    <item>
       <title>Set up Entity Framework Core In Memory Database Provider</title>
       <link>http://localhost:1313/post/set-up-entity-framework-core-in-memory-store/</link>
       <pubDate>Fri, 05 Jul 2024 02:30:13 +0000</pubDate>
       <guid>http://localhost:1313/post/set-up-entity-framework-core-in-memory-store/</guid>
       <description>One of the useful features of EF Core is the In-Memory Database Provider, which is perfect for testing purposes. In this guide, we will walk through setting up EF Core with an in-memory database, demonstrating how to configure and use it effectively.&#xA;Step-by-Step Guide Start by creating a new .NET console using the .NET CLI and add the required packages.&#xA;dotnet new console -n EfCoreInMemoryDemo cd EfCoreInMemoryDemo dotnet add package Microsoft.</description>
+    </item>
+    <item>
+      <title>HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience</title>
+      <link>http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/</link>
+      <pubDate>Fri, 05 Jul 2024 01:57:30 +0000</pubDate>
+      <guid>http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/</guid>
+      <description>In this hands-on blog post, we&amp;rsquo;ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.&#xA;Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.</description>
     </item>
     <item>
       <title>Hangfire Implementing Background Jobs</title>
@@ -121,11 +156,39 @@
       <description>In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.&#xA;In this introduction let&amp;rsquo;s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.&#xA;Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command.</description>
     </item>
     <item>
+      <title>Query Specification Pattern with EF Core</title>
+      <link>http://localhost:1313/post/query-specification-pattern-with-ef-core/</link>
+      <pubDate>Mon, 24 Jun 2024 14:11:50 +0000</pubDate>
+      <guid>http://localhost:1313/post/query-specification-pattern-with-ef-core/</guid>
+      <description>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.&#xA;Here’s what you need to know:&#xA;1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution.</description>
+    </item>
+    <item>
+      <title>Getting started with ONION Architecture in C#</title>
+      <link>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</link>
+      <pubDate>Tue, 24 Oct 2023 19:46:26 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</guid>
+      <description>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.&#xA;We&amp;rsquo;ll take a deep dive into the layers of Onion Architecture while building a &amp;ldquo;TODO List&amp;rdquo; application to illustrate its principles.&#xA;What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application&amp;rsquo;s core business logic from external concerns.</description>
+    </item>
+    <item>
       <title>Oracle ODP.NET with truly Async Methods in C#</title>
       <link>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</link>
       <pubDate>Thu, 24 Aug 2023 18:01:18 +0000</pubDate>
       <guid>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</guid>
       <description>Oracle&amp;rsquo;s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.&#xA;Under PreRelease until today : 2023-08-24&#xA;Oracle.ManagedDataAccess.Core - pre release&#xA;Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let&amp;rsquo;s take a moment to understand the power of asynchronous programming in C#.&#xA;The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.</description>
+    </item>
+    <item>
+      <title>C# Oracle ODP.NET with Async Methods</title>
+      <link>http://localhost:1313/post/oracle-odp/</link>
+      <pubDate>Tue, 15 Aug 2023 19:17:39 +0000</pubDate>
+      <guid>http://localhost:1313/post/oracle-odp/</guid>
+      <description>Introduce the significance of asynchronous programming in C# and its role in enhancing application performance and responsiveness. Highlight the arrival of Oracle ODP.NET 23c Dev, a game-changer for developers working with Oracle databases, offering genuine async/await support.&#xA;**Async/Await in C#:**Explain the async/await pattern in C# and its importance in developing non-blocking, responsive applications. Discuss the advantages of asynchronous programming, including efficient resource utilization and improved user experiences.&#xA;**Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction:**Delve into the exciting developments in the Oracle ODP.</description>
+    </item>
+    <item>
+      <title>Oracle Async ODP.NET</title>
+      <link>http://localhost:1313/post/oracle-async-odp-net/</link>
+      <pubDate>Tue, 15 Aug 2023 17:49:26 +0000</pubDate>
+      <guid>http://localhost:1313/post/oracle-async-odp-net/</guid>
+      <description></description>
     </item>
     <item>
       <title>Oracle PIVOT Command - Turn Rows into Columns</title>
@@ -156,11 +219,32 @@
       <description>Oracle MERGE statement is one of those powerful commands which allows you to perform INSERT and UPDATE operations in a single statement based on specific conditions.</description>
     </item>
     <item>
+      <title>Localization</title>
+      <link>http://localhost:1313/post/localization/</link>
+      <pubDate>Sat, 20 May 2023 23:14:07 +0000</pubDate>
+      <guid>http://localhost:1313/post/localization/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>XGH / eXtreme Go Horse</title>
       <link>http://localhost:1313/post/extreme-go-horse-xgh-process-source/</link>
       <pubDate>Tue, 02 May 2023 16:00:00 +0000</pubDate>
       <guid>http://localhost:1313/post/extreme-go-horse-xgh-process-source/</guid>
       <description>I think therefore it&amp;rsquo;s not XGH.&#xA;In XGH you don&amp;rsquo;t think, you do the first thing that comes to your mind. There&amp;rsquo;s not a second option as the first one is faster.</description>
+    </item>
+    <item>
+      <title>Adding CORS to .NET 6</title>
+      <link>http://localhost:1313/post/adding-cors-to-net-6/</link>
+      <pubDate>Mon, 01 May 2023 02:13:59 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-cors-to-net-6/</guid>
+      <description>Cross-Origin Resource Sharing, or CORS, is a security mechanism that controls resource access from different domains.&#xA;By default, web browsers prevent web pages from requesting a domain other than the one that served the page.&#xA;This is called the same-origin policy. CORS provides a way for web applications to access resources from a different domain than the one from which the web application was served.&#xA;This article will discuss adding CORS support to a .</description>
+    </item>
+    <item>
+      <title>C# Records Types</title>
+      <link>http://localhost:1313/post/c-records-types/</link>
+      <pubDate>Fri, 28 Apr 2023 23:20:01 +0000</pubDate>
+      <guid>http://localhost:1313/post/c-records-types/</guid>
+      <description>Introduction C# 9.0 introduces record types. You use the record keyword to define a reference type that provides built-in functionality for encapsulating data.&#xA;What are records? A record type in C# 9 is a lightweight, immutable data type (or a lightweight class) that has read-only properties only. Because a record type is immutable, it is thread-safe and cannot mutate or change after it has been created.&#xA;Mutable property A record type can have mutable properties if you use init-only setters.</description>
     </item>
     <item>
       <title>C# JWT Authentication .NET 6</title>
@@ -170,11 +254,67 @@
       <description>In this article, we will work on implementing C# JWT Authentication using .NET 7 - which also works for .NET 6, and preview .NET 8 - using ASP.NET Core.</description>
     </item>
     <item>
+      <title>Oracle DDLs</title>
+      <link>http://localhost:1313/post/oracle-ddls/</link>
+      <pubDate>Thu, 27 Apr 2023 15:15:06 +0000</pubDate>
+      <guid>http://localhost:1313/post/oracle-ddls/</guid>
+      <description>SELECT * FROM USER_INDEXES WHERE TABLE_NAME = &amp;#39;MAT_ROUTE&amp;#39;; SELECT DBMS_METADATA.GET_DDL(&amp;#39;INDEX&amp;#39;, &amp;#39;MAT_ROUTE_IDX01&amp;#39;) FROM DUAL; SELECT * FROM all_ind_columns WHERE table_name = &amp;#39;MAT_ROUTE&amp;#39; ORDER BY TABLE_NAME, INDEX_NAME, COLUMN_NAME </description>
+    </item>
+    <item>
+      <title>PowerShell File and Folder Management</title>
+      <link>http://localhost:1313/post/powershell-file-and-folder-management/</link>
+      <pubDate>Wed, 26 Apr 2023 13:32:07 +0000</pubDate>
+      <guid>http://localhost:1313/post/powershell-file-and-folder-management/</guid>
+      <description>Test-Path -Path &amp;#34;some path&amp;#34; New-Item (Microsoft.PowerShell.Management) - PowerShell The New-Item cmdlet creates a new item and sets its value. The types of items that can be created depend on the location of the item. For example, in the file system, New-Item creates files and folders. In the registry, New-Item creates registry keys and entries. New-Item can also set the value of t… sdwheeler Microsoft Learn Function Clear-Path ($path) { Write-Output &amp;#34;[Clear-Path] init &amp;#34; $path Get-ChildItem -Path $path -Include *.</description>
+    </item>
+    <item>
+      <title>Chat GPT to Classify Movie Comments using Da-Vince</title>
+      <link>http://localhost:1313/post/chat-gpt-to-classify-movie-comments-using-da-vince/</link>
+      <pubDate>Sun, 23 Apr 2023 12:48:55 +0000</pubDate>
+      <guid>http://localhost:1313/post/chat-gpt-to-classify-movie-comments-using-da-vince/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Documenting C# APIs with Open API and Swagger</title>
+      <link>http://localhost:1313/post/api-documentation-with-openapi-swagger-in-c/</link>
+      <pubDate>Tue, 18 Apr 2023 23:14:35 +0000</pubDate>
+      <guid>http://localhost:1313/post/api-documentation-with-openapi-swagger-in-c/</guid>
+      <description>API documentation is an essential aspect of software development. And the Open API documentation is one of the widely used standards for documenting RESTful APIs.&#xA;Swagger is an open-source tool that simplifies the process of creating and documenting RESTful APIs that conform to the Open API specification. In this article, we will discuss how to document your API using Swagger in C#.&#xA;In this issue let&amp;rsquo;s use Swashbuckle packages to create the Open API documentation.</description>
+    </item>
+    <item>
+      <title>Action and Func delegates in C#</title>
+      <link>http://localhost:1313/post/action-and-func-delegates-in-c/</link>
+      <pubDate>Sat, 15 Apr 2023 20:50:51 +0000</pubDate>
+      <guid>http://localhost:1313/post/action-and-func-delegates-in-c/</guid>
+      <description>In this article, we will explore two types of predefined delegates in C# System.Action and System.Func.&#xA;Delegates are one of the most important features of the C# language. We typically use them as a type-safe way to represent a method, which can be passed as an argument to another method.&#xA;The Basics of Delegates Before diving into Actions and Funcs let&amp;rsquo;s discuss what Delegates are.&#xA;Delegates are a typed way to represent a method that can be passed as an argument to another method.</description>
+    </item>
+    <item>
       <title>DALL-E Art-Generator with C# .NET</title>
       <link>http://localhost:1313/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/</link>
       <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
       <guid>http://localhost:1313/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/</guid>
       <description>In this blog post, we will explore the steps to develop a C# application using DALL-E model to generate images from text.</description>
+    </item>
+    <item>
+      <title>Building Secure Authorization Server with OpenIddict 4: An In-Depth Tutorial</title>
+      <link>http://localhost:1313/post/complete-guide-on-creating/</link>
+      <pubDate>Sun, 09 Apr 2023 20:58:35 +0000</pubDate>
+      <guid>http://localhost:1313/post/complete-guide-on-creating/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Create a Reverse Proxy with YARP</title>
+      <link>http://localhost:1313/post/create-a-reverse-proxy-with-yarp/</link>
+      <pubDate>Thu, 06 Apr 2023 17:56:48 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-a-reverse-proxy-with-yarp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Enrich Serilog messages with Http Headers</title>
+      <link>http://localhost:1313/post/enrich-your-log-with-http-request-information/</link>
+      <pubDate>Tue, 04 Apr 2023 19:28:05 +0000</pubDate>
+      <guid>http://localhost:1313/post/enrich-your-log-with-http-request-information/</guid>
+      <description>Serilog.AspNetCore is a package that provides middleware to simplify the logging process for .NET Web Applications. It is built on top of Serilog, a popular logging framework that offers an efficient and flexible way to capture application events and generate logs for debugging, troubleshooting, and auditing.&#xA;One of the primary features of Serilog is the ability to enrich log events with contextual information of any kind, such as HTTP headers, that can help developers understand application behavior and diagnose issues more efficiently.</description>
     </item>
     <item>
       <title>Getting Started with Serilog Custom Enrichers</title>
@@ -191,6 +331,20 @@
       <description>With the use of C#, we can develop a console application that uses the Chat GPT model to generate human-like responses to input.</description>
     </item>
     <item>
+      <title>Build your own OIDC Authorization Server with C#</title>
+      <link>http://localhost:1313/post/build-your-own-oidc-authorization-server-with-c/</link>
+      <pubDate>Wed, 28 Dec 2022 22:55:32 +0000</pubDate>
+      <guid>http://localhost:1313/post/build-your-own-oidc-authorization-server-with-c/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Install .NET 7 on Raspberry PI</title>
+      <link>http://localhost:1313/post/install-net-7-on-raspberry-pi/</link>
+      <pubDate>Sun, 13 Nov 2022 20:21:17 +0000</pubDate>
+      <guid>http://localhost:1313/post/install-net-7-on-raspberry-pi/</guid>
+      <description>The Raspberry Pi is a little single-board computer that is well-known for its adaptability and low price. It can be applied to a variety of applications, including media centers, home automation, robotics, and programming. We will walk you through the process of installing.NET 3.1 on Raspberry Pi OS, the operating system created specifically for Raspberry Pi, in this blog post.&#xA;⚡Installation Process To install .NET 7 on a Raspberry Pi OS, we need to update the operating system, install some dependencies, download and install the .</description>
+    </item>
+    <item>
       <title>Define Implicit and Explicit Operator - C# Tips</title>
       <link>http://localhost:1313/post/define-implicit-explicit-operator-csharp-tips/</link>
       <pubDate>Thu, 10 Nov 2022 18:48:49 +0000</pubDate>
@@ -198,11 +352,67 @@
       <description>C# allows us to define Implicit and Explicit operators. Unlike casting Implicit __ and Explicit operators defines how C# should behave when encountering an equals sign.&#xA;Implicit operator execution can be invoked when assigning a variable or calling a method.&#xA;To use Explicit operator we should do the same as casting an object. It&amp;rsquo;s similar to a cast an object.&#xA;public record class Email(string Value) { //define implicit operator public static implicit operator string(Email value) =&amp;gt; value.</description>
     </item>
     <item>
+      <title>Implementation ITicketStore with Oracle C#</title>
+      <link>http://localhost:1313/post/implementation-iticketstore-with-oracle-c/</link>
+      <pubDate>Wed, 19 Oct 2022 13:13:56 +0000</pubDate>
+      <guid>http://localhost:1313/post/implementation-iticketstore-with-oracle-c/</guid>
+      <description>CREATE TABLE &amp;#34;MET_TICKET&amp;#34; (&#x9;&amp;#34;ID_TICKET&amp;#34; NUMBER, &amp;#34;BB_TICKET&amp;#34; BLOB, &amp;#34;NM_TICKET&amp;#34; VARCHAR2(120 BYTE), &amp;#34;DT_INS&amp;#34; TIMESTAMP (6), &amp;#34;DT_UPD&amp;#34; TIMESTAMP (6), &amp;#34;DT_DEL&amp;#34; TIMESTAMP (6), &amp;#34;BL_DEL&amp;#34; NUMBER ) using System.Globalization; namespace TicketStore.Oracle; internal sealed class SqlQueries { const string _storeOrRenewFormat = @&amp;#34; MERGE INTO {0} M USING ( SELECT :NM_TICKET AS NM_TICKET FROM DUAL ) S ON (M.NM_TICKET = S.NM_TICKET AND BL_DEL = 0) WHEN MATCHED THEN UPDATE SET M.BB_TICKET = :BB_TICKET, M.DT_UPD = SYSDATE WHEN NOT MATCHED THEN INSERT ( ID_TICKET , BB_TICKET , NM_TICKET , DT_INS , BL_DEL ) VALUES ( {1}.</description>
+    </item>
+    <item>
+      <title>Measure Code Execution Time with .NET C#</title>
+      <link>http://localhost:1313/post/simpleexecutiontracker/</link>
+      <pubDate>Thu, 06 Oct 2022 14:29:39 +0000</pubDate>
+      <guid>http://localhost:1313/post/simpleexecutiontracker/</guid>
+      <description>As a programmer, we may need to find out the execution time used by a particular segment of the C# code, in order to optimize the performance. For example, we may want to know how much time is taken for reading multiple files in the file system, or fetching data from the database, or executing some business logic.&#xA;Provides a set of methods and properties that you can use to accurately measure elapsed time.</description>
+    </item>
+    <item>
+      <title>Health Check in .NET 6 C#</title>
+      <link>http://localhost:1313/post/aspnet-health-check-for-oracle/</link>
+      <pubDate>Mon, 03 Oct 2022 16:22:14 +0000</pubDate>
+      <guid>http://localhost:1313/post/aspnet-health-check-for-oracle/</guid>
+      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.&#xA;In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.&#xA;🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
+    </item>
+    <item>
+      <title>Getting Started with Benchmark.Net C#</title>
+      <link>http://localhost:1313/post/getting-started-with-benchmark-net-c-sharp/</link>
+      <pubDate>Sun, 02 Oct 2022 18:04:18 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-started-with-benchmark-net-c-sharp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>haacked aspnet-client-validation</title>
+      <link>http://localhost:1313/post/untitled-3/</link>
+      <pubDate>Tue, 27 Sep 2022 17:40:19 +0000</pubDate>
+      <guid>http://localhost:1313/post/untitled-3/</guid>
+      <description> GitHub - haacked/aspnet-client-validation: A client validation library for ASP.NET MVC that does not require jQuery A client validation library for ASP.NET MVC that does not require jQuery - GitHub - haacked/aspnet-client-validation: A client validation library for ASP.NET MVC that does not require jQuery haacked GitHub </description>
+    </item>
+    <item>
       <title>Calculate Time Ago with .NET C#</title>
       <link>http://localhost:1313/post/calculate-time-ago-with-csharp/</link>
       <pubDate>Mon, 26 Sep 2022 14:00:52 +0000</pubDate>
       <guid>http://localhost:1313/post/calculate-time-ago-with-csharp/</guid>
       <description></description>
+    </item>
+    <item>
+      <title>Distributed caching in ASP.NET Core - Oracle as Backend</title>
+      <link>http://localhost:1313/post/distributed-cache-oracle-database/</link>
+      <pubDate>Tue, 20 Sep 2022 16:58:20 +0000</pubDate>
+      <guid>http://localhost:1313/post/distributed-cache-oracle-database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gist Commit Messages</title>
+      <link>http://localhost:1313/post/gist-commit-messages/</link>
+      <pubDate>Thu, 15 Sep 2022 13:39:33 +0000</pubDate>
+      <guid>http://localhost:1313/post/gist-commit-messages/</guid>
+      <description> Git Commit message Emoji Git Commit message Emoji. GitHub Gist: instantly share code, notes, and snippets. 262588213843476 Gist </description>
+    </item>
+    <item>
+      <title>10 Visual Studio Extensions I&#39;m using in 2022</title>
+      <link>http://localhost:1313/post/extensions-that-i-use-in-visual-studio-2022/</link>
+      <pubDate>Mon, 12 Sep 2022 21:17:08 +0000</pubDate>
+      <guid>http://localhost:1313/post/extensions-that-i-use-in-visual-studio-2022/</guid>
+      <description>GitHub - madskristensen/RainbowBraces: A Visual Studio extension A Visual Studio extension. Contribute to madskristensen/RainbowBraces development by creating an account on GitHub. madskristensen GitHub GitHub - madskristensen/MarkdownEditor2022: A Visual Studio extension A Visual Studio extension. Contribute to madskristensen/MarkdownEditor2022 development by creating an account on GitHub. madskristensen GitHub Release notes · ErikEJ/SqlCeToolbox Wiki SQLite &amp;amp; SQL Server Compact Toolbox extension for Visual Studio, SSMS (and stand alone) - Release notes · ErikEJ/SqlCeToolbox Wiki ErikEJ GitHub CommentRemover/CHANGELOG.</description>
     </item>
     <item>
       <title>SSH Exposed to Internet - 8 steps check list</title>
@@ -219,6 +429,48 @@
       <description>rmauro is an independent publication launched in September 2022 by rmauro. If you subscribe today, you&amp;rsquo;ll get full access to the website as well as email newsletters about new content when it&amp;rsquo;s available. Your subscription makes this site possible, and allows rmauro to continue to exist. Thank you!&#xA;Access all areas By signing up, you&amp;rsquo;ll get access to the full archive of everything that&amp;rsquo;s been published before and everything that&amp;rsquo;s still to come.</description>
     </item>
     <item>
+      <title>Coming soon</title>
+      <link>http://localhost:1313/post/coming-soon/</link>
+      <pubDate>Sat, 10 Sep 2022 04:01:11 +0000</pubDate>
+      <guid>http://localhost:1313/post/coming-soon/</guid>
+      <description>This is rmauro, a brand new site by rmauro that&amp;rsquo;s just getting started. Things will be up and running here shortly, but you can subscribe in the meantime if you&amp;rsquo;d like to stay up to date and receive emails when new content is published!</description>
+    </item>
+    <item>
+      <title>Change Default Port 22 of SSH Server</title>
+      <link>http://localhost:1313/post/change-default-port-of-ssh-server/</link>
+      <pubDate>Sun, 04 Sep 2022 19:24:30 +0000</pubDate>
+      <guid>http://localhost:1313/post/change-default-port-of-ssh-server/</guid>
+      <description>Port 22 is used by default to establish an SSH connections. This port is automatically configured during the installation of your operating system.&#xA;To reduce the number of brute force attacks, you can change it to a different port for SSH access.&#xA;Changing the Default Port To change the SSH port:&#xA;Log on to the server as an root or an administrator user. Open the SSH configuration file sshd_config with the text editor nano: $ nano /etc/ssh/sshd_config Search for the entry Port 22 (could be commented) Replace it with the desired value - port between 1024 and 65536 Save and Restart the OpenSSH service $ service ssh restart # or $ systemctl restart sshd </description>
+    </item>
+    <item>
+      <title>Authorization Server OIDC with .NET 6</title>
+      <link>http://localhost:1313/post/create-an-oidc-server-with-net-6/</link>
+      <pubDate>Tue, 23 Aug 2022 16:37:55 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-an-oidc-server-with-net-6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Refresh Token</title>
+      <link>http://localhost:1313/post/refresh-token/</link>
+      <pubDate>Tue, 16 Aug 2022 19:37:32 +0000</pubDate>
+      <guid>http://localhost:1313/post/refresh-token/</guid>
+      <description>### POST https://sts.compass.uat.charter.com/connect/token HTTP/1.1 content-type: application/x-www-form-urlencoded grant_type=refresh_token &amp;amp;refresh_token=eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJraWQiOiIyQ0M3RDZBMzNEQUQ4OTM2QTA0REE3OTJBMDE4MDQxNzBFQzFCMDY5IiwidHlwIjoib2lfcmVmdCtqd3QifQ.Yx8ohJAs-x_k75N6t3UaIk3eJH6-WadK1DcMT0SkRdt2FIZaz53sVr3hwJtG19OGOg6rp7YuFi75DJcTqP2hvMkmOPlJFibGeZA2ESjJKROqngsECvnTWI12Ed9pSr3F3ynQgUygWZtOA28ZyjVvPqxWzKRtdfNcoq9H2fL8RRa148Fer3eM1XYosmys_YzzhR2f5iz2fypWQo6EITnxtkSUUANYgGqLXlHKf7hmGqM5dP22VTCTm-5Ldz3-O2gOOK8Gmm7pblKtfvJHgx2y-RliCv7ldEYzEH3yx3OWNzLTnCyyxQ9fiiWGNjx34BpnCtLq9CZcy-vJx9nBGgipDA.zFCPQHQJZ3XbP8eeQQKlAQ.b8XIP5v4cTBfFp1r9RN5cIOSwgyJgNQwe6ZZXUmXA4w3y7Z-y85pRnN8AMbgIgmEHwGTc9ORWR9XFlhlHX-U0Tacc43h-x1w_VYvlCVvDJIa995aP8PZ1GfQWTfPOxvtD6NDC36y1IDGnseChwyJU1aAxlmGx9ogbmhxBYXeCDp8Ld2vDcAB6NOcWB5wOsJlwTC6On9Sb3VLWNI6gZgOhDcBSEkq6Ey8nPnoQiROHhIxGhGAnx_ua8M-W_g5oNQ7-rz_k8-4omDBiEwrl_wisxPNB-R4QBhW8XTZ-HFvY0CA1Cru6MnlXIZ9VtwO1-LMhvrF1SfKsJ8_dO93ZdTfzz1lacsrFVC8kVZQqcAusKZiedRUFgYM2vr21MoT3hhCCfdrUt1aJ-lXPi9D30Qne2QJH11tkaRGmLwYN0WbnCNBFLspJsh8kD7ji7rP3YxgPqcZ5cMyy29eWX9AAu3I2HVN7WUwOTPcKjJx1GWlpIQGrzENOA8vnXAi32iEH9LX6be2_FG9wpIt5bOLUoSschviLZSdXqrLYfz_wyrlKp4QXkJhWZXRRuPnp7XTZpiOZQMsAkTdXtv8aqIDhgZgBhVbzuCSUj0msboM53glGTmZuCLojnJG5RZD9ngOzg5PuOBEO2oZc1JU8p0w5Avm7_0hGi9KemwlfMetI3IWXLI3oZs-2F7XT_8wIFIHsoc2FKuO3vrqaFP7j0ckjd4NjvNwHqjhUQ_He4b4nnDQ61Q3VQMTJC8yPzeV4MuPPdL2nJj3STZL_X4rs1selixIcJuj_ydXzgmIGLq_dufweLLwykDJQXH-cry-QFxURYcbA1MUzwiGGYGM_Dmy5hmRI6aOMc-NSAVnGLbAmUNyFbnvnop7kM6eIVK16t0rD4qseORY2h-WNYCzPc9HmTb4A5XNz34Wgb8NcS2N22pU5XqSTw08B3CrINPXxK46jQcD2mLsqcVHxRvbvQFdOghqt1mKaykv-y9uNo1euZ3yvCT2xNpooU7HGP5rk6K0OnqcyFbT261airi7_ltdRzCc_KMYilxQx-yYUtky1hGE4ZAU5Ed8_klRvCR4IaIB4lDlOBnXi8MsdQrppC127P5V4JTjXb8AeRG41Bzf9c643JOTXliNgdUNaU_4JyshZSFejXFDHVGry5xRCH8tTllkKKuYMPCxsyw8YUjm2eAWs6YGw7DdNP7eJtPi5QVjJW_2OP6XKgPSbawy79sZqpj0carGYIrkrThu_BVPaTCZ2scb54t1P3nvN_9AipKZACqbSblvS3jR8sqWmxo_m1jodPLzwYTrVlfQ1_S-BXpL1S5L5qt0qCLG7uzcigaJj7mxl1JIESuR-B52iX96Tuvk7hT6ibIy2g31OEnFWMn2ADGeIvox9zS6BX8B59KlPSnU-5nODees1035AuSgbS3pa-VLLX2epkoM67oDvvsNfjwe_DSjRqdy3k7EQeFtzV8U8bcEN8Mh1fBewZIvci27qWCJa4lOu5xhCZ5ipqR3WXECEdbLrgvCL7xUlGkC27EGmoZHhCOEfSxwy1w284YUwir-RI7BmD249L2ipXKg0XGGg_IeWAWHkm7CD-zVz3IWLVqYeqcSyGzKMnci6iuEI6RDO0zBXS8oURJmqnFtWHCEoGV-S-9hIbBwIv4KJIr_TwJU2GkaHZ7wIZpeU2WIkUUHA3Ce_hPAOtrFcesnsccrahdtS0MZlPTGErE8aYQTsrZXG32XFxIjWJbJauZyIjBACqrcOMppuRzMYt9mH9rALmSyH7TpFz40KibBz2HnuE6fNawwlOYW-_FyTemKwN3ztQbJrcAooitiPV-jLeWz8wQkIwVTvgQZcmhdsxupHRHYaA1sDLs0qf0y0AfZMlj2_GiX941RSrRn-lwqiczuDx19miqFrhQ9GGNlVPFGZt_0Vcb8RaJcoh8a1t9hOogNLKOUavXWSyxDnBpuE9xzYbROuV84fVxajJx7lKL7TRNsH_FQdJTMiokYtPdTmWk_K7eoWT-M7fXzdbDXkw_W-MhTaNjvmPjl-NxQmPBjb__Kn1ckWLlssayd6w90Y962xpAnaf2Zuq4WFhsQzzKvA8_uQnrDYzPH8ZUVGev_m75KwKdcdV1bThelpthn13Fw3EAbdJTlFq9TCq1zg2Y6kxF3TSMVSUqd9LBOUUCBUKvLRSe5S3IZ1eL-9Ngy4Rp1x_YM5dae4XIduaXLsBjF6IFLm3rcLvjQ4TXcxh1v1SQVfr2CUCe4GkUsZR0QOl7j21kHC_lOiScSvyGZz6CtAETXkTirmIzQsNQa61GQkyAaI0OG75soyqo4ymFZQwYS7r6ZnC5Ns4Wm1uplsaRifW41hc0cTBYQ0FeWj_n18fkUUmkEBz-Fmnxv7d7nOWj89HMkOpsF61RGAbm5lyjv8SxL68uyahCrrJQZbXrg8QBBP6TabG7WX1NDNbE3GyXcylSLVeq_g0GjtXGAeNE1KY1zE7dSij18HnazBx4RR4s9neqnjvdKinIRsazlGGSxWApZPvYNbbqVHv1aLBfxTAjmRn9GlFe9E43EW0ac1LNFLBfjkjy0Na2OhqCxeVRwinBIbdSuSQ8dhaFZmpOQ39WEi4QbUYp0Y30VY2ulvp5asb7My_RYLynn7U1q4m27ZtpDuXYvnWJ8pCYjk4xpLyslwRp3Be5zWa5k2J_TUYxNPpJ--v_tgUnkLcV-tGiOjUUVLXFzzHKvipDqiOUQhhzHLLq2CZYdPg_dQLyYAiZSZfVA6bmFQSCIfg9RUAeeT8_spXtHwnCh5wBE47k.ModIORHt2o0am4nxt7Lqm5tZxh1nF9KO43dDdts1WMw &amp;amp;client_id=compass-staging-win &amp;amp;client_secret=CP69TmsYnSirLizlBNyP-P5d1SXTzmdPSvQPtjHef-win </description>
+    </item>
+    <item>
+      <title>Feature Flags in .NET 6 Minimal APIs</title>
+      <link>http://localhost:1313/post/feature-flags-in-net-6-minimal-apis/</link>
+      <pubDate>Tue, 02 Aug 2022 13:18:26 +0000</pubDate>
+      <guid>http://localhost:1313/post/feature-flags-in-net-6-minimal-apis/</guid>
+      <description>Feature flags, also known as feature toggles, are a powerful technique for managing the release of new features in software applications.&#xA;They allow developers to turn features on or off for specific users or groups of users, enabling them to test new features in production without affecting all users.&#xA;This blog post will discuss the need for feature flags and how to implement them in a C# application.&#xA;to check</description>
+    </item>
+    <item>
+      <title>Mastering Serilog: A Comprehensive Guide for C# .NET Projects</title>
+      <link>http://localhost:1313/post/set-up-serilog-in-a-professional-project/</link>
+      <pubDate>Fri, 08 Jul 2022 15:43:34 +0000</pubDate>
+      <guid>http://localhost:1313/post/set-up-serilog-in-a-professional-project/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Create a Minimal API with .NET 6</title>
       <link>http://localhost:1313/post/create-a-minimal-api-with-dotnet-6/</link>
       <pubDate>Mon, 04 Jul 2022 20:16:53 +0000</pubDate>
@@ -231,6 +483,20 @@
       <pubDate>Sun, 26 Jun 2022 22:04:20 +0000</pubDate>
       <guid>http://localhost:1313/post/setup-serilog-in-net6-as-logging-provider/</guid>
       <description>Let&amp;rsquo;s set up Serilog as Logging Provider in the native logging system in .NET so you can use the Microsoft ILogger interface.</description>
+    </item>
+    <item>
+      <title>Visual Code - Oracle Developer</title>
+      <link>http://localhost:1313/post/untitled-2/</link>
+      <pubDate>Fri, 17 Jun 2022 17:29:29 +0000</pubDate>
+      <guid>http://localhost:1313/post/untitled-2/</guid>
+      <description> Debugging PL/SQL with Visual Studio Code (and more) A step by step walkthrough showing how to debug Oracle PL/SQL with Visual Studio Code using the Oracle Developer Tools for VS Code Extension. Christian Shay Oracle Developers https://medium.com/oracledevs/debugging-pl-sql-with-visual-studio-code-and-more-45631f3952cf https://www.oracle.com/database/technologies/appdev/dotnet.html </description>
+    </item>
+    <item>
+      <title>ODT.NET Oracle Async Version</title>
+      <link>http://localhost:1313/post/untitled/</link>
+      <pubDate>Fri, 17 Jun 2022 17:27:03 +0000</pubDate>
+      <guid>http://localhost:1313/post/untitled/</guid>
+      <description>https://github.com/oracle/dotnet-db-samples/issues/144 Implement Async versions of Ado.Net methods · Issue #144 · oracle/dotnet-db-samples Ado.Net classes such as DbCommand, DbConnection have async methods that aren&amp;amp;#39;t truly async and just execute the non-async versions and return their result. It would be nice if ODP.NET had a rea... oracle GitHub </description>
     </item>
     <item>
       <title>Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</title>
@@ -254,6 +520,48 @@
       <description>&lt;p&gt;Lets set up an Oracle Database instance for development purpose using Docker is very easy. And it also runs in WSL2 over Windows.&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s use the oracleinanutshell/oracle-xe-11g image.&lt;/p&gt;&#xA;</description>
     </item>
     <item>
+      <title>Writing logs on SQL Server with Serilog</title>
+      <link>http://localhost:1313/post/writing-logs-on-sql-server-with-serilog/</link>
+      <pubDate>Tue, 07 Sep 2021 17:49:24 +0000</pubDate>
+      <guid>http://localhost:1313/post/writing-logs-on-sql-server-with-serilog/</guid>
+      <description> Writing Logs to SQL Server Using NLog - Code Maze This article shows how to configure and use NLog to log messages to SQL Server database in an ASP.NET Core Web API Project. Johnson Towoju Code Maze </description>
+    </item>
+    <item>
+      <title>Health Checks em Aplicações .NET 5</title>
+      <link>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</link>
+      <pubDate>Fri, 16 Jul 2021 02:10:38 +0000</pubDate>
+      <guid>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</guid>
+      <description>Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.&#xA;Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.&#xA;https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.</description>
+    </item>
+    <item>
+      <title>API Key Authentication - Estendendo a implementação nativa - .NET 5</title>
+      <link>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</link>
+      <pubDate>Thu, 15 Jul 2021 23:15:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</guid>
+      <description>Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo &amp;ldquo;API Key&amp;rdquo;. Isso tudo com apenas três linhas de código.&#xA;Aqui queremos a famosa solução simples e estúpida (simple and stupid) e não uma implementação distorcida utilizando MVC [Attributes] ou um middleware customizado para lidar com a autenticação.&#xA;Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1.</description>
+    </item>
+    <item>
+      <title>Adding oh-my-bash on Windows Terminal</title>
+      <link>http://localhost:1313/post/customiz/</link>
+      <pubDate>Fri, 21 May 2021 22:33:47 +0000</pubDate>
+      <guid>http://localhost:1313/post/customiz/</guid>
+      <description>Oh-My-Bash is a styling set for your terminal and open source to manage your settings in bash. It comes with a ton of useful functions, help, plugins, themes, and more! If you&amp;rsquo;ve heard about oh-my-bash before, this project is a fork of it, but in Bourne Again Shell.&#xA;Oh My Bash is an open source, community-driven framework for managing your bash configuration.&#xA;ohmybash/oh-my-bash A delightful community-driven framework for managing your bash configuration, and an auto-update tool so that makes it easy to keep up with the latest updates from the community.</description>
+    </item>
+    <item>
+      <title>AI-900 - Journey to get the exam</title>
+      <link>http://localhost:1313/post/ai-900-journey-to-get-the-exam/</link>
+      <pubDate>Sun, 16 May 2021 00:00:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/ai-900-journey-to-get-the-exam/</guid>
+      <description>Hi,&#xA;Today I started learning about the AI-900 course. My deadline is July-24-2021 to know everything about this course. I have to teach it as an MCT.&#xA;Exam AI-900: Microsoft Azure AI Fundamentals - Learn Exam AI-900: Microsoft Azure AI Fundamentals krsanty Microsoft Docs {map[author:krsanty caption:AI-900 Exam description:Exam AI-900: Microsoft Azure AI Fundamentals icon: publisher:Microsoft Docs thumbnail:https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png title:Exam AI-900: Microsoft Azure AI Fundamentals - Learn url:https://docs.microsoft.com/pt-br/learn/certifications/exams/ai-900] Page(/post/ai-900-journey-to-get-the-exam) &amp;lt;nil&amp;gt; bookmark true 0 {{{} 0} {0 0}} {{{} 0} {0 0}} 517 { 0 0 0} &amp;lt;nil&amp;gt;} Join me in learning this awesome topic.</description>
+    </item>
+    <item>
+      <title>5 Design Patterns you should know</title>
+      <link>http://localhost:1313/post/5-design-patterns-you-should-know/</link>
+      <pubDate>Sat, 15 May 2021 23:21:07 +0000</pubDate>
+      <guid>http://localhost:1313/post/5-design-patterns-you-should-know/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Health Checks on your ASP.NET Core Application</title>
       <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
       <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
@@ -275,6 +583,27 @@
       <description>MongoDB is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents.&#xA;MongoDb is very easy to get started - That is why I love MongoDb. I think it&amp;rsquo;s the best to get started as a software developer.&#xA;If you are like me - like MongoDb - or you&amp;rsquo;re just studying it.</description>
     </item>
     <item>
+      <title>CRUD in .NET 5 C# with MongoDb</title>
+      <link>http://localhost:1313/post/crud-in-dotnet5-csharp-with-mongo-db/</link>
+      <pubDate>Sun, 18 Apr 2021 23:44:42 +0000</pubDate>
+      <guid>http://localhost:1313/post/crud-in-dotnet5-csharp-with-mongo-db/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Onion Architecture In .Net 5</title>
+      <link>http://localhost:1313/post/onion-architecture-in-net-5/</link>
+      <pubDate>Mon, 05 Apr 2021 00:27:56 +0000</pubDate>
+      <guid>http://localhost:1313/post/onion-architecture-in-net-5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Node &#43; Cosmos DB &#43; Azure Cache for Redis</title>
+      <link>http://localhost:1313/post/node-cosmos-db-azure-cache-for-redis/</link>
+      <pubDate>Mon, 05 Apr 2021 00:11:46 +0000</pubDate>
+      <guid>http://localhost:1313/post/node-cosmos-db-azure-cache-for-redis/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Privacy Policy for RmauroDev</title>
       <link>http://localhost:1313/post/privacy-policy/</link>
       <pubDate>Thu, 01 Apr 2021 18:04:08 +0000</pubDate>
@@ -289,6 +618,27 @@
       <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.&#xA;services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
     </item>
     <item>
+      <title>One Contribution to Serilog-Ui Open Project</title>
+      <link>http://localhost:1313/post/one-contribution-to-serilog-ui-open-project/</link>
+      <pubDate>Mon, 01 Mar 2021 13:05:19 +0000</pubDate>
+      <guid>http://localhost:1313/post/one-contribution-to-serilog-ui-open-project/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SOLID C#</title>
+      <link>http://localhost:1313/post/solid-c/</link>
+      <pubDate>Sun, 01 Nov 2020 22:00:37 +0000</pubDate>
+      <guid>http://localhost:1313/post/solid-c/</guid>
+      <description>What is SOLID What is SOLID S.O.L.I.D. é um acrônimo criado por Michael Feathers, após observar que cinco princípios da orientação a objetos e design de código — Criados por Robert C. Martin (a.k.a. Uncle Bob) e abordados no artigo The Principles of OOD — poderiam se encaixar nesta palavra.&#xA;SOLID is an acronym for the five object-oriented design principles. These principles enable developers to develop software that is easily extendable and maintainable.</description>
+    </item>
+    <item>
+      <title>End to end Application with .NET 5 - Part I</title>
+      <link>http://localhost:1313/post/end-to-end-net-5-setting-up-mongo-db/</link>
+      <pubDate>Tue, 06 Oct 2020 23:22:38 +0000</pubDate>
+      <guid>http://localhost:1313/post/end-to-end-net-5-setting-up-mongo-db/</guid>
+      <description>In this blog post let&amp;rsquo;s work with the brand new .NET 5 (witch is still under release candidate mode).&#xA;During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).&#xA;Let&amp;rsquo;s work with:&#xA;Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I&amp;rsquo;m trying to move away from Postman) Microsoft Announces .</description>
+    </item>
+    <item>
       <title>Blog Posts Ideas</title>
       <link>http://localhost:1313/post/blog-posts-ideas/</link>
       <pubDate>Mon, 05 Oct 2020 21:35:32 +0000</pubDate>
@@ -296,11 +646,25 @@
       <description>https://dotnetthoughts.net/using-less-css-with-aspnet-core/ Web mentions https://github.com/chsienki/petsof.net Recurrency tasks with Hangfire and or Quartz .NET 3.2 JSON Log with AspNet 5 Full Project with ASP.NET 5 Blazor Web Api Mongo DB UWP Project Markdown writer UWP Exploring Tuples Visual Code + MySQL Entity Framework 5 Create middleware MapEndpoint (igual Dbm) xUnit - Fact / Theory / Parameters SAAS .NET Application Publish on Github Pages Github bots Stale https://github.com/marketplace/stale Dependabot https://github.com/marketplace/dependabot-preview imgbot https://github.com/marketplace/imgbot wip https://github.</description>
     </item>
     <item>
+      <title>End to end C# Application with .NET 5 API and MongoDB</title>
+      <link>http://localhost:1313/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/</link>
+      <pubDate>Sun, 04 Oct 2020 01:49:44 +0000</pubDate>
+      <guid>http://localhost:1313/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/</guid>
+      <description>In this blog post let&amp;rsquo;s work with the brand new .NET 5 (witch is still under release candidate mode).&#xA;During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).&#xA;Let&amp;rsquo;s work with:&#xA;Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I&amp;rsquo;m trying to move away from Postman) Microsoft Announces .</description>
+    </item>
+    <item>
       <title>Native Dependency Injection in Azure Functions with C#</title>
       <link>http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/</link>
       <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
       <guid>http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/</guid>
       <description>Adding Dependency Injection feature to Azure Functions without third part libraries.</description>
+    </item>
+    <item>
+      <title>Exploring C# Tuples</title>
+      <link>http://localhost:1313/post/exploring-c-tuples/</link>
+      <pubDate>Thu, 01 Oct 2020 14:38:11 +0000</pubDate>
+      <guid>http://localhost:1313/post/exploring-c-tuples/</guid>
+      <description>Tuples is available on C# 7 or later.&#xA;Fibonacci Generator Here is my example of a Fibonacci generator implemented in C#.&#xA;References:&#xA;https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-9?WT.mc_id=ondotnet-c9-cephilli </description>
     </item>
     <item>
       <title>Endpoint Monitoring with Azure Application Insights</title>
@@ -317,11 +681,53 @@
       <description>This is the second article about Health Checks and Application Monitoring.&#xA;Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!&#xA;Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
     </item>
     <item>
+      <title>Visual Code &#43; MySql</title>
+      <link>http://localhost:1313/post/visual-code-mysql/</link>
+      <pubDate>Mon, 21 Sep 2020 00:24:36 +0000</pubDate>
+      <guid>http://localhost:1313/post/visual-code-mysql/</guid>
+      <description>Visual Studio Code for MySQL and MariaDB development </description>
+    </item>
+    <item>
+      <title>Webmention</title>
+      <link>http://localhost:1313/post/webmention/</link>
+      <pubDate>Mon, 21 Sep 2020 00:22:59 +0000</pubDate>
+      <guid>http://localhost:1313/post/webmention/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Enabling HSTS preload list</title>
+      <link>http://localhost:1313/post/enabling-hsts-preload-list/</link>
+      <pubDate>Wed, 16 Sep 2020 23:33:23 +0000</pubDate>
+      <guid>http://localhost:1313/post/enabling-hsts-preload-list/</guid>
+      <description>Overview If you don&amp;rsquo;t know what is HSTS I invite you to read my blog post about the conecpt of HSTS and how to enable it in your IIS website POST.&#xA;HSTS is a web security technology that secures HTTPS web servers against downgrade attacks. Downgrade attacks (also known as SSL stripping attacks) are a form of man-in-the-middle attack in which an attacker redirects web browsers from a correctly configured HTTPS web server to a malicious server.</description>
+    </item>
+    <item>
       <title>Generating a Self-Signed Certificate using Powershell</title>
       <link>http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/</link>
       <pubDate>Wed, 16 Sep 2020 22:57:25 +0000</pubDate>
       <guid>http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/</guid>
       <description>A self-signed certificate it&amp;rsquo;s very easy to create and helps on with local development and testing.&#xA;With a Single Line of PowerShell code we create a certificate.&#xA;First, open the PowerShell as Administrator and run the following command:&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; The default expiration is 1 year. If you want a custom expiration date use option -NotAfter.&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; ` -NotAfter [System.</description>
+    </item>
+    <item>
+      <title>Simple Web Application with HTTP 2 over Kestrel</title>
+      <link>http://localhost:1313/post/enabling-http-2-on-kestrel/</link>
+      <pubDate>Wed, 16 Sep 2020 22:16:16 +0000</pubDate>
+      <guid>http://localhost:1313/post/enabling-http-2-on-kestrel/</guid>
+      <description>In this blog post we&amp;rsquo;re going to create a simple web application with HTTP 2 enable on Kestrel.&#xA;Prerequisites to follow this article:&#xA;OpenSSL for Windows - to generate a self signed certificate First let generate a self signed SSL certificate. If you have an existing one you can skip this step.&#xA;On an existing .Net application open the Program.cs file.&#xA;public class Program { public static void Main(string[] args) { CreateHostBuilder(args).</description>
+    </item>
+    <item>
+      <title>Adding Feature Toggle to .Net Application</title>
+      <link>http://localhost:1313/post/feature-toggle/</link>
+      <pubDate>Wed, 16 Sep 2020 22:11:17 +0000</pubDate>
+      <guid>http://localhost:1313/post/feature-toggle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Javascript - from &#34;Callback&#34; to &#34;Promise&#34; to &#34;Async Await&#34;</title>
+      <link>http://localhost:1313/post/javascript-from-callback-to-promise-to-async-await/</link>
+      <pubDate>Wed, 16 Sep 2020 22:10:16 +0000</pubDate>
+      <guid>http://localhost:1313/post/javascript-from-callback-to-promise-to-async-await/</guid>
+      <description></description>
     </item>
     <item>
       <title>Compress files in memory (.zip) using C#</title>
@@ -373,6 +779,13 @@
       <description>Tweets by RicardoDeMauro</description>
     </item>
     <item>
+      <title>Setup Azure Bastion for Remote M</title>
+      <link>http://localhost:1313/post/setting-up-azure-bastion-for-remote-connection/</link>
+      <pubDate>Fri, 24 Apr 2020 00:27:23 +0000</pubDate>
+      <guid>http://localhost:1313/post/setting-up-azure-bastion-for-remote-connection/</guid>
+      <description>Hello, in this post we&amp;rsquo;ll walkthough the setup of Azure Bastion.&#xA;Azure Bastion is a fully managed PaaS service that provides secure and seamless RDP and SSH access to your virtual machines directly through the Azure Portal. Azure Bastion is provisioned directly in your Virtual Network (VNet) and supports all VMs in your Virtual Network (VNet) using SSL without any exposure through public IP addresses.&#xA;Azure Bastion | Microsoft Azure Azure Bastion provides secure and seamless RDP and SSH access to your virtual machines directly through the Azure Portal.</description>
+    </item>
+    <item>
       <title>Yet Another AZ-203 Microsoft Official Course Delivered.</title>
       <link>http://localhost:1313/post/az203-official-course-delivered-yes/</link>
       <pubDate>Wed, 22 Jan 2020 00:46:31 +0000</pubDate>
@@ -401,11 +814,53 @@
       <description>##Managed disks&#xA;The Azure platform manages the disk and the backing storage You don&amp;rsquo;t have to worry about storage account limits and thresholds ##Unmanaged disks&#xA;You manually create and manage virtual hard disks (VHDs) in your Storage account You will need to consider account throughput and capacity limits when using this model Managed disks - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure.</description>
     </item>
     <item>
+      <title>AZ-203 - AGENDA - 01/2020</title>
+      <link>http://localhost:1313/post/az-203-conteudo-programatico/</link>
+      <pubDate>Fri, 03 Jan 2020 20:24:05 +0000</pubDate>
+      <guid>http://localhost:1313/post/az-203-conteudo-programatico/</guid>
+      <description>Agenda do curso AZ-203.</description>
+    </item>
+    <item>
+      <title>Azure Function V3 com EntityFramework Core 3.1</title>
+      <link>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</link>
+      <pubDate>Tue, 31 Dec 2019 16:47:03 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</guid>
+      <description>Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.&#xA;Ao final vamos ter a seguinte configuração:&#xA;Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos&#xA;Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.&#xA;Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.</description>
+    </item>
+    <item>
+      <title>Azure functions rest &#43; odata</title>
+      <link>http://localhost:1313/post/azure-functions-rest-odata/</link>
+      <pubDate>Sat, 21 Dec 2019 18:14:31 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-functions-rest-odata/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Asp.Net Core with MongoDb and Mongo Atlas - C#</title>
+      <link>http://localhost:1313/post/asp-net-core-with-mongodb-and-mongo-atlas-c/</link>
+      <pubDate>Thu, 19 Dec 2019 20:08:33 +0000</pubDate>
+      <guid>http://localhost:1313/post/asp-net-core-with-mongodb-and-mongo-atlas-c/</guid>
+      <description>This tutorial creates a Web API that performs CRUD (create, read, update, and delete) operations on a [MongoDB] NoSQL database (https://www.mongodb.com/what-is-mongodb).&#xA;Based on the article [Microsoft Docs] (https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0), created by [Pratik Khandelwal] (https: //twitter.com/K2Prk) and [Scott Addie] (https://twitter.com/Scott_Addie) Modified by [Ricardo Mauro] (https://twitter.com/RicardoDeMauro) Reading time: 18 minutes&#xA;In this tutorial you will learn how to:&#xA;Configure Mongo Atlas and MongoDb Set username and password in Mongo Atlas Perform MongoDB CRUD operations from an Asp.</description>
+    </item>
+    <item>
       <title>Azure App Service and Cloudflare with Full SSL (Strict)</title>
       <link>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</link>
       <pubDate>Sun, 15 Dec 2019 23:39:13 +0000</pubDate>
       <guid>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</guid>
       <description>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.&#xA;At the end we will have the following configuration:&#xA;CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.</description>
+    </item>
+    <item>
+      <title>Azure App Service e Cloudflare com SSL Full (strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 20:36:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</guid>
+      <description>[english version]&#xA;Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.&#xA;Ao final teremos a seguinte configuração:&#xA;CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.</description>
+    </item>
+    <item>
+      <title>Console Application - Upload no Azure Blob Storage</title>
+      <link>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage-2/</link>
+      <pubDate>Sat, 14 Dec 2019 18:52:42 +0000</pubDate>
+      <guid>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage-2/</guid>
+      <description>Pequeno Console Application demonstrando como fazer upload no Azure Blob Storage já incluindo o mime-type metadado.&#xA;No inicio de cada sniped deixo comentado o nome e pasta do arquivo. No fim do artigo deixo o fonte no github.&#xA;Setup inicial //Configurations/AzureBlobConfiguration.cs namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.</description>
     </item>
     <item>
       <title>Practice of SQL Injection</title>
@@ -422,11 +877,39 @@
       <description>Primeiro, você sabe (ou lembra-se) o que é SQL Injection? (for english version)&#xA;Segundo OWASP.org (https://www.owasp.org/index.php/SQL_Injection).&#xA;A SQL injection attack consists of insertion or &amp;ldquo;injection&amp;rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.&#xA;Ou seja, é uma técnica de invasão de serviços web através de comandos SQL. Desde que o serviço web (website, webservice, REST API, etc) esteja sucetível ao ataque SQL Injection, você consegue executar comandos SQL não previstos no sistema.</description>
     </item>
     <item>
+      <title>Supporting IAsyncEnumerable with LINQ</title>
+      <link>http://localhost:1313/post/supporting-iasyncenumerable-with-linq/</link>
+      <pubDate>Thu, 07 Nov 2019 16:12:15 +0000</pubDate>
+      <guid>http://localhost:1313/post/supporting-iasyncenumerable-with-linq/</guid>
+      <description>https://channel9.msdn.com/Shows/On-NET/Supporting-IAsyncEnumerable-with-LINQ</description>
+    </item>
+    <item>
       <title>Começando com Machine Learning - Escrevendo um Perceptron</title>
       <link>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</link>
       <pubDate>Sun, 03 Nov 2019 03:04:13 +0000</pubDate>
       <guid>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</guid>
       <description>Você sabe o que é um Perceptron?&#xA;Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.&#xA;Segundo wikipedia:&#xA;In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.&#xA;Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).</description>
+    </item>
+    <item>
+      <title>Criando imagem Docker NodeJs customizada e publicando no Heroku</title>
+      <link>http://localhost:1313/post/criando-imagem-docker-nodejs-customizada-e-publicando-no-heroku/</link>
+      <pubDate>Tue, 29 Oct 2019 16:15:07 +0000</pubDate>
+      <guid>http://localhost:1313/post/criando-imagem-docker-nodejs-customizada-e-publicando-no-heroku/</guid>
+      <description>Nesse artigo vamos criar uma imagem Docker com uma simple aplicação NodeJs a partir da imagem padrão NodeJs, depois vamos publicar na nuvem Heroku.&#xA;Heroku: https://heroku.com/ Docker: https://www.docker.com/&#xA;Neste tutorial, você aprenderá como:&#xA;Comandos básicos do Docker Criar uma imagem customizada no Docker Publicar uma imagem Docker na nuvem Heroku Pré-requisitos Docker Heroku CLI ##Preparando para criar a imagem Docker&#xA;Primeiro abra seu console favorito (estou utilizando o powershell do Windows) e digite:</description>
+    </item>
+    <item>
+      <title>Criando imagem Docker customizada e publicando no Heroku</title>
+      <link>http://localhost:1313/post/criando-imagem-docker-customizada-e-publicando-no-heroku/</link>
+      <pubDate>Tue, 29 Oct 2019 00:29:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/criando-imagem-docker-customizada-e-publicando-no-heroku/</guid>
+      <description>Nesse artigo vamos criar uma imagem Docker com uma simple aplicação NodeJs a partir da imagem padrão NodeJs, depois vamos publicar na nuvem Heroku.&#xA;Heroku: https://heroku.com/ Docker: https://www.docker.com/&#xA;Neste tutorial, você aprenderá como:&#xA;Comandos básicos do Docker Criar uma imagem customizada no Docker Publicar uma imagem Docker na nuvem Heroku Pré-requisitos Docker Heroku CLI ##Preparando para criar a imagem Docker&#xA;Primeiro abra seu console favorito (estou utilizando o powershell do Windows) e digite:</description>
+    </item>
+    <item>
+      <title>Asp.Net Core com MongoDb e Mongo Atlas - C#</title>
+      <link>http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/</link>
+      <pubDate>Sat, 19 Oct 2019 21:39:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/</guid>
+      <description>Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.&#xA;Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos&#xA;Neste tutorial, você aprenderá como:&#xA;Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.</description>
     </item>
     <item>
       <title>C# Conversions - Casting, implicit and explicit conversion</title>
@@ -513,11 +996,123 @@
       <description>###HSTS, what&amp;rsquo;s it?&#xA;Definition from wikipedia:&#xA;HTTP Strict Transport Security (HSTS) is a web security policy mechanism which helps to protect websites against protocol downgrade attacks and cookie hijacking. It allows web servers to declare that web browsers (or other complying user agents) should only interact with it using secure HTTPS connections,[1] and never via the insecure HTTP protocol. HSTS is an IETF standards track protocol and is specified in RFC 6797.</description>
     </item>
     <item>
+      <title>Adding GenericRepository&lt;T&gt; in asp.net core</title>
+      <link>http://localhost:1313/post/adding-genericrepository-t-in-asp-net-core/</link>
+      <pubDate>Tue, 09 May 2017 18:12:33 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-genericrepository-t-in-asp-net-core/</guid>
+      <description>checkout this reference http://stackoverflow.com/questions/33566075/generic-repository-in-asp-net-core-without-having-a-separate-addscoped-line-per</description>
+    </item>
+    <item>
+      <title>Enable HSTS in Ghost &#43; Azure &#43; Cloudflare</title>
+      <link>http://localhost:1313/post/enable-hsts-in/</link>
+      <pubDate>Mon, 08 May 2017 17:47:12 +0000</pubDate>
+      <guid>http://localhost:1313/post/enable-hsts-in/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>How to create a .NETStandard class library</title>
+      <link>http://localhost:1313/post/how-to-create-a-netstandard-class-library/</link>
+      <pubDate>Fri, 03 Feb 2017 02:31:04 +0000</pubDate>
+      <guid>http://localhost:1313/post/how-to-create-a-netstandard-class-library/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Libraries.io - A Library of frameworks #tip</title>
       <link>http://localhost:1313/post/libraries-io-a-library-of-frameworks-tip/</link>
       <pubDate>Thu, 19 Jan 2017 15:27:55 +0000</pubDate>
       <guid>http://localhost:1313/post/libraries-io-a-library-of-frameworks-tip/</guid>
       <description>Theses days I was trying to find the latest version of some framework I was using. Searching on web I finally found this website https://libraries.io/.&#xA;This nice and complete website has informations about almost every library/framework you know.&#xA;Take a look, share https://libraries.io/</description>
+    </item>
+    <item>
+      <title>Developing your first Chatter Bot for Facebook #1</title>
+      <link>http://localhost:1313/post/developing-your-first-chatter-bot-for-facebook-1/</link>
+      <pubDate>Thu, 12 Jan 2017 03:01:58 +0000</pubDate>
+      <guid>http://localhost:1313/post/developing-your-first-chatter-bot-for-facebook-1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MongoDB for .Net Developers #1</title>
+      <link>http://localhost:1313/post/mongodb-for-net-developers-1/</link>
+      <pubDate>Thu, 12 Jan 2017 02:51:04 +0000</pubDate>
+      <guid>http://localhost:1313/post/mongodb-for-net-developers-1/</guid>
+      <description>Hi guys,&#xA;In this post I&amp;rsquo;ll talk a little about MongoDB by the eyes of .Net Developer.&#xA;###Before you start If you don&amp;rsquo;t have already installed the MongoDB system use this article.&#xA;Just in case you don&amp;rsquo;t know nothing about NoSQL them read some basics here.&#xA;MongoDB it&amp;rsquo;s a NoSQL system classified as a Document-oriented database (in a another article I&amp;rsquo;ll talk about the concepts of NoSQL).&#xA;###Getting started&#xA;First create a Console Application to begin our lab.</description>
+    </item>
+    <item>
+      <title>AssertionConcern</title>
+      <link>http://localhost:1313/post/assertionconcern/</link>
+      <pubDate>Thu, 12 Jan 2017 01:54:17 +0000</pubDate>
+      <guid>http://localhost:1313/post/assertionconcern/</guid>
+      <description>https://github.com/andrebaltieri/spausercontrol/blob/master/SpaUserControl.Resource/Validation/AssertionConcern.cs</description>
+    </item>
+    <item>
+      <title>DeflateCompressionAttribute</title>
+      <link>http://localhost:1313/post/deflatecompressionattribute/</link>
+      <pubDate>Thu, 12 Jan 2017 01:50:14 +0000</pubDate>
+      <guid>http://localhost:1313/post/deflatecompressionattribute/</guid>
+      <description>https://github.com/andrebaltieri/spausercontrol/blob/master/SpaUserControl.Api/Attributes/DeflateCompressionAttribute.cs</description>
+    </item>
+    <item>
+      <title>Implementing Webhooks in Asp.Net Core</title>
+      <link>http://localhost:1313/post/implementing-webhooks-in-asp-net-core/</link>
+      <pubDate>Thu, 12 Jan 2017 01:28:17 +0000</pubDate>
+      <guid>http://localhost:1313/post/implementing-webhooks-in-asp-net-core/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure B2C on Asp.Net Core</title>
+      <link>http://localhost:1313/post/azure-b2c-on-asp-net-core-2/</link>
+      <pubDate>Thu, 12 Jan 2017 01:24:02 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-b2c-on-asp-net-core-2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DotNetCore Asp.NetMVC Areas</title>
+      <link>http://localhost:1313/post/dotnetcore-asp-netmvc-areas/</link>
+      <pubDate>Wed, 11 Jan 2017 16:20:54 +0000</pubDate>
+      <guid>http://localhost:1313/post/dotnetcore-asp-netmvc-areas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DotNetCore Create TagHelper</title>
+      <link>http://localhost:1313/post/dotnetcore-create-taghelper/</link>
+      <pubDate>Wed, 11 Jan 2017 02:59:49 +0000</pubDate>
+      <guid>http://localhost:1313/post/dotnetcore-create-taghelper/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Entity Framework Core Resilience</title>
+      <link>http://localhost:1313/post/entity-framework-core-resilience/</link>
+      <pubDate>Wed, 11 Jan 2017 02:45:17 +0000</pubDate>
+      <guid>http://localhost:1313/post/entity-framework-core-resilience/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Search Service using MongoDB</title>
+      <link>http://localhost:1313/post/search-service-using-mongodb/</link>
+      <pubDate>Tue, 10 Jan 2017 19:08:56 +0000</pubDate>
+      <guid>http://localhost:1313/post/search-service-using-mongodb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Console Application para upload de arquivo no Azure Blob Storage</title>
+      <link>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/</link>
+      <pubDate>Tue, 10 Jan 2017 19:08:07 +0000</pubDate>
+      <guid>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/</guid>
+      <description>Projeto para&#xA;Configuration para utilizarmos como injeção de dependência.&#xA;namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.&#xA;namespace Demo.AzureBlob.DependencyInjection { public static class ServiceCollectionExtensions { public static IServiceCollection AddAzureBlobService(this IServiceCollection services, IConfiguration configuration) { return services.AddAzureBlobService(configuration, x =&amp;gt; { x.AllowOverwrite = configuration.GetValue&amp;lt;bool&amp;gt;(&amp;#34;Az:AllowOverwrite&amp;#34;); x.</description>
+    </item>
+    <item>
+      <title>Getting started with Azure Media Services</title>
+      <link>http://localhost:1313/post/getting-started-with-azure-media-services/</link>
+      <pubDate>Tue, 10 Jan 2017 19:07:48 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-started-with-azure-media-services/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure DocumentDB for MongoDB Developers</title>
+      <link>http://localhost:1313/post/azure-documentdb-for-mongodb-developers/</link>
+      <pubDate>Tue, 10 Jan 2017 18:14:01 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-documentdb-for-mongodb-developers/</guid>
+      <description></description>
     </item>
     <item>
       <title>How to migrate .Net Core 1.0 to 1.1</title>

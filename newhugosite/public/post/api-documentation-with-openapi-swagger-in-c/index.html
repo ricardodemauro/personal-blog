@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Documenting C# APIs with Open API and Swagger | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="API documentation is an essential aspect of software development. And the Open API documentation is one of the widely used standards for documenting RESTful APIs.
+Swagger is an open-source tool that simplifies the process of creating and documenting RESTful APIs that conform to the Open API specification. In this article, we will discuss how to document your API using Swagger in C#.
+In this issue let&rsquo;s use Swashbuckle packages to create the Open API documentation.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/api-documentation-with-openapi-swagger-in-c/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/api-documentation-with-openapi-swagger-in-c/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Documenting C# APIs with Open API and Swagger">
+  <meta property="og:description" content="API documentation is an essential aspect of software development. And the Open API documentation is one of the widely used standards for documenting RESTful APIs.
+Swagger is an open-source tool that simplifies the process of creating and documenting RESTful APIs that conform to the Open API specification. In this article, we will discuss how to document your API using Swagger in C#.
+In this issue let’s use Swashbuckle packages to create the Open API documentation.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-04-18T23:14:35+00:00">
+    <meta property="article:modified_time" content="2023-04-18T23:14:35+00:00">
+
+  <meta itemprop="name" content="Documenting C# APIs with Open API and Swagger">
+  <meta itemprop="description" content="API documentation is an essential aspect of software development. And the Open API documentation is one of the widely used standards for documenting RESTful APIs.
+Swagger is an open-source tool that simplifies the process of creating and documenting RESTful APIs that conform to the Open API specification. In this article, we will discuss how to document your API using Swagger in C#.
+In this issue let’s use Swashbuckle packages to create the Open API documentation.">
+  <meta itemprop="datePublished" content="2023-04-18T23:14:35+00:00">
+  <meta itemprop="dateModified" content="2023-04-18T23:14:35+00:00">
+  <meta itemprop="wordCount" content="666">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Documenting C# APIs with Open API and Swagger">
+  <meta name="twitter:description" content="API documentation is an essential aspect of software development. And the Open API documentation is one of the widely used standards for documenting RESTful APIs.
+Swagger is an open-source tool that simplifies the process of creating and documenting RESTful APIs that conform to the Open API specification. In this article, we will discuss how to document your API using Swagger in C#.
+In this issue let’s use Swashbuckle packages to create the Open API documentation.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Documenting C# APIs with Open API and Swagger</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-04-18T23:14:35Z">April 18, 2023</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>API documentation is an essential aspect of software development. And the Open API documentation is one of the widely used standards for documenting RESTful APIs.</p>
+<p>Swagger is an open-source tool that simplifies the process of creating and documenting RESTful APIs that conform to the Open API specification. In this article, we will discuss how to document your API using Swagger in C#.</p>
+<p>In this issue let&rsquo;s use <strong>Swashbuckle</strong> packages to create the Open API documentation.</p>
+<h2 id="adding-to-our-api">Adding to Our API</h2>
+<p>The following steps will guide you through the process of documenting your API using Swagger in C#.</p>
+<p>In this sample let&rsquo;s build a Movies API with Create, Update, Delete and Read operations.</p>
+<h3 id="create-a-new-c-project">Create a New C# Project</h3>
+<p>Let&rsquo;s create our Web API Application using the <code>ASP.NET Core Empty</code> template with .NET 6 and name it <strong>Labs.MoviesAPI</strong>.</p>
+<figure><img src="https://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/open-api-empty-project.png">
+</figure>
+
+<h2 id="install-the-swagger-nuget-package">Install the Swagger NuGet Package</h2>
+<p>Install the package dependencies for our project.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add Microsoft.OpenApi
+</span></span><span style="display:flex;"><span>dotnet add Swashbuckle.AspNetCore.Swagger
+</span></span><span style="display:flex;"><span>dotnet add Swashbuckle.AspNetCore.SwaggerGen
+</span></span><span style="display:flex;"><span>dotnet add Swashbuckle.AspNetCore.SwaggerUI
+</span></span></code></pre></div><h2 id="build-the-movies-api">Build the Movies API</h2>
+<p>Let&rsquo;s create the Movies API using the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> builder = WebApplication.CreateBuilder(args);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> app = builder.Build();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app.MapGet(<span style="color:#e6db74">&#34;/&#34;</span>, () =&gt; <span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//returns the list of movies</span>
+</span></span><span style="display:flex;"><span>app.MapGet(<span style="color:#e6db74">&#34;/movies&#34;</span>, () =&gt; MovieDb.Movies);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//returns a movie based on Id</span>
+</span></span><span style="display:flex;"><span>app.MapGet(<span style="color:#e6db74">&#34;/movies/{id:int}&#34;</span>, (<span style="color:#66d9ef">int</span> id) =&gt;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> movie = MovieDb.Movies.FirstOrDefault(m =&gt; m.Id == id);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> movie <span style="color:#66d9ef">is</span> not <span style="color:#66d9ef">null</span> ? Results.Ok(movie) : Results.NotFound();
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//creates a new movie entry</span>
+</span></span><span style="display:flex;"><span>app.MapPost(<span style="color:#e6db74">&#34;/movies/{id}&#34;</span>, (<span style="color:#66d9ef">int</span> id, Movie movie) =&gt;
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    MovieDb.Movies.Add(movie);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Results.Created(<span style="color:#e6db74">$&#34;/movies/{id}&#34;</span>, movie);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app.Run();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">class</span> Movie(<span style="color:#66d9ef">int</span> Id, <span style="color:#66d9ef">string</span> Name);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//fake movie database</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MovieDb</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> IList&lt;Movie&gt; Movies = <span style="color:#66d9ef">new</span>[] 
+</span></span><span style="display:flex;"><span>    { 
+</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">new</span> Movie(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;Movie 1&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">new</span> Movie(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;Movie 2&#34;</span>)
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now our <strong>Movie API</strong> has 3 operation to manage the &ldquo;Fake Database&rdquo;.</p>
+<h2 id="set-up-swagger-in-the-project">Set Up Swagger in the Project</h2>
+<p>In order to use <code>Swashbuckle</code> API to auto generate our Swagger specification we should add the dependencies to our container and configure it in the AspNet Pipeline.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> builder = WebApplication.CreateBuilder(args);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//enabled inspection of all Enpoints</span>
+</span></span><span style="display:flex;"><span>builder.Services.AddEndpointsApiExplorer();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//dependency of Swashbuckle to generate the swagger file</span>
+</span></span><span style="display:flex;"><span>builder.Services.AddSwaggerGen();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> app = builder.Build();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app.UseSwagger();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// remaining code</span>
+</span></span></code></pre></div><p>With the existing code we&rsquo;re able to see the <code>swagger.json</code> file already.</p>
+<p>Let&rsquo;s go ahead and run the application and load the page <a href="https://localhost:7261/swagger/v1/swagger.json"><code>https://localhost:{PORT}/swagger/v1/swagger.json</code></a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;openapi&#34;</span>: <span style="color:#e6db74">&#34;3.0.1&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;info&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;title&#34;</span>: <span style="color:#e6db74">&#34;Labs.MoviesAPI&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;1.0&#34;</span>
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;paths&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;/&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;get&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;tags&#34;</span>: [
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;Labs.MoviesAPI&#34;</span>
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;responses&#34;</span>: {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;200&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Success&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;content&#34;</span>: {
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;text/plain&#34;</span>: {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&#34;schema&#34;</span>: {
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;string&#34;</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>              }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//more code goes down
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="step-4-configuring-swagger-generation">Step 4: Configuring Swagger Generation</h2>
+<p>Open the swagger.json file and configure it according to your API. You can add a description, version number, and other relevant information about your API.</p>
+<p>CODE GOES HERE</p>
+<p>Step 5: Generate Swagger UITo generate Swagger UI, we&rsquo;ll need to install the Swashbuckle NuGet package. In the Package Manager Console, run the following command:</p>
+<p>CODE GOES HERE</p>
+<p>This command installs the necessary dependencies for Swagger UI to work.</p>
+<p>Step 6: Add Swagger UI to Your ProjectRight-click on your project in the Solution Explorer and select Add &gt; New Item. Select HTML Page and give it a name, such as swagger.html.</p>
+<p>CODE GOES HERE</p>
+<p>This will create a new HTML file in your project.</p>
+<p>Step 7: Configure Swagger UIOpen the swagger.html file and configure it to load your swagger.json file. You can also customize the UI to match your project&rsquo;s branding.</p>
+<p>CODE GOES HERE</p>
+<p>Step 8: Run Your ProjectNow that everything is set up, run your project and navigate to the Swagger UI page (<a href="http://localhost">http://localhost</a>:/swagger.html). You should see a user-friendly interface that allows you to test and interact with your API.</p>
+<p>ConclusionSwagger is an excellent tool for documenting RESTful APIs that conform to the OpenAPI specification. It simplifies the process of creating and documenting APIs, making it easier for developers to understand and use them. Swagger also provides a user-friendly interface for testing and interacting with APIs. By following the steps outlined in this article, you can start documenting your API using Swagger in C# today.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

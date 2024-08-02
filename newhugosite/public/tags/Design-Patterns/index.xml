@@ -22,5 +22,19 @@
       <guid>http://localhost:1313/post/understanding-the-monad-design-pattern/</guid>
       <description>Monads are a powerful concept in functional programming that help manage side effects and maintain clean, composable code.&#xA;In this post, we&amp;rsquo;ll explore the Maybe monad design pattern using JavaScript, which is used to handle operations that might fail or return null/undefined.&#xA;What is a Monad? In simple terms, a monad is a design pattern that allows you to wrap values, chain operations, and handle side effects in a consistent way.</description>
     </item>
+    <item>
+      <title>Query Specification Pattern with EF Core</title>
+      <link>http://localhost:1313/post/query-specification-pattern-with-ef-core/</link>
+      <pubDate>Mon, 24 Jun 2024 14:11:50 +0000</pubDate>
+      <guid>http://localhost:1313/post/query-specification-pattern-with-ef-core/</guid>
+      <description>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.&#xA;Here’s what you need to know:&#xA;1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution.</description>
+    </item>
+    <item>
+      <title>Health Check in .NET 6 C#</title>
+      <link>http://localhost:1313/post/aspnet-health-check-for-oracle/</link>
+      <pubDate>Mon, 03 Oct 2022 16:22:14 +0000</pubDate>
+      <guid>http://localhost:1313/post/aspnet-health-check-for-oracle/</guid>
+      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.&#xA;In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.&#xA;🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
+    </item>
   </channel>
 </rss>

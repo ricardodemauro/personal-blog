@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Console Application - Upload no Azure Blob Storage | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Pequeno Console Application demonstrando como fazer upload no Azure Blob Storage já incluindo o mime-type metadado.
+No inicio de cada sniped deixo comentado o nome e pasta do arquivo. No fim do artigo deixo o fonte no github.
+Setup inicial //Configurations/AzureBlobConfiguration.cs namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage-2/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage-2/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Console Application - Upload no Azure Blob Storage">
+  <meta property="og:description" content="Pequeno Console Application demonstrando como fazer upload no Azure Blob Storage já incluindo o mime-type metadado.
+No inicio de cada sniped deixo comentado o nome e pasta do arquivo. No fim do artigo deixo o fonte no github.
+Setup inicial //Configurations/AzureBlobConfiguration.cs namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-12-14T18:52:42+00:00">
+    <meta property="article:modified_time" content="2019-12-14T18:52:42+00:00">
+
+  <meta itemprop="name" content="Console Application - Upload no Azure Blob Storage">
+  <meta itemprop="description" content="Pequeno Console Application demonstrando como fazer upload no Azure Blob Storage já incluindo o mime-type metadado.
+No inicio de cada sniped deixo comentado o nome e pasta do arquivo. No fim do artigo deixo o fonte no github.
+Setup inicial //Configurations/AzureBlobConfiguration.cs namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.">
+  <meta itemprop="datePublished" content="2019-12-14T18:52:42+00:00">
+  <meta itemprop="dateModified" content="2019-12-14T18:52:42+00:00">
+  <meta itemprop="wordCount" content="1372">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Console Application - Upload no Azure Blob Storage">
+  <meta name="twitter:description" content="Pequeno Console Application demonstrando como fazer upload no Azure Blob Storage já incluindo o mime-type metadado.
+No inicio de cada sniped deixo comentado o nome e pasta do arquivo. No fim do artigo deixo o fonte no github.
+Setup inicial //Configurations/AzureBlobConfiguration.cs namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Console Application - Upload no Azure Blob Storage</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-12-14T18:52:42Z">December 14, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Pequeno <em>Console Application</em> demonstrando como fazer upload no Azure Blob Storage já incluindo o <em>mime-type</em> metadado.</p>
+<p><em>No inicio de cada sniped deixo comentado o nome e pasta do arquivo. No fim do artigo deixo o fonte no github.</em></p>
+<h2 id="setup-inicial">Setup inicial</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">//Configurations/AzureBlobConfiguration.cs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Demo.AzureBlob.Configurations
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AzureBlobConfiguration</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">bool</span> AllowOverwrite { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> ConnectionString { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> ContainerName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Configurando container de injeção de dependência.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">//DependencyInjection/ServiceCollectionExtensions.cs</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Demo.AzureBlob.DependencyInjection
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ServiceCollectionExtensions</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IServiceCollection AddAzureBlobService(<span style="color:#66d9ef">this</span> IServiceCollection services, IConfiguration configuration)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> services.AddAzureBlobService(configuration, x =&gt;
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                x.AllowOverwrite = configuration.GetValue&lt;<span style="color:#66d9ef">bool</span>&gt;(<span style="color:#e6db74">&#34;Az:AllowOverwrite&#34;</span>);
+</span></span><span style="display:flex;"><span>                x.ConnectionString = configuration[<span style="color:#e6db74">&#34;Az:ConnectionString&#34;</span>];
+</span></span><span style="display:flex;"><span>                x.ContainerName = configuration[<span style="color:#e6db74">&#34;Az:ContainerName&#34;</span>];
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> IServiceCollection AddAzureBlobService(<span style="color:#66d9ef">this</span> IServiceCollection services, IConfiguration configuration, Action&lt;AzureBlobConfiguration&gt; configureOptions)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            services.Configure(configureOptions);
+</span></span><span style="display:flex;"><span>            services.AddScoped(x =&gt; x.GetRequiredService&lt;IOptions&lt;AzureBlobConfiguration&gt;&gt;().Value);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            services.AddScoped&lt;IFileUploadService, AzureFileUploadService&gt;();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> services;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">//AzureFileUploadService.cs</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">async</span> Task&lt;BlobContainerClient&gt; CreateContainerAsync(BlobServiceClient blobServiceClient, CancellationToken cancellationToken = <span style="color:#66d9ef">default</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//Create a unique name for the container</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">string</span> containerName = _configuration.ContainerName;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> container = blobServiceClient.GetBlobContainerClient(containerName);
+</span></span><span style="display:flex;"><span>	_ = <span style="color:#66d9ef">await</span> container.CreateIfNotExistsAsync(Azure.Storage.Blobs.Models.PublicAccessType.BlobContainer, cancellationToken: cancellationToken);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> container;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><pre tabindex="0"><code class="language-charp" data-lang="charp">//MimeTypeHelper.cs
+namespace Demo.AzureBlob
+{
+    internal static class MimeTypeHelper
+    {
+        private static IDictionary&lt;string, string&gt; _mappings = new Dictionary&lt;string, string&gt;(StringComparer.InvariantCultureIgnoreCase) {
+
+        #region Big freaking list of mime types
+        // combination of values from Windows 7 Registry and 
+        // from C:\Windows\System32\inetsrv\config\applicationHost.config
+        // some added, including .7z and .dat
+        {&#34;.323&#34;, &#34;text/h323&#34;},
+        {&#34;.3g2&#34;, &#34;video/3gpp2&#34;},
+        {&#34;.3gp&#34;, &#34;video/3gpp&#34;},
+        {&#34;.3gp2&#34;, &#34;video/3gpp2&#34;},
+        {&#34;.3gpp&#34;, &#34;video/3gpp&#34;},
+        {&#34;.7z&#34;, &#34;application/x-7z-compressed&#34;},
+        {&#34;.aa&#34;, &#34;audio/audible&#34;},
+        {&#34;.AAC&#34;, &#34;audio/aac&#34;},
+        {&#34;.aaf&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.aax&#34;, &#34;audio/vnd.audible.aax&#34;},
+        {&#34;.ac3&#34;, &#34;audio/ac3&#34;},
+        {&#34;.aca&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.accda&#34;, &#34;application/msaccess.addin&#34;},
+        {&#34;.accdb&#34;, &#34;application/msaccess&#34;},
+        {&#34;.accdc&#34;, &#34;application/msaccess.cab&#34;},
+        {&#34;.accde&#34;, &#34;application/msaccess&#34;},
+        {&#34;.accdr&#34;, &#34;application/msaccess.runtime&#34;},
+        {&#34;.accdt&#34;, &#34;application/msaccess&#34;},
+        {&#34;.accdw&#34;, &#34;application/msaccess.webapplication&#34;},
+        {&#34;.accft&#34;, &#34;application/msaccess.ftemplate&#34;},
+        {&#34;.acx&#34;, &#34;application/internet-property-stream&#34;},
+        {&#34;.AddIn&#34;, &#34;text/xml&#34;},
+        {&#34;.ade&#34;, &#34;application/msaccess&#34;},
+        {&#34;.adobebridge&#34;, &#34;application/x-bridge-url&#34;},
+        {&#34;.adp&#34;, &#34;application/msaccess&#34;},
+        {&#34;.ADT&#34;, &#34;audio/vnd.dlna.adts&#34;},
+        {&#34;.ADTS&#34;, &#34;audio/aac&#34;},
+        {&#34;.afm&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.ai&#34;, &#34;application/postscript&#34;},
+        {&#34;.aif&#34;, &#34;audio/x-aiff&#34;},
+        {&#34;.aifc&#34;, &#34;audio/aiff&#34;},
+        {&#34;.aiff&#34;, &#34;audio/aiff&#34;},
+        {&#34;.air&#34;, &#34;application/vnd.adobe.air-application-installer-package+zip&#34;},
+        {&#34;.amc&#34;, &#34;application/x-mpeg&#34;},
+        {&#34;.application&#34;, &#34;application/x-ms-application&#34;},
+        {&#34;.art&#34;, &#34;image/x-jg&#34;},
+        {&#34;.asa&#34;, &#34;application/xml&#34;},
+        {&#34;.asax&#34;, &#34;application/xml&#34;},
+        {&#34;.ascx&#34;, &#34;application/xml&#34;},
+        {&#34;.asd&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.asf&#34;, &#34;video/x-ms-asf&#34;},
+        {&#34;.ashx&#34;, &#34;application/xml&#34;},
+        {&#34;.asi&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.asm&#34;, &#34;text/plain&#34;},
+        {&#34;.asmx&#34;, &#34;application/xml&#34;},
+        {&#34;.aspx&#34;, &#34;application/xml&#34;},
+        {&#34;.asr&#34;, &#34;video/x-ms-asf&#34;},
+        {&#34;.asx&#34;, &#34;video/x-ms-asf&#34;},
+        {&#34;.atom&#34;, &#34;application/atom+xml&#34;},
+        {&#34;.au&#34;, &#34;audio/basic&#34;},
+        {&#34;.avi&#34;, &#34;video/x-msvideo&#34;},
+        {&#34;.axs&#34;, &#34;application/olescript&#34;},
+        {&#34;.bas&#34;, &#34;text/plain&#34;},
+        {&#34;.bcpio&#34;, &#34;application/x-bcpio&#34;},
+        {&#34;.bin&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.bmp&#34;, &#34;image/bmp&#34;},
+        {&#34;.c&#34;, &#34;text/plain&#34;},
+        {&#34;.cab&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.caf&#34;, &#34;audio/x-caf&#34;},
+        {&#34;.calx&#34;, &#34;application/vnd.ms-office.calx&#34;},
+        {&#34;.cat&#34;, &#34;application/vnd.ms-pki.seccat&#34;},
+        {&#34;.cc&#34;, &#34;text/plain&#34;},
+        {&#34;.cd&#34;, &#34;text/plain&#34;},
+        {&#34;.cdda&#34;, &#34;audio/aiff&#34;},
+        {&#34;.cdf&#34;, &#34;application/x-cdf&#34;},
+        {&#34;.cer&#34;, &#34;application/x-x509-ca-cert&#34;},
+        {&#34;.chm&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.class&#34;, &#34;application/x-java-applet&#34;},
+        {&#34;.clp&#34;, &#34;application/x-msclip&#34;},
+        {&#34;.cmx&#34;, &#34;image/x-cmx&#34;},
+        {&#34;.cnf&#34;, &#34;text/plain&#34;},
+        {&#34;.cod&#34;, &#34;image/cis-cod&#34;},
+        {&#34;.config&#34;, &#34;application/xml&#34;},
+        {&#34;.contact&#34;, &#34;text/x-ms-contact&#34;},
+        {&#34;.coverage&#34;, &#34;application/xml&#34;},
+        {&#34;.cpio&#34;, &#34;application/x-cpio&#34;},
+        {&#34;.cpp&#34;, &#34;text/plain&#34;},
+        {&#34;.crd&#34;, &#34;application/x-mscardfile&#34;},
+        {&#34;.crl&#34;, &#34;application/pkix-crl&#34;},
+        {&#34;.crt&#34;, &#34;application/x-x509-ca-cert&#34;},
+        {&#34;.cs&#34;, &#34;text/plain&#34;},
+        {&#34;.csdproj&#34;, &#34;text/plain&#34;},
+        {&#34;.csh&#34;, &#34;application/x-csh&#34;},
+        {&#34;.csproj&#34;, &#34;text/plain&#34;},
+        {&#34;.css&#34;, &#34;text/css&#34;},
+        {&#34;.csv&#34;, &#34;text/csv&#34;},
+        {&#34;.cur&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.cxx&#34;, &#34;text/plain&#34;},
+        {&#34;.dat&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.datasource&#34;, &#34;application/xml&#34;},
+        {&#34;.dbproj&#34;, &#34;text/plain&#34;},
+        {&#34;.dcr&#34;, &#34;application/x-director&#34;},
+        {&#34;.def&#34;, &#34;text/plain&#34;},
+        {&#34;.deploy&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.der&#34;, &#34;application/x-x509-ca-cert&#34;},
+        {&#34;.dgml&#34;, &#34;application/xml&#34;},
+        {&#34;.dib&#34;, &#34;image/bmp&#34;},
+        {&#34;.dif&#34;, &#34;video/x-dv&#34;},
+        {&#34;.dir&#34;, &#34;application/x-director&#34;},
+        {&#34;.disco&#34;, &#34;text/xml&#34;},
+        {&#34;.dll&#34;, &#34;application/x-msdownload&#34;},
+        {&#34;.dll.config&#34;, &#34;text/xml&#34;},
+        {&#34;.dlm&#34;, &#34;text/dlm&#34;},
+        {&#34;.doc&#34;, &#34;application/msword&#34;},
+        {&#34;.docm&#34;, &#34;application/vnd.ms-word.document.macroEnabled.12&#34;},
+        {&#34;.docx&#34;, &#34;application/vnd.openxmlformats-officedocument.wordprocessingml.document&#34;},
+        {&#34;.dot&#34;, &#34;application/msword&#34;},
+        {&#34;.dotm&#34;, &#34;application/vnd.ms-word.template.macroEnabled.12&#34;},
+        {&#34;.dotx&#34;, &#34;application/vnd.openxmlformats-officedocument.wordprocessingml.template&#34;},
+        {&#34;.dsp&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.dsw&#34;, &#34;text/plain&#34;},
+        {&#34;.dtd&#34;, &#34;text/xml&#34;},
+        {&#34;.dtsConfig&#34;, &#34;text/xml&#34;},
+        {&#34;.dv&#34;, &#34;video/x-dv&#34;},
+        {&#34;.dvi&#34;, &#34;application/x-dvi&#34;},
+        {&#34;.dwf&#34;, &#34;drawing/x-dwf&#34;},
+        {&#34;.dwp&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.dxr&#34;, &#34;application/x-director&#34;},
+        {&#34;.eml&#34;, &#34;message/rfc822&#34;},
+        {&#34;.emz&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.eot&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.eps&#34;, &#34;application/postscript&#34;},
+        {&#34;.etl&#34;, &#34;application/etl&#34;},
+        {&#34;.etx&#34;, &#34;text/x-setext&#34;},
+        {&#34;.evy&#34;, &#34;application/envoy&#34;},
+        {&#34;.exe&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.exe.config&#34;, &#34;text/xml&#34;},
+        {&#34;.fdf&#34;, &#34;application/vnd.fdf&#34;},
+        {&#34;.fif&#34;, &#34;application/fractals&#34;},
+        {&#34;.filters&#34;, &#34;Application/xml&#34;},
+        {&#34;.fla&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.flr&#34;, &#34;x-world/x-vrml&#34;},
+        {&#34;.flv&#34;, &#34;video/x-flv&#34;},
+        {&#34;.fsscript&#34;, &#34;application/fsharp-script&#34;},
+        {&#34;.fsx&#34;, &#34;application/fsharp-script&#34;},
+        {&#34;.generictest&#34;, &#34;application/xml&#34;},
+        {&#34;.gif&#34;, &#34;image/gif&#34;},
+        {&#34;.group&#34;, &#34;text/x-ms-group&#34;},
+        {&#34;.gsm&#34;, &#34;audio/x-gsm&#34;},
+        {&#34;.gtar&#34;, &#34;application/x-gtar&#34;},
+        {&#34;.gz&#34;, &#34;application/x-gzip&#34;},
+        {&#34;.h&#34;, &#34;text/plain&#34;},
+        {&#34;.hdf&#34;, &#34;application/x-hdf&#34;},
+        {&#34;.hdml&#34;, &#34;text/x-hdml&#34;},
+        {&#34;.hhc&#34;, &#34;application/x-oleobject&#34;},
+        {&#34;.hhk&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.hhp&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.hlp&#34;, &#34;application/winhlp&#34;},
+        {&#34;.hpp&#34;, &#34;text/plain&#34;},
+        {&#34;.hqx&#34;, &#34;application/mac-binhex40&#34;},
+        {&#34;.hta&#34;, &#34;application/hta&#34;},
+        {&#34;.htc&#34;, &#34;text/x-component&#34;},
+        {&#34;.htm&#34;, &#34;text/html&#34;},
+        {&#34;.html&#34;, &#34;text/html&#34;},
+        {&#34;.htt&#34;, &#34;text/webviewhtml&#34;},
+        {&#34;.hxa&#34;, &#34;application/xml&#34;},
+        {&#34;.hxc&#34;, &#34;application/xml&#34;},
+        {&#34;.hxd&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.hxe&#34;, &#34;application/xml&#34;},
+        {&#34;.hxf&#34;, &#34;application/xml&#34;},
+        {&#34;.hxh&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.hxi&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.hxk&#34;, &#34;application/xml&#34;},
+        {&#34;.hxq&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.hxr&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.hxs&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.hxt&#34;, &#34;text/html&#34;},
+        {&#34;.hxv&#34;, &#34;application/xml&#34;},
+        {&#34;.hxw&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.hxx&#34;, &#34;text/plain&#34;},
+        {&#34;.i&#34;, &#34;text/plain&#34;},
+        {&#34;.ico&#34;, &#34;image/x-icon&#34;},
+        {&#34;.ics&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.idl&#34;, &#34;text/plain&#34;},
+        {&#34;.ief&#34;, &#34;image/ief&#34;},
+        {&#34;.iii&#34;, &#34;application/x-iphone&#34;},
+        {&#34;.inc&#34;, &#34;text/plain&#34;},
+        {&#34;.inf&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.inl&#34;, &#34;text/plain&#34;},
+        {&#34;.ins&#34;, &#34;application/x-internet-signup&#34;},
+        {&#34;.ipa&#34;, &#34;application/x-itunes-ipa&#34;},
+        {&#34;.ipg&#34;, &#34;application/x-itunes-ipg&#34;},
+        {&#34;.ipproj&#34;, &#34;text/plain&#34;},
+        {&#34;.ipsw&#34;, &#34;application/x-itunes-ipsw&#34;},
+        {&#34;.iqy&#34;, &#34;text/x-ms-iqy&#34;},
+        {&#34;.isp&#34;, &#34;application/x-internet-signup&#34;},
+        {&#34;.ite&#34;, &#34;application/x-itunes-ite&#34;},
+        {&#34;.itlp&#34;, &#34;application/x-itunes-itlp&#34;},
+        {&#34;.itms&#34;, &#34;application/x-itunes-itms&#34;},
+        {&#34;.itpc&#34;, &#34;application/x-itunes-itpc&#34;},
+        {&#34;.IVF&#34;, &#34;video/x-ivf&#34;},
+        {&#34;.jar&#34;, &#34;application/java-archive&#34;},
+        {&#34;.java&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.jck&#34;, &#34;application/liquidmotion&#34;},
+        {&#34;.jcz&#34;, &#34;application/liquidmotion&#34;},
+        {&#34;.jfif&#34;, &#34;image/pjpeg&#34;},
+        {&#34;.jnlp&#34;, &#34;application/x-java-jnlp-file&#34;},
+        {&#34;.jpb&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.jpe&#34;, &#34;image/jpeg&#34;},
+        {&#34;.jpeg&#34;, &#34;image/jpeg&#34;},
+        {&#34;.jpg&#34;, &#34;image/jpeg&#34;},
+        {&#34;.js&#34;, &#34;application/x-javascript&#34;},
+        {&#34;.json&#34;, &#34;application/json&#34;},
+        {&#34;.jsx&#34;, &#34;text/jscript&#34;},
+        {&#34;.jsxbin&#34;, &#34;text/plain&#34;},
+        {&#34;.latex&#34;, &#34;application/x-latex&#34;},
+        {&#34;.library-ms&#34;, &#34;application/windows-library+xml&#34;},
+        {&#34;.lit&#34;, &#34;application/x-ms-reader&#34;},
+        {&#34;.loadtest&#34;, &#34;application/xml&#34;},
+        {&#34;.lpk&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.lsf&#34;, &#34;video/x-la-asf&#34;},
+        {&#34;.lst&#34;, &#34;text/plain&#34;},
+        {&#34;.lsx&#34;, &#34;video/x-la-asf&#34;},
+        {&#34;.lzh&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.m13&#34;, &#34;application/x-msmediaview&#34;},
+        {&#34;.m14&#34;, &#34;application/x-msmediaview&#34;},
+        {&#34;.m1v&#34;, &#34;video/mpeg&#34;},
+        {&#34;.m2t&#34;, &#34;video/vnd.dlna.mpeg-tts&#34;},
+        {&#34;.m2ts&#34;, &#34;video/vnd.dlna.mpeg-tts&#34;},
+        {&#34;.m2v&#34;, &#34;video/mpeg&#34;},
+        {&#34;.m3u&#34;, &#34;audio/x-mpegurl&#34;},
+        {&#34;.m3u8&#34;, &#34;audio/x-mpegurl&#34;},
+        {&#34;.m4a&#34;, &#34;audio/m4a&#34;},
+        {&#34;.m4b&#34;, &#34;audio/m4b&#34;},
+        {&#34;.m4p&#34;, &#34;audio/m4p&#34;},
+        {&#34;.m4r&#34;, &#34;audio/x-m4r&#34;},
+        {&#34;.m4v&#34;, &#34;video/x-m4v&#34;},
+        {&#34;.mac&#34;, &#34;image/x-macpaint&#34;},
+        {&#34;.mak&#34;, &#34;text/plain&#34;},
+        {&#34;.man&#34;, &#34;application/x-troff-man&#34;},
+        {&#34;.manifest&#34;, &#34;application/x-ms-manifest&#34;},
+        {&#34;.map&#34;, &#34;text/plain&#34;},
+        {&#34;.master&#34;, &#34;application/xml&#34;},
+        {&#34;.mda&#34;, &#34;application/msaccess&#34;},
+        {&#34;.mdb&#34;, &#34;application/x-msaccess&#34;},
+        {&#34;.mde&#34;, &#34;application/msaccess&#34;},
+        {&#34;.mdp&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.me&#34;, &#34;application/x-troff-me&#34;},
+        {&#34;.mfp&#34;, &#34;application/x-shockwave-flash&#34;},
+        {&#34;.mht&#34;, &#34;message/rfc822&#34;},
+        {&#34;.mhtml&#34;, &#34;message/rfc822&#34;},
+        {&#34;.mid&#34;, &#34;audio/mid&#34;},
+        {&#34;.midi&#34;, &#34;audio/mid&#34;},
+        {&#34;.mix&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.mk&#34;, &#34;text/plain&#34;},
+        {&#34;.mmf&#34;, &#34;application/x-smaf&#34;},
+        {&#34;.mno&#34;, &#34;text/xml&#34;},
+        {&#34;.mny&#34;, &#34;application/x-msmoney&#34;},
+        {&#34;.mod&#34;, &#34;video/mpeg&#34;},
+        {&#34;.mov&#34;, &#34;video/quicktime&#34;},
+        {&#34;.movie&#34;, &#34;video/x-sgi-movie&#34;},
+        {&#34;.mp2&#34;, &#34;video/mpeg&#34;},
+        {&#34;.mp2v&#34;, &#34;video/mpeg&#34;},
+        {&#34;.mp3&#34;, &#34;audio/mpeg&#34;},
+        {&#34;.mp4&#34;, &#34;video/mp4&#34;},
+        {&#34;.mp4v&#34;, &#34;video/mp4&#34;},
+        {&#34;.mpa&#34;, &#34;video/mpeg&#34;},
+        {&#34;.mpe&#34;, &#34;video/mpeg&#34;},
+        {&#34;.mpeg&#34;, &#34;video/mpeg&#34;},
+        {&#34;.mpf&#34;, &#34;application/vnd.ms-mediapackage&#34;},
+        {&#34;.mpg&#34;, &#34;video/mpeg&#34;},
+        {&#34;.mpp&#34;, &#34;application/vnd.ms-project&#34;},
+        {&#34;.mpv2&#34;, &#34;video/mpeg&#34;},
+        {&#34;.mqv&#34;, &#34;video/quicktime&#34;},
+        {&#34;.ms&#34;, &#34;application/x-troff-ms&#34;},
+        {&#34;.msi&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.mso&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.mts&#34;, &#34;video/vnd.dlna.mpeg-tts&#34;},
+        {&#34;.mtx&#34;, &#34;application/xml&#34;},
+        {&#34;.mvb&#34;, &#34;application/x-msmediaview&#34;},
+        {&#34;.mvc&#34;, &#34;application/x-miva-compiled&#34;},
+        {&#34;.mxp&#34;, &#34;application/x-mmxp&#34;},
+        {&#34;.nc&#34;, &#34;application/x-netcdf&#34;},
+        {&#34;.nsc&#34;, &#34;video/x-ms-asf&#34;},
+        {&#34;.nws&#34;, &#34;message/rfc822&#34;},
+        {&#34;.ocx&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.oda&#34;, &#34;application/oda&#34;},
+        {&#34;.odc&#34;, &#34;text/x-ms-odc&#34;},
+        {&#34;.odh&#34;, &#34;text/plain&#34;},
+        {&#34;.odl&#34;, &#34;text/plain&#34;},
+        {&#34;.odp&#34;, &#34;application/vnd.oasis.opendocument.presentation&#34;},
+        {&#34;.ods&#34;, &#34;application/oleobject&#34;},
+        {&#34;.odt&#34;, &#34;application/vnd.oasis.opendocument.text&#34;},
+        {&#34;.one&#34;, &#34;application/onenote&#34;},
+        {&#34;.onea&#34;, &#34;application/onenote&#34;},
+        {&#34;.onepkg&#34;, &#34;application/onenote&#34;},
+        {&#34;.onetmp&#34;, &#34;application/onenote&#34;},
+        {&#34;.onetoc&#34;, &#34;application/onenote&#34;},
+        {&#34;.onetoc2&#34;, &#34;application/onenote&#34;},
+        {&#34;.orderedtest&#34;, &#34;application/xml&#34;},
+        {&#34;.osdx&#34;, &#34;application/opensearchdescription+xml&#34;},
+        {&#34;.p10&#34;, &#34;application/pkcs10&#34;},
+        {&#34;.p12&#34;, &#34;application/x-pkcs12&#34;},
+        {&#34;.p7b&#34;, &#34;application/x-pkcs7-certificates&#34;},
+        {&#34;.p7c&#34;, &#34;application/pkcs7-mime&#34;},
+        {&#34;.p7m&#34;, &#34;application/pkcs7-mime&#34;},
+        {&#34;.p7r&#34;, &#34;application/x-pkcs7-certreqresp&#34;},
+        {&#34;.p7s&#34;, &#34;application/pkcs7-signature&#34;},
+        {&#34;.pbm&#34;, &#34;image/x-portable-bitmap&#34;},
+        {&#34;.pcast&#34;, &#34;application/x-podcast&#34;},
+        {&#34;.pct&#34;, &#34;image/pict&#34;},
+        {&#34;.pcx&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.pcz&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.pdf&#34;, &#34;application/pdf&#34;},
+        {&#34;.pfb&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.pfm&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.pfx&#34;, &#34;application/x-pkcs12&#34;},
+        {&#34;.pgm&#34;, &#34;image/x-portable-graymap&#34;},
+        {&#34;.pic&#34;, &#34;image/pict&#34;},
+        {&#34;.pict&#34;, &#34;image/pict&#34;},
+        {&#34;.pkgdef&#34;, &#34;text/plain&#34;},
+        {&#34;.pkgundef&#34;, &#34;text/plain&#34;},
+        {&#34;.pko&#34;, &#34;application/vnd.ms-pki.pko&#34;},
+        {&#34;.pls&#34;, &#34;audio/scpls&#34;},
+        {&#34;.pma&#34;, &#34;application/x-perfmon&#34;},
+        {&#34;.pmc&#34;, &#34;application/x-perfmon&#34;},
+        {&#34;.pml&#34;, &#34;application/x-perfmon&#34;},
+        {&#34;.pmr&#34;, &#34;application/x-perfmon&#34;},
+        {&#34;.pmw&#34;, &#34;application/x-perfmon&#34;},
+        {&#34;.png&#34;, &#34;image/png&#34;},
+        {&#34;.pnm&#34;, &#34;image/x-portable-anymap&#34;},
+        {&#34;.pnt&#34;, &#34;image/x-macpaint&#34;},
+        {&#34;.pntg&#34;, &#34;image/x-macpaint&#34;},
+        {&#34;.pnz&#34;, &#34;image/png&#34;},
+        {&#34;.pot&#34;, &#34;application/vnd.ms-powerpoint&#34;},
+        {&#34;.potm&#34;, &#34;application/vnd.ms-powerpoint.template.macroEnabled.12&#34;},
+        {&#34;.potx&#34;, &#34;application/vnd.openxmlformats-officedocument.presentationml.template&#34;},
+        {&#34;.ppa&#34;, &#34;application/vnd.ms-powerpoint&#34;},
+        {&#34;.ppam&#34;, &#34;application/vnd.ms-powerpoint.addin.macroEnabled.12&#34;},
+        {&#34;.ppm&#34;, &#34;image/x-portable-pixmap&#34;},
+        {&#34;.pps&#34;, &#34;application/vnd.ms-powerpoint&#34;},
+        {&#34;.ppsm&#34;, &#34;application/vnd.ms-powerpoint.slideshow.macroEnabled.12&#34;},
+        {&#34;.ppsx&#34;, &#34;application/vnd.openxmlformats-officedocument.presentationml.slideshow&#34;},
+        {&#34;.ppt&#34;, &#34;application/vnd.ms-powerpoint&#34;},
+        {&#34;.pptm&#34;, &#34;application/vnd.ms-powerpoint.presentation.macroEnabled.12&#34;},
+        {&#34;.pptx&#34;, &#34;application/vnd.openxmlformats-officedocument.presentationml.presentation&#34;},
+        {&#34;.prf&#34;, &#34;application/pics-rules&#34;},
+        {&#34;.prm&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.prx&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.ps&#34;, &#34;application/postscript&#34;},
+        {&#34;.psc1&#34;, &#34;application/PowerShell&#34;},
+        {&#34;.psd&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.psess&#34;, &#34;application/xml&#34;},
+        {&#34;.psm&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.psp&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.pub&#34;, &#34;application/x-mspublisher&#34;},
+        {&#34;.pwz&#34;, &#34;application/vnd.ms-powerpoint&#34;},
+        {&#34;.qht&#34;, &#34;text/x-html-insertion&#34;},
+        {&#34;.qhtm&#34;, &#34;text/x-html-insertion&#34;},
+        {&#34;.qt&#34;, &#34;video/quicktime&#34;},
+        {&#34;.qti&#34;, &#34;image/x-quicktime&#34;},
+        {&#34;.qtif&#34;, &#34;image/x-quicktime&#34;},
+        {&#34;.qtl&#34;, &#34;application/x-quicktimeplayer&#34;},
+        {&#34;.qxd&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.ra&#34;, &#34;audio/x-pn-realaudio&#34;},
+        {&#34;.ram&#34;, &#34;audio/x-pn-realaudio&#34;},
+        {&#34;.rar&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.ras&#34;, &#34;image/x-cmu-raster&#34;},
+        {&#34;.rat&#34;, &#34;application/rat-file&#34;},
+        {&#34;.rc&#34;, &#34;text/plain&#34;},
+        {&#34;.rc2&#34;, &#34;text/plain&#34;},
+        {&#34;.rct&#34;, &#34;text/plain&#34;},
+        {&#34;.rdlc&#34;, &#34;application/xml&#34;},
+        {&#34;.resx&#34;, &#34;application/xml&#34;},
+        {&#34;.rf&#34;, &#34;image/vnd.rn-realflash&#34;},
+        {&#34;.rgb&#34;, &#34;image/x-rgb&#34;},
+        {&#34;.rgs&#34;, &#34;text/plain&#34;},
+        {&#34;.rm&#34;, &#34;application/vnd.rn-realmedia&#34;},
+        {&#34;.rmi&#34;, &#34;audio/mid&#34;},
+        {&#34;.rmp&#34;, &#34;application/vnd.rn-rn_music_package&#34;},
+        {&#34;.roff&#34;, &#34;application/x-troff&#34;},
+        {&#34;.rpm&#34;, &#34;audio/x-pn-realaudio-plugin&#34;},
+        {&#34;.rqy&#34;, &#34;text/x-ms-rqy&#34;},
+        {&#34;.rtf&#34;, &#34;application/rtf&#34;},
+        {&#34;.rtx&#34;, &#34;text/richtext&#34;},
+        {&#34;.ruleset&#34;, &#34;application/xml&#34;},
+        {&#34;.s&#34;, &#34;text/plain&#34;},
+        {&#34;.safariextz&#34;, &#34;application/x-safari-safariextz&#34;},
+        {&#34;.scd&#34;, &#34;application/x-msschedule&#34;},
+        {&#34;.sct&#34;, &#34;text/scriptlet&#34;},
+        {&#34;.sd2&#34;, &#34;audio/x-sd2&#34;},
+        {&#34;.sdp&#34;, &#34;application/sdp&#34;},
+        {&#34;.sea&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.searchConnector-ms&#34;, &#34;application/windows-search-connector+xml&#34;},
+        {&#34;.setpay&#34;, &#34;application/set-payment-initiation&#34;},
+        {&#34;.setreg&#34;, &#34;application/set-registration-initiation&#34;},
+        {&#34;.settings&#34;, &#34;application/xml&#34;},
+        {&#34;.sgimb&#34;, &#34;application/x-sgimb&#34;},
+        {&#34;.sgml&#34;, &#34;text/sgml&#34;},
+        {&#34;.sh&#34;, &#34;application/x-sh&#34;},
+        {&#34;.shar&#34;, &#34;application/x-shar&#34;},
+        {&#34;.shtml&#34;, &#34;text/html&#34;},
+        {&#34;.sit&#34;, &#34;application/x-stuffit&#34;},
+        {&#34;.sitemap&#34;, &#34;application/xml&#34;},
+        {&#34;.skin&#34;, &#34;application/xml&#34;},
+        {&#34;.sldm&#34;, &#34;application/vnd.ms-powerpoint.slide.macroEnabled.12&#34;},
+        {&#34;.sldx&#34;, &#34;application/vnd.openxmlformats-officedocument.presentationml.slide&#34;},
+        {&#34;.slk&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.sln&#34;, &#34;text/plain&#34;},
+        {&#34;.slupkg-ms&#34;, &#34;application/x-ms-license&#34;},
+        {&#34;.smd&#34;, &#34;audio/x-smd&#34;},
+        {&#34;.smi&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.smx&#34;, &#34;audio/x-smd&#34;},
+        {&#34;.smz&#34;, &#34;audio/x-smd&#34;},
+        {&#34;.snd&#34;, &#34;audio/basic&#34;},
+        {&#34;.snippet&#34;, &#34;application/xml&#34;},
+        {&#34;.snp&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.sol&#34;, &#34;text/plain&#34;},
+        {&#34;.sor&#34;, &#34;text/plain&#34;},
+        {&#34;.spc&#34;, &#34;application/x-pkcs7-certificates&#34;},
+        {&#34;.spl&#34;, &#34;application/futuresplash&#34;},
+        {&#34;.src&#34;, &#34;application/x-wais-source&#34;},
+        {&#34;.srf&#34;, &#34;text/plain&#34;},
+        {&#34;.SSISDeploymentManifest&#34;, &#34;text/xml&#34;},
+        {&#34;.ssm&#34;, &#34;application/streamingmedia&#34;},
+        {&#34;.sst&#34;, &#34;application/vnd.ms-pki.certstore&#34;},
+        {&#34;.stl&#34;, &#34;application/vnd.ms-pki.stl&#34;},
+        {&#34;.sv4cpio&#34;, &#34;application/x-sv4cpio&#34;},
+        {&#34;.sv4crc&#34;, &#34;application/x-sv4crc&#34;},
+        {&#34;.svc&#34;, &#34;application/xml&#34;},
+        {&#34;.swf&#34;, &#34;application/x-shockwave-flash&#34;},
+        {&#34;.t&#34;, &#34;application/x-troff&#34;},
+        {&#34;.tar&#34;, &#34;application/x-tar&#34;},
+        {&#34;.tcl&#34;, &#34;application/x-tcl&#34;},
+        {&#34;.testrunconfig&#34;, &#34;application/xml&#34;},
+        {&#34;.testsettings&#34;, &#34;application/xml&#34;},
+        {&#34;.tex&#34;, &#34;application/x-tex&#34;},
+        {&#34;.texi&#34;, &#34;application/x-texinfo&#34;},
+        {&#34;.texinfo&#34;, &#34;application/x-texinfo&#34;},
+        {&#34;.tgz&#34;, &#34;application/x-compressed&#34;},
+        {&#34;.thmx&#34;, &#34;application/vnd.ms-officetheme&#34;},
+        {&#34;.thn&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.tif&#34;, &#34;image/tiff&#34;},
+        {&#34;.tiff&#34;, &#34;image/tiff&#34;},
+        {&#34;.tlh&#34;, &#34;text/plain&#34;},
+        {&#34;.tli&#34;, &#34;text/plain&#34;},
+        {&#34;.toc&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.tr&#34;, &#34;application/x-troff&#34;},
+        {&#34;.trm&#34;, &#34;application/x-msterminal&#34;},
+        {&#34;.trx&#34;, &#34;application/xml&#34;},
+        {&#34;.ts&#34;, &#34;video/vnd.dlna.mpeg-tts&#34;},
+        {&#34;.tsv&#34;, &#34;text/tab-separated-values&#34;},
+        {&#34;.ttf&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.tts&#34;, &#34;video/vnd.dlna.mpeg-tts&#34;},
+        {&#34;.txt&#34;, &#34;text/plain&#34;},
+        {&#34;.u32&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.uls&#34;, &#34;text/iuls&#34;},
+        {&#34;.user&#34;, &#34;text/plain&#34;},
+        {&#34;.ustar&#34;, &#34;application/x-ustar&#34;},
+        {&#34;.vb&#34;, &#34;text/plain&#34;},
+        {&#34;.vbdproj&#34;, &#34;text/plain&#34;},
+        {&#34;.vbk&#34;, &#34;video/mpeg&#34;},
+        {&#34;.vbproj&#34;, &#34;text/plain&#34;},
+        {&#34;.vbs&#34;, &#34;text/vbscript&#34;},
+        {&#34;.vcf&#34;, &#34;text/x-vcard&#34;},
+        {&#34;.vcproj&#34;, &#34;Application/xml&#34;},
+        {&#34;.vcs&#34;, &#34;text/plain&#34;},
+        {&#34;.vcxproj&#34;, &#34;Application/xml&#34;},
+        {&#34;.vddproj&#34;, &#34;text/plain&#34;},
+        {&#34;.vdp&#34;, &#34;text/plain&#34;},
+        {&#34;.vdproj&#34;, &#34;text/plain&#34;},
+        {&#34;.vdx&#34;, &#34;application/vnd.ms-visio.viewer&#34;},
+        {&#34;.vml&#34;, &#34;text/xml&#34;},
+        {&#34;.vscontent&#34;, &#34;application/xml&#34;},
+        {&#34;.vsct&#34;, &#34;text/xml&#34;},
+        {&#34;.vsd&#34;, &#34;application/vnd.visio&#34;},
+        {&#34;.vsi&#34;, &#34;application/ms-vsi&#34;},
+        {&#34;.vsix&#34;, &#34;application/vsix&#34;},
+        {&#34;.vsixlangpack&#34;, &#34;text/xml&#34;},
+        {&#34;.vsixmanifest&#34;, &#34;text/xml&#34;},
+        {&#34;.vsmdi&#34;, &#34;application/xml&#34;},
+        {&#34;.vspscc&#34;, &#34;text/plain&#34;},
+        {&#34;.vss&#34;, &#34;application/vnd.visio&#34;},
+        {&#34;.vsscc&#34;, &#34;text/plain&#34;},
+        {&#34;.vssettings&#34;, &#34;text/xml&#34;},
+        {&#34;.vssscc&#34;, &#34;text/plain&#34;},
+        {&#34;.vst&#34;, &#34;application/vnd.visio&#34;},
+        {&#34;.vstemplate&#34;, &#34;text/xml&#34;},
+        {&#34;.vsto&#34;, &#34;application/x-ms-vsto&#34;},
+        {&#34;.vsw&#34;, &#34;application/vnd.visio&#34;},
+        {&#34;.vsx&#34;, &#34;application/vnd.visio&#34;},
+        {&#34;.vtx&#34;, &#34;application/vnd.visio&#34;},
+        {&#34;.wav&#34;, &#34;audio/wav&#34;},
+        {&#34;.wave&#34;, &#34;audio/wav&#34;},
+        {&#34;.wax&#34;, &#34;audio/x-ms-wax&#34;},
+        {&#34;.wbk&#34;, &#34;application/msword&#34;},
+        {&#34;.wbmp&#34;, &#34;image/vnd.wap.wbmp&#34;},
+        {&#34;.wcm&#34;, &#34;application/vnd.ms-works&#34;},
+        {&#34;.wdb&#34;, &#34;application/vnd.ms-works&#34;},
+        {&#34;.wdp&#34;, &#34;image/vnd.ms-photo&#34;},
+        {&#34;.webarchive&#34;, &#34;application/x-safari-webarchive&#34;},
+        {&#34;.webtest&#34;, &#34;application/xml&#34;},
+        {&#34;.wiq&#34;, &#34;application/xml&#34;},
+        {&#34;.wiz&#34;, &#34;application/msword&#34;},
+        {&#34;.wks&#34;, &#34;application/vnd.ms-works&#34;},
+        {&#34;.WLMP&#34;, &#34;application/wlmoviemaker&#34;},
+        {&#34;.wlpginstall&#34;, &#34;application/x-wlpg-detect&#34;},
+        {&#34;.wlpginstall3&#34;, &#34;application/x-wlpg3-detect&#34;},
+        {&#34;.wm&#34;, &#34;video/x-ms-wm&#34;},
+        {&#34;.wma&#34;, &#34;audio/x-ms-wma&#34;},
+        {&#34;.wmd&#34;, &#34;application/x-ms-wmd&#34;},
+        {&#34;.wmf&#34;, &#34;application/x-msmetafile&#34;},
+        {&#34;.wml&#34;, &#34;text/vnd.wap.wml&#34;},
+        {&#34;.wmlc&#34;, &#34;application/vnd.wap.wmlc&#34;},
+        {&#34;.wmls&#34;, &#34;text/vnd.wap.wmlscript&#34;},
+        {&#34;.wmlsc&#34;, &#34;application/vnd.wap.wmlscriptc&#34;},
+        {&#34;.wmp&#34;, &#34;video/x-ms-wmp&#34;},
+        {&#34;.wmv&#34;, &#34;video/x-ms-wmv&#34;},
+        {&#34;.wmx&#34;, &#34;video/x-ms-wmx&#34;},
+        {&#34;.wmz&#34;, &#34;application/x-ms-wmz&#34;},
+        {&#34;.wpl&#34;, &#34;application/vnd.ms-wpl&#34;},
+        {&#34;.wps&#34;, &#34;application/vnd.ms-works&#34;},
+        {&#34;.wri&#34;, &#34;application/x-mswrite&#34;},
+        {&#34;.wrl&#34;, &#34;x-world/x-vrml&#34;},
+        {&#34;.wrz&#34;, &#34;x-world/x-vrml&#34;},
+        {&#34;.wsc&#34;, &#34;text/scriptlet&#34;},
+        {&#34;.wsdl&#34;, &#34;text/xml&#34;},
+        {&#34;.wvx&#34;, &#34;video/x-ms-wvx&#34;},
+        {&#34;.x&#34;, &#34;application/directx&#34;},
+        {&#34;.xaf&#34;, &#34;x-world/x-vrml&#34;},
+        {&#34;.xaml&#34;, &#34;application/xaml+xml&#34;},
+        {&#34;.xap&#34;, &#34;application/x-silverlight-app&#34;},
+        {&#34;.xbap&#34;, &#34;application/x-ms-xbap&#34;},
+        {&#34;.xbm&#34;, &#34;image/x-xbitmap&#34;},
+        {&#34;.xdr&#34;, &#34;text/plain&#34;},
+        {&#34;.xht&#34;, &#34;application/xhtml+xml&#34;},
+        {&#34;.xhtml&#34;, &#34;application/xhtml+xml&#34;},
+        {&#34;.xla&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.xlam&#34;, &#34;application/vnd.ms-excel.addin.macroEnabled.12&#34;},
+        {&#34;.xlc&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.xld&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.xlk&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.xll&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.xlm&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.xls&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.xlsb&#34;, &#34;application/vnd.ms-excel.sheet.binary.macroEnabled.12&#34;},
+        {&#34;.xlsm&#34;, &#34;application/vnd.ms-excel.sheet.macroEnabled.12&#34;},
+        {&#34;.xlsx&#34;, &#34;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&#34;},
+        {&#34;.xlt&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.xltm&#34;, &#34;application/vnd.ms-excel.template.macroEnabled.12&#34;},
+        {&#34;.xltx&#34;, &#34;application/vnd.openxmlformats-officedocument.spreadsheetml.template&#34;},
+        {&#34;.xlw&#34;, &#34;application/vnd.ms-excel&#34;},
+        {&#34;.xml&#34;, &#34;text/xml&#34;},
+        {&#34;.xmta&#34;, &#34;application/xml&#34;},
+        {&#34;.xof&#34;, &#34;x-world/x-vrml&#34;},
+        {&#34;.XOML&#34;, &#34;text/plain&#34;},
+        {&#34;.xpm&#34;, &#34;image/x-xpixmap&#34;},
+        {&#34;.xps&#34;, &#34;application/vnd.ms-xpsdocument&#34;},
+        {&#34;.xrm-ms&#34;, &#34;text/xml&#34;},
+        {&#34;.xsc&#34;, &#34;application/xml&#34;},
+        {&#34;.xsd&#34;, &#34;text/xml&#34;},
+        {&#34;.xsf&#34;, &#34;text/xml&#34;},
+        {&#34;.xsl&#34;, &#34;text/xml&#34;},
+        {&#34;.xslt&#34;, &#34;text/xml&#34;},
+        {&#34;.xsn&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.xss&#34;, &#34;application/xml&#34;},
+        {&#34;.xtp&#34;, &#34;application/octet-stream&#34;},
+        {&#34;.xwd&#34;, &#34;image/x-xwindowdump&#34;},
+        {&#34;.z&#34;, &#34;application/x-compress&#34;},
+        {&#34;.zip&#34;, &#34;application/x-zip-compressed&#34;},
+        #endregion
+
+        };
+
+        public static string GetMimeType(string extension)
+        {
+            if (extension == null)
+            {
+                throw new ArgumentNullException(&#34;extension&#34;);
+            }
+
+            if (!extension.StartsWith(&#34;.&#34;))
+            {
+                extension = &#34;.&#34; + extension;
+            }
+
+            string mime;
+
+            return _mappings.TryGetValue(extension, out mime) ? mime : &#34;application/octet-stream&#34;;
+        }
+    }
+}
+</code></pre><ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

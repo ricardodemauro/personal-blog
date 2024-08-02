@@ -16,11 +16,25 @@
       <description>Exposing virtual machines to the internet it&amp;rsquo;s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.&#xA;Let&amp;rsquo;s go through some often and ease configurations that will make it an attacker hard if trying to access your machine.&#xA;💬 In this issue Creating a non-root user and use eventually elevated privileged Enabling UFW Uncomplicated Firewall Unattended Upgrades Hardening the SSH Access Use SSH Keys instead of Password Change the default Port for SSH Disable Password Login Disable Root Login over SSH Use config file in SSH client for easier connection 👉 Information we&amp;rsquo;ll use in our lab User: _root_Password: generated with a _password generator_Description: Our Root userUser: _secondary_Password: generated with a _password generator_Description: Non Root user for daily basis accessOperating System: Ubuntu Server 20.</description>
     </item>
     <item>
+      <title>Change Default Port 22 of SSH Server</title>
+      <link>http://localhost:1313/post/change-default-port-of-ssh-server/</link>
+      <pubDate>Sun, 04 Sep 2022 19:24:30 +0000</pubDate>
+      <guid>http://localhost:1313/post/change-default-port-of-ssh-server/</guid>
+      <description>Port 22 is used by default to establish an SSH connections. This port is automatically configured during the installation of your operating system.&#xA;To reduce the number of brute force attacks, you can change it to a different port for SSH access.&#xA;Changing the Default Port To change the SSH port:&#xA;Log on to the server as an root or an administrator user. Open the SSH configuration file sshd_config with the text editor nano: $ nano /etc/ssh/sshd_config Search for the entry Port 22 (could be commented) Replace it with the desired value - port between 1024 and 65536 Save and Restart the OpenSSH service $ service ssh restart # or $ systemctl restart sshd </description>
+    </item>
+    <item>
       <title>Azure App Service and Cloudflare with Full SSL (Strict)</title>
       <link>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</link>
       <pubDate>Sun, 15 Dec 2019 23:39:13 +0000</pubDate>
       <guid>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</guid>
       <description>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.&#xA;At the end we will have the following configuration:&#xA;CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.</description>
+    </item>
+    <item>
+      <title>Azure App Service e Cloudflare com SSL Full (strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 20:36:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</guid>
+      <description>[english version]&#xA;Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.&#xA;Ao final teremos a seguinte configuração:&#xA;CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.</description>
     </item>
     <item>
       <title>Practice of SQL Injection</title>

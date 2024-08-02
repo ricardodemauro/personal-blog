@@ -6,8 +6,36 @@
     <description>Recent content in Pt on rmauro.dev {blog}</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Dec 2019 01:58:29 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Jul 2021 02:10:38 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/pt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Health Checks em Aplicações .NET 5</title>
+      <link>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</link>
+      <pubDate>Fri, 16 Jul 2021 02:10:38 +0000</pubDate>
+      <guid>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</guid>
+      <description>Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.&#xA;Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.&#xA;https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.</description>
+    </item>
+    <item>
+      <title>AZ-203 - AGENDA - 01/2020</title>
+      <link>http://localhost:1313/post/az-203-conteudo-programatico/</link>
+      <pubDate>Fri, 03 Jan 2020 20:24:05 +0000</pubDate>
+      <guid>http://localhost:1313/post/az-203-conteudo-programatico/</guid>
+      <description>Agenda do curso AZ-203.</description>
+    </item>
+    <item>
+      <title>Azure Function V3 com EntityFramework Core 3.1</title>
+      <link>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</link>
+      <pubDate>Tue, 31 Dec 2019 16:47:03 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</guid>
+      <description>Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.&#xA;Ao final vamos ter a seguinte configuração:&#xA;Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos&#xA;Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.&#xA;Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.</description>
+    </item>
+    <item>
+      <title>Azure App Service e Cloudflare com SSL Full (strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 20:36:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</guid>
+      <description>[english version]&#xA;Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.&#xA;Ao final teremos a seguinte configuração:&#xA;CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.</description>
+    </item>
     <item>
       <title>SQL Injection na Prática - Executando o Ataque</title>
       <link>http://localhost:1313/post/sql-injection-na-pratica/</link>
@@ -21,6 +49,13 @@
       <pubDate>Sun, 03 Nov 2019 03:04:13 +0000</pubDate>
       <guid>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</guid>
       <description>Você sabe o que é um Perceptron?&#xA;Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.&#xA;Segundo wikipedia:&#xA;In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.&#xA;Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).</description>
+    </item>
+    <item>
+      <title>Asp.Net Core com MongoDb e Mongo Atlas - C#</title>
+      <link>http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/</link>
+      <pubDate>Sat, 19 Oct 2019 21:39:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/</guid>
+      <description>Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.&#xA;Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos&#xA;Neste tutorial, você aprenderá como:&#xA;Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.</description>
     </item>
   </channel>
 </rss>

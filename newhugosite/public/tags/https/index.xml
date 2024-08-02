@@ -16,11 +16,25 @@
       <description>A self-signed certificate it&amp;rsquo;s very easy to create and helps on with local development and testing.&#xA;With a Single Line of PowerShell code we create a certificate.&#xA;First, open the PowerShell as Administrator and run the following command:&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; The default expiration is 1 year. If you want a custom expiration date use option -NotAfter.&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; ` -NotAfter [System.</description>
     </item>
     <item>
+      <title>Simple Web Application with HTTP 2 over Kestrel</title>
+      <link>http://localhost:1313/post/enabling-http-2-on-kestrel/</link>
+      <pubDate>Wed, 16 Sep 2020 22:16:16 +0000</pubDate>
+      <guid>http://localhost:1313/post/enabling-http-2-on-kestrel/</guid>
+      <description>In this blog post we&amp;rsquo;re going to create a simple web application with HTTP 2 enable on Kestrel.&#xA;Prerequisites to follow this article:&#xA;OpenSSL for Windows - to generate a self signed certificate First let generate a self signed SSL certificate. If you have an existing one you can skip this step.&#xA;On an existing .Net application open the Program.cs file.&#xA;public class Program { public static void Main(string[] args) { CreateHostBuilder(args).</description>
+    </item>
+    <item>
       <title>Azure App Service and Cloudflare with Full SSL (Strict)</title>
       <link>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</link>
       <pubDate>Sun, 15 Dec 2019 23:39:13 +0000</pubDate>
       <guid>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</guid>
       <description>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.&#xA;At the end we will have the following configuration:&#xA;CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.</description>
+    </item>
+    <item>
+      <title>Azure App Service e Cloudflare com SSL Full (strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 20:36:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</guid>
+      <description>[english version]&#xA;Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.&#xA;Ao final teremos a seguinte configuração:&#xA;CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.</description>
     </item>
     <item>
       <title>HSTS - What&#39;s it and how to enable it in IIS</title>

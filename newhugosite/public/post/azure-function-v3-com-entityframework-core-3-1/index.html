@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Azure Function V3 com EntityFramework Core 3.1 | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
+Ao final vamos ter a seguinte configuração:
+Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos
+Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.
+Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Azure Function V3 com EntityFramework Core 3.1">
+  <meta property="og:description" content="Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
+Ao final vamos ter a seguinte configuração:
+Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos
+Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.
+Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-12-31T16:47:03+00:00">
+    <meta property="article:modified_time" content="2019-12-31T16:47:03+00:00">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="Pt">
+    <meta property="article:tag" content="Azure">
+    <meta property="article:tag" content="AZ-203">
+
+  <meta itemprop="name" content="Azure Function V3 com EntityFramework Core 3.1">
+  <meta itemprop="description" content="Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
+Ao final vamos ter a seguinte configuração:
+Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos
+Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.
+Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.">
+  <meta itemprop="datePublished" content="2019-12-31T16:47:03+00:00">
+  <meta itemprop="dateModified" content="2019-12-31T16:47:03+00:00">
+  <meta itemprop="wordCount" content="376">
+  <meta itemprop="keywords" content="C#,Pt,Azure,AZ-203">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Azure Function V3 com EntityFramework Core 3.1">
+  <meta name="twitter:description" content="Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.
+Ao final vamos ter a seguinte configuração:
+Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos
+Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.
+Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Azure Function V3 com EntityFramework Core 3.1</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-12-31T16:47:03Z">December 31, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.</p>
+<p>Ao final vamos ter a seguinte configuração:</p>
+<ul>
+<li>Azure Function V3</li>
+<li>Entity Framework Core</li>
+<li>Entidade Aluno</li>
+</ul>
+<p>Pré Requisitos</p>
+<ul>
+<li><a href="https://visualstudio.microsoft.com/downloads/">Visual Studio 2019</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local#v2">Azure Functions Core Tools V3</a></li>
+<li>Conta Azure (opcional) para publicar</li>
+</ul>
+<p>Código fonte disponível no <a href="https://github.com/ricardodemauro/az-function-ef-3">Github</a>.</p>
+<h2 id="criando-novo-projeto">Criando novo projeto</h2>
+<p>Primeiro crie um novo projeto a partir do template Azure Function.</p>
+<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/az-01.png" alt="az-01"></p>
+<p>Vamos chamar nosso projeto de <strong>FuncStudents</strong>.</p>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/az-02.png" alt="az-02"></p>
+<p>Agora configure conforme abaixo e depois clique em <strong>Create</strong></p>
+<ul>
+<li>Azure Function v3 (.Net Core)</li>
+<li>Http Trigger</li>
+<li>Storage Account: None</li>
+<li>Authorization Level: Anonymous</li>
+</ul>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/az-03.png" alt="az-03"></p>
+<h2 id="configurando-o-entity-framework-core">Configurando o Entity Framework Core</h2>
+<p>Antes de adicionar os pacotes nuget vamos criar nosso modelo <code>Student</code>.</p>
+<h3 id="adicionando-o-modelo">Adicionando o modelo</h3>
+<p>Crie uma pasta com nome <code>Models</code> e criar a classe <code>Student.cs</code> conforme abaixo.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Collections.Generic;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Linq;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Text;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Threading.Tasks;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> FuncStudents.Models
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Student</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Id { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> Name { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> Age { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> CourseName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="configurando-entity-framework-core">Configurando Entity Framework Core</h3>
+<p>Agora vamos adicionar os pacotes:</p>
+<ul>
+<li>Microsoft.EntityFrameworkCore - version 3.1.0</li>
+<li>Microsoft.EntityFrameworkCore.SqlServer - version 3.1.0</li>
+</ul>
+<p>Upgrade do pacote:</p>
+<ul>
+<li>Microsoft.NET.Sdk.Functions de version 3.0.1 para 3.0.2</li>
+</ul>
+<p>E por último realizar o upgrade to <code>target framework</code> para <code>netcoreapp3.1</code>.</p>
+<p>Arquivo <code>FuncStudents.csproj</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;Project</span> <span style="color:#a6e22e">Sdk=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;PropertyGroup&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;TargetFramework&gt;</span>netcoreapp3.0<span style="color:#f92672">&lt;/TargetFramework&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;AzureFunctionsVersion&gt;</span>v3<span style="color:#f92672">&lt;/AzureFunctionsVersion&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;ItemGroup&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Microsoft.EntityFrameworkCore&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;3.1.0&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Microsoft.EntityFrameworkCore.SqlServer&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;3.1.0&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk.Functions&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;3.0.2&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/ItemGroup&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;ItemGroup&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;None</span> <span style="color:#a6e22e">Update=</span><span style="color:#e6db74">&#34;host.json&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;CopyToOutputDirectory&gt;</span>PreserveNewest<span style="color:#f92672">&lt;/CopyToOutputDirectory&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/None&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;None</span> <span style="color:#a6e22e">Update=</span><span style="color:#e6db74">&#34;local.settings.json&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;CopyToOutputDirectory&gt;</span>PreserveNewest<span style="color:#f92672">&lt;/CopyToOutputDirectory&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;CopyToPublishDirectory&gt;</span>Never<span style="color:#f92672">&lt;/CopyToPublishDirectory&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/None&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/ItemGroup&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/Project&gt;</span>
+</span></span></code></pre></div><h3 id="configurando-o-datacontext">Configurando o DataContext</h3>
+<p>Agora que temos os pacotes instalados é hora de configurar o nosso <code>DataContext</code>.</p>
+<p>Crie uma pasta chamada <strong>Data</strong> na raiz do projeto e criar o arquivo <code>ApplicationDbContext.cs</code> conforme abaixo.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> FuncStudents.Models;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.EntityFrameworkCore;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> FuncStudents.Data
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApplicationDbContext</span> : DbContext
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> DbSet&lt;Student&gt; Students { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ApplicationDbContext(DbContextOptions&lt;ApplicationDbContext&gt; dbContextOptions)
+</span></span><span style="display:flex;"><span>            : <span style="color:#66d9ef">base</span>(dbContextOptions)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="configurando-o-container-de-injeção-de-dependência">Configurando o Container de Injeção de Dependência</h3>
+<p>Agora que configuramos o <code>DbContext</code> com um <code>DbSet</code> <strong>Students</strong>, é hora de configurarmos o container de injeção de dependência.</p>
+<p>Antes de criarmos nosso arquivo de <strong>Startup</strong> vamos adicionar o seguinte pacote <code>Microsoft.Azure.Functions.Extensions</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Microsoft.Azure.Functions.Extensions&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;1.0.0&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span></code></pre></div><p>Depois de instalado o pacote. Crie o arquivo <code>Startup.cs</code> com o conteúdo a seguir.</p>
+<h2 id="referências">Referências</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/pt-br/azure/azure-functions/">Azure Functions Docs</a></li>
+</ul>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/pt/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Pt</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Azure/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/AZ-203/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">AZ-203</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-e-cloudflare-com-ssl-full-strict/">Azure App Service e Cloudflare com SSL Full (strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/aspnetcore-com-mongo-db-e-mongo-atlas/">Asp.Net Core com MongoDb e Mongo Atlas - C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-webjob-azure-cron-expressions/">Demo WebJob Azure - CRON expressions</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-azure-disk-encryption-though-az-cli/">Enable Azure Disk Encryption though az-cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-vm-though-powershell/">Create Azure VM though PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/">Console Application para upload de arquivo no Azure Blob Storage</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/sql-injection-na-pratica/">SQL Injection na Prática - Executando o Ataque</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/comecando-com-machine-learning-escrevendo-um-perceptron/">Começando com Machine Learning - Escrevendo um Perceptron</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

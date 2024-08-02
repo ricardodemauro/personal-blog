@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="In this hands-on blog post, we&rsquo;ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
+Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience">
+  <meta property="og:description" content="In this hands-on blog post, we’ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
+Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-07-05T01:57:30+00:00">
+    <meta property="article:modified_time" content="2024-07-05T01:57:30+00:00">
+    <meta property="article:tag" content="Microsoft.Extensions.Resilience">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="DotNet">
+    <meta property="article:tag" content="DotNet Core">
+
+  <meta itemprop="name" content="HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience">
+  <meta itemprop="description" content="In this hands-on blog post, we’ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
+Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.">
+  <meta itemprop="datePublished" content="2024-07-05T01:57:30+00:00">
+  <meta itemprop="dateModified" content="2024-07-05T01:57:30+00:00">
+  <meta itemprop="wordCount" content="609">
+  <meta itemprop="keywords" content="Microsoft.Extensions.Resilience,C#,DotNet,DotNet Core">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience">
+  <meta name="twitter:description" content="In this hands-on blog post, we’ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.
+Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-07-05T01:57:30Z">July 5, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In this hands-on blog post, we&rsquo;ll explore how to use the <code>Microsoft.Extensions.Resilience</code> package to enhance the resilience of HTTP client requests in a .NET application.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>Introduction</li>
+<li>Prerequisites</li>
+<li>Setting Up the Project</li>
+<li>Configuring Resilience Policies</li>
+<li>Testing the Resilience Strategies</li>
+<li>Conclusion</li>
+</ol>
+<h2 id="introduction">Introduction</h2>
+<p>As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.</p>
+<p>The <code>Microsoft.Extensions.Resilience</code> package provides a straightforward way to integrate these strategies into your .NET applications. In this article, we&rsquo;ll walk through the steps to configure and use these resilience features in an HTTP client.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we begin, make sure you have the following installed:</p>
+<ul>
+<li>.NET 8 SDK</li>
+<li>An IDE such as Visual Studio or Visual Studio Code</li>
+</ul>
+<h2 id="setting-up-the-project">Setting Up the Project</h2>
+<p>Open your terminal or command prompt and run the following command to create a new ASP.NET Core Web API project.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new webapi -n ResilientHttpClientDemo
+</span></span><span style="display:flex;"><span>cd ResilientHttpClientDemo
+</span></span></code></pre></div><p>Add the <code>Microsoft.Extensions.Resilience</code> and <code>Microsoft.Extensions.Http</code> packages to the project.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package Microsoft.Extensions.Reilience
+</span></span><span style="display:flex;"><span>dotnet add package Microsoft.Extensions.Http
+</span></span></code></pre></div><h2 id="configuring-resilience-policies">Configuring Resilience Policies</h2>
+<p>Open the <code>Program.cs</code> file and configure your HTTP client to use resilience policies:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.DependencyInjection; 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Http.Resilience;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> builder = WebApplication.CreateBuilder(args); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Add HTTP client with resilience policies builder.Services.AddHttpClient(&#34;ResilientClient&#34;)</span>
+</span></span><span style="display:flex;"><span>	.AddPolicyHandler(GetRetryPolicy())
+</span></span><span style="display:flex;"><span>    .AddPolicyHandler(GetCircuitBreakerPolicy()); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> app = builder.Build(); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app.MapGet(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#66d9ef">async</span> (IHttpClientFactory httpClientFactory) =&gt; 
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> client = httpClientFactory.CreateClient(<span style="color:#e6db74">&#34;ResilientClient&#34;</span>); 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> response = <span style="color:#66d9ef">await</span> client.GetAsync(<span style="color:#e6db74">&#34;https://api.example.com/data&#34;</span>); 
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> response.Content.ReadAsStringAsync(); 
+</span></span><span style="display:flex;"><span>}); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app.Run(); 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Define the retry policy </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> IAsyncPolicy&lt;HttpResponseMessage&gt; GetRetryPolicy() 
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> HttpPolicyExtensions 
+</span></span><span style="display:flex;"><span>    	.HandleTransientHttpError() 
+</span></span><span style="display:flex;"><span>        .OrResult(msg =&gt; msg.StatusCode == HttpStatusCode.NotFound) 
+</span></span><span style="display:flex;"><span>        .WaitAndRetryAsync(
+</span></span><span style="display:flex;"><span>        	<span style="color:#ae81ff">3</span>, 
+</span></span><span style="display:flex;"><span>            retryAttempt =&gt; TimeSpan.FromSeconds(Math.Pow(<span style="color:#ae81ff">2</span>, retryAttempt))
+</span></span><span style="display:flex;"><span>		); 
+</span></span><span style="display:flex;"><span>} 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Define the circuit breaker policy </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> IAsyncPolicy&lt;HttpResponseMessage&gt; GetCircuitBreakerPolicy() 
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> HttpPolicyExtensions 
+</span></span><span style="display:flex;"><span>    	.HandleTransientHttpError() 
+</span></span><span style="display:flex;"><span>        .CircuitBreakerAsync(<span style="color:#ae81ff">5</span>, TimeSpan.FromSeconds(<span style="color:#ae81ff">30</span>)); 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="defined-policies">Defined Policies</h3>
+<ul>
+<li><strong>Retry Policy:</strong> This policy retries the HTTP request up to 3 times with an exponential backoff (2, 4, 8 seconds) for transient errors or a 404 Not Found status.</li>
+<li><strong>Circuit Breaker Policy:</strong> This policy breaks the circuit for 30 seconds if 5 consecutive transient errors occur, preventing further requests during this period to allow time for recovery.</li>
+</ul>
+<h2 id="testing-the-resilience-strategies">Testing the Resilience Strategies</h2>
+<p>To see these resilience strategies in action, you can create a simple endpoint that simulates transient faults. Add a new controller to your project:</p>
+<p><strong>Create a New Controller</strong></p>
+<p>In the <code>Controllers</code> folder, create a new file named <code>TestController.cs</code>:</p>
+<p>‌ <code>using Microsoft.AspNetCore.Mvc; using System.Net; [ApiController] [Route(&quot;[controller]&quot;)] public class TestController : ControllerBase { private static int requestCount = 0; [HttpGet] public IActionResult Get() { requestCount++; // Simulate a transient fault if (requestCount % 3 != 0) { return StatusCode((int)HttpStatusCode.InternalServerError, &quot;Transient error, please retry.&quot;); } return Ok(&quot;Request succeeded!&quot;); } }</code>  csharp</p>
+<ul>
+<li>‌</li>
+</ul>
+<p><strong>Update the Client Request</strong></p>
+<p>Modify the client request in <code>Program.cs</code> to call the new endpoint:</p>
+<p>‌ <code>app.MapGet(&quot;/&quot;, async (IHttpClientFactory httpClientFactory) =&gt; { var client = httpClientFactory.CreateClient(&quot;ResilientClient&quot;); var response = await client.GetAsync(&quot;http://localhost:5000/Test&quot;); return await response.Content.ReadAsStringAsync(); });</code>  csharp</p>
+<ul>
+<li>‌</li>
+</ul>
+<p><strong>Run the Application</strong></p>
+<p>Start your application by running:</p>
+<p>‌ <code>dotnet run</code>  bash</p>
+<ul>
+<li>‌</li>
+</ul>
+<p>Visit <code>http://localhost:5000</code> in your browser. You should see that even though some requests initially fail, the retry policy eventually allows successful requests to be made. Additionally, if multiple consecutive failures occur, the circuit breaker will temporarily prevent further requests.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this hands-on article, we&rsquo;ve explored how to enhance the resilience of HTTP client requests in a .NET application using the <code>Microsoft.Extensions.Resilience</code> package.</p>
+<p>By implementing retry and circuit breaker policies, we&rsquo;ve improved the robustness of our application, making it more tolerant of transient faults and ensuring a better user experience. These resilience strategies are essential tools for any developer looking to build reliable and fault-tolerant applications.</p>
+<p>Stay tuned for more hands-on tutorials and tips on building resilient applications at <a href="__GHOST_URL__/">rmauro.dev</a>.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/Microsoft.Extensions.Resilience/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Microsoft.Extensions.Resilience</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/DotNet/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/DotNet-Core/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet Core</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/query-specification-pattern-with-ef-core/">Query Specification Pattern with EF Core</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-started-with-onion-architecture-in-csharp/">Getting started with ONION Architecture in C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-get-jwt-token-request/">C# Get JWT Token from Request .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/jwt-authentication-with-csharp-dotnet/">C# JWT Authentication .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/serilog-custom-enricher-on-aspnet-core/">Getting Started with Serilog Custom Enrichers</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/">Getting Started with Chat GPT integration in a .NET C# Console Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/simpleexecutiontracker/">Measure Code Execution Time with .NET C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-started-with-benchmark-net-c-sharp/">Getting Started with Benchmark.Net C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/calculate-time-ago-with-csharp/">Calculate Time Ago with .NET C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-a-minimal-api-with-dotnet-6/">Create a Minimal API with .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/setup-serilog-in-net6-as-logging-provider/">Set up Serilog in .NET 6 as a logging provider</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/add-build-time-to-your-csharp-assembly/">Add Build Time to your C# Assembly</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/api-key-authentication-extending-the-native-implementation/">API Key Authentication - Extending the native implementation</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-ui/">Adding Health Checks UI</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

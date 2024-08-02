@@ -8,6 +8,9 @@
     <loc>http://localhost:1313/</loc>
     <lastmod>2024-07-29T17:00:19+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/semantic-kernal-part-i-set-up-with-chatgpto-and-ollama-3/</loc>
+    <lastmod>2024-07-29T17:00:19+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
     <lastmod>2024-07-27T21:52:26+00:00</lastmod>
   </url><url>
@@ -28,6 +31,24 @@
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-07-27T21:52:26+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/Azure/</loc>
+    <lastmod>2024-07-23T00:04:01+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/Azure/</loc>
+    <lastmod>2024-07-23T00:04:01+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/Azure-Services/</loc>
+    <lastmod>2024-07-23T00:04:01+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/Azure-Services/</loc>
+    <lastmod>2024-07-23T00:04:01+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/exploring-azure-messaging-services-crossing-the-right-service-for-your-scenario/</loc>
+    <lastmod>2024-07-23T00:04:01+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/8-tips-when-working-with-oracle-odp-driver-async/</loc>
+    <lastmod>2024-07-19T21:47:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/C%23/</loc>
     <lastmod>2024-07-19T19:18:44+00:00</lastmod>
@@ -128,6 +149,9 @@
     <loc>http://localhost:1313/categories/sql-injection/</loc>
     <lastmod>2024-07-06T23:22:28+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/getting-started-with-semantic-kernel-in-c/</loc>
+    <lastmod>2024-07-05T19:57:48+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/DotNet-Core/</loc>
     <lastmod>2024-07-05T02:30:13+00:00</lastmod>
   </url><url>
@@ -142,6 +166,15 @@
   </url><url>
     <loc>http://localhost:1313/post/set-up-entity-framework-core-in-memory-store/</loc>
     <lastmod>2024-07-05T02:30:13+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/</loc>
+    <lastmod>2024-07-05T01:57:30+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/Microsoft.Extensions.Resilience/</loc>
+    <lastmod>2024-07-05T01:57:30+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/Microsoft.Extensions.Resilience/</loc>
+    <lastmod>2024-07-05T01:57:30+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/Hangfire/</loc>
     <lastmod>2024-07-01T20:36:57+00:00</lastmod>
@@ -230,11 +263,23 @@
     <loc>http://localhost:1313/post/gather-oracle-stats-for-schema-tables-indexes/</loc>
     <lastmod>2024-06-25T19:40:32+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/.NET-8/</loc>
+    <lastmod>2024-06-24T14:11:50+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/.NET-8/</loc>
+    <lastmod>2024-06-24T14:11:50+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/query-specification-pattern-with-ef-core/</loc>
+    <lastmod>2024-06-24T14:11:50+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/.NET-6/</loc>
-    <lastmod>2023-08-24T18:01:18+00:00</lastmod>
+    <lastmod>2023-10-24T19:46:26+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/.NET-6/</loc>
-    <lastmod>2023-08-24T18:01:18+00:00</lastmod>
+    <lastmod>2023-10-24T19:46:26+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</loc>
+    <lastmod>2023-10-24T19:46:26+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/.NET-7/</loc>
     <lastmod>2023-08-24T18:01:18+00:00</lastmod>
@@ -245,14 +290,14 @@
     <loc>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</loc>
     <lastmod>2023-08-24T18:01:18+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/oracle-odp/</loc>
+    <lastmod>2023-08-15T19:17:39+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/oracle-async-odp-net/</loc>
+    <lastmod>2023-08-15T17:49:26+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/oracle-pivot-command-turn-rows-into-columns/</loc>
     <lastmod>2023-08-06T23:13:31+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/.NET-8/</loc>
-    <lastmod>2023-05-29T23:28:28+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/.NET-8/</loc>
-    <lastmod>2023-05-29T23:28:28+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/Authentication/</loc>
     <lastmod>2023-05-29T23:28:28+00:00</lastmod>
@@ -299,6 +344,9 @@
     <loc>http://localhost:1313/categories/oracle-merge/</loc>
     <lastmod>2023-05-21T18:45:58+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/localization/</loc>
+    <lastmod>2023-05-20T23:14:07+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/en/</loc>
     <lastmod>2023-05-02T16:00:00+00:00</lastmod>
   </url><url>
@@ -326,6 +374,12 @@
     <loc>http://localhost:1313/post/extreme-go-horse-xgh-process-source/</loc>
     <lastmod>2023-05-02T16:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/adding-cors-to-net-6/</loc>
+    <lastmod>2023-05-01T02:13:59+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/c-records-types/</loc>
+    <lastmod>2023-04-28T23:20:01+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/AspNet/</loc>
     <lastmod>2023-04-28T03:44:59+00:00</lastmod>
   </url><url>
@@ -340,6 +394,21 @@
   </url><url>
     <loc>http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/</loc>
     <lastmod>2023-04-28T03:44:59+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/oracle-ddls/</loc>
+    <lastmod>2023-04-27T15:15:06+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/powershell-file-and-folder-management/</loc>
+    <lastmod>2023-04-26T13:32:07+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/chat-gpt-to-classify-movie-comments-using-da-vince/</loc>
+    <lastmod>2023-04-23T12:48:55+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/api-documentation-with-openapi-swagger-in-c/</loc>
+    <lastmod>2023-04-18T23:14:35+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/action-and-func-delegates-in-c/</loc>
+    <lastmod>2023-04-15T20:50:51+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/ai/</loc>
     <lastmod>2023-04-15T20:21:04+00:00</lastmod>
@@ -380,6 +449,15 @@
     <loc>http://localhost:1313/categories/StableDiffusion/</loc>
     <lastmod>2023-04-15T20:21:04+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/complete-guide-on-creating/</loc>
+    <lastmod>2023-04-09T20:58:35+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/create-a-reverse-proxy-with-yarp/</loc>
+    <lastmod>2023-04-06T17:56:48+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/enrich-your-log-with-http-request-information/</loc>
+    <lastmod>2023-04-04T19:28:05+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</loc>
     <lastmod>2023-04-04T00:05:15+00:00</lastmod>
   </url><url>
@@ -392,11 +470,65 @@
     <loc>http://localhost:1313/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/</loc>
     <lastmod>2023-04-02T16:42:29+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/build-your-own-oidc-authorization-server-with-c/</loc>
+    <lastmod>2022-12-28T22:55:32+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/install-net-7-on-raspberry-pi/</loc>
+    <lastmod>2022-11-13T20:21:17+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/define-implicit-explicit-operator-csharp-tips/</loc>
     <lastmod>2022-11-10T18:48:49+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/implementation-iticketstore-with-oracle-c/</loc>
+    <lastmod>2022-10-19T13:13:56+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/simpleexecutiontracker/</loc>
+    <lastmod>2022-10-06T14:29:39+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/aspnet-health-check-for-oracle/</loc>
+    <lastmod>2022-10-03T16:22:14+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/HealthCheck/</loc>
+    <lastmod>2022-10-03T16:22:14+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/HealthCheck/</loc>
+    <lastmod>2022-10-03T16:22:14+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/Benchmark/</loc>
+    <lastmod>2022-10-02T18:04:18+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/Benchmark/</loc>
+    <lastmod>2022-10-02T18:04:18+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/BenchmarkDotNet/</loc>
+    <lastmod>2022-10-02T18:04:18+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/BenchmarkDotNet/</loc>
+    <lastmod>2022-10-02T18:04:18+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/getting-started-with-benchmark-net-c-sharp/</loc>
+    <lastmod>2022-10-02T18:04:18+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/Performance/</loc>
+    <lastmod>2022-10-02T18:04:18+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/Performance/</loc>
+    <lastmod>2022-10-02T18:04:18+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/untitled-3/</loc>
+    <lastmod>2022-09-27T17:40:19+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/calculate-time-ago-with-csharp/</loc>
     <lastmod>2022-09-26T14:00:52+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/distributed-cache-oracle-database/</loc>
+    <lastmod>2022-09-20T16:58:20+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/gist-commit-messages/</loc>
+    <lastmod>2022-09-15T13:39:33+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/extensions-that-i-use-in-visual-studio-2022/</loc>
+    <lastmod>2022-09-12T21:17:08+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/hardening/</loc>
     <lastmod>2022-09-11T20:57:43+00:00</lastmod>
@@ -428,11 +560,41 @@
     <loc>http://localhost:1313/post/about/</loc>
     <lastmod>2022-09-10T04:01:12+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/coming-soon/</loc>
+    <lastmod>2022-09-10T04:01:11+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/News/</loc>
+    <lastmod>2022-09-10T04:01:11+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/News/</loc>
+    <lastmod>2022-09-10T04:01:11+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/change-default-port-of-ssh-server/</loc>
+    <lastmod>2022-09-04T19:24:30+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/create-an-oidc-server-with-net-6/</loc>
+    <lastmod>2022-08-23T16:37:55+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/refresh-token/</loc>
+    <lastmod>2022-08-16T19:37:32+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/feature-flags-in-net-6-minimal-apis/</loc>
+    <lastmod>2022-08-02T13:18:26+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/set-up-serilog-in-a-professional-project/</loc>
+    <lastmod>2022-07-08T15:43:34+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/create-a-minimal-api-with-dotnet-6/</loc>
     <lastmod>2022-07-04T20:16:53+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/setup-serilog-in-net6-as-logging-provider/</loc>
     <lastmod>2022-06-26T22:04:20+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/untitled-2/</loc>
+    <lastmod>2022-06-17T17:29:29+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/untitled/</loc>
+    <lastmod>2022-06-17T17:27:03+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/100DaysOfCode/</loc>
     <lastmod>2022-06-10T14:38:46+00:00</lastmod>
@@ -455,19 +617,49 @@
     <loc>http://localhost:1313/post/oracle-database-on-docker-for-development/</loc>
     <lastmod>2022-05-30T17:15:12+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/writing-logs-on-sql-server-with-serilog/</loc>
+    <lastmod>2021-09-07T17:49:24+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/.NET-5/</loc>
-    <lastmod>2021-04-25T17:14:00+00:00</lastmod>
+    <lastmod>2021-07-16T02:10:38+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/.NET-5/</loc>
-    <lastmod>2021-04-25T17:14:00+00:00</lastmod>
+    <lastmod>2021-07-16T02:10:38+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</loc>
+    <lastmod>2021-07-16T02:10:38+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/pt/</loc>
+    <lastmod>2021-07-16T02:10:38+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/pt/</loc>
+    <lastmod>2021-07-16T02:10:38+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</loc>
+    <lastmod>2021-07-15T23:15:13+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/Javascript/</loc>
+    <lastmod>2021-07-15T23:15:13+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/Javascript/</loc>
+    <lastmod>2021-07-15T23:15:13+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/customiz/</loc>
+    <lastmod>2021-05-21T22:33:47+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/AI-900/</loc>
+    <lastmod>2021-05-16T00:00:28+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/AI-900/</loc>
+    <lastmod>2021-05-16T00:00:28+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/ai-900-journey-to-get-the-exam/</loc>
+    <lastmod>2021-05-16T00:00:28+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/5-design-patterns-you-should-know/</loc>
+    <lastmod>2021-05-15T23:21:07+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/adding-health-checks-to-net-core-application/</loc>
-    <lastmod>2021-04-25T17:14:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/HealthCheck/</loc>
-    <lastmod>2021-04-25T17:14:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/HealthCheck/</loc>
     <lastmod>2021-04-25T17:14:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/MongoDb/</loc>
@@ -500,6 +692,15 @@
     <loc>http://localhost:1313/categories/NoSql/</loc>
     <lastmod>2021-04-19T01:12:09+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/crud-in-dotnet5-csharp-with-mongo-db/</loc>
+    <lastmod>2021-04-18T23:44:42+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/onion-architecture-in-net-5/</loc>
+    <lastmod>2021-04-05T00:27:56+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/node-cosmos-db-azure-cache-for-redis/</loc>
+    <lastmod>2021-04-05T00:11:46+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/privacy-policy/</loc>
     <lastmod>2021-04-01T18:04:08+00:00</lastmod>
   </url><url>
@@ -512,19 +713,25 @@
     <loc>http://localhost:1313/categories/Authorization/</loc>
     <lastmod>2021-03-28T21:43:45+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/one-contribution-to-serilog-ui-open-project/</loc>
+    <lastmod>2021-03-01T13:05:19+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/solid-c/</loc>
+    <lastmod>2020-11-01T22:00:37+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/end-to-end-net-5-setting-up-mongo-db/</loc>
+    <lastmod>2020-10-06T23:22:38+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/blog-posts-ideas/</loc>
     <lastmod>2020-10-05T21:35:32+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/</loc>
+    <lastmod>2020-10-04T01:49:44+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/AZ204/</loc>
     <lastmod>2020-10-01T18:58:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/AZ204/</loc>
-    <lastmod>2020-10-01T18:58:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/Azure/</loc>
-    <lastmod>2020-10-01T18:58:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/Azure/</loc>
     <lastmod>2020-10-01T18:58:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/azure-functions/</loc>
@@ -547,6 +754,9 @@
   </url><url>
     <loc>http://localhost:1313/categories/serverless/</loc>
     <lastmod>2020-10-01T18:58:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/exploring-c-tuples/</loc>
+    <lastmod>2020-10-01T14:38:11+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/Application-Insights/</loc>
     <lastmod>2020-09-28T15:14:09+00:00</lastmod>
@@ -571,6 +781,15 @@
   </url><url>
     <loc>http://localhost:1313/categories/container/</loc>
     <lastmod>2020-09-21T18:17:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/visual-code-mysql/</loc>
+    <lastmod>2020-09-21T00:24:36+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/webmention/</loc>
+    <lastmod>2020-09-21T00:22:59+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/enabling-hsts-preload-list/</loc>
+    <lastmod>2020-09-16T23:33:23+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/cert/</loc>
     <lastmod>2020-09-16T22:57:25+00:00</lastmod>
@@ -605,6 +824,15 @@
     <loc>http://localhost:1313/categories/tip/</loc>
     <lastmod>2020-09-16T22:57:25+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/enabling-http-2-on-kestrel/</loc>
+    <lastmod>2020-09-16T22:16:16+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/feature-toggle/</loc>
+    <lastmod>2020-09-16T22:11:17+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/javascript-from-callback-to-promise-to-async-await/</loc>
+    <lastmod>2020-09-16T22:10:16+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/compress-zip-files-in-memory-using-csharp/</loc>
     <lastmod>2020-09-09T19:59:29+00:00</lastmod>
   </url><url>
@@ -632,6 +860,9 @@
     <loc>http://localhost:1313/post/twitter/</loc>
     <lastmod>2020-05-22T03:19:17+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/setting-up-azure-bastion-for-remote-connection/</loc>
+    <lastmod>2020-04-24T00:27:23+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/AZ-203/</loc>
     <lastmod>2020-01-22T00:46:31+00:00</lastmod>
   </url><url>
@@ -656,6 +887,18 @@
     <loc>http://localhost:1313/post/azure-storage-disks/</loc>
     <lastmod>2020-01-03T21:25:54+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/az-203-conteudo-programatico/</loc>
+    <lastmod>2020-01-03T20:24:05+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</loc>
+    <lastmod>2019-12-31T16:47:03+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/azure-functions-rest-odata/</loc>
+    <lastmod>2019-12-21T18:14:31+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/asp-net-core-with-mongodb-and-mongo-atlas-c/</loc>
+    <lastmod>2019-12-19T20:08:33+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</loc>
     <lastmod>2019-12-15T23:39:13+00:00</lastmod>
   </url><url>
@@ -664,6 +907,18 @@
   </url><url>
     <loc>http://localhost:1313/categories/websecurity/</loc>
     <lastmod>2019-12-15T23:39:13+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</loc>
+    <lastmod>2019-12-15T20:36:45+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/owasp/</loc>
+    <lastmod>2019-12-15T20:36:45+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/owasp/</loc>
+    <lastmod>2019-12-15T20:36:45+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage-2/</loc>
+    <lastmod>2019-12-14T18:52:42+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/hack/</loc>
     <lastmod>2019-12-14T18:38:29+00:00</lastmod>
@@ -674,28 +929,13 @@
     <loc>http://localhost:1313/post/practice-of-sql-injection/</loc>
     <lastmod>2019-12-14T18:38:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/owasp/</loc>
-    <lastmod>2019-12-03T01:58:29+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/owasp/</loc>
-    <lastmod>2019-12-03T01:58:29+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/pt/</loc>
-    <lastmod>2019-12-03T01:58:29+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/pt/</loc>
-    <lastmod>2019-12-03T01:58:29+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/post/sql-injection-na-pratica/</loc>
     <lastmod>2019-12-03T01:58:29+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/supporting-iasyncenumerable-with-linq/</loc>
+    <lastmod>2019-11-07T16:12:15+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</loc>
-    <lastmod>2019-11-03T03:04:13+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/Javascript/</loc>
-    <lastmod>2019-11-03T03:04:13+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/Javascript/</loc>
     <lastmod>2019-11-03T03:04:13+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/perceptron/</loc>
@@ -703,6 +943,15 @@
   </url><url>
     <loc>http://localhost:1313/categories/perceptron/</loc>
     <lastmod>2019-11-03T03:04:13+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/criando-imagem-docker-nodejs-customizada-e-publicando-no-heroku/</loc>
+    <lastmod>2019-10-29T16:15:07+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/criando-imagem-docker-customizada-e-publicando-no-heroku/</loc>
+    <lastmod>2019-10-29T00:29:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/</loc>
+    <lastmod>2019-10-19T21:39:28+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/csharp-implicit-conversion-cast-explicit-conversion/</loc>
     <lastmod>2019-09-29T20:35:05+00:00</lastmod>
@@ -812,8 +1061,62 @@
     <loc>http://localhost:1313/categories/IIS/</loc>
     <lastmod>2017-08-09T18:10:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/post/adding-genericrepository-t-in-asp-net-core/</loc>
+    <lastmod>2017-05-09T18:12:33+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/enable-hsts-in/</loc>
+    <lastmod>2017-05-08T17:47:12+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/how-to-create-a-netstandard-class-library/</loc>
+    <lastmod>2017-02-03T02:31:04+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/post/libraries-io-a-library-of-frameworks-tip/</loc>
     <lastmod>2017-01-19T15:27:55+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/developing-your-first-chatter-bot-for-facebook-1/</loc>
+    <lastmod>2017-01-12T03:01:58+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/mongodb-for-net-developers-1/</loc>
+    <lastmod>2017-01-12T02:51:04+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/assertionconcern/</loc>
+    <lastmod>2017-01-12T01:54:17+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/deflatecompressionattribute/</loc>
+    <lastmod>2017-01-12T01:50:14+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/implementing-webhooks-in-asp-net-core/</loc>
+    <lastmod>2017-01-12T01:28:17+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/azure-b2c-on-asp-net-core-2/</loc>
+    <lastmod>2017-01-12T01:24:02+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/dotnetcore-asp-netmvc-areas/</loc>
+    <lastmod>2017-01-11T16:20:54+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/dotnetcore-create-taghelper/</loc>
+    <lastmod>2017-01-11T02:59:49+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/entity-framework-core-resilience/</loc>
+    <lastmod>2017-01-11T02:45:17+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/search-service-using-mongodb/</loc>
+    <lastmod>2017-01-10T19:08:56+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/</loc>
+    <lastmod>2017-01-10T19:08:07+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/storage/</loc>
+    <lastmod>2017-01-10T19:08:07+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/storage/</loc>
+    <lastmod>2017-01-10T19:08:07+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/getting-started-with-azure-media-services/</loc>
+    <lastmod>2017-01-10T19:07:48+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/azure-documentdb-for-mongodb-developers/</loc>
+    <lastmod>2017-01-10T18:14:01+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/how-to-migrate-asp-net-core-1-0-to-1-1/</loc>
     <lastmod>2017-01-04T00:40:41+00:00</lastmod>

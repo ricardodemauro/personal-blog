@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Action and Func delegates in C# | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="In this article, we will explore two types of predefined delegates in C# System.Action and System.Func.
+Delegates are one of the most important features of the C# language. We typically use them as a type-safe way to represent a method, which can be passed as an argument to another method.
+The Basics of Delegates Before diving into Actions and Funcs let&rsquo;s discuss what Delegates are.
+Delegates are a typed way to represent a method that can be passed as an argument to another method.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/action-and-func-delegates-in-c/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/action-and-func-delegates-in-c/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Action and Func delegates in C#">
+  <meta property="og:description" content="In this article, we will explore two types of predefined delegates in C# System.Action and System.Func.
+Delegates are one of the most important features of the C# language. We typically use them as a type-safe way to represent a method, which can be passed as an argument to another method.
+The Basics of Delegates Before diving into Actions and Funcs let’s discuss what Delegates are.
+Delegates are a typed way to represent a method that can be passed as an argument to another method.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-04-15T20:50:51+00:00">
+    <meta property="article:modified_time" content="2023-04-15T20:50:51+00:00">
+
+  <meta itemprop="name" content="Action and Func delegates in C#">
+  <meta itemprop="description" content="In this article, we will explore two types of predefined delegates in C# System.Action and System.Func.
+Delegates are one of the most important features of the C# language. We typically use them as a type-safe way to represent a method, which can be passed as an argument to another method.
+The Basics of Delegates Before diving into Actions and Funcs let’s discuss what Delegates are.
+Delegates are a typed way to represent a method that can be passed as an argument to another method.">
+  <meta itemprop="datePublished" content="2023-04-15T20:50:51+00:00">
+  <meta itemprop="dateModified" content="2023-04-15T20:50:51+00:00">
+  <meta itemprop="wordCount" content="531">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Action and Func delegates in C#">
+  <meta name="twitter:description" content="In this article, we will explore two types of predefined delegates in C# System.Action and System.Func.
+Delegates are one of the most important features of the C# language. We typically use them as a type-safe way to represent a method, which can be passed as an argument to another method.
+The Basics of Delegates Before diving into Actions and Funcs let’s discuss what Delegates are.
+Delegates are a typed way to represent a method that can be passed as an argument to another method.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Action and Func delegates in C#</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-04-15T20:50:51Z">April 15, 2023</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In this article, we will explore two types of predefined delegates in C# <code>System.Action</code> and <code>System.Func</code>.</p>
+<p>Delegates are one of the most important features of the C# language. We typically use them as a type-safe way to represent a method, which can be passed as an argument to another method.</p>
+<h2 id="the-basics-of-delegates">The Basics of Delegates</h2>
+<p>Before diving into Actions and Funcs let&rsquo;s discuss what Delegates are.</p>
+<p>Delegates are a typed way to represent a method that can be passed as an argument to another method. We can use them as first-class objects, which means they can be stored in variables, passed as arguments to other methods, and returned as values from methods.</p>
+<p>We see most of the use cases for delegates as event handling.</p>
+<p>Check out this example of how a <em>Delegate</em> works:</p>
+<ul>
+<li>One button is pressed in the GUI</li>
+<li>An Event is raised</li>
+<li>A method (the event handlers) is executed</li>
+</ul>
+<h2 id="using-the-action-delegate">Using the Action Delegate</h2>
+<p>The <code>System.Action</code> delegate is a predefined delegate type in C# that represents a method that has a <strong>void</strong> return type and takes zero or more parameters.</p>
+<p>We should use Actions in situations that perform computation without a return value.</p>
+<p>C# has a few predefined Action delegates:</p>
+<p>public delegate void Action(); //👇 The function arguments are defined using Generics, avoiding boxing unboxing public delegate void Action<in T>(T obj); public delegate void Action&lt;in T1, in T2&gt;(T1 arg1, T2 arg2); public delegate void Action&lt;in T1, in T2, in T3&gt;(T1 arg1, T2 arg2, T3 arg3);</p>
+<p>It continues overloading until 16 arguments.</p>
+<p>Check out the syntax for using Action delegates:</p>
+<p>Action helloWorldDelegate = () =&gt; Console.WriteLine(&ldquo;Hello, World!&rdquo;); helloWorldDelegate(); // Output: &ldquo;Hello, World!&rdquo; //👇 First and second arguments are integers Action&lt;int, int&gt; WriteSumOfDelegate = (operator1, operator2) =&gt; { Console.WriteLine(&ldquo;Sum of {0} and {1} is {3}&rdquo;, operator1, operator2, operator1 + operator2); }; WriteSumOfDelegate(10, 20); //Output: &ldquo;Sum of 10 and 20 is 30&rdquo;</p>
+<h2 id="actions-with-non-void-return-here-is-the-func-delegate">Actions with Non-Void Return: Here is the Func Delegate</h2>
+<p>The <code>System.Func</code> delegate is another predefined delegate type in C# that represents a method that has a return type and takes zero or more parameters.</p>
+<p>We should use Funcs in situations that perform computation and return a value.</p>
+<p>C# have some predefined Func<T> delegates:</p>
+<p>public delegate TResult Func<out TResult>(); public delegate TResult Func&lt;in T, out TResult&gt;(T arg); public delegate TResult Func&lt;in T1, in T2, out TResult&gt;(T1 arg1, T2 arg2);</p>
+<p>It also continues overloading until 16 arguments.</p>
+<p>Next is the syntax for using a Func delegate:</p>
+<p>Func&lt;int, int&gt; DoubleItDelegate = (operator1) =&gt; { return operator1 * 2; }; var result = DoubleItDelegate(2); //returns 4 Console.WriteLine(&ldquo;Func Double result {0}&rdquo;, result); //⌨ Output: &ldquo;Func Double result 4&rdquo;</p>
+<p>In this example, we have defined a <code>Func</code> delegate that takes a <code>int</code> parameter and returns a <code>int</code> value. Then assign a lambda expression to the delegate, which <strong>doubles</strong> its input.</p>
+<p>Finally, we call the delegate with an argument of 2, which returns the value 4.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, we can see how powerful delegates are and allow us to treat methods as first-class objects.</p>
+<p>The <code>Action</code> and <code>Func</code> delegates are two predefined types that are commonly used for event handling, asynchronous programming, and other tasks that require passing a method as an argument to another method.</p>
+<h2 id="sources">Sources</h2>
+<p><a href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/">https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/</a></p>
+<p><a href="https://learn.microsoft.com/en-us/dotnet/api/system.func-2?view=net-8.0">https://learn.microsoft.com/en-us/dotnet/api/system.func-2?view=net-8.0</a></p>
+<p><a href="https://learn.microsoft.com/en-us/dotnet/api/system.action-1?view=net-8.0">https://learn.microsoft.com/en-us/dotnet/api/system.action-1?view=net-8.0</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

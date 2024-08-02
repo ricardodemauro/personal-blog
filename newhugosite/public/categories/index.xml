@@ -23,6 +23,20 @@
       <description></description>
     </item>
     <item>
+      <title>Azure</title>
+      <link>http://localhost:1313/categories/Azure/</link>
+      <pubDate>Tue, 23 Jul 2024 00:04:01 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Azure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure-Services</title>
+      <link>http://localhost:1313/categories/Azure-Services/</link>
+      <pubDate>Tue, 23 Jul 2024 00:04:01 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Azure-Services/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>C#</title>
       <link>http://localhost:1313/categories/C%23/</link>
       <pubDate>Fri, 19 Jul 2024 19:18:44 +0000</pubDate>
@@ -128,6 +142,13 @@
       <description></description>
     </item>
     <item>
+      <title>Microsoft.Extensions.Resilience</title>
+      <link>http://localhost:1313/categories/Microsoft.Extensions.Resilience/</link>
+      <pubDate>Fri, 05 Jul 2024 01:57:30 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Microsoft.Extensions.Resilience/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Hangfire</title>
       <link>http://localhost:1313/categories/Hangfire/</link>
       <pubDate>Mon, 01 Jul 2024 20:36:57 +0000</pubDate>
@@ -205,9 +226,16 @@
       <description></description>
     </item>
     <item>
+      <title>.NET 8</title>
+      <link>http://localhost:1313/categories/.NET-8/</link>
+      <pubDate>Mon, 24 Jun 2024 14:11:50 +0000</pubDate>
+      <guid>http://localhost:1313/categories/.NET-8/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>.NET 6</title>
       <link>http://localhost:1313/categories/.NET-6/</link>
-      <pubDate>Thu, 24 Aug 2023 18:01:18 +0000</pubDate>
+      <pubDate>Tue, 24 Oct 2023 19:46:26 +0000</pubDate>
       <guid>http://localhost:1313/categories/.NET-6/</guid>
       <description></description>
     </item>
@@ -216,13 +244,6 @@
       <link>http://localhost:1313/categories/.NET-7/</link>
       <pubDate>Thu, 24 Aug 2023 18:01:18 +0000</pubDate>
       <guid>http://localhost:1313/categories/.NET-7/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>.NET 8</title>
-      <link>http://localhost:1313/categories/.NET-8/</link>
-      <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
-      <guid>http://localhost:1313/categories/.NET-8/</guid>
       <description></description>
     </item>
     <item>
@@ -359,6 +380,34 @@
       <description></description>
     </item>
     <item>
+      <title>HealthCheck</title>
+      <link>http://localhost:1313/categories/HealthCheck/</link>
+      <pubDate>Mon, 03 Oct 2022 16:22:14 +0000</pubDate>
+      <guid>http://localhost:1313/categories/HealthCheck/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Benchmark</title>
+      <link>http://localhost:1313/categories/Benchmark/</link>
+      <pubDate>Sun, 02 Oct 2022 18:04:18 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Benchmark/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>BenchmarkDotNet</title>
+      <link>http://localhost:1313/categories/BenchmarkDotNet/</link>
+      <pubDate>Sun, 02 Oct 2022 18:04:18 +0000</pubDate>
+      <guid>http://localhost:1313/categories/BenchmarkDotNet/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>http://localhost:1313/categories/Performance/</link>
+      <pubDate>Sun, 02 Oct 2022 18:04:18 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Performance/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Hardening</title>
       <link>http://localhost:1313/categories/hardening/</link>
       <pubDate>Sun, 11 Sep 2022 20:57:43 +0000</pubDate>
@@ -387,6 +436,13 @@
       <description></description>
     </item>
     <item>
+      <title>News</title>
+      <link>http://localhost:1313/categories/News/</link>
+      <pubDate>Sat, 10 Sep 2022 04:01:11 +0000</pubDate>
+      <guid>http://localhost:1313/categories/News/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>100DaysOfCode</title>
       <link>http://localhost:1313/categories/100DaysOfCode/</link>
       <pubDate>Fri, 10 Jun 2022 14:38:46 +0000</pubDate>
@@ -403,15 +459,29 @@
     <item>
       <title>.NET 5</title>
       <link>http://localhost:1313/categories/.NET-5/</link>
-      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <pubDate>Fri, 16 Jul 2021 02:10:38 +0000</pubDate>
       <guid>http://localhost:1313/categories/.NET-5/</guid>
       <description></description>
     </item>
     <item>
-      <title>HealthCheck</title>
-      <link>http://localhost:1313/categories/HealthCheck/</link>
-      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/HealthCheck/</guid>
+      <title>Pt</title>
+      <link>http://localhost:1313/categories/pt/</link>
+      <pubDate>Fri, 16 Jul 2021 02:10:38 +0000</pubDate>
+      <guid>http://localhost:1313/categories/pt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Javascript</title>
+      <link>http://localhost:1313/categories/Javascript/</link>
+      <pubDate>Thu, 15 Jul 2021 23:15:13 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI-900</title>
+      <link>http://localhost:1313/categories/AI-900/</link>
+      <pubDate>Sun, 16 May 2021 00:00:28 +0000</pubDate>
+      <guid>http://localhost:1313/categories/AI-900/</guid>
       <description></description>
     </item>
     <item>
@@ -454,13 +524,6 @@
       <link>http://localhost:1313/categories/AZ204/</link>
       <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
       <guid>http://localhost:1313/categories/AZ204/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Azure</title>
-      <link>http://localhost:1313/categories/Azure/</link>
-      <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/Azure/</guid>
       <description></description>
     </item>
     <item>
@@ -569,31 +632,17 @@
       <description></description>
     </item>
     <item>
-      <title>Hack</title>
-      <link>http://localhost:1313/categories/hack/</link>
-      <pubDate>Sat, 14 Dec 2019 18:38:29 +0000</pubDate>
-      <guid>http://localhost:1313/categories/hack/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Owasp</title>
       <link>http://localhost:1313/categories/owasp/</link>
-      <pubDate>Tue, 03 Dec 2019 01:58:29 +0000</pubDate>
+      <pubDate>Sun, 15 Dec 2019 20:36:45 +0000</pubDate>
       <guid>http://localhost:1313/categories/owasp/</guid>
       <description></description>
     </item>
     <item>
-      <title>Pt</title>
-      <link>http://localhost:1313/categories/pt/</link>
-      <pubDate>Tue, 03 Dec 2019 01:58:29 +0000</pubDate>
-      <guid>http://localhost:1313/categories/pt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Javascript</title>
-      <link>http://localhost:1313/categories/Javascript/</link>
-      <pubDate>Sun, 03 Nov 2019 03:04:13 +0000</pubDate>
-      <guid>http://localhost:1313/categories/Javascript/</guid>
+      <title>Hack</title>
+      <link>http://localhost:1313/categories/hack/</link>
+      <pubDate>Sat, 14 Dec 2019 18:38:29 +0000</pubDate>
+      <guid>http://localhost:1313/categories/hack/</guid>
       <description></description>
     </item>
     <item>
@@ -685,6 +734,13 @@
       <link>http://localhost:1313/categories/IIS/</link>
       <pubDate>Wed, 09 Aug 2017 18:10:00 +0000</pubDate>
       <guid>http://localhost:1313/categories/IIS/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Storage</title>
+      <link>http://localhost:1313/categories/storage/</link>
+      <pubDate>Tue, 10 Jan 2017 19:08:07 +0000</pubDate>
+      <guid>http://localhost:1313/categories/storage/</guid>
       <description></description>
     </item>
   </channel>

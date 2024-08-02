@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Create AI Bot with Semantic Kernel in C# | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Semantic Kernel is a powerful tool that allows you to build AI agents capable of interacting with AI services and running your code. AI services such as Open AI, Azure AI, Ollama offline agent, among others.L
+Whether you&rsquo;re a Python or C# developer, this guide will help you take your first steps with Semantic Kernel. Let&rsquo;s dive in!
+Installing the SDK Before we begin, you&rsquo;ll need to install the necessary packages.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/getting-started-with-semantic-kernel-in-c/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/getting-started-with-semantic-kernel-in-c/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Create AI Bot with Semantic Kernel in C#">
+  <meta property="og:description" content="Semantic Kernel is a powerful tool that allows you to build AI agents capable of interacting with AI services and running your code. AI services such as Open AI, Azure AI, Ollama offline agent, among others.L
+Whether you’re a Python or C# developer, this guide will help you take your first steps with Semantic Kernel. Let’s dive in!
+Installing the SDK Before we begin, you’ll need to install the necessary packages.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-07-05T19:57:48+00:00">
+    <meta property="article:modified_time" content="2024-07-05T19:57:48+00:00">
+
+  <meta itemprop="name" content="Create AI Bot with Semantic Kernel in C#">
+  <meta itemprop="description" content="Semantic Kernel is a powerful tool that allows you to build AI agents capable of interacting with AI services and running your code. AI services such as Open AI, Azure AI, Ollama offline agent, among others.L
+Whether you’re a Python or C# developer, this guide will help you take your first steps with Semantic Kernel. Let’s dive in!
+Installing the SDK Before we begin, you’ll need to install the necessary packages.">
+  <meta itemprop="datePublished" content="2024-07-05T19:57:48+00:00">
+  <meta itemprop="dateModified" content="2024-07-05T19:57:48+00:00">
+  <meta itemprop="wordCount" content="359">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Create AI Bot with Semantic Kernel in C#">
+  <meta name="twitter:description" content="Semantic Kernel is a powerful tool that allows you to build AI agents capable of interacting with AI services and running your code. AI services such as Open AI, Azure AI, Ollama offline agent, among others.L
+Whether you’re a Python or C# developer, this guide will help you take your first steps with Semantic Kernel. Let’s dive in!
+Installing the SDK Before we begin, you’ll need to install the necessary packages.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Create AI Bot with Semantic Kernel in C#</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-07-05T19:57:48Z">July 5, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Semantic Kernel is a powerful tool that allows you to build AI agents capable of interacting with AI services and running your code. AI services such as Open AI, Azure AI, Ollama offline agent, among others.L</p>
+<p>Whether you&rsquo;re a Python or C# developer, this guide will help you take your first steps with Semantic Kernel. Let&rsquo;s dive in!</p>
+<h2 id="installing-the-sdk">Installing the SDK</h2>
+<p>Before we begin, you&rsquo;ll need to install the necessary packages. For most scenarios, you&rsquo;ll typically only need the <code>Microsoft.SemanticKernel</code> NuGet package.</p>
+<p>‌ <code>dotnet add package Microsoft.SemanticKernel</code>  bash</p>
+<h2 id="quickly-get-started-with-notebooks">Quickly Get Started with Notebooks</h2>
+<p>If you&rsquo;re a Python or C# developer, Semantic Kernel provides step-by-step guides through notebooks. These notebooks walk you through building AI agents using Semantic Kernel. Here&rsquo;s how to get started:</p>
+<p><strong>Create a Kernel</strong>:</p>
+<ul>
+<li>Import the necessary packages:</li>
+</ul>
+<p>‌ <code>using Microsoft.SemanticKernel; using Microsoft.SemanticKernel.ChatCompletion; using Microsoft.SemanticKernel.Connectors.OpenAI;</code>  csharp</p>
+<ul>
+<li>‌</li>
+<li>Create a kernel with Azure OpenAI chat completion:</li>
+</ul>
+<p>‌ <code>var builder = Kernel.CreateBuilder().AddAzureOpenAIChatCompletion(modelId, endpoint, apiKey); var kernel = builder.Build();</code>  csharp</p>
+<ul>
+<li>‌</li>
+</ul>
+<p><strong>Add Plugins</strong>:</p>
+<ul>
+<li>You can add custom plugins to your kernel. For example:</li>
+</ul>
+<p>‌ <code>kernel.Plugins.AddFromType&lt;LightsPlugin&gt;(&quot;Lights&quot;);</code>  csharp</p>
+<ul>
+<li>‌</li>
+</ul>
+<p><strong>Enable Planning</strong>:</p>
+<ul>
+<li>Configure prompt execution settings:</li>
+</ul>
+<p>‌ <code>var openAIPromptExecutionSettings = new OpenAIPromptExecutionSettings { ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions };</code>  csharp</p>
+<ul>
+<li>‌</li>
+</ul>
+<p><strong>Chat with the AI</strong>:</p>
+<ul>
+<li>Create a chat history:</li>
+</ul>
+<p>‌ <code>var history = new ChatHistory();</code>  csharp</p>
+<ul>
+<li>‌</li>
+<li>Initiate a back-and-forth chat:</li>
+</ul>
+<p>‌ <code>string? userInput; do { Console.Write(&quot;User &gt; &quot;); userInput = Console.ReadLine(); history.AddUserMessage(userInput); var result = await chatCompletionService.GetChatMessageContentAsync( history, executionSettings: openAIPromptExecutionSettings, kernel: kernel); Console.WriteLine(&quot;Assistant &gt; &quot; + result); history.AddMessage(result.Role, result.Content ?? string.Empty); } while (userInput is not null);</code>  csharp</p>
+<ul>
+<li>‌</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this guide, you learned how to quickly get started with Semantic Kernel by building a simple AI agent that can interact with an AI service and run your code. To explore more examples and build more complex AI agents, check out our in-depth samples.</p>
+<p>Happy coding! 🚀</p>
+<p>‌             ‌</p>
+<p>*Published on rmauro.dev on May 14, 2024.*¹⁵</p>
+<p>Source: Conversation with Copilot, 7/5/2024‌‌(1) How to quickly start with Semantic Kernel | Microsoft Learn. <a href="https://learn.microsoft.com/en-us/semantic-kernel/get-started/quick-start-guide">https://learn.microsoft.com/en-us/semantic-kernel/get-started/quick-start-guide</a>.‌‌(2) How to Get Started using Semantic Kernel .NET | Semantic Kernel. <a href="https://devblogs.microsoft.com/semantic-kernel/how-to-get-started-using-semantic-kernel-net/">https://devblogs.microsoft.com/semantic-kernel/how-to-get-started-using-semantic-kernel-net/</a>.‌‌(3) GitHub - microsoft/semantic-kernel: Integrate cutting-edge LLM &hellip;. <a href="https://github.com/microsoft/semantic-kernel">https://github.com/microsoft/semantic-kernel</a>.‌‌(4) semantic-kernel-docs/semantic-kernel/get-started/quick-start &hellip; - GitHub. <a href="https://github.com/MicrosoftDocs/semantic-kernel-docs/blob/main/semantic-kernel/get-started/quick-start-guide.md">https://github.com/MicrosoftDocs/semantic-kernel-docs/blob/main/semantic-kernel/get-started/quick-start-guide.md</a>.‌‌(5) semantic-kernel/README.md at main · microsoft/semantic-kernel. <a href="https://github.com/microsoft/semantic-kernel/blob/main/README.md">https://github.com/microsoft/semantic-kernel/blob/main/README.md</a>.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

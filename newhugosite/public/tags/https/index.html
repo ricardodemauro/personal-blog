@@ -128,6 +128,30 @@ New-SelfSignedCertificate ` –DnsName &lt;DNS-Name&gt; ` -CertStoreLocation &#3
             <div class="mb3 pa4 mid-gray overflow-hidden">
     
       <div class="f6">
+        September 16, 2020
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/enabling-http-2-on-kestrel/" class="link black dim">
+        Simple Web Application with HTTP 2 over Kestrel
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      In this blog post we&rsquo;re going to create a simple web application with HTTP 2 enable on Kestrel.
+Prerequisites to follow this article:
+OpenSSL for Windows - to generate a self signed certificate First let generate a self signed SSL certificate. If you have an existing one you can skip this step.
+On an existing .Net application open the Program.cs file.
+public class Program { public static void Main(string[] args) { CreateHostBuilder(args).
+    </div>
+  <a href="/post/enabling-http-2-on-kestrel/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
         December 15, 2019
       </div>
     
@@ -142,6 +166,29 @@ At the end we will have the following configuration:
 CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.
     </div>
   <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+
+        </div>
+      
+        <div class="relative w-100  mb4 bg-white">
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        December 15, 2019
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="/post/azure-app-service-e-cloudflare-com-ssl-full-strict/" class="link black dim">
+        Azure App Service e Cloudflare com SSL Full (strict)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      [english version]
+Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.
+Ao final teremos a seguinte configuração:
+CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.
+    </div>
+  <a href="/post/azure-app-service-e-cloudflare-com-ssl-full-strict/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 
         </div>

@@ -16,6 +16,13 @@
       <description>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.&#xA;At the end we will have the following configuration:&#xA;CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.</description>
     </item>
     <item>
+      <title>Azure App Service e Cloudflare com SSL Full (strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 20:36:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</guid>
+      <description>[english version]&#xA;Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.&#xA;Ao final teremos a seguinte configuração:&#xA;CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.</description>
+    </item>
+    <item>
       <title>Practice of SQL Injection</title>
       <link>http://localhost:1313/post/practice-of-sql-injection/</link>
       <pubDate>Sat, 14 Dec 2019 18:38:29 +0000</pubDate>

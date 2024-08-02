@@ -23,6 +23,13 @@
       <description>When .NET 6 was released, the first big change was the lack of Startup.cs. This is very nice and all. But sometimes we just want it back, and here is how.&#xA;First, create a new file called Startup.cs at the root of your project with the following content - don&amp;rsquo;t forget the namespace.&#xA;public class Startup { readonly IConfiguration configuration; public Startup(IConfiguration configuration) { this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration)); } public void ConfigureServices(IServiceCollection services) { services.</description>
     </item>
     <item>
+      <title>AI-900 - Journey to get the exam</title>
+      <link>http://localhost:1313/post/ai-900-journey-to-get-the-exam/</link>
+      <pubDate>Sun, 16 May 2021 00:00:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/ai-900-journey-to-get-the-exam/</guid>
+      <description>Hi,&#xA;Today I started learning about the AI-900 course. My deadline is July-24-2021 to know everything about this course. I have to teach it as an MCT.&#xA;Exam AI-900: Microsoft Azure AI Fundamentals - Learn Exam AI-900: Microsoft Azure AI Fundamentals krsanty Microsoft Docs {map[author:krsanty caption:AI-900 Exam description:Exam AI-900: Microsoft Azure AI Fundamentals icon: publisher:Microsoft Docs thumbnail:https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png title:Exam AI-900: Microsoft Azure AI Fundamentals - Learn url:https://docs.microsoft.com/pt-br/learn/certifications/exams/ai-900] Page(/post/ai-900-journey-to-get-the-exam) &amp;lt;nil&amp;gt; bookmark true 0 {{{} 0} {0 0}} {{{} 0} {0 0}} 517 { 0 0 0} &amp;lt;nil&amp;gt;} Join me in learning this awesome topic.</description>
+    </item>
+    <item>
       <title>Create a free MongoDb Cluster in the Cloud - Mongo Atlas free account</title>
       <link>http://localhost:1313/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/</link>
       <pubDate>Mon, 19 Apr 2021 01:12:09 +0000</pubDate>
@@ -42,6 +49,13 @@
       <pubDate>Sun, 28 Mar 2021 21:43:45 +0000</pubDate>
       <guid>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</guid>
       <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.&#xA;services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
+    </item>
+    <item>
+      <title>End to end C# Application with .NET 5 API and MongoDB</title>
+      <link>http://localhost:1313/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/</link>
+      <pubDate>Sun, 04 Oct 2020 01:49:44 +0000</pubDate>
+      <guid>http://localhost:1313/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/</guid>
+      <description>In this blog post let&amp;rsquo;s work with the brand new .NET 5 (witch is still under release candidate mode).&#xA;During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).&#xA;Let&amp;rsquo;s work with:&#xA;Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I&amp;rsquo;m trying to move away from Postman) Microsoft Announces .</description>
     </item>
     <item>
       <title>Native Dependency Injection in Azure Functions with C#</title>

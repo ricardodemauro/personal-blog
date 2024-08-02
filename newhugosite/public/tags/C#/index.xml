@@ -37,11 +37,32 @@
       <description>One of the useful features of EF Core is the In-Memory Database Provider, which is perfect for testing purposes. In this guide, we will walk through setting up EF Core with an in-memory database, demonstrating how to configure and use it effectively.&#xA;Step-by-Step Guide Start by creating a new .NET console using the .NET CLI and add the required packages.&#xA;dotnet new console -n EfCoreInMemoryDemo cd EfCoreInMemoryDemo dotnet add package Microsoft.</description>
     </item>
     <item>
+      <title>HTTP Client Resilience in .NET with Microsoft.Extensions.Resilience</title>
+      <link>http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/</link>
+      <pubDate>Fri, 05 Jul 2024 01:57:30 +0000</pubDate>
+      <guid>http://localhost:1313/post/http-client-resilience-in-net-with-microsoft-extensions-resilience/</guid>
+      <description>In this hands-on blog post, we&amp;rsquo;ll explore how to use the Microsoft.Extensions.Resilience package to enhance the resilience of HTTP client requests in a .NET application.&#xA;Table of Contents Introduction Prerequisites Setting Up the Project Configuring Resilience Policies Testing the Resilience Strategies Conclusion Introduction As developers, we often encounter scenarios where network instability or temporary server issues can cause HTTP requests to fail. Instead of letting these failures disrupt the user experience, we can implement resilience strategies such as retries and circuit breakers.</description>
+    </item>
+    <item>
       <title>Hangfire Implementing Background Jobs</title>
       <link>http://localhost:1313/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/</link>
       <pubDate>Mon, 01 Jul 2024 20:36:57 +0000</pubDate>
       <guid>http://localhost:1313/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/</guid>
       <description>Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.&#xA;Whether you&amp;rsquo;re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we&amp;rsquo;ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure.</description>
+    </item>
+    <item>
+      <title>Query Specification Pattern with EF Core</title>
+      <link>http://localhost:1313/post/query-specification-pattern-with-ef-core/</link>
+      <pubDate>Mon, 24 Jun 2024 14:11:50 +0000</pubDate>
+      <guid>http://localhost:1313/post/query-specification-pattern-with-ef-core/</guid>
+      <description>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.&#xA;Here’s what you need to know:&#xA;1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution.</description>
+    </item>
+    <item>
+      <title>Getting started with ONION Architecture in C#</title>
+      <link>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</link>
+      <pubDate>Tue, 24 Oct 2023 19:46:26 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</guid>
+      <description>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.&#xA;We&amp;rsquo;ll take a deep dive into the layers of Onion Architecture while building a &amp;ldquo;TODO List&amp;rdquo; application to illustrate its principles.&#xA;What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application&amp;rsquo;s core business logic from external concerns.</description>
     </item>
     <item>
       <title>C# Get JWT Token from Request .NET 6</title>
@@ -86,6 +107,27 @@
       <description>C# allows us to define Implicit and Explicit operators. Unlike casting Implicit __ and Explicit operators defines how C# should behave when encountering an equals sign.&#xA;Implicit operator execution can be invoked when assigning a variable or calling a method.&#xA;To use Explicit operator we should do the same as casting an object. It&amp;rsquo;s similar to a cast an object.&#xA;public record class Email(string Value) { //define implicit operator public static implicit operator string(Email value) =&amp;gt; value.</description>
     </item>
     <item>
+      <title>Measure Code Execution Time with .NET C#</title>
+      <link>http://localhost:1313/post/simpleexecutiontracker/</link>
+      <pubDate>Thu, 06 Oct 2022 14:29:39 +0000</pubDate>
+      <guid>http://localhost:1313/post/simpleexecutiontracker/</guid>
+      <description>As a programmer, we may need to find out the execution time used by a particular segment of the C# code, in order to optimize the performance. For example, we may want to know how much time is taken for reading multiple files in the file system, or fetching data from the database, or executing some business logic.&#xA;Provides a set of methods and properties that you can use to accurately measure elapsed time.</description>
+    </item>
+    <item>
+      <title>Health Check in .NET 6 C#</title>
+      <link>http://localhost:1313/post/aspnet-health-check-for-oracle/</link>
+      <pubDate>Mon, 03 Oct 2022 16:22:14 +0000</pubDate>
+      <guid>http://localhost:1313/post/aspnet-health-check-for-oracle/</guid>
+      <description>Since the new .NET 6 we have HealthCheck methods incorporated in the framework without the need of external packages.&#xA;In this new version we no longer need to add any external packages to set up the Health Check Monitoring Pattern.&#xA;🎉 In this Issue Explain Health Monitoring Pattern Basic Setup .NET 6 Extras Oracle Database Check Elastic Search Check Explain Health Monitoring Pattern The Problem to be Solved How we can detect if a service is running or unable to receive/handle requests?</description>
+    </item>
+    <item>
+      <title>Getting Started with Benchmark.Net C#</title>
+      <link>http://localhost:1313/post/getting-started-with-benchmark-net-c-sharp/</link>
+      <pubDate>Sun, 02 Oct 2022 18:04:18 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-started-with-benchmark-net-c-sharp/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Calculate Time Ago with .NET C#</title>
       <link>http://localhost:1313/post/calculate-time-ago-with-csharp/</link>
       <pubDate>Mon, 26 Sep 2022 14:00:52 +0000</pubDate>
@@ -121,6 +163,13 @@
       <description>When .NET 6 was released, the first big change was the lack of Startup.cs. This is very nice and all. But sometimes we just want it back, and here is how.&#xA;First, create a new file called Startup.cs at the root of your project with the following content - don&amp;rsquo;t forget the namespace.&#xA;public class Startup { readonly IConfiguration configuration; public Startup(IConfiguration configuration) { this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration)); } public void ConfigureServices(IServiceCollection services) { services.</description>
     </item>
     <item>
+      <title>Health Checks em Aplicações .NET 5</title>
+      <link>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</link>
+      <pubDate>Fri, 16 Jul 2021 02:10:38 +0000</pubDate>
+      <guid>http://localhost:1313/post/health-checks-em-aplicacoes-net-5/</guid>
+      <description>Padrão de monitoramento de Endpoint de saúde Health Checks em aplicações .NET 5 é muito simples. Apenas com algumas linhas de código podemos configurar tudo para monitorar a saúde de nosso aplicativo.&#xA;Implemente verificações funcionais em um aplicativo que ferramentas externas possam acessar por meio de endpoints expostos em intervalos regulares. Isso pode ajudar a verificar se os aplicativos e serviços estão funcionando corretamente.&#xA;https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introdução Nesta série de artigos iremos explorar mais sobre Endpoint Monitoring para aplicações web.</description>
+    </item>
+    <item>
       <title>Health Checks on your ASP.NET Core Application</title>
       <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
       <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
@@ -142,6 +191,13 @@
       <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.&#xA;services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
     </item>
     <item>
+      <title>End to end C# Application with .NET 5 API and MongoDB</title>
+      <link>http://localhost:1313/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/</link>
+      <pubDate>Sun, 04 Oct 2020 01:49:44 +0000</pubDate>
+      <guid>http://localhost:1313/post/end-to-end-csharp-application-with-dotnet-5-api-and-mongo-db/</guid>
+      <description>In this blog post let&amp;rsquo;s work with the brand new .NET 5 (witch is still under release candidate mode).&#xA;During this tutorial we`re going to create a Web API with .NET 5 integrated with Mongo DB (in Mongo Atlas Database as a Service Cloud) executing all CRUD operation (create, read, update and delete).&#xA;Let&amp;rsquo;s work with:&#xA;Setting up the Project Use configuration files (appsettings.json) Environment Variables - ASPNETCORE_ENVIRONMENT Two tier separation of concerns Use of Dependency Injection thought native container Controller Actions with attributes - [FromBody], [FromRoute] And API Tests with Insominia (I&amp;rsquo;m trying to move away from Postman) Microsoft Announces .</description>
+    </item>
+    <item>
       <title>Native Dependency Injection in Azure Functions with C#</title>
       <link>http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/</link>
       <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
@@ -154,6 +210,13 @@
       <pubDate>Mon, 21 Sep 2020 18:17:00 +0000</pubDate>
       <guid>http://localhost:1313/post/adding-health-checks-ui/</guid>
       <description>This is the second article about Health Checks and Application Monitoring.&#xA;Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!&#xA;Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
+    </item>
+    <item>
+      <title>Simple Web Application with HTTP 2 over Kestrel</title>
+      <link>http://localhost:1313/post/enabling-http-2-on-kestrel/</link>
+      <pubDate>Wed, 16 Sep 2020 22:16:16 +0000</pubDate>
+      <guid>http://localhost:1313/post/enabling-http-2-on-kestrel/</guid>
+      <description>In this blog post we&amp;rsquo;re going to create a simple web application with HTTP 2 enable on Kestrel.&#xA;Prerequisites to follow this article:&#xA;OpenSSL for Windows - to generate a self signed certificate First let generate a self signed SSL certificate. If you have an existing one you can skip this step.&#xA;On an existing .Net application open the Program.cs file.&#xA;public class Program { public static void Main(string[] args) { CreateHostBuilder(args).</description>
     </item>
     <item>
       <title>Compress files in memory (.zip) using C#</title>
@@ -170,6 +233,20 @@
       <description>These days I was asking myself how to get the file name without the extension. I confess I was tempted to use a regex to solve this problem :)&#xA;But no worries. There is a method in System.IO.Path specific for this situation.&#xA;using System.IO; /// /// Get file name without extension /// static string GetFileName(string path) { return Path.GetFileNameWithoutExtension(path); } /// /// Get file name without extension /// static string GetFileName(FileInfo fileInfo) { return Path.</description>
     </item>
     <item>
+      <title>Azure Function V3 com EntityFramework Core 3.1</title>
+      <link>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</link>
+      <pubDate>Tue, 31 Dec 2019 16:47:03 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</guid>
+      <description>Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.&#xA;Ao final vamos ter a seguinte configuração:&#xA;Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos&#xA;Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.&#xA;Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.</description>
+    </item>
+    <item>
+      <title>Asp.Net Core com MongoDb e Mongo Atlas - C#</title>
+      <link>http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/</link>
+      <pubDate>Sat, 19 Oct 2019 21:39:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/aspnetcore-com-mongo-db-e-mongo-atlas/</guid>
+      <description>Este tutorial cria uma API Web que executa as operações CRUD (criar, ler, atualizar e excluir) em um banco de dados NoSQL do MongoDB.&#xA;Baseado no artigo Microsoft Docs, criado por Pratik Khandelwal e Scott Addie Modificado por Ricardo Mauro Tempo de leitura: 18 minutos&#xA;Neste tutorial, você aprenderá como:&#xA;Configurar o Mongo Atlas e MongoDb Definir usuário e senha de acesso no Mongo Atlas Executar operações CRUD do MongoDB a partir de uma API Web Asp.</description>
+    </item>
+    <item>
       <title>C# Conversions - Casting, implicit and explicit conversion</title>
       <link>http://localhost:1313/post/csharp-implicit-conversion-cast-explicit-conversion/</link>
       <pubDate>Sun, 29 Sep 2019 20:35:05 +0000</pubDate>
@@ -182,6 +259,13 @@
       <pubDate>Fri, 31 May 2019 20:38:34 +0000</pubDate>
       <guid>http://localhost:1313/post/c-datetime-tostring-format/</guid>
       <description>Cheat sheet with C# DateTime formats.&#xA;using System; using System.Globalization; public class Program { public static void Main(string[] args) { DateTime dt = DateTime.Now; string[] format = { &amp;#34;d&amp;#34;, &amp;#34;D&amp;#34;, &amp;#34;f&amp;#34;, &amp;#34;F&amp;#34;, &amp;#34;g&amp;#34;, &amp;#34;G&amp;#34;, &amp;#34;m&amp;#34;, &amp;#34;r&amp;#34;, &amp;#34;s&amp;#34;, &amp;#34;t&amp;#34;, &amp;#34;T&amp;#34;, &amp;#34;u&amp;#34;, &amp;#34;U&amp;#34;, &amp;#34;y&amp;#34;, &amp;#34;dddd, MMMM dd yyyy&amp;#34;, &amp;#34;ddd, MMM d \&amp;#34;&amp;#39;\&amp;#34;yy&amp;#34;, &amp;#34;dddd, MMMM dd&amp;#34;, &amp;#34;M/yy&amp;#34;, &amp;#34;dd-MM-yy&amp;#34;, }; string date; for (int i = 0; i &amp;lt; format.Length; i++) { date = dt.</description>
+    </item>
+    <item>
+      <title>Console Application para upload de arquivo no Azure Blob Storage</title>
+      <link>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/</link>
+      <pubDate>Tue, 10 Jan 2017 19:08:07 +0000</pubDate>
+      <guid>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/</guid>
+      <description>Projeto para&#xA;Configuration para utilizarmos como injeção de dependência.&#xA;namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.&#xA;namespace Demo.AzureBlob.DependencyInjection { public static class ServiceCollectionExtensions { public static IServiceCollection AddAzureBlobService(this IServiceCollection services, IConfiguration configuration) { return services.AddAzureBlobService(configuration, x =&amp;gt; { x.AllowOverwrite = configuration.GetValue&amp;lt;bool&amp;gt;(&amp;#34;Az:AllowOverwrite&amp;#34;); x.</description>
     </item>
   </channel>
 </rss>

@@ -6,8 +6,22 @@
     <description>Recent content in Azure on rmauro.dev {blog}</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Oct 2020 18:58:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jul 2024 00:04:01 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/Azure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploring Azure Messaging Services - Crossing the Right Service for Your Scenario</title>
+      <link>http://localhost:1313/post/exploring-azure-messaging-services-crossing-the-right-service-for-your-scenario/</link>
+      <pubDate>Tue, 23 Jul 2024 00:04:01 +0000</pubDate>
+      <guid>http://localhost:1313/post/exploring-azure-messaging-services-crossing-the-right-service-for-your-scenario/</guid>
+      <description>Azure offers a variety of messaging services tailored to meet different communication patterns and application needs. In this blog post, we’ll dive into the key messaging services available on Azure and explore the best scenarios for using each one.&#xA;1. Azure Service Bus Azure Service Bus is a fully managed enterprise message broker with features like message queues and publish-subscribe topics. It ensures reliable messaging between services, enabling decoupling and asynchronous communication.</description>
+    </item>
+    <item>
+      <title>AI-900 - Journey to get the exam</title>
+      <link>http://localhost:1313/post/ai-900-journey-to-get-the-exam/</link>
+      <pubDate>Sun, 16 May 2021 00:00:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/ai-900-journey-to-get-the-exam/</guid>
+      <description>Hi,&#xA;Today I started learning about the AI-900 course. My deadline is July-24-2021 to know everything about this course. I have to teach it as an MCT.&#xA;Exam AI-900: Microsoft Azure AI Fundamentals - Learn Exam AI-900: Microsoft Azure AI Fundamentals krsanty Microsoft Docs {map[author:krsanty caption:AI-900 Exam description:Exam AI-900: Microsoft Azure AI Fundamentals icon: publisher:Microsoft Docs thumbnail:https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png title:Exam AI-900: Microsoft Azure AI Fundamentals - Learn url:https://docs.microsoft.com/pt-br/learn/certifications/exams/ai-900] Page(/post/ai-900-journey-to-get-the-exam) &amp;lt;nil&amp;gt; bookmark true 0 {{{} 0} {0 0}} {{{} 0} {0 0}} 517 { 0 0 0} &amp;lt;nil&amp;gt;} Join me in learning this awesome topic.</description>
+    </item>
     <item>
       <title>Native Dependency Injection in Azure Functions with C#</title>
       <link>http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/</link>
@@ -51,11 +65,25 @@
       <description>##Managed disks&#xA;The Azure platform manages the disk and the backing storage You don&amp;rsquo;t have to worry about storage account limits and thresholds ##Unmanaged disks&#xA;You manually create and manage virtual hard disks (VHDs) in your Storage account You will need to consider account throughput and capacity limits when using this model Managed disks - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure.</description>
     </item>
     <item>
+      <title>Azure Function V3 com EntityFramework Core 3.1</title>
+      <link>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</link>
+      <pubDate>Tue, 31 Dec 2019 16:47:03 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-function-v3-com-entityframework-core-3-1/</guid>
+      <description>Olá pessoal, neste artigo vamos ver como criar um Azure Function V3 no Visual Studio 2019 e utilizar o Entity Framework Core 3.1 para acesso a dados.&#xA;Ao final vamos ter a seguinte configuração:&#xA;Azure Function V3 Entity Framework Core Entidade Aluno Pré Requisitos&#xA;Visual Studio 2019 Azure Functions Core Tools V3 Conta Azure (opcional) para publicar Código fonte disponível no Github.&#xA;Criando novo projeto Primeiro crie um novo projeto a partir do template Azure Function.</description>
+    </item>
+    <item>
       <title>Azure App Service and Cloudflare with Full SSL (Strict)</title>
       <link>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</link>
       <pubDate>Sun, 15 Dec 2019 23:39:13 +0000</pubDate>
       <guid>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</guid>
       <description>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.&#xA;At the end we will have the following configuration:&#xA;CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.</description>
+    </item>
+    <item>
+      <title>Azure App Service e Cloudflare com SSL Full (strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 20:36:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-e-cloudflare-com-ssl-full-strict/</guid>
+      <description>[english version]&#xA;Vamos configurar o Cloudflare como proxy reverso e Azure Web Apps como serviço de web. Buscando a melhor configuração de segurança que o Cloudflare oferece na camada gratuíta e cadeado verde.&#xA;Ao final teremos a seguinte configuração:&#xA;CloudFlare como proxy reverso Azure Web App como serviço web SSL válido (cadeado verde) SSL full trust entre Cloudflare e Azure Web Apps (Cloudflare validando certificado do lado do servidor) Domínios para aplicação / (A Name) e https://www.</description>
     </item>
     <item>
       <title>Azure Kubernets - az cli</title>
@@ -105,6 +133,13 @@
       <pubDate>Mon, 27 May 2019 22:56:17 +0000</pubDate>
       <guid>http://localhost:1313/post/create-azure-vm-though-powershell/</guid>
       <description>A right to the point guide of how to create Virtual Machines in Azure with Powershell</description>
+    </item>
+    <item>
+      <title>Console Application para upload de arquivo no Azure Blob Storage</title>
+      <link>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/</link>
+      <pubDate>Tue, 10 Jan 2017 19:08:07 +0000</pubDate>
+      <guid>http://localhost:1313/post/console-application-para-upload-de-arquivo-no-azure-blob-storage/</guid>
+      <description>Projeto para&#xA;Configuration para utilizarmos como injeção de dependência.&#xA;namespace Demo.AzureBlob.Configurations { public class AzureBlobConfiguration { public bool AllowOverwrite { get; set; } public string ConnectionString { get; set; } public string ContainerName { get; set; } } } Configurando container de injeção de dependência.&#xA;namespace Demo.AzureBlob.DependencyInjection { public static class ServiceCollectionExtensions { public static IServiceCollection AddAzureBlobService(this IServiceCollection services, IConfiguration configuration) { return services.AddAzureBlobService(configuration, x =&amp;gt; { x.AllowOverwrite = configuration.GetValue&amp;lt;bool&amp;gt;(&amp;#34;Az:AllowOverwrite&amp;#34;); x.</description>
     </item>
   </channel>
 </rss>

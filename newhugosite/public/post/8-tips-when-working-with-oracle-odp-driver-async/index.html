@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Programming with Oracle ODP.NET - 8 Tips | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="When using async/await with the Oracle ODP.NET driver, there are several tips and tricks you can use to optimize performance and ensure proper functionality. Here are some key points to consider:
+1. Use Async Methods Ensure you are using the asynchronous versions of the ODP.NET methods, such as ExecuteNonQueryAsync, ExecuteReaderAsync, and ExecuteScalarAsync. This will help you take full advantage of the async/await pattern.
+2. Configure the Connection String Properly configure your connection string to support asynchronous operations.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/8-tips-when-working-with-oracle-odp-driver-async/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/8-tips-when-working-with-oracle-odp-driver-async/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Programming with Oracle ODP.NET - 8 Tips">
+  <meta property="og:description" content="When using async/await with the Oracle ODP.NET driver, there are several tips and tricks you can use to optimize performance and ensure proper functionality. Here are some key points to consider:
+1. Use Async Methods Ensure you are using the asynchronous versions of the ODP.NET methods, such as ExecuteNonQueryAsync, ExecuteReaderAsync, and ExecuteScalarAsync. This will help you take full advantage of the async/await pattern.
+2. Configure the Connection String Properly configure your connection string to support asynchronous operations.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-07-19T21:47:00+00:00">
+    <meta property="article:modified_time" content="2024-07-19T21:47:00+00:00">
+
+  <meta itemprop="name" content="Programming with Oracle ODP.NET - 8 Tips">
+  <meta itemprop="description" content="When using async/await with the Oracle ODP.NET driver, there are several tips and tricks you can use to optimize performance and ensure proper functionality. Here are some key points to consider:
+1. Use Async Methods Ensure you are using the asynchronous versions of the ODP.NET methods, such as ExecuteNonQueryAsync, ExecuteReaderAsync, and ExecuteScalarAsync. This will help you take full advantage of the async/await pattern.
+2. Configure the Connection String Properly configure your connection string to support asynchronous operations.">
+  <meta itemprop="datePublished" content="2024-07-19T21:47:00+00:00">
+  <meta itemprop="dateModified" content="2024-07-19T21:47:00+00:00">
+  <meta itemprop="wordCount" content="407">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Programming with Oracle ODP.NET - 8 Tips">
+  <meta name="twitter:description" content="When using async/await with the Oracle ODP.NET driver, there are several tips and tricks you can use to optimize performance and ensure proper functionality. Here are some key points to consider:
+1. Use Async Methods Ensure you are using the asynchronous versions of the ODP.NET methods, such as ExecuteNonQueryAsync, ExecuteReaderAsync, and ExecuteScalarAsync. This will help you take full advantage of the async/await pattern.
+2. Configure the Connection String Properly configure your connection string to support asynchronous operations.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Programming with Oracle ODP.NET - 8 Tips</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-07-19T21:47:00Z">July 19, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>When using async/await with the Oracle ODP.NET driver, there are several tips and tricks you can use to optimize performance and ensure proper functionality. Here are some key points to consider:</p>
+<h3 id="1-use-async-methods">1. Use Async Methods</h3>
+<p>Ensure you are using the asynchronous versions of the ODP.NET methods, such as <code>ExecuteNonQueryAsync</code>, <code>ExecuteReaderAsync</code>, and <code>ExecuteScalarAsync</code>. This will help you take full advantage of the async/await pattern.</p>
+<h3 id="2-configure-the-connection-string">2. Configure the Connection String</h3>
+<p>Properly configure your connection string to support asynchronous operations. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">string</span> connectionString = <span style="color:#e6db74">&#34;User Id=myUsername;Password=myPassword;Data Source=myDataSource;Pooling=false;&#34;</span>;
+</span></span></code></pre></div><p>Setting <code>Pooling=false</code> can help with debugging but for production, ensure proper pool configuration.</p>
+<h3 id="3-handle-oracleexceptions">3. Handle OracleExceptions</h3>
+<p>Always use try-catch blocks to handle potential <code>OracleException</code>s that might occur during asynchronous database operations.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> (OracleConnection conn = <span style="color:#66d9ef">new</span> OracleConnection(connectionString))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> conn.OpenAsync();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">using</span> (OracleCommand cmd = <span style="color:#66d9ef">new</span> OracleCommand(<span style="color:#e6db74">&#34;SELECT * FROM myTable&#34;</span>, conn))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> (OracleDataReader reader = <span style="color:#66d9ef">await</span> cmd.ExecuteReaderAsync())
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">await</span> reader.ReadAsync())
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// Process each row</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">catch</span> (OracleException ex)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Handle the exception</span>
+</span></span><span style="display:flex;"><span>    Console.WriteLine(ex.Message);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="4-cancellation-tokens">4. Cancellation Tokens</h3>
+<p>Use <code>CancellationToken</code> to handle task cancellations, which is particularly useful in web applications to abort long-running database operations when the client disconnects.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>CancellationTokenSource cts = <span style="color:#66d9ef">new</span> CancellationTokenSource();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> (OracleConnection conn = <span style="color:#66d9ef">new</span> OracleConnection(connectionString))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> conn.OpenAsync(cts.Token);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">using</span> (OracleCommand cmd = <span style="color:#66d9ef">new</span> OracleCommand(<span style="color:#e6db74">&#34;SELECT * FROM myTable&#34;</span>, conn))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> (OracleDataReader reader = <span style="color:#66d9ef">await</span> cmd.ExecuteReaderAsync(cts.Token))
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">await</span> reader.ReadAsync(cts.Token))
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// Process each row</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">catch</span> (OperationCanceledException)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Handle task cancellation</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="5-use-configureawait">5. Use ConfigureAwait</h3>
+<p>Use <code>ConfigureAwait(false)</code> in library code to prevent deadlocks, especially in UI applications.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">await</span> conn.OpenAsync().ConfigureAwait(<span style="color:#66d9ef">false</span>);
+</span></span></code></pre></div><h3 id="6-connection-pooling">6. Connection Pooling</h3>
+<p>Make use of connection pooling for better performance in production. Ensure your connection string is properly configured for pooling:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">string</span> connectionString = <span style="color:#e6db74">&#34;User Id=myUsername;Password=myPassword;Data Source=myDataSource;Pooling=true;Min Pool Size=10;Max Pool Size=100;&#34;</span>;
+</span></span></code></pre></div><h3 id="7-dispose-resources-properly">7. Dispose Resources Properly</h3>
+<p>Always dispose of <code>OracleConnection</code>, <code>OracleCommand</code>, and <code>OracleDataReader</code> objects to free up resources.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> (OracleConnection conn = <span style="color:#66d9ef">new</span> OracleConnection(connectionString))
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> conn.OpenAsync();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> (OracleCommand cmd = <span style="color:#66d9ef">new</span> OracleCommand(<span style="color:#e6db74">&#34;SELECT * FROM myTable&#34;</span>, conn))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">using</span> (OracleDataReader reader = <span style="color:#66d9ef">await</span> cmd.ExecuteReaderAsync())
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">await</span> reader.ReadAsync())
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Process each row</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="8-monitor-performance">8. Monitor Performance</h3>
+<p>Monitor the performance of your async database operations to identify and resolve potential bottlenecks. Use tools like Oracle Performance Monitor and trace files.</p>
+<p>By following these tips, you can effectively use async/await with the Oracle ODP.NET driver to improve the performance and responsiveness of your applications.</p>
+<p>Stay tunned for more on rmauro.dev</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

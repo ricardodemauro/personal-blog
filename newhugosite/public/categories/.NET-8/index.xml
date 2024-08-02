@@ -6,8 +6,22 @@
     <description>Recent content in .NET 8 on rmauro.dev {blog}</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 May 2023 23:28:28 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Jun 2024 14:11:50 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/.NET-8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Query Specification Pattern with EF Core</title>
+      <link>http://localhost:1313/post/query-specification-pattern-with-ef-core/</link>
+      <pubDate>Mon, 24 Jun 2024 14:11:50 +0000</pubDate>
+      <guid>http://localhost:1313/post/query-specification-pattern-with-ef-core/</guid>
+      <description>The Query Specification pattern is rooted in Domain-Driven Design (DDD) and helps us build reusable query specifications. By using this pattern, we can create expressive and maintainable queries without exposing IQueryable directly.&#xA;Here’s what you need to know:&#xA;1. Purpose The primary purpose of the Query Specification pattern is to encapsulate query-specific logic in a reusable and expressive manner. It allows developers to define query criteria and conditions separately from the actual query execution.</description>
+    </item>
+    <item>
+      <title>Getting started with ONION Architecture in C#</title>
+      <link>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</link>
+      <pubDate>Tue, 24 Oct 2023 19:46:26 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-started-with-onion-architecture-in-csharp/</guid>
+      <description>Software architecture is the cornerstone of a robust and maintainable application. In this article, we will explore Onion Architecture with C#, a design pattern that promotes separation of concerns, modularity, and testability.&#xA;We&amp;rsquo;ll take a deep dive into the layers of Onion Architecture while building a &amp;ldquo;TODO List&amp;rdquo; application to illustrate its principles.&#xA;What is Onion Architecture? Onion Architecture is a software architectural pattern that emphasizes the independence of an application&amp;rsquo;s core business logic from external concerns.</description>
+    </item>
     <item>
       <title>C# Get JWT Token from Request .NET 6</title>
       <link>http://localhost:1313/post/csharp-get-jwt-token-request/</link>

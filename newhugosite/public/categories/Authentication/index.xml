@@ -16,6 +16,13 @@
       <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;&#xA;&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;&#xA;</description>
     </item>
     <item>
+      <title>API Key Authentication - Estendendo a implementação nativa - .NET 5</title>
+      <link>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</link>
+      <pubDate>Thu, 15 Jul 2021 23:15:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/api-key-authentication-estendendo-a-implementacao-nativa/</guid>
+      <description>Olá, neste artigo iremos implementar e explorar o código para tratar com a autenticação do tipo &amp;ldquo;API Key&amp;rdquo;. Isso tudo com apenas três linhas de código.&#xA;Aqui queremos a famosa solução simples e estúpida (simple and stupid) e não uma implementação distorcida utilizando MVC [Attributes] ou um middleware customizado para lidar com a autenticação.&#xA;Observação: Esse artigo aplica-se as versões do .NET 5, .NET Core 3.1 e .NET Core 2.1.</description>
+    </item>
+    <item>
       <title>API Key Authentication - Extending the native implementation</title>
       <link>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</link>
       <pubDate>Sun, 28 Mar 2021 21:43:45 +0000</pubDate>

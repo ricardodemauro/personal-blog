@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Asp.Net Core with MongoDb and Mongo Atlas - C# | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="This tutorial creates a Web API that performs CRUD (create, read, update, and delete) operations on a [MongoDB] NoSQL database (https://www.mongodb.com/what-is-mongodb).
+Based on the article [Microsoft Docs] (https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0), created by [Pratik Khandelwal] (https: //twitter.com/K2Prk) and [Scott Addie] (https://twitter.com/Scott_Addie) Modified by [Ricardo Mauro] (https://twitter.com/RicardoDeMauro) Reading time: 18 minutes
+In this tutorial you will learn how to:
+Configure Mongo Atlas and MongoDb Set username and password in Mongo Atlas Perform MongoDB CRUD operations from an Asp.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/asp-net-core-with-mongodb-and-mongo-atlas-c/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/asp-net-core-with-mongodb-and-mongo-atlas-c/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Asp.Net Core with MongoDb and Mongo Atlas - C#">
+  <meta property="og:description" content="This tutorial creates a Web API that performs CRUD (create, read, update, and delete) operations on a [MongoDB] NoSQL database (https://www.mongodb.com/what-is-mongodb).
+Based on the article [Microsoft Docs] (https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0), created by [Pratik Khandelwal] (https: //twitter.com/K2Prk) and [Scott Addie] (https://twitter.com/Scott_Addie) Modified by [Ricardo Mauro] (https://twitter.com/RicardoDeMauro) Reading time: 18 minutes
+In this tutorial you will learn how to:
+Configure Mongo Atlas and MongoDb Set username and password in Mongo Atlas Perform MongoDB CRUD operations from an Asp.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-12-19T20:08:33+00:00">
+    <meta property="article:modified_time" content="2019-12-19T20:08:33+00:00">
+
+  <meta itemprop="name" content="Asp.Net Core with MongoDb and Mongo Atlas - C#">
+  <meta itemprop="description" content="This tutorial creates a Web API that performs CRUD (create, read, update, and delete) operations on a [MongoDB] NoSQL database (https://www.mongodb.com/what-is-mongodb).
+Based on the article [Microsoft Docs] (https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0), created by [Pratik Khandelwal] (https: //twitter.com/K2Prk) and [Scott Addie] (https://twitter.com/Scott_Addie) Modified by [Ricardo Mauro] (https://twitter.com/RicardoDeMauro) Reading time: 18 minutes
+In this tutorial you will learn how to:
+Configure Mongo Atlas and MongoDb Set username and password in Mongo Atlas Perform MongoDB CRUD operations from an Asp.">
+  <meta itemprop="datePublished" content="2019-12-19T20:08:33+00:00">
+  <meta itemprop="dateModified" content="2019-12-19T20:08:33+00:00">
+  <meta itemprop="wordCount" content="622">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Asp.Net Core with MongoDb and Mongo Atlas - C#">
+  <meta name="twitter:description" content="This tutorial creates a Web API that performs CRUD (create, read, update, and delete) operations on a [MongoDB] NoSQL database (https://www.mongodb.com/what-is-mongodb).
+Based on the article [Microsoft Docs] (https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0), created by [Pratik Khandelwal] (https: //twitter.com/K2Prk) and [Scott Addie] (https://twitter.com/Scott_Addie) Modified by [Ricardo Mauro] (https://twitter.com/RicardoDeMauro) Reading time: 18 minutes
+In this tutorial you will learn how to:
+Configure Mongo Atlas and MongoDb Set username and password in Mongo Atlas Perform MongoDB CRUD operations from an Asp.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Asp.Net Core with MongoDb and Mongo Atlas - C#</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-12-19T20:08:33Z">December 19, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>This tutorial creates a Web API that performs CRUD (create, read, update, and delete) operations on a [MongoDB] NoSQL database (<a href="https://www.mongodb.com/what-is-mongodb)">https://www.mongodb.com/what-is-mongodb)</a>.</p>
+<p>Based on the article [Microsoft Docs] (<a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0)">https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-3.0)</a>, created by [Pratik Khandelwal] (https: //twitter.com/K2Prk) and [Scott Addie] (<a href="https://twitter.com/Scott_Addie">https://twitter.com/Scott_Addie</a>)
+Modified by [Ricardo Mauro] (<a href="https://twitter.com/RicardoDeMauro">https://twitter.com/RicardoDeMauro</a>)
+Reading time: 18 minutes</p>
+<p>In this tutorial you will learn how to:</p>
+<blockquote>
+<ul>
+<li>Configure Mongo Atlas and MongoDb</li>
+<li>Set username and password in Mongo Atlas</li>
+<li>Perform MongoDB CRUD operations from an Asp.Net Core 3 Web API</li>
+</ul>
+</blockquote>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><a href="https://www.microsoft.com/net/download/all">.NET Core 3.0 SDK or later</a></li>
+<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp">C# for Visual Studio Code</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions">C# Extensions for Visual Studio Code</a></li>
+</ul>
+<hr>
+<h2 id="a-nameregistering-mongo-atlasa-setting-up-mongodb-in-the-mongo-atlas-cloud"><a name="registering-mongo-atlas"></a> Setting Up MongoDB in the Mongo Atlas Cloud</h2>
+<p>Access the <a href="https://www.mongodb.com/cloud/atlas">Mongo Atlas</a> &ndash;<a href="https://www.mongodb.com/cloud/atlas">https://www.mongodb.com/cloud/atlas</a>.</p>
+<p>Click <code>Try free</code> if you do not have an account, or <code>Sign In</code> if you already have a Mongo Atlas account.</p>
+<h4 id="a-namecreating-accountacreating-an-account-for-mongo-atlas-access"><a name="creating-account"></a>Creating an Account for Mongo Atlas Access</h4>
+<p>Fill in the basic data (email, first name, last name and password).</p>
+<p>And activate the account by the incoming email (Welcome to MongoDB) by clicking <code>Sign in</code>.</p>
+<h4 id="a-namesign-inasign-in"><a name="sign-in"></a>Sign In</h4>
+<p>Log in using your username and password.</p>
+<h3 id="a-namepreparing-environmnet-mongo-atlasapreparing-the-environment"><a name="preparing-environmnet-mongo-atlas"></a>Preparing the Environment</h3>
+<p>The cluster is where the Mongo Db databases will be stored (we can create more than one). In our case we will use the database created by default when we create the first cluster.</p>
+<ol>
+<li>
+<p>Click on <code>Build a Cluster</code>.</p>
+</li>
+<li>
+<p>Select the cluster free (<code>Starter Clusters</code>) and then click <code>Create a cluster</code>.</p>
+</li>
+<li>
+<p>Under <em>Cloud Provider</em> select <code>Azure</code> and leave pre-selected region <code>Virginia(eastus2)</code>.</p>
+</li>
+<li>
+<p>For the other options we will leave the default values.</p>
+</li>
+<li>
+<p>Now click <code>Create Cluster</code> and wait for the cluster creation to finish.</p>
+</li>
+</ol>
+<p>The blue top bar indicates the status of cluster creation. It may take a while to finish.</p>
+<h4 id="a-namelittle-contextaa-little-context---what-do-we-see-here"><a name="little-context"></a>A Little Context - What do we see here?</h4>
+<p>On the left side we have possible configuration options such as <em>Database Access</em> and <em>Network Access</em>.</p>
+<ul>
+<li>
+<p><code>Clusters</code> is where we see general data about the cluster and where we will get the <em>connection string</em>.</p>
+</li>
+<li>
+<p><code>Database Access</code> is where we manage username(s) and password(s) for access to database(s).</p>
+</li>
+<li>
+<p><code>Network Access</code> is where we manage firewall rules (open for a givem IP address).</p>
+</li>
+<li>
+<p>Other options I&rsquo;ll leave for you to explore later.</p>
+</li>
+</ul>
+<h3 id="a-namesetup-envapreparing-the-environment-for-our-application"><a name="setup-env"></a>Preparing the Environment for Our Application</h3>
+<h4 id="1---creating-the-first-user">1 - Creating the First User</h4>
+<ol>
+<li>
+<p>Click on <code>Database Access</code>.</p>
+</li>
+<li>
+<p>Then click on <code>ADD NEW USER</code> on the right side of the screen (green button).</p>
+</li>
+<li>
+<p>Enter the following data:</p>
+</li>
+</ol>
+<pre tabindex="0"><code>&gt; Username = students
+&gt; Password = students
+&gt; User privileges = read and write to any database
+</code></pre><p>Finally click on <code>Add User</code>.</p>
+<p>User creation may take some time.</p>
+<h4 id="2---creating-firewall-rule">2 - Creating Firewall Rule</h4>
+<ol>
+<li>
+<p>First click on <code>Network Access</code>.</p>
+</li>
+<li>
+<p>Then on <code>ADD IP ADDRESS</code>.</p>
+</li>
+<li>
+<p>Now in <code>ALLOW ACCESS FROM ANYWHERE</code> (this allows access from any IP)
+Note that we will use this for ease of access, but it is not recommended for production environments.</p>
+</li>
+<li>
+<p>Finally click <code>Confirm</code>.</p>
+</li>
+</ol>
+<p>This change may also take some time to take effect.</p>
+<h4 id="3---collecting-connection-string-connectionstring">3 - Collecting connection string (connectionString)</h4>
+<ol>
+<li>
+<p>Click on <code>Clusters</code> in the left side menu.</p>
+</li>
+<li>
+<p>Then click the <code>CONNECT</code> button in the<code> SANDBOX</code> session.</p>
+</li>
+<li>
+<p>In the open popup click <code>Connect your application</code>.</p>
+</li>
+</ol>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/connect-cluster.png" alt="connect-cluster"></p>
+<ol start="4">
+<li>
+<p>In the <code>Driver</code> session select <code>C# / .NET</code> and in <code>version</code> select <code>2.5 or later</code>.</p>
+</li>
+<li>
+<p>Copy <code>connectionString</code> to notepad and replace <code>&lt;password&gt;</code> with the password we created (students) and replace <code>&lt;user&gt;</code> if it is not already filled in.</p>
+</li>
+</ol>
+<p>Result should look something like:</p>
+<blockquote>
+<p>mongodb+srv://students:students@cluster0-XXXXX.azure.mongodb.net/test?retryWrites=true&amp;w=majority</p>
+</blockquote>
+<p>Great! We have our database ready for our application. We can now start building the Web API with ASP.NET Core.</p>
+<h2 id="a-namecreating-first-web-appacreating-the-aspnet-core-api-web-project"><a name="creating-first-web-app"></a>Creating the ASP.NET Core API Web Project</h2>
+<ol>
+<li>
+<p>First create an empty folder called <strong>MongoWebApi</strong> within the <strong>Documents</strong> folder. This will be our place of work, in this folder will be deposited all our csharp source, configuration files, compiled (our dll&rsquo;s) and so on.</p>
+</li>
+<li>
+<p>Now open the *</p>
+</li>
+</ol>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

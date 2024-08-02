@@ -122,5 +122,5 @@ By following these steps, you can enhance your development workflow, ensuring se
 
 Embrace the power of SSH keys and optimize your GitHub experience.
 
-Happy coding!
+Happy coding!  ༼ つ ◕_◕ ༽つ
 
