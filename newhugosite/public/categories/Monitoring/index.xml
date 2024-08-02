@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monitoring on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/Monitoring/</link>
+    <description>Recent content in Monitoring on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Apr 2021 17:14:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/Monitoring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Health Checks on your ASP.NET Core Application</title>
+      <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
+      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-health-checks-to-net-core-application/</guid>
+      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.&#xA;Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.&#xA;Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
+    </item>
+    <item>
+      <title>Endpoint Monitoring with Azure Application Insights</title>
+      <link>http://localhost:1313/post/endpoint-monitoring-with-azure-application-insights/</link>
+      <pubDate>Mon, 28 Sep 2020 15:14:09 +0000</pubDate>
+      <guid>http://localhost:1313/post/endpoint-monitoring-with-azure-application-insights/</guid>
+      <description>Let&amp;rsquo;s explore the use of Microsoft Azure Application Insights to monitor the health of our application using the endpoint /healthcheck.&#xA;Applications Insights it&amp;rsquo;s a great tool for monitoring, error logging, performance monitoring, dependency mapping, and other things. In other words, it&amp;rsquo;s a full APM - Application Performance Management - ready for you to use in Production Environments.&#xA;Application Insights, a feature of Azure Monitor, is an extensible Application Performance Management (APM) service for developers and DevOps professionals.</description>
+    </item>
+    <item>
+      <title>Adding Health Checks UI</title>
+      <link>http://localhost:1313/post/adding-health-checks-ui/</link>
+      <pubDate>Mon, 21 Sep 2020 18:17:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-health-checks-ui/</guid>
+      <description>This is the second article about Health Checks and Application Monitoring.&#xA;Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!&#xA;Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
+    </item>
+  </channel>
+</rss>

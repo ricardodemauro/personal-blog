@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>.NET 6 on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/.NET-6/</link>
+    <description>Recent content in .NET 6 on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Aug 2023 18:01:18 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/.NET-6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oracle ODP.NET with truly Async Methods in C#</title>
+      <link>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</link>
+      <pubDate>Thu, 24 Aug 2023 18:01:18 +0000</pubDate>
+      <guid>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</guid>
+      <description>Oracle&amp;rsquo;s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.&#xA;Under PreRelease until today : 2023-08-24&#xA;Oracle.ManagedDataAccess.Core - pre release&#xA;Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let&amp;rsquo;s take a moment to understand the power of asynchronous programming in C#.&#xA;The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.</description>
+    </item>
+    <item>
+      <title>C# Get JWT Token from Request .NET 6</title>
+      <link>http://localhost:1313/post/csharp-get-jwt-token-request/</link>
+      <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/csharp-get-jwt-token-request/</guid>
+      <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;&#xA;&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;&#xA;</description>
+    </item>
+    <item>
+      <title>C# JWT Authentication .NET 6</title>
+      <link>http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/</link>
+      <pubDate>Fri, 28 Apr 2023 03:44:59 +0000</pubDate>
+      <guid>http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/</guid>
+      <description>In this article, we will work on implementing C# JWT Authentication using .NET 7 - which also works for .NET 6, and preview .NET 8 - using ASP.NET Core.</description>
+    </item>
+    <item>
+      <title>DALL-E Art-Generator with C# .NET</title>
+      <link>http://localhost:1313/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/</link>
+      <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
+      <guid>http://localhost:1313/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/</guid>
+      <description>In this blog post, we will explore the steps to develop a C# application using DALL-E model to generate images from text.</description>
+    </item>
+    <item>
+      <title>Getting Started with Serilog Custom Enrichers</title>
+      <link>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</link>
+      <pubDate>Tue, 04 Apr 2023 00:05:15 +0000</pubDate>
+      <guid>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</guid>
+      <description>One of the key features of Serilog is the ability to Enrich Log Events with additional contextual information that can help in troubleshooting and debugging.&#xA;In this blog post, we will explore how to create a Custom Enricher with Serilog to add custom properties to log events.</description>
+    </item>
+    <item>
+      <title>Calculate Time Ago with .NET C#</title>
+      <link>http://localhost:1313/post/calculate-time-ago-with-csharp/</link>
+      <pubDate>Mon, 26 Sep 2022 14:00:52 +0000</pubDate>
+      <guid>http://localhost:1313/post/calculate-time-ago-with-csharp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Create a Minimal API with .NET 6</title>
+      <link>http://localhost:1313/post/create-a-minimal-api-with-dotnet-6/</link>
+      <pubDate>Mon, 04 Jul 2022 20:16:53 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-a-minimal-api-with-dotnet-6/</guid>
+      <description>One of the new features of .NET 6 is the arrival of a new template, which will replace the default and bring a good reduction in code writing. Including the removal of the Startup.cs file.&#xA;.NET 6 was released as LTS (long-term stable) which means support for 3 years. So we have to learn about this new baby. Don&amp;rsquo;t forget the new C# 10 features as well.&#xA;Minimal APIs are architected to create HTTP APIs with minimal dependencies.</description>
+    </item>
+    <item>
+      <title>Set up Serilog in .NET 6 as a logging provider</title>
+      <link>http://localhost:1313/post/setup-serilog-in-net6-as-logging-provider/</link>
+      <pubDate>Sun, 26 Jun 2022 22:04:20 +0000</pubDate>
+      <guid>http://localhost:1313/post/setup-serilog-in-net6-as-logging-provider/</guid>
+      <description>Let&amp;rsquo;s set up Serilog as Logging Provider in the native logging system in .NET so you can use the Microsoft ILogger interface.</description>
+    </item>
+    <item>
+      <title>Adding Startup.cs back to .NET 6 Project</title>
+      <link>http://localhost:1313/post/adding-startup-back-to-net-6-project/</link>
+      <pubDate>Sun, 05 Jun 2022 14:20:46 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-startup-back-to-net-6-project/</guid>
+      <description>When .NET 6 was released, the first big change was the lack of Startup.cs. This is very nice and all. But sometimes we just want it back, and here is how.&#xA;First, create a new file called Startup.cs at the root of your project with the following content - don&amp;rsquo;t forget the namespace.&#xA;public class Startup { readonly IConfiguration configuration; public Startup(IConfiguration configuration) { this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration)); } public void ConfigureServices(IServiceCollection services) { services.</description>
+    </item>
+    <item>
+      <title>Health Checks on your ASP.NET Core Application</title>
+      <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
+      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-health-checks-to-net-core-application/</guid>
+      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.&#xA;Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.&#xA;Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/security/</link>
+    <description>Recent content in Security on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Sep 2022 20:57:43 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH Exposed to Internet - 8 steps check list</title>
+      <link>http://localhost:1313/post/8-actions-for-hardening-your-linux-server-for-internet/</link>
+      <pubDate>Sun, 11 Sep 2022 20:57:43 +0000</pubDate>
+      <guid>http://localhost:1313/post/8-actions-for-hardening-your-linux-server-for-internet/</guid>
+      <description>Exposing virtual machines to the internet it&amp;rsquo;s not an easy task. Often managed using an SSH connection we must secure our machines as much as we can against hacker attacks.&#xA;Let&amp;rsquo;s go through some often and ease configurations that will make it an attacker hard if trying to access your machine.&#xA;💬 In this issue Creating a non-root user and use eventually elevated privileged Enabling UFW Uncomplicated Firewall Unattended Upgrades Hardening the SSH Access Use SSH Keys instead of Password Change the default Port for SSH Disable Password Login Disable Root Login over SSH Use config file in SSH client for easier connection 👉 Information we&amp;rsquo;ll use in our lab User: _root_Password: generated with a _password generator_Description: Our Root userUser: _secondary_Password: generated with a _password generator_Description: Non Root user for daily basis accessOperating System: Ubuntu Server 20.</description>
+    </item>
+    <item>
+      <title>Azure App Service and Cloudflare with Full SSL (Strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 23:39:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</guid>
+      <description>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.&#xA;At the end we will have the following configuration:&#xA;CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.</description>
+    </item>
+    <item>
+      <title>Practice of SQL Injection</title>
+      <link>http://localhost:1313/post/practice-of-sql-injection/</link>
+      <pubDate>Sat, 14 Dec 2019 18:38:29 +0000</pubDate>
+      <guid>http://localhost:1313/post/practice-of-sql-injection/</guid>
+      <description>First, do you know (or remember) what SQL Injection is? (para versão em português)&#xA;According to OWASP.org (https://www.owasp.org/index.php/SQL_Injection).&#xA;A SQL injection attack consists of insertion or &amp;ldquo;injection&amp;rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.&#xA;That is, a web service technique invasion through SQL commands.As long as the web service (website, webservice, REST API, amoung others) is susceptible to the SQL Injection attack, you can execute unforeseen SQL commands on the system.</description>
+    </item>
+    <item>
+      <title>SQL Injection na Prática - Executando o Ataque</title>
+      <link>http://localhost:1313/post/sql-injection-na-pratica/</link>
+      <pubDate>Tue, 03 Dec 2019 01:58:29 +0000</pubDate>
+      <guid>http://localhost:1313/post/sql-injection-na-pratica/</guid>
+      <description>Primeiro, você sabe (ou lembra-se) o que é SQL Injection? (for english version)&#xA;Segundo OWASP.org (https://www.owasp.org/index.php/SQL_Injection).&#xA;A SQL injection attack consists of insertion or &amp;ldquo;injection&amp;rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.&#xA;Ou seja, é uma técnica de invasão de serviços web através de comandos SQL. Desde que o serviço web (website, webservice, REST API, etc) esteja sucetível ao ataque SQL Injection, você consegue executar comandos SQL não previstos no sistema.</description>
+    </item>
+    <item>
+      <title>HSTS - What&#39;s it and how to enable it in IIS</title>
+      <link>http://localhost:1313/post/hsts-definition-and-how-to-enable-it-in-iis/</link>
+      <pubDate>Wed, 09 Aug 2017 18:10:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/hsts-definition-and-how-to-enable-it-in-iis/</guid>
+      <description>###HSTS, what&amp;rsquo;s it?&#xA;Definition from wikipedia:&#xA;HTTP Strict Transport Security (HSTS) is a web security policy mechanism which helps to protect websites against protocol downgrade attacks and cookie hijacking. It allows web servers to declare that web browsers (or other complying user agents) should only interact with it using secure HTTPS connections,[1] and never via the insecure HTTP protocol. HSTS is an IETF standards track protocol and is specified in RFC 6797.</description>
+    </item>
+  </channel>
+</rss>

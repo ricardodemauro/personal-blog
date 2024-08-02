@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authorization on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/Authorization/</link>
+    <description>Recent content in Authorization on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Mar 2021 21:43:45 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/Authorization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>API Key Authentication - Extending the native implementation</title>
+      <link>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</link>
+      <pubDate>Sun, 28 Mar 2021 21:43:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</guid>
+      <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.&#xA;services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
+    </item>
+  </channel>
+</rss>

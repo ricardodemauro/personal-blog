@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Oracle JSON_TABLE Transforming JSON into Table | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="The function JSON_TABLE allows us to transform JSON data into a table relational format.
+This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/oracle-json-table-transforming-json-into-relational-format/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/oracle-json-table-transforming-json-into-relational-format/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Oracle JSON_TABLE Transforming JSON into Table">
+  <meta property="og:description" content="The function JSON_TABLE allows us to transform JSON data into a table relational format.
+This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-05-24T17:35:29+00:00">
+    <meta property="article:modified_time" content="2023-05-24T17:35:29+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="Sql">
+    <meta property="article:tag" content="Oracle-Sql">
+    <meta property="article:tag" content="Json_table">
+    <meta property="article:tag" content="Oracle-Functions">
+
+  <meta itemprop="name" content="Oracle JSON_TABLE Transforming JSON into Table">
+  <meta itemprop="description" content="The function JSON_TABLE allows us to transform JSON data into a table relational format.
+This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.">
+  <meta itemprop="datePublished" content="2023-05-24T17:35:29+00:00">
+  <meta itemprop="dateModified" content="2023-05-24T17:35:29+00:00">
+  <meta itemprop="wordCount" content="438">
+  <meta itemprop="keywords" content="Oracle,Sql,Oracle-Sql,Json_table,Oracle-Functions">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Oracle JSON_TABLE Transforming JSON into Table">
+  <meta name="twitter:description" content="The function JSON_TABLE allows us to transform JSON data into a table relational format.
+This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Oracle JSON_TABLE Transforming JSON into Table</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-05-24T17:35:29Z">May 24, 2023</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>The function <strong>JSON_TABLE</strong> allows us to transform JSON data into a table relational format.</p>
+<p>This article will explore the Oracle <strong>JSON_TABLE</strong> function and its syntax and provide examples to demonstrate its usage and capabilities.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#understanding-the-oracle-function-jsontable">Understanding the Oracle function JSON_TABLE</a></li>
+<li><a href="#example-using-oracle-jsontable">Example Using Oracle JSON_TABLE</a></li>
+<li><a href="#additional-considerations">Additional Considerations</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="understanding-the-oracle-function-json_table">Understanding the Oracle function JSON_TABLE</h2>
+<p>The JSON_TABLE function in Oracle converts JSON data into a relational format by extracting specified JSON data elements and returning them as rows and columns.</p>
+<p>It enables you to query and process JSON data using SQL techniques, making integrating JSON and relational data easier.</p>
+<p>The Syntax of Oracle JSON_TABLE:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>JSON_TABLE(
+</span></span><span style="display:flex;"><span>	json_data
+</span></span><span style="display:flex;"><span>    , path_expression COLUMNS (<span style="color:#66d9ef">column_name</span> data_type PATH json_path_exp) [, ...])
+</span></span></code></pre></div><ul>
+<li><code>json_data</code>: The JSON document or column from which to extract data.</li>
+<li><code>path_expression</code>: The JSON path expression specifies the elements to extract.</li>
+<li><code>column_name</code>: The name to assign to the extracted JSON element.</li>
+<li><code>data_type</code>: The data type of the extracted JSON element.</li>
+<li><code>json_path_exp</code>: The JSON path expression to access the specific element within the JSON structure.</li>
+</ul>
+<h2 id="example-using-oracle-json_table">Example Using Oracle JSON_TABLE</h2>
+<p>Let&rsquo;s consider a practical example to illustrate the usage of Oracle <strong>JSON_TABLE</strong>. Suppose we have a JSON document representing a list of employees and their details:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;employees&#34;</span>: [
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;John Doe&#34;</span>, <span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">30</span>, <span style="color:#f92672">&#34;position&#34;</span>: <span style="color:#e6db74">&#34;Software Engineer&#34;</span> },
+</span></span><span style="display:flex;"><span>    { <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Jane Smith&#34;</span>, <span style="color:#f92672">&#34;age&#34;</span>: <span style="color:#ae81ff">35</span>, <span style="color:#f92672">&#34;position&#34;</span>: <span style="color:#e6db74">&#34;Project Manager&#34;</span> } 
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We can use JSON_TABLE to extract the employee details and transform them into a relational format:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> A.NAME, A.AGE, A.<span style="color:#66d9ef">POSITION</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> JSON_TABLE(
+</span></span><span style="display:flex;"><span>    JSON_VALUE
+</span></span><span style="display:flex;"><span>    , <span style="color:#e6db74">&#39;$.employees[*]&#39;</span> COLUMNS (
+</span></span><span style="display:flex;"><span>        NAME VARCHAR PATH <span style="color:#e6db74">&#39;$.name&#39;</span>,
+</span></span><span style="display:flex;"><span>        AGE NUMBER PATH <span style="color:#e6db74">&#39;$.age&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">POSITION</span> VARCHAR PATH <span style="color:#e6db74">&#39;$.position&#39;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>) A
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME         AGE   <span style="color:#66d9ef">POSITION</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-----------  ----  ------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>John Doe     <span style="color:#ae81ff">30</span>    Software Engineer
+</span></span><span style="display:flex;"><span>Jane Smith   <span style="color:#ae81ff">35</span>    Project Manager
+</span></span></code></pre></div><p>In the above example, we use the JSON_TABLE function to extract the &ldquo;name,&rdquo; &ldquo;age,&rdquo; and &ldquo;position&rdquo; elements from the &ldquo;employees&rdquo; array.</p>
+<p>Using the COLUMNS clause, we assign them to corresponding columns with appropriate data types.</p>
+<p>The resulting query retrieves the employee details in a relational format.</p>
+<h2 id="additional-considerations">Additional Considerations</h2>
+<ul>
+<li>The JSON_TABLE function supports advanced features such as nested JSON structures, array handling, and object flattening.</li>
+<li>You can use SQL functions and expressions within the JSON_TABLE statement to perform calculations or transformations on extracted data.</li>
+<li>JSON_TABLE also supports error handling and handling missing or optional JSON elements.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Oracle JSON_TABLE is a powerful function that enables the transformation of JSON data into a relational format.</p>
+<p>By extracting specified JSON elements and returning them as rows and columns, JSON_TABLE allows you to integrate JSON and relational data seamlessly.</p>
+<p>Understanding the syntax and usage of Oracle JSON_TABLE empowers developers to efficiently query and process JSON data within an Oracle database environment.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/oracle/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/sql/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Sql</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oracle-sql/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Sql</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/json_table/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Json_table</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oracle-functions/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Functions</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/oracle-merge-to-update-sql/">Oracle MERGE Statement SQL</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/">Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-database-on-docker-for-development/">Oracle Database on Docker for Development</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

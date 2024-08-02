@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Methodology on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/methodology/</link>
+    <description>Recent content in Methodology on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 May 2023 16:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/methodology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>XGH / eXtreme Go Horse</title>
+      <link>http://localhost:1313/post/extreme-go-horse-xgh-process-source/</link>
+      <pubDate>Tue, 02 May 2023 16:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/extreme-go-horse-xgh-process-source/</guid>
+      <description>I think therefore it&amp;rsquo;s not XGH.&#xA;In XGH you don&amp;rsquo;t think, you do the first thing that comes to your mind. There&amp;rsquo;s not a second option as the first one is faster.</description>
+    </item>
+  </channel>
+</rss>

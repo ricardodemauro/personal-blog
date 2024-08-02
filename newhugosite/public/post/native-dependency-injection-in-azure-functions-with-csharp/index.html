@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Native Dependency Injection in Azure Functions with C# | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Adding Dependency Injection feature to Azure Functions without third part libraries.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Native Dependency Injection in Azure Functions with C#">
+  <meta property="og:description" content="Adding Dependency Injection feature to Azure Functions without third part libraries.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-10-01T18:58:00+00:00">
+    <meta property="article:modified_time" content="2020-10-01T18:58:00+00:00">
+    <meta property="article:tag" content="Azure-Functions">
+    <meta property="article:tag" content="Azure">
+    <meta property="article:tag" content="AZ204">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="Cloud">
+    <meta property="article:tag" content="En">
+
+  <meta itemprop="name" content="Native Dependency Injection in Azure Functions with C#">
+  <meta itemprop="description" content="Adding Dependency Injection feature to Azure Functions without third part libraries.">
+  <meta itemprop="datePublished" content="2020-10-01T18:58:00+00:00">
+  <meta itemprop="dateModified" content="2020-10-01T18:58:00+00:00">
+  <meta itemprop="wordCount" content="534">
+  <meta itemprop="keywords" content="Azure-Functions,Azure,AZ204,C#,Cloud,En,Serverless">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Native Dependency Injection in Azure Functions with C#">
+  <meta name="twitter:description" content="Adding Dependency Injection feature to Azure Functions without third part libraries.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Native Dependency Injection in Azure Functions with C#</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-10-01T18:58:00Z">October 1, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>C# Azure Functions support dependency injection through the native container.</p>
+<p>This allows us to use the Dependency Inject principle in native Azure Functions. In this post, we&rsquo;re going to create a simple function to demonstrate the use of it.</p>
+<h2 id="introduction">Introduction</h2>
+<blockquote>
+<p>Azure Functions allows you to run small pieces of code (called &ldquo;functions&rdquo;) without worrying about application infrastructure. With Azure Functions, the cloud infrastructure provides all the up-to-date servers you need to keep your application running at scale.<a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview">https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview</a></p>
+</blockquote>
+<p>For this demonstration, we&rsquo;re going to use this <code>RandomNumberService</code> to <strong>Inject</strong> into our function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> DependFunction.Services
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IRandomNumber</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> GetRandom();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RandomNumberService</span> : IRandomNumber
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> Random _rand = <span style="color:#66d9ef">new</span> Random();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//Get&#39;s a random number</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> GetRandom() =&gt; _rand.Next(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="required-dependencies">Required Dependencies</h2>
+<p><em>Install/Update</em> the following <em>NuGet</em> packages in your project.</p>
+<ul>
+<li>Microsoft.Azure.Functions.Extensions</li>
+<li>Microsoft.NET.Sdk.Functions</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;Project</span> <span style="color:#a6e22e">Sdk=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">&lt;!--ommited code--&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;ItemGroup&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Microsoft.Azure.Functions.Extensions&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;1.1.0&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;PackageReference</span> <span style="color:#a6e22e">Include=</span><span style="color:#e6db74">&#34;Microsoft.NET.Sdk.Functions&#34;</span> <span style="color:#a6e22e">Version=</span><span style="color:#e6db74">&#34;3.0.9&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/ItemGroup&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--ommited code--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/Project&gt;</span>
+</span></span></code></pre></div><h2 id="registering-the-services-in-the-container">Registering the Services in the Container</h2>
+<p>To register the services and we&rsquo;re going to create a <em>startup function</em>, just like we have in a common asp.net core application.</p>
+<p>Create a file called <code>FunctionStartup.cs</code> at the root of your application.</p>
+<figure><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/func-solution-2.png"
+    alt="Solution Explorer"><figcaption>
+      <p>Solution Explorer</p>
+    </figcaption>
+</figure>
+
+<p>Paste the following content into the file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> DependFunction.Services;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Azure.Functions.Extensions.DependencyInjection;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.DependencyInjection;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">[assembly: FunctionsStartup(typeof(DependFunction.Startup))]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> DependFunction
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Startup</span> : FunctionsStartup
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Configure(IFunctionsHostBuilder builder)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            builder.Services.AddSingleton&lt;IRandomNumber, NumberService&gt;();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="explanation">Explanation</h3>
+<p>Before the namespace we&rsquo;re registering our class as a dependency start the function <code>[assembly: FunctionsStartup(typeof(DependFunction.Startup))]</code>. It will tell the function runtime to trigger our class before serving HTTP requests.<em>Ps.: Do not use to process other things, only to register services.</em></p>
+<p>Inheriting <code>FunctionStartup</code> we gain access to <code>IFunctionsHostBuilder</code> object where we can register all dependencies, such as <em>Scoped</em>, <em>Transient,</em> or <em>Singleton</em>.</p>
+<h3 id="service-lifetime">Service Lifetime</h3>
+<ul>
+<li><strong>Transient</strong>: Transient services are created upon each request of the service.</li>
+<li><strong>Scoped</strong>: The scoped service lifetime matches a function execution lifetime. Scoped services are created once per execution.</li>
+<li><strong>Singleton</strong>: The singleton service lifetime matches the host lifetime and is reused across function executions on that instance.</li>
+</ul>
+<h3 id="using-the-service-though-dependency-injection">Using the service though Dependency Injection</h3>
+<p>Open your function file do the following changes</p>
+<ol>
+<li>Remove <code>static</code> marker from the class and the function (we need to inject using constructors)</li>
+<li>Create a constructor and inject the dependency <em>interface</em></li>
+</ol>
+<p>You should end with something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> DependFunction.Services;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.AspNetCore.Http;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.AspNetCore.Mvc;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Azure.WebJobs;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Azure.WebJobs.Extensions.Http;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Logging;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> DependFunction
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Function1</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> IRandomNumber _randomService;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Function1(IRandomNumber randomService)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _randomService = randomService ?? <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArgumentNullException(nameof(randomService));
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [FunctionName(&#34;Function1&#34;)]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> IActionResult Run(
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">            [HttpTrigger(AuthorizationLevel.Anonymous, &#34;get&#34;, &#34;post&#34;, Route = null)]</span> HttpRequest req,
+</span></span><span style="display:flex;"><span>            ILogger log)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            log.LogInformation(<span style="color:#e6db74">&#34;C# HTTP trigger function processed a request.&#34;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> result = <span style="color:#66d9ef">new</span> { random = _randomService.GetRandom() };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> OkObjectResult(result);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="testing">Testing</h2>
+<p>Run the application and access the <em>URL</em> for testing.</p>
+<figure><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/func-result.png">
+</figure>
+
+<h2 id="source-code">Source Code</h2>
+<figure class="kg-card kg-bookmark-card">
+  <a href="https://github.com/ricardodemauro/az-functions-article" class="kg-bookmark-container">
+    <div class="kg-bookmark-content">
+      <div class="kg-bookmark-title">ricardodemauro/az-functions-article</div>
+      <div class="kg-bookmark-description">Contribute to ricardodemauro/az-functions-article development by creating an account on GitHub.</div>
+      <div class="kg-bookmark-metadata">
+        <img src="https://github.githubassets.com/favicons/favicon.svg" class="kg-bookmark-icon">
+        <span class="kg-bookmark-author">ricardodemauro</span>
+        <span class="kg-bookmark-publisher">GitHub</span>
+      </div>
+    </div>
+    
+    <div class="kg-bookmark-thumbnail">
+      <img src="https://avatars0.githubusercontent.com/u/3687018?s=400&amp;v=4">
+    </div>
+    
+  </a>
+  
+  <figcaption>{map[author:ricardodemauro caption:Source Code of Azure Function description:Contribute to ricardodemauro/az-functions-article development by creating an account on GitHub. icon:https://github.githubassets.com/favicons/favicon.svg publisher:GitHub thumbnail:https://avatars0.githubusercontent.com/u/3687018?s=400&amp;v=4 title:ricardodemauro/az-functions-article url:https://github.com/ricardodemauro/az-functions-article]  Page(/post/native-dependency-injection-in-azure-functions-with-csharp) &lt;nil&gt; bookmark true 2  {{{} 0} {0 0}}  {{{} 0} {0 0}} 5430 { 0 0 0} &lt;nil&gt;}</figcaption>
+  
+</figure>
+<p>Hope you like it. Subscribe for more fresh content.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/azure-functions/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure-Functions</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Azure/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/AZ204/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">AZ204</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/cloud/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Cloud</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/serverless/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Serverless</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-ui/">Adding Health Checks UI</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-webjob-azure-cron-expressions/">Demo WebJob Azure - CRON expressions</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/endpoint-monitoring-with-azure-application-insights/">Endpoint Monitoring with Azure Application Insights</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/az203-official-course-delivered-yes/">Yet Another AZ-203 Microsoft Official Course Delivered.</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-virtual-machine-using-powershell/">Create Azure Virtual Machine Using PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-storage-disks/">Azure Storage Disks - Managed and unmanaged disks</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

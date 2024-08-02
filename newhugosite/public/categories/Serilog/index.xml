@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Serilog on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/Serilog/</link>
+    <description>Recent content in Serilog on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Apr 2023 00:05:15 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/Serilog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Serilog Custom Enrichers</title>
+      <link>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</link>
+      <pubDate>Tue, 04 Apr 2023 00:05:15 +0000</pubDate>
+      <guid>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</guid>
+      <description>One of the key features of Serilog is the ability to Enrich Log Events with additional contextual information that can help in troubleshooting and debugging.&#xA;In this blog post, we will explore how to create a Custom Enricher with Serilog to add custom properties to log events.</description>
+    </item>
+    <item>
+      <title>Set up Serilog in .NET 6 as a logging provider</title>
+      <link>http://localhost:1313/post/setup-serilog-in-net6-as-logging-provider/</link>
+      <pubDate>Sun, 26 Jun 2022 22:04:20 +0000</pubDate>
+      <guid>http://localhost:1313/post/setup-serilog-in-net6-as-logging-provider/</guid>
+      <description>Let&amp;rsquo;s set up Serilog as Logging Provider in the native logging system in .NET so you can use the Microsoft ILogger interface.</description>
+    </item>
+  </channel>
+</rss>

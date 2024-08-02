@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/</link>
+    <description>Recent content in Categories on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Jul 2024 21:52:26 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Github</title>
+      <link>http://localhost:1313/categories/Github/</link>
+      <pubDate>Sat, 27 Jul 2024 21:52:26 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Github/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SSH</title>
+      <link>http://localhost:1313/categories/SSH/</link>
+      <pubDate>Sat, 27 Jul 2024 21:52:26 +0000</pubDate>
+      <guid>http://localhost:1313/categories/SSH/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C#</title>
+      <link>http://localhost:1313/categories/C%23/</link>
+      <pubDate>Fri, 19 Jul 2024 19:18:44 +0000</pubDate>
+      <guid>http://localhost:1313/categories/C%23/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DotNet</title>
+      <link>http://localhost:1313/categories/DotNet/</link>
+      <pubDate>Fri, 19 Jul 2024 19:18:44 +0000</pubDate>
+      <guid>http://localhost:1313/categories/DotNet/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Recursive-Call</title>
+      <link>http://localhost:1313/categories/Recursive-Call/</link>
+      <pubDate>Fri, 19 Jul 2024 19:18:44 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Recursive-Call/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Recursive-Function</title>
+      <link>http://localhost:1313/categories/Recursive-Function/</link>
+      <pubDate>Fri, 19 Jul 2024 19:18:44 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Recursive-Function/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Console Application</title>
+      <link>http://localhost:1313/categories/Console-Application/</link>
+      <pubDate>Wed, 17 Jul 2024 17:32:06 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Console-Application/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Exit-Code</title>
+      <link>http://localhost:1313/categories/Exit-Code/</link>
+      <pubDate>Wed, 17 Jul 2024 17:32:06 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Exit-Code/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Design Patterns</title>
+      <link>http://localhost:1313/categories/Design-Patterns/</link>
+      <pubDate>Fri, 12 Jul 2024 06:35:01 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Design-Patterns/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Singleton</title>
+      <link>http://localhost:1313/categories/Singleton/</link>
+      <pubDate>Fri, 12 Jul 2024 06:35:01 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Singleton/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Monad-Pattern</title>
+      <link>http://localhost:1313/categories/Monad-Pattern/</link>
+      <pubDate>Sun, 07 Jul 2024 07:40:03 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Monad-Pattern/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hacker</title>
+      <link>http://localhost:1313/categories/hacker/</link>
+      <pubDate>Sun, 07 Jul 2024 06:16:34 +0000</pubDate>
+      <guid>http://localhost:1313/categories/hacker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Slowloris</title>
+      <link>http://localhost:1313/categories/slowloris/</link>
+      <pubDate>Sun, 07 Jul 2024 06:16:34 +0000</pubDate>
+      <guid>http://localhost:1313/categories/slowloris/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>White-Hat</title>
+      <link>http://localhost:1313/categories/white-hat/</link>
+      <pubDate>Sun, 07 Jul 2024 06:16:34 +0000</pubDate>
+      <guid>http://localhost:1313/categories/white-hat/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sql-Injection</title>
+      <link>http://localhost:1313/categories/sql-injection/</link>
+      <pubDate>Sat, 06 Jul 2024 23:22:28 +0000</pubDate>
+      <guid>http://localhost:1313/categories/sql-injection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DotNet Core</title>
+      <link>http://localhost:1313/categories/DotNet-Core/</link>
+      <pubDate>Fri, 05 Jul 2024 02:30:13 +0000</pubDate>
+      <guid>http://localhost:1313/categories/DotNet-Core/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Entity Framework Core</title>
+      <link>http://localhost:1313/categories/Entity-Framework-Core/</link>
+      <pubDate>Fri, 05 Jul 2024 02:30:13 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Entity-Framework-Core/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hangfire</title>
+      <link>http://localhost:1313/categories/Hangfire/</link>
+      <pubDate>Mon, 01 Jul 2024 20:36:57 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Hangfire/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Http</title>
+      <link>http://localhost:1313/categories/http/</link>
+      <pubDate>Fri, 28 Jun 2024 22:45:07 +0000</pubDate>
+      <guid>http://localhost:1313/categories/http/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Http-400</title>
+      <link>http://localhost:1313/categories/http-400/</link>
+      <pubDate>Fri, 28 Jun 2024 22:45:07 +0000</pubDate>
+      <guid>http://localhost:1313/categories/http-400/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Http-Status-Code</title>
+      <link>http://localhost:1313/categories/http-status-code/</link>
+      <pubDate>Fri, 28 Jun 2024 22:45:07 +0000</pubDate>
+      <guid>http://localhost:1313/categories/http-status-code/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Http-403</title>
+      <link>http://localhost:1313/categories/http-403/</link>
+      <pubDate>Fri, 28 Jun 2024 22:41:37 +0000</pubDate>
+      <guid>http://localhost:1313/categories/http-403/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Http-401</title>
+      <link>http://localhost:1313/categories/http-401/</link>
+      <pubDate>Fri, 28 Jun 2024 22:37:46 +0000</pubDate>
+      <guid>http://localhost:1313/categories/http-401/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle</title>
+      <link>http://localhost:1313/categories/oracle/</link>
+      <pubDate>Thu, 27 Jun 2024 21:20:45 +0000</pubDate>
+      <guid>http://localhost:1313/categories/oracle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle-Functions</title>
+      <link>http://localhost:1313/categories/oracle-functions/</link>
+      <pubDate>Thu, 27 Jun 2024 21:20:45 +0000</pubDate>
+      <guid>http://localhost:1313/categories/oracle-functions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle-Sql</title>
+      <link>http://localhost:1313/categories/oracle-sql/</link>
+      <pubDate>Thu, 27 Jun 2024 21:20:45 +0000</pubDate>
+      <guid>http://localhost:1313/categories/oracle-sql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sql</title>
+      <link>http://localhost:1313/categories/sql/</link>
+      <pubDate>Thu, 27 Jun 2024 21:20:45 +0000</pubDate>
+      <guid>http://localhost:1313/categories/sql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web</title>
+      <link>http://localhost:1313/categories/Web/</link>
+      <pubDate>Wed, 26 Jun 2024 13:58:43 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Web/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>.NET 6</title>
+      <link>http://localhost:1313/categories/.NET-6/</link>
+      <pubDate>Thu, 24 Aug 2023 18:01:18 +0000</pubDate>
+      <guid>http://localhost:1313/categories/.NET-6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>.NET 7</title>
+      <link>http://localhost:1313/categories/.NET-7/</link>
+      <pubDate>Thu, 24 Aug 2023 18:01:18 +0000</pubDate>
+      <guid>http://localhost:1313/categories/.NET-7/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>.NET 8</title>
+      <link>http://localhost:1313/categories/.NET-8/</link>
+      <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
+      <guid>http://localhost:1313/categories/.NET-8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Authentication</title>
+      <link>http://localhost:1313/categories/Authentication/</link>
+      <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Authentication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JWT</title>
+      <link>http://localhost:1313/categories/JWT/</link>
+      <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
+      <guid>http://localhost:1313/categories/JWT/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OAuth</title>
+      <link>http://localhost:1313/categories/OAuth/</link>
+      <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
+      <guid>http://localhost:1313/categories/OAuth/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Json_table</title>
+      <link>http://localhost:1313/categories/json_table/</link>
+      <pubDate>Wed, 24 May 2023 17:35:29 +0000</pubDate>
+      <guid>http://localhost:1313/categories/json_table/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Merge</title>
+      <link>http://localhost:1313/categories/merge/</link>
+      <pubDate>Sun, 21 May 2023 18:45:58 +0000</pubDate>
+      <guid>http://localhost:1313/categories/merge/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle-Merge</title>
+      <link>http://localhost:1313/categories/oracle-merge/</link>
+      <pubDate>Sun, 21 May 2023 18:45:58 +0000</pubDate>
+      <guid>http://localhost:1313/categories/oracle-merge/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>En</title>
+      <link>http://localhost:1313/categories/en/</link>
+      <pubDate>Tue, 02 May 2023 16:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/en/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Methodology</title>
+      <link>http://localhost:1313/categories/methodology/</link>
+      <pubDate>Tue, 02 May 2023 16:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/methodology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming</title>
+      <link>http://localhost:1313/categories/programming/</link>
+      <pubDate>Tue, 02 May 2023 16:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xgh</title>
+      <link>http://localhost:1313/categories/xgh/</link>
+      <pubDate>Tue, 02 May 2023 16:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/xgh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AspNet</title>
+      <link>http://localhost:1313/categories/AspNet/</link>
+      <pubDate>Fri, 28 Apr 2023 03:44:59 +0000</pubDate>
+      <guid>http://localhost:1313/categories/AspNet/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AspNetCore</title>
+      <link>http://localhost:1313/categories/AspNetCore/</link>
+      <pubDate>Fri, 28 Apr 2023 03:44:59 +0000</pubDate>
+      <guid>http://localhost:1313/categories/AspNetCore/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ai</title>
+      <link>http://localhost:1313/categories/ai/</link>
+      <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
+      <guid>http://localhost:1313/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ChatGPT</title>
+      <link>http://localhost:1313/categories/ChatGPT/</link>
+      <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
+      <guid>http://localhost:1313/categories/ChatGPT/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DALL-E</title>
+      <link>http://localhost:1313/categories/DALL-E/</link>
+      <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
+      <guid>http://localhost:1313/categories/DALL-E/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine-Learning</title>
+      <link>http://localhost:1313/categories/machine-learning/</link>
+      <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
+      <guid>http://localhost:1313/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenAI</title>
+      <link>http://localhost:1313/categories/OpenAI/</link>
+      <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
+      <guid>http://localhost:1313/categories/OpenAI/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>StableDiffusion</title>
+      <link>http://localhost:1313/categories/StableDiffusion/</link>
+      <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
+      <guid>http://localhost:1313/categories/StableDiffusion/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Serilog</title>
+      <link>http://localhost:1313/categories/Serilog/</link>
+      <pubDate>Tue, 04 Apr 2023 00:05:15 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Serilog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hardening</title>
+      <link>http://localhost:1313/categories/hardening/</link>
+      <pubDate>Sun, 11 Sep 2022 20:57:43 +0000</pubDate>
+      <guid>http://localhost:1313/categories/hardening/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Internet</title>
+      <link>http://localhost:1313/categories/Internet/</link>
+      <pubDate>Sun, 11 Sep 2022 20:57:43 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Internet/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/categories/Linux/</link>
+      <pubDate>Sun, 11 Sep 2022 20:57:43 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>http://localhost:1313/categories/security/</link>
+      <pubDate>Sun, 11 Sep 2022 20:57:43 +0000</pubDate>
+      <guid>http://localhost:1313/categories/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>100DaysOfCode</title>
+      <link>http://localhost:1313/categories/100DaysOfCode/</link>
+      <pubDate>Fri, 10 Jun 2022 14:38:46 +0000</pubDate>
+      <guid>http://localhost:1313/categories/100DaysOfCode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>http://localhost:1313/categories/Docker/</link>
+      <pubDate>Mon, 30 May 2022 17:15:12 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>.NET 5</title>
+      <link>http://localhost:1313/categories/.NET-5/</link>
+      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/.NET-5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HealthCheck</title>
+      <link>http://localhost:1313/categories/HealthCheck/</link>
+      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/HealthCheck/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MongoDb</title>
+      <link>http://localhost:1313/categories/MongoDb/</link>
+      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/MongoDb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Monitoring</title>
+      <link>http://localhost:1313/categories/Monitoring/</link>
+      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Monitoring/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Beginners</title>
+      <link>http://localhost:1313/categories/beginners/</link>
+      <pubDate>Mon, 19 Apr 2021 01:12:09 +0000</pubDate>
+      <guid>http://localhost:1313/categories/beginners/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NoSql</title>
+      <link>http://localhost:1313/categories/NoSql/</link>
+      <pubDate>Mon, 19 Apr 2021 01:12:09 +0000</pubDate>
+      <guid>http://localhost:1313/categories/NoSql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Authorization</title>
+      <link>http://localhost:1313/categories/Authorization/</link>
+      <pubDate>Sun, 28 Mar 2021 21:43:45 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Authorization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AZ204</title>
+      <link>http://localhost:1313/categories/AZ204/</link>
+      <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/AZ204/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure</title>
+      <link>http://localhost:1313/categories/Azure/</link>
+      <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Azure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure-Functions</title>
+      <link>http://localhost:1313/categories/azure-functions/</link>
+      <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/azure-functions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud</title>
+      <link>http://localhost:1313/categories/cloud/</link>
+      <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Serverless</title>
+      <link>http://localhost:1313/categories/serverless/</link>
+      <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/serverless/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Application Insights</title>
+      <link>http://localhost:1313/categories/Application-Insights/</link>
+      <pubDate>Mon, 28 Sep 2020 15:14:09 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Application-Insights/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Devops</title>
+      <link>http://localhost:1313/categories/devops/</link>
+      <pubDate>Mon, 28 Sep 2020 15:14:09 +0000</pubDate>
+      <guid>http://localhost:1313/categories/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Container</title>
+      <link>http://localhost:1313/categories/container/</link>
+      <pubDate>Mon, 21 Sep 2020 18:17:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/container/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cert</title>
+      <link>http://localhost:1313/categories/cert/</link>
+      <pubDate>Wed, 16 Sep 2020 22:57:25 +0000</pubDate>
+      <guid>http://localhost:1313/categories/cert/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Https</title>
+      <link>http://localhost:1313/categories/https/</link>
+      <pubDate>Wed, 16 Sep 2020 22:57:25 +0000</pubDate>
+      <guid>http://localhost:1313/categories/https/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Powershell</title>
+      <link>http://localhost:1313/categories/powershell/</link>
+      <pubDate>Wed, 16 Sep 2020 22:57:25 +0000</pubDate>
+      <guid>http://localhost:1313/categories/powershell/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SSL</title>
+      <link>http://localhost:1313/categories/SSL/</link>
+      <pubDate>Wed, 16 Sep 2020 22:57:25 +0000</pubDate>
+      <guid>http://localhost:1313/categories/SSL/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tip</title>
+      <link>http://localhost:1313/categories/tip/</link>
+      <pubDate>Wed, 16 Sep 2020 22:57:25 +0000</pubDate>
+      <guid>http://localhost:1313/categories/tip/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Snippets</title>
+      <link>http://localhost:1313/categories/snippets/</link>
+      <pubDate>Wed, 09 Sep 2020 19:59:29 +0000</pubDate>
+      <guid>http://localhost:1313/categories/snippets/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AZ-203</title>
+      <link>http://localhost:1313/categories/AZ-203/</link>
+      <pubDate>Wed, 22 Jan 2020 00:46:31 +0000</pubDate>
+      <guid>http://localhost:1313/categories/AZ-203/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Microsoft-Course</title>
+      <link>http://localhost:1313/categories/microsoft-course/</link>
+      <pubDate>Wed, 22 Jan 2020 00:46:31 +0000</pubDate>
+      <guid>http://localhost:1313/categories/microsoft-course/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Websecurity</title>
+      <link>http://localhost:1313/categories/websecurity/</link>
+      <pubDate>Sun, 15 Dec 2019 23:39:13 +0000</pubDate>
+      <guid>http://localhost:1313/categories/websecurity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hack</title>
+      <link>http://localhost:1313/categories/hack/</link>
+      <pubDate>Sat, 14 Dec 2019 18:38:29 +0000</pubDate>
+      <guid>http://localhost:1313/categories/hack/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Owasp</title>
+      <link>http://localhost:1313/categories/owasp/</link>
+      <pubDate>Tue, 03 Dec 2019 01:58:29 +0000</pubDate>
+      <guid>http://localhost:1313/categories/owasp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pt</title>
+      <link>http://localhost:1313/categories/pt/</link>
+      <pubDate>Tue, 03 Dec 2019 01:58:29 +0000</pubDate>
+      <guid>http://localhost:1313/categories/pt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Javascript</title>
+      <link>http://localhost:1313/categories/Javascript/</link>
+      <pubDate>Sun, 03 Nov 2019 03:04:13 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Perceptron</title>
+      <link>http://localhost:1313/categories/perceptron/</link>
+      <pubDate>Sun, 03 Nov 2019 03:04:13 +0000</pubDate>
+      <guid>http://localhost:1313/categories/perceptron/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Heroku</title>
+      <link>http://localhost:1313/categories/Heroku/</link>
+      <pubDate>Sun, 18 Aug 2019 18:15:42 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Heroku/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Az-Cli</title>
+      <link>http://localhost:1313/categories/az-cli/</link>
+      <pubDate>Mon, 03 Jun 2019 00:31:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/az-cli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubernets</title>
+      <link>http://localhost:1313/categories/kubernets/</link>
+      <pubDate>Mon, 03 Jun 2019 00:31:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/kubernets/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure-Batch</title>
+      <link>http://localhost:1313/categories/Azure-Batch/</link>
+      <pubDate>Sun, 02 Jun 2019 21:25:27 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Azure-Batch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automation</title>
+      <link>http://localhost:1313/categories/Automation/</link>
+      <pubDate>Sun, 02 Jun 2019 18:49:19 +0000</pubDate>
+      <guid>http://localhost:1313/categories/Automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Resource-Group</title>
+      <link>http://localhost:1313/categories/resource-group/</link>
+      <pubDate>Sun, 02 Jun 2019 18:49:19 +0000</pubDate>
+      <guid>http://localhost:1313/categories/resource-group/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cache</title>
+      <link>http://localhost:1313/categories/cache/</link>
+      <pubDate>Sat, 01 Jun 2019 19:01:27 +0000</pubDate>
+      <guid>http://localhost:1313/categories/cache/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure-Webjobs</title>
+      <link>http://localhost:1313/categories/azure-webjobs/</link>
+      <pubDate>Fri, 31 May 2019 19:39:35 +0000</pubDate>
+      <guid>http://localhost:1313/categories/azure-webjobs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Webjobs</title>
+      <link>http://localhost:1313/categories/webjobs/</link>
+      <pubDate>Fri, 31 May 2019 19:39:35 +0000</pubDate>
+      <guid>http://localhost:1313/categories/webjobs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Azure-Powershell</title>
+      <link>http://localhost:1313/categories/azure-powershell/</link>
+      <pubDate>Mon, 27 May 2019 22:56:17 +0000</pubDate>
+      <guid>http://localhost:1313/categories/azure-powershell/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HSTS</title>
+      <link>http://localhost:1313/categories/HSTS/</link>
+      <pubDate>Wed, 09 Aug 2017 18:10:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/HSTS/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IIS</title>
+      <link>http://localhost:1313/categories/IIS/</link>
+      <pubDate>Wed, 09 Aug 2017 18:10:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/IIS/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

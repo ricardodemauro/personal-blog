@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
+In this introduction let&rsquo;s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.
+Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/gather-oracle-stats-for-schema-tables-indexes/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/gather-oracle-stats-for-schema-tables-indexes/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes">
+  <meta property="og:description" content="In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
+In this introduction let’s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.
+Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-06-25T19:40:32+00:00">
+    <meta property="article:modified_time" content="2024-06-25T19:40:32+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="Oracle-Sql">
+    <meta property="article:tag" content="Oracle-Functions">
+
+  <meta itemprop="name" content="Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes">
+  <meta itemprop="description" content="In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
+In this introduction let’s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.
+Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command.">
+  <meta itemprop="datePublished" content="2024-06-25T19:40:32+00:00">
+  <meta itemprop="dateModified" content="2024-06-25T19:40:32+00:00">
+  <meta itemprop="wordCount" content="415">
+  <meta itemprop="keywords" content="Oracle,Oracle-Sql,Oracle-Functions">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes">
+  <meta name="twitter:description" content="In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.
+In this introduction let’s explore how to gather statistics for Schemas, Tables, and Indexes using Oracle simple commands.
+Table of Contents Gather Schema Stats Gather Table Stats Gather Index Stats Gather Schema Stats with GATHER_SCHEMA_STATS To collect statistics for an entire schema, use the following command.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Using dbms_stats to Gather Oracle Stats for Schema, Table and Indexes</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-06-25T19:40:32Z">June 25, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In the world of Oracle Database Management, gathering statistics plays a crucial role in optimizing query performance. Accurate statistics help the query optimizer make informed decisions about execution plans.</p>
+<p>In this introduction let&rsquo;s explore how to gather statistics for <strong>Schemas</strong>, <strong>Tables</strong>, and <strong>Indexes</strong> using Oracle simple commands.</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li><a href="#gather-schema-stats-with-gatherschemastats">Gather Schema Stats</a></li>
+<li><a href="#gather-table-stats-with-gathertablestats">Gather Table Stats</a></li>
+<li><a href="#gather-index-stats-with-gatherindexstats">Gather Index Stats</a></li>
+</ul>
+<h2 id="gather-schema-stats-with-gather_schema_stats">Gather Schema Stats with GATHER_SCHEMA_STATS</h2>
+<p>To collect statistics for an entire schema, use the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- GATHER STATS FROM SCHEMA USING DEFAULT OPTIONS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">EXEC</span> DBMS_STATS.GATHER_SCHEMA_STATS(<span style="color:#e6db74">&#39;SCHEMA_NAME&#39;</span>); 
+</span></span></code></pre></div><h3 id="considerations">Considerations</h3>
+<ul>
+<li>For partitioned tables, use <code>CASCADE=&gt;TRUE</code> to gather statistics for all partitions</li>
+</ul>
+<h3 id="full-syntax-of-gather_schema_stats">Full Syntax of GATHER_SCHEMA_STATS</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>DBMS_STATS.GATHER_SCHEMA_STATS ( 
+</span></span><span style="display:flex;"><span>   ownname          VARCHAR2, 
+</span></span><span style="display:flex;"><span>   estimate_percent NUMBER   <span style="color:#66d9ef">DEFAULT</span> to_estimate_percent_type 
+</span></span><span style="display:flex;"><span>                                                (get_param(<span style="color:#e6db74">&#39;ESTIMATE_PERCENT&#39;</span>)), 
+</span></span><span style="display:flex;"><span>   block_sample     BOOLEAN  <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>, 
+</span></span><span style="display:flex;"><span>   method_opt       VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> get_param(<span style="color:#e6db74">&#39;METHOD_OPT&#39;</span>),
+</span></span><span style="display:flex;"><span>   degree           NUMBER   <span style="color:#66d9ef">DEFAULT</span> to_degree_type(get_param(<span style="color:#e6db74">&#39;DEGREE&#39;</span>)), 
+</span></span><span style="display:flex;"><span>   granularity      VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> GET_PARAM(<span style="color:#e6db74">&#39;GRANULARITY&#39;</span>), 
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">cascade</span>          BOOLEAN  <span style="color:#66d9ef">DEFAULT</span> to_cascade_type(get_param(<span style="color:#e6db74">&#39;CASCADE&#39;</span>)), 
+</span></span><span style="display:flex;"><span>   stattab          VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>, 
+</span></span><span style="display:flex;"><span>   statid           VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>, 
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">options</span>          VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;GATHER&#39;</span>, 
+</span></span><span style="display:flex;"><span>   objlist          <span style="color:#66d9ef">OUT</span>      ObjectTab,
+</span></span><span style="display:flex;"><span>   statown          VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>, 
+</span></span><span style="display:flex;"><span>   no_invalidate    BOOLEAN  <span style="color:#66d9ef">DEFAULT</span> to_no_invalidate_type (
+</span></span><span style="display:flex;"><span>                                     get_param(<span style="color:#e6db74">&#39;NO_INVALIDATE&#39;</span>)),
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">force</span>             BOOLEAN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,
+</span></span><span style="display:flex;"><span>  obj_filter_list  ObjectTab <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>);
+</span></span></code></pre></div><h4 id="heading"></h4>
+<h2 id="gather-table-stats-with-gather_table_stats">Gather Table Stats with GATHER_TABLE_STATS</h2>
+<p>To gather statistics of individual tables use the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">EXEC</span> DBMS_STATS.GATHER_TABLE_STATS(
+</span></span><span style="display:flex;"><span>    ownname     <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;SCHEMA_NAME&#39;</span>,
+</span></span><span style="display:flex;"><span>    tabname     <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;TABLE_NAME&#39;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="considerations-1">Considerations</h3>
+<ul>
+<li>Small tables: Use a larger sample size</li>
+<li>Large tables: Consider parallelism and incremental statistics</li>
+</ul>
+<h3 id="full-syntax-of-gather_table_stats">Full Syntax of GATHER_TABLE_STATS</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>DBMS_STATS.GATHER_TABLE_STATS (
+</span></span><span style="display:flex;"><span>   ownname          VARCHAR2, 
+</span></span><span style="display:flex;"><span>   tabname          VARCHAR2, 
+</span></span><span style="display:flex;"><span>   partname         VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>   estimate_percent NUMBER   <span style="color:#66d9ef">DEFAULT</span> to_estimate_percent_type 
+</span></span><span style="display:flex;"><span>                                                  (get_param(<span style="color:#e6db74">&#39;ESTIMATE_PERCENT&#39;</span>)),
+</span></span><span style="display:flex;"><span>   block_sample     BOOLEAN  <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,
+</span></span><span style="display:flex;"><span>   method_opt       VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> get_param(<span style="color:#e6db74">&#39;METHOD_OPT&#39;</span>),
+</span></span><span style="display:flex;"><span>   degree           NUMBER   <span style="color:#66d9ef">DEFAULT</span> to_degree_type(get_param(<span style="color:#e6db74">&#39;DEGREE&#39;</span>)),
+</span></span><span style="display:flex;"><span>   granularity      VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> GET_PARAM(<span style="color:#e6db74">&#39;GRANULARITY&#39;</span>), 
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">cascade</span>          BOOLEAN  <span style="color:#66d9ef">DEFAULT</span> to_cascade_type(get_param(<span style="color:#e6db74">&#39;CASCADE&#39;</span>)),
+</span></span><span style="display:flex;"><span>   stattab          VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>, 
+</span></span><span style="display:flex;"><span>   statid           VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>   statown          VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>   no_invalidate    BOOLEAN  <span style="color:#66d9ef">DEFAULT</span>  to_no_invalidate_type (
+</span></span><span style="display:flex;"><span>                                                      get_param(<span style="color:#e6db74">&#39;NO_INVALIDATE&#39;</span>)),
+</span></span><span style="display:flex;"><span>   stattype         VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#e6db74">&#39;DATA&#39;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">force</span>            BOOLEAN  <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>,
+</span></span><span style="display:flex;"><span>   context          DBMS_STATS.CCONTEXT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>, <span style="color:#75715e">-- non operative
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   <span style="color:#66d9ef">options</span>          VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> get_param(<span style="color:#e6db74">&#39;OPTIONS&#39;</span>));
+</span></span></code></pre></div><h2 id="gather-index-stats-with-gather_index_stats">Gather Index Stats with GATHER_INDEX_STATS</h2>
+<p>To gather Indexes statistics use the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">EXEC</span> DBMS_STATS.GATHER_INDEX_STATS(
+</span></span><span style="display:flex;"><span>    ownname     <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;SCHEMA_NAME&#39;</span>,
+</span></span><span style="display:flex;"><span>    indname     <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;INDEX_NAME&#39;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><h3 id="considerations-2">Considerations</h3>
+<ul>
+<li>Unique indexes: Gather statistics for uniqueness checks</li>
+<li>Bitmap indexes: Handle them differently due to their nature</li>
+</ul>
+<h3 id="full-syntax-of-gather_index_stats">Full Syntax of GATHER_INDEX_STATS</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>DBMS_STATS.GATHER_INDEX_STATS (
+</span></span><span style="display:flex;"><span>   ownname          VARCHAR2, 
+</span></span><span style="display:flex;"><span>   indname          VARCHAR2, 
+</span></span><span style="display:flex;"><span>   partname         VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>   estimate_percent NUMBER   <span style="color:#66d9ef">DEFAULT</span> to_estimate_percent_type 
+</span></span><span style="display:flex;"><span>                                                (GET_PARAM(<span style="color:#e6db74">&#39;ESTIMATE_PERCENT&#39;</span>)),
+</span></span><span style="display:flex;"><span>   stattab          VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>, 
+</span></span><span style="display:flex;"><span>   statid           VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>   statown          VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>   degree           NUMBER   <span style="color:#66d9ef">DEFAULT</span> to_degree_type(get_param(<span style="color:#e6db74">&#39;DEGREE&#39;</span>)),
+</span></span><span style="display:flex;"><span>   granularity      VARCHAR2 <span style="color:#66d9ef">DEFAULT</span> GET_PARAM(<span style="color:#e6db74">&#39;GRANULARITY&#39;</span>),
+</span></span><span style="display:flex;"><span>   no_invalidate    BOOLEAN  <span style="color:#66d9ef">DEFAULT</span> to_no_invalidate_type 
+</span></span><span style="display:flex;"><span>                                               (GET_PARAM(<span style="color:#e6db74">&#39;NO_INVALIDATE&#39;</span>)),
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">force</span>            BOOLEAN <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>);
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>Gathering statistics is not just a routine task—it’s a critical part of maintaining a healthy database. By following best practices and understanding the nuances, you’ll ensure optimal query performance.</p>
+<p>For further details check the <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_STATS.html">official documentation</a>.</p>
+<p>Remember to apply these techniques in your database environment, and happy querying! 🚀</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/oracle/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oracle-sql/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Sql</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oracle-functions/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Functions</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/oracle-pivot-command-turn-rows-into-columns/">Oracle PIVOT Command - Turn Rows into Columns</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-json-table-transforming-json-into-relational-format/">Oracle JSON_TABLE Transforming JSON into Table</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-merge-to-update-sql/">Oracle MERGE Statement SQL</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-odp-net-with-truly-async-methods-in-csharp/">Oracle ODP.NET with truly Async Methods in C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/">Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-database-on-docker-for-development/">Oracle Database on Docker for Development</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

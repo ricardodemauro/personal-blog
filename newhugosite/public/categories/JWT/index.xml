@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JWT on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/JWT/</link>
+    <description>Recent content in JWT on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 May 2023 23:28:28 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/JWT/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C# Get JWT Token from Request .NET 6</title>
+      <link>http://localhost:1313/post/csharp-get-jwt-token-request/</link>
+      <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/csharp-get-jwt-token-request/</guid>
+      <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;&#xA;&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;&#xA;</description>
+    </item>
+    <item>
+      <title>C# JWT Authentication .NET 6</title>
+      <link>http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/</link>
+      <pubDate>Fri, 28 Apr 2023 03:44:59 +0000</pubDate>
+      <guid>http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/</guid>
+      <description>In this article, we will work on implementing C# JWT Authentication using .NET 7 - which also works for .NET 6, and preview .NET 8 - using ASP.NET Core.</description>
+    </item>
+  </channel>
+</rss>

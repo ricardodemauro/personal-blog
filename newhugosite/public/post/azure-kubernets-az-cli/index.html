@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Azure Kubernets - az cli | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Steps to create Azure Kubernet Services (AKS) though azure cli tool.
+#####Demo 1
+// Create resource group az group create --name kbgroup2 --location eastus // Create AKS cluster az aks create \ --resource-group kbgroup2 \ --name kbcluster2 \ --node-count 1 \ --enable-addons monitoring \ --generate-ssh-keys ###Connect to the cluster #if you&rsquo;re in Azure Cloud Shell skip this step az aks install-cli
+#getting the credentials az aks get-credentials \ --resource-group kbgroup2 \ --name kbcluster2 kubectl get nodes Save the file deployment.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/azure-kubernets-az-cli/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/azure-kubernets-az-cli/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Azure Kubernets - az cli">
+  <meta property="og:description" content="Steps to create Azure Kubernet Services (AKS) though azure cli tool.
+#####Demo 1
+// Create resource group az group create --name kbgroup2 --location eastus // Create AKS cluster az aks create \ --resource-group kbgroup2 \ --name kbcluster2 \ --node-count 1 \ --enable-addons monitoring \ --generate-ssh-keys ###Connect to the cluster #if you’re in Azure Cloud Shell skip this step az aks install-cli
+#getting the credentials az aks get-credentials \ --resource-group kbgroup2 \ --name kbcluster2 kubectl get nodes Save the file deployment.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-06-03T00:31:00+00:00">
+    <meta property="article:modified_time" content="2019-06-03T00:31:00+00:00">
+    <meta property="article:tag" content="AZ-203">
+    <meta property="article:tag" content="Azure">
+    <meta property="article:tag" content="Kubernets">
+    <meta property="article:tag" content="Az-Cli">
+    <meta property="article:tag" content="En">
+
+  <meta itemprop="name" content="Azure Kubernets - az cli">
+  <meta itemprop="description" content="Steps to create Azure Kubernet Services (AKS) though azure cli tool.
+#####Demo 1
+// Create resource group az group create --name kbgroup2 --location eastus // Create AKS cluster az aks create \ --resource-group kbgroup2 \ --name kbcluster2 \ --node-count 1 \ --enable-addons monitoring \ --generate-ssh-keys ###Connect to the cluster #if you’re in Azure Cloud Shell skip this step az aks install-cli
+#getting the credentials az aks get-credentials \ --resource-group kbgroup2 \ --name kbcluster2 kubectl get nodes Save the file deployment.">
+  <meta itemprop="datePublished" content="2019-06-03T00:31:00+00:00">
+  <meta itemprop="dateModified" content="2019-06-03T00:31:00+00:00">
+  <meta itemprop="wordCount" content="706">
+  <meta itemprop="keywords" content="AZ-203,Azure,Kubernets,Az-Cli,En">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Azure Kubernets - az cli">
+  <meta name="twitter:description" content="Steps to create Azure Kubernet Services (AKS) though azure cli tool.
+#####Demo 1
+// Create resource group az group create --name kbgroup2 --location eastus // Create AKS cluster az aks create \ --resource-group kbgroup2 \ --name kbcluster2 \ --node-count 1 \ --enable-addons monitoring \ --generate-ssh-keys ###Connect to the cluster #if you’re in Azure Cloud Shell skip this step az aks install-cli
+#getting the credentials az aks get-credentials \ --resource-group kbgroup2 \ --name kbcluster2 kubectl get nodes Save the file deployment.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Azure Kubernets - az cli</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-06-03T00:31:00Z">June 3, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Steps to create Azure Kubernet Services (AKS) though azure cli tool.</p>
+<p>#####Demo 1</p>
+<pre><code>// Create resource group
+az group create --name kbgroup2 --location eastus
+
+// Create AKS cluster
+az aks create \
+ --resource-group kbgroup2 \
+ --name kbcluster2 \
+ --node-count 1 \
+ --enable-addons monitoring \
+ --generate-ssh-keys
+</code></pre>
+<p>###Connect to the cluster
+#if you&rsquo;re in  Azure Cloud Shell skip this step
+az aks install-cli</p>
+<pre><code>#getting the credentials
+az aks get-credentials \
+--resource-group kbgroup2 \
+--name kbcluster2 
+
+kubectl get nodes
+</code></pre>
+<p>Save the file deployment.yaml with the following contents.</p>
+<pre><code>apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: azure-vote-back
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: azure-vote-back
+    spec:
+      nodeSelector:
+        &quot;beta.kubernetes.io/os&quot;: linux
+      containers:
+      - name: azure-vote-back
+        image: redis
+        ports:
+        - containerPort: 6379
+          name: redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-back
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app: azure-vote-back
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: azure-vote-front
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  template:
+    metadata:
+      labels:
+        app: azure-vote-front
+    spec:
+      nodeSelector:
+        &quot;beta.kubernetes.io/os&quot;: linux
+      containers:
+      - name: azure-vote-front
+        image: microsoft/azure-vote-front:v1
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+        env:
+        - name: REDIS
+          value: &quot;azure-vote-back&quot;
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+</code></pre>
+<p>####Deploy the application
+// Get a list of cluster nodes
+kubectl get nodes</p>
+<pre><code>// Run the application
+kubectl apply –f deployment.yaml
+</code></pre>
+<p>####Monitor progress of the deployment
+// Monitor progress of the deployment
+kubectl get service azure-vote-front &ndash;watch</p>
+<pre><code>// View pods related to this deployment
+kubectl get pods -l app=azure-vote-front
+</code></pre>
+<p>####Demo 2 (Create an ACR account though Azure CLI)</p>
+<pre><code>// Create an ACR instance
+az acr create \
+ --resource-group kbgroup2 \
+ --name acrdemo002 \
+ --sku Basic
+
+// Login to ACR
+az acr login --name acrdemo002
+</code></pre>
+<p>####Build Image to publish to ACR</p>
+<pre><code>// Pull existing Docker image
+docker pull microsoft/aci-helloworld
+
+// Obtain the full login server name of the ACR instance
+az acr list --resource-group kbgroup2  --query &quot;[].{acrLoginServer:loginServer}&quot; --output table
+
+// Tag image with full login server name prefix
+docker tag microsoft/aci-helloworld &lt;acrLoginServer&gt;/aci-helloworld:v1
+
+// login into acr
+az acr login  
+
+// Push image to ACR
+docker push &lt;acrLoginServer&gt;/aci-helloworld:v1
+</code></pre>
+<p>####View deployment images</p>
+<pre><code>// List container images
+az acr repository list --name acrdemo002 --output table
+
+// List the tags on the aci-helloworld repository
+az acr repository show-tags --name acrdemo002 --repository aci-helloworld --output table
+</code></pre>
+<p>####Deploy an image to ACR by using Azure CLI</p>
+<pre><code>// Enable admin user
+az acr update --name acrdemo002 --admin-enabled true
+
+// Query for the password
+az acr credential show --name acrdemo002 --query &quot;passwords[0].value&quot;
+
+// Deploy container image
+az container create --resource-group kbgroup2  --name acr-quickstart --image &lt;acrLoginServer&gt;/aci-helloworld:v1 --cpu 1 --memory 1 --registry-username acrdemo002 --registry-password &lt;acrPassword&gt; --dns-name-label acrdemo002 --ports 80
+
+// View container FQDN
+az container show --resource-group kbgroup2  --name acr-quickstart --query instanceView.state
+</code></pre>
+<p>###Demo 3 - Create Container from Dockerfile</p>
+<p>Run</p>
+<pre><code>git clone https://github.com/Azure-Samples/aci-helloworld.git
+</code></pre>
+<p>Build the image</p>
+<pre><code>// Build your container
+docker build ./aci-helloworld -t aci-tutorial-app
+
+//confirm the builded image
+docker images
+
+//something like
+//aci-tutorial-app latest 5c745774dfa9 39 seconds ago 68.1 MB
+
+// Run your container locally
+docker run -d -p 8080:80 aci-tutorial-app
+
+// View running containers
+docker container ls -a
+
+//tag as V2
+docker tag aci-tutorial-app:latest acrdemo002.azurecr.io/aci-tutorial-app:v2
+
+//push image to container registr
+docker push acrdemo002.azurecr.io/aci-tutorial-app:v2
+</code></pre>
+<p>####Deploy to container registry (ACI)</p>
+<pre><code>// Get name of container registry login server
+az acr show --name acrdemo002 --query loginServer
+
+// Get container registry password
+az acr credential show --name acrdemo002 --query &quot;passwords[0].value&quot;
+
+// Deploy container
+//&lt;acrLoginServer&gt; and &lt;acrPassword&gt; with the values that you obtained from cmds. 
+//&lt;acrName&gt; the name of your container registry.
+//&lt;aciDnsLabel&gt; with desired DNS name
+az container create --resource-group kbgroup2 --name aci-tutorial-app --image &lt;acrLoginServer&gt;/aci-tutorial-app:v2 --cpu 1 --memory 1 --registry-login-server &lt;acrLoginServer&gt; --registry-username &lt;acrName&gt; --registry-password &lt;acrPassword&gt; --dns-name-label &lt;aciDnsLabel&gt; --ports 80
+</code></pre>
+<p>###Demo 4 - Implementing an application using Virtual Kublet</p>
+<pre><code>// Install Virtual Kubelete connector
+az aks install-connector --resource-group kbgroup2 --name kbcluster2 --connector-name virtual-kubelet --os-type Both
+</code></pre>
+<p>Create a virtual-kubelet.yaml</p>
+<pre><code>apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: aci-helloworld
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: aci-helloworld
+    spec:
+      containers:
+      - name: aci-helloworld
+        image: microsoft/aci-helloworld
+        ports:
+        - containerPort: 80
+      nodeSelector:
+        kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-linux
+      tolerations:
+      - key: azure.com/aci
+        effect: NoSchedule
+</code></pre>
+<p>Deploy it</p>
+<pre><code>// Validate that Virtual Kubelet has been installed
+kubectl get nodes
+
+// Run application (Windos or Linux)
+kubectl create -f virtual-kubelet.yaml
+
+// View pods with the scheduled node
+kubectl get pods -o wide
+</code></pre>
+<p>Refs.:</p>
+<blockquote>
+<p><a href="https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#run-the-application">https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal#run-the-application</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough">https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough</a></p>
+</blockquote>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/AZ-203/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">AZ-203</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Azure/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/kubernets/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Kubernets</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/az-cli/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Az-Cli</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-azure-disk-encryption-though-az-cli/">Enable Azure Disk Encryption though az-cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-webjob-azure-cron-expressions/">Demo WebJob Azure - CRON expressions</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-vm-though-powershell/">Create Azure VM though PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/hsts-definition-and-how-to-enable-it-in-iis/">HSTS - What&#39;s it and how to enable it in IIS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

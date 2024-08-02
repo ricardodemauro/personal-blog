@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MongoDb on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/MongoDb/</link>
+    <description>Recent content in MongoDb on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Apr 2021 17:14:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/MongoDb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Health Checks on your ASP.NET Core Application</title>
+      <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
+      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-health-checks-to-net-core-application/</guid>
+      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.&#xA;Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.&#xA;Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
+    </item>
+    <item>
+      <title>Create a free MongoDb Cluster in the Cloud - Mongo Atlas free account</title>
+      <link>http://localhost:1313/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/</link>
+      <pubDate>Mon, 19 Apr 2021 01:12:09 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/</guid>
+      <description>MongoDB is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents.&#xA;MongoDb is very easy to get started - That is why I love MongoDb. I think it&amp;rsquo;s the best to get started as a software developer.&#xA;If you are like me - like MongoDb - or you&amp;rsquo;re just studying it.</description>
+    </item>
+  </channel>
+</rss>

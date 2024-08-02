@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>100DaysOfCode on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/100DaysOfCode/</link>
+    <description>Recent content in 100DaysOfCode on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Jun 2022 14:38:46 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/100DaysOfCode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</title>
+      <link>http://localhost:1313/post/optmizing-data-access-with-oracle-managed-ado-net/</link>
+      <pubDate>Fri, 10 Jun 2022 14:38:46 +0000</pubDate>
+      <guid>http://localhost:1313/post/optmizing-data-access-with-oracle-managed-ado-net/</guid>
+      <description>Oracle C# drive is already pretty fast with the default configuration. But we can always tweak it a little to make it even faster. By controlling the FetchSize property in ODP.NET we can make fewer round trips to Oracle Database and fetch the data faster.&#xA;Let&amp;rsquo;s take a look at how it&amp;rsquo;s done and make your data access faster.&#xA;Setup the Environment Before we get started let&amp;rsquo;s set up our environment for testing.</description>
+    </item>
+  </channel>
+</rss>

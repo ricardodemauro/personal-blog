@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernets on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/kubernets/</link>
+    <description>Recent content in Kubernets on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Jun 2019 00:31:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kubernets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure Kubernets - az cli</title>
+      <link>http://localhost:1313/post/azure-kubernets-az-cli/</link>
+      <pubDate>Mon, 03 Jun 2019 00:31:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-kubernets-az-cli/</guid>
+      <description>Steps to create Azure Kubernet Services (AKS) though azure cli tool.&#xA;#####Demo 1&#xA;// Create resource group az group create --name kbgroup2 --location eastus // Create AKS cluster az aks create \ --resource-group kbgroup2 \ --name kbcluster2 \ --node-count 1 \ --enable-addons monitoring \ --generate-ssh-keys ###Connect to the cluster #if you&amp;rsquo;re in Azure Cloud Shell skip this step az aks install-cli&#xA;#getting the credentials az aks get-credentials \ --resource-group kbgroup2 \ --name kbcluster2 kubectl get nodes Save the file deployment.</description>
+    </item>
+  </channel>
+</rss>

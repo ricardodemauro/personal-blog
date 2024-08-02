@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Exit Codes in C# Applications | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="When developing console applications in C#, it&rsquo;s important to communicate the success or failure of your program back to the operating system.
+This is achieved through exit codes, which are integers returned by the program when it finishes execution.
+An exit code of 0 typically signifies success, while any non-zero value indicates an error.
+Setting Exit Codes in C# In C#, you can set the exit code using the Environment.ExitCode property or the Environment.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/exit-codes-in-csharp-applications/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/exit-codes-in-csharp-applications/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Exit Codes in C# Applications">
+  <meta property="og:description" content="When developing console applications in C#, it’s important to communicate the success or failure of your program back to the operating system.
+This is achieved through exit codes, which are integers returned by the program when it finishes execution.
+An exit code of 0 typically signifies success, while any non-zero value indicates an error.
+Setting Exit Codes in C# In C#, you can set the exit code using the Environment.ExitCode property or the Environment.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-07-17T17:32:06+00:00">
+    <meta property="article:modified_time" content="2024-07-17T17:32:06+00:00">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="DotNet">
+    <meta property="article:tag" content="Exit-Code">
+    <meta property="article:tag" content="Console Application">
+
+  <meta itemprop="name" content="Exit Codes in C# Applications">
+  <meta itemprop="description" content="When developing console applications in C#, it’s important to communicate the success or failure of your program back to the operating system.
+This is achieved through exit codes, which are integers returned by the program when it finishes execution.
+An exit code of 0 typically signifies success, while any non-zero value indicates an error.
+Setting Exit Codes in C# In C#, you can set the exit code using the Environment.ExitCode property or the Environment.">
+  <meta itemprop="datePublished" content="2024-07-17T17:32:06+00:00">
+  <meta itemprop="dateModified" content="2024-07-17T17:32:06+00:00">
+  <meta itemprop="wordCount" content="383">
+  <meta itemprop="keywords" content="C#,DotNet,Exit-Code,Console Application">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Exit Codes in C# Applications">
+  <meta name="twitter:description" content="When developing console applications in C#, it’s important to communicate the success or failure of your program back to the operating system.
+This is achieved through exit codes, which are integers returned by the program when it finishes execution.
+An exit code of 0 typically signifies success, while any non-zero value indicates an error.
+Setting Exit Codes in C# In C#, you can set the exit code using the Environment.ExitCode property or the Environment.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Exit Codes in C# Applications</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-07-17T17:32:06Z">July 17, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>When developing console applications in C#, it&rsquo;s important to communicate the success or failure of your program back to the operating system.</p>
+<p>This is achieved through exit codes, which are integers returned by the program when it finishes execution.</p>
+<p>An exit code of <code>0</code> typically signifies success, while any non-zero value indicates an error.</p>
+<h2 id="setting-exit-codes-in-c">Setting Exit Codes in C#</h2>
+<p>In C#, you can set the exit code using the <code>Environment.ExitCode</code> property or the <code>Environment.Exit</code> method. Here&rsquo;s how you can use both:</p>
+<h3 id="using-environmentexitcode">Using <code>Environment.ExitCode</code></h3>
+<p>The <code>Environment.ExitCode</code> property allows you to set the exit code at the end of your <code>Main</code> method or anywhere in your application logic. Here&rsquo;s a simple example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Your code logic here</span>
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;Hello, World!&#34;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// If everything went well</span>
+</span></span><span style="display:flex;"><span>            Environment.ExitCode = <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">catch</span> (Exception ex)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;An error occurred: {ex.Message}&#34;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// If an error occurred</span>
+</span></span><span style="display:flex;"><span>            Environment.ExitCode = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this example, if the code runs successfully, the exit code is set to <code>0</code>. If an exception is caught, the exit code is set to <code>1</code>.</p>
+<h3 id="using-environmentexit">Using <code>Environment.Exit</code></h3>
+<p>The <code>Environment.Exit</code> method immediately terminates the process and sets the exit code. Here’s how you can use it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Your code logic here</span>
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">&#34;Hello, World!&#34;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// If everything went well</span>
+</span></span><span style="display:flex;"><span>            Environment.Exit(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">catch</span> (Exception ex)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Console.WriteLine(<span style="color:#e6db74">$&#34;An error occurred: {ex.Message}&#34;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// If an error occurred</span>
+</span></span><span style="display:flex;"><span>            Environment.Exit(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this case, <code>Environment.Exit(0)</code> is called if the code executes successfully, and <code>Environment.Exit(1)</code> is called if an exception occurs.</p>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li><strong>Standardize Exit Codes</strong>: Decide on a standard set of exit codes for your application, where <code>0</code> represents success, and specific non-zero values represent different types of errors.</li>
+<li><strong>Consistent Usage</strong>: Ensure that exit codes are set consistently throughout your application, especially when handling exceptions.</li>
+<li><strong>Documentation</strong>: Document the exit codes used by your application, so users or other developers know what each code signifies.</li>
+</ol>
+<p>By properly using exit codes, you can make your C# console applications more robust and easier to integrate into larger systems and automated processes.</p>
+<hr>
+<p>Feel free to leave comments or questions below if you have any!</p>
+<hr>
+<p><strong>Keywords</strong>: C#, Exit Codes, Console Application, Error Handling, Environment.Exit, Environment.ExitCode</p>
+<p>For more articles like this, visit <a href="__GHOST_URL__/">rmauro.dev</a>.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/DotNet/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Exit-Code/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Exit-Code</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Console-Application/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Console Application</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/reading-appsettings-json-from-a-console-application/">Reading appsettings.json from a Console Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/set-up-entity-framework-core-in-memory-store/">Set up Entity Framework Core In Memory Database Provider</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-get-jwt-token-request/">C# Get JWT Token from Request .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/jwt-authentication-with-csharp-dotnet/">C# JWT Authentication .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/serilog-custom-enricher-on-aspnet-core/">Getting Started with Serilog Custom Enrichers</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/">Getting Started with Chat GPT integration in a .NET C# Console Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/calculate-time-ago-with-csharp/">Calculate Time Ago with .NET C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-a-minimal-api-with-dotnet-6/">Create a Minimal API with .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/setup-serilog-in-net6-as-logging-provider/">Set up Serilog in .NET 6 as a logging provider</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/add-build-time-to-your-csharp-assembly/">Add Build Time to your C# Assembly</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/">Hangfire Implementing Background Jobs</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-odp-net-with-truly-async-methods-in-csharp/">Oracle ODP.NET with truly Async Methods in C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/">DALL-E Art-Generator with C# .NET</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/define-implicit-explicit-operator-csharp-tips/">Define Implicit and Explicit Operator - C# Tips</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

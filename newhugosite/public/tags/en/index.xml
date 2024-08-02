@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>En on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/en/</link>
+    <description>Recent content in En on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 May 2023 16:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>XGH / eXtreme Go Horse</title>
+      <link>http://localhost:1313/post/extreme-go-horse-xgh-process-source/</link>
+      <pubDate>Tue, 02 May 2023 16:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/extreme-go-horse-xgh-process-source/</guid>
+      <description>I think therefore it&amp;rsquo;s not XGH.&#xA;In XGH you don&amp;rsquo;t think, you do the first thing that comes to your mind. There&amp;rsquo;s not a second option as the first one is faster.</description>
+    </item>
+    <item>
+      <title>Adding Startup.cs back to .NET 6 Project</title>
+      <link>http://localhost:1313/post/adding-startup-back-to-net-6-project/</link>
+      <pubDate>Sun, 05 Jun 2022 14:20:46 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-startup-back-to-net-6-project/</guid>
+      <description>When .NET 6 was released, the first big change was the lack of Startup.cs. This is very nice and all. But sometimes we just want it back, and here is how.&#xA;First, create a new file called Startup.cs at the root of your project with the following content - don&amp;rsquo;t forget the namespace.&#xA;public class Startup { readonly IConfiguration configuration; public Startup(IConfiguration configuration) { this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration)); } public void ConfigureServices(IServiceCollection services) { services.</description>
+    </item>
+    <item>
+      <title>Create a free MongoDb Cluster in the Cloud - Mongo Atlas free account</title>
+      <link>http://localhost:1313/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/</link>
+      <pubDate>Mon, 19 Apr 2021 01:12:09 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/</guid>
+      <description>MongoDB is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents.&#xA;MongoDb is very easy to get started - That is why I love MongoDb. I think it&amp;rsquo;s the best to get started as a software developer.&#xA;If you are like me - like MongoDb - or you&amp;rsquo;re just studying it.</description>
+    </item>
+    <item>
+      <title>Privacy Policy for RmauroDev</title>
+      <link>http://localhost:1313/post/privacy-policy/</link>
+      <pubDate>Thu, 01 Apr 2021 18:04:08 +0000</pubDate>
+      <guid>http://localhost:1313/post/privacy-policy/</guid>
+      <description>At RmauroDev, accessible from https://rmauro.dev, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by RmauroDev and how we use it.&#xA;If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.&#xA;This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in RmauroDev.</description>
+    </item>
+    <item>
+      <title>API Key Authentication - Extending the native implementation</title>
+      <link>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</link>
+      <pubDate>Sun, 28 Mar 2021 21:43:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</guid>
+      <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.&#xA;services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
+    </item>
+    <item>
+      <title>Native Dependency Injection in Azure Functions with C#</title>
+      <link>http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/</link>
+      <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/</guid>
+      <description>Adding Dependency Injection feature to Azure Functions without third part libraries.</description>
+    </item>
+    <item>
+      <title>Endpoint Monitoring with Azure Application Insights</title>
+      <link>http://localhost:1313/post/endpoint-monitoring-with-azure-application-insights/</link>
+      <pubDate>Mon, 28 Sep 2020 15:14:09 +0000</pubDate>
+      <guid>http://localhost:1313/post/endpoint-monitoring-with-azure-application-insights/</guid>
+      <description>Let&amp;rsquo;s explore the use of Microsoft Azure Application Insights to monitor the health of our application using the endpoint /healthcheck.&#xA;Applications Insights it&amp;rsquo;s a great tool for monitoring, error logging, performance monitoring, dependency mapping, and other things. In other words, it&amp;rsquo;s a full APM - Application Performance Management - ready for you to use in Production Environments.&#xA;Application Insights, a feature of Azure Monitor, is an extensible Application Performance Management (APM) service for developers and DevOps professionals.</description>
+    </item>
+    <item>
+      <title>Adding Health Checks UI</title>
+      <link>http://localhost:1313/post/adding-health-checks-ui/</link>
+      <pubDate>Mon, 21 Sep 2020 18:17:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-health-checks-ui/</guid>
+      <description>This is the second article about Health Checks and Application Monitoring.&#xA;Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!&#xA;Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
+    </item>
+    <item>
+      <title>Generating a Self-Signed Certificate using Powershell</title>
+      <link>http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/</link>
+      <pubDate>Wed, 16 Sep 2020 22:57:25 +0000</pubDate>
+      <guid>http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/</guid>
+      <description>A self-signed certificate it&amp;rsquo;s very easy to create and helps on with local development and testing.&#xA;With a Single Line of PowerShell code we create a certificate.&#xA;First, open the PowerShell as Administrator and run the following command:&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; The default expiration is 1 year. If you want a custom expiration date use option -NotAfter.&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; ` -NotAfter [System.</description>
+    </item>
+    <item>
+      <title>Compress files in memory (.zip) using C#</title>
+      <link>http://localhost:1313/post/compress-zip-files-in-memory-using-csharp/</link>
+      <pubDate>Wed, 09 Sep 2020 19:59:29 +0000</pubDate>
+      <guid>http://localhost:1313/post/compress-zip-files-in-memory-using-csharp/</guid>
+      <description>Here is a code snippet of how to compress one or many files to a zip archive in memory using C#.&#xA;It works in .Net Core and .Net Full Framework&#xA;public static byte[] GetZipArchive(params InMemoryFile[] files) { byte[] archiveFile; using (var archiveStream = new MemoryStream()) { using (var archive = new ZipArchive(archiveStream, ZipArchiveMode.Create, true)) { foreach (var file in files) { var zipArchiveEntry = archive.CreateEntry(file.FileName, CompressionLevel.Fastest); using var zipStream = zipArchiveEntry.</description>
+    </item>
+    <item>
+      <title>Getting the file name without extension in C# - #TIP</title>
+      <link>http://localhost:1313/post/getting-the-file-name-without-extenion-in-csharp/</link>
+      <pubDate>Tue, 08 Sep 2020 17:47:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-the-file-name-without-extenion-in-csharp/</guid>
+      <description>These days I was asking myself how to get the file name without the extension. I confess I was tempted to use a regex to solve this problem :)&#xA;But no worries. There is a method in System.IO.Path specific for this situation.&#xA;using System.IO; /// /// Get file name without extension /// static string GetFileName(string path) { return Path.GetFileNameWithoutExtension(path); } /// /// Get file name without extension /// static string GetFileName(FileInfo fileInfo) { return Path.</description>
+    </item>
+    <item>
+      <title>Yet Another AZ-203 Microsoft Official Course Delivered.</title>
+      <link>http://localhost:1313/post/az203-official-course-delivered-yes/</link>
+      <pubDate>Wed, 22 Jan 2020 00:46:31 +0000</pubDate>
+      <guid>http://localhost:1313/post/az203-official-course-delivered-yes/</guid>
+      <description>Yet Another AZ-203 Microsoft Official Course Delivered.&#xA;Another AZ-203 official Microsoft course delivered with success! Class members feedback was great. And I loved to make over 22 new colleagues these two weeks.&#xA;I should say, this course is awesome. The level of topics is at beginning easy, them going to middle level and a lot of times pretty hard! :)&#xA;Ps.: Mostly as online class members! Over 32 students online.</description>
+    </item>
+    <item>
+      <title>Create Azure Virtual Machine Using PowerShell</title>
+      <link>http://localhost:1313/post/create-azure-virtual-machine-using-powershell/</link>
+      <pubDate>Fri, 03 Jan 2020 22:44:57 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-azure-virtual-machine-using-powershell/</guid>
+      <description>Quick Configuration Getting the public Ip Get-AzPublicIpAddress -ResourceGroupName &amp;#34;demo003&amp;#34; | Select &amp;#34;IpAddress&amp;#34; Full Configured Virtual Machine Getting the public Ip Get-AzPublicIpAddress -ResourceGroupName &amp;#34;demo004&amp;#34; | Select &amp;#34;IpAddress&amp;#34; Removing deployment Remove-AzResourceGroup -Name demo003 Remove-AzResourceGroup -Name demo004 </description>
+    </item>
+    <item>
+      <title>Azure Storage Disks - Managed and unmanaged disks</title>
+      <link>http://localhost:1313/post/azure-storage-disks/</link>
+      <pubDate>Fri, 03 Jan 2020 21:25:54 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-storage-disks/</guid>
+      <description>##Managed disks&#xA;The Azure platform manages the disk and the backing storage You don&amp;rsquo;t have to worry about storage account limits and thresholds ##Unmanaged disks&#xA;You manually create and manage virtual hard disks (VHDs) in your Storage account You will need to consider account throughput and capacity limits when using this model Managed disks - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure.</description>
+    </item>
+    <item>
+      <title>Azure App Service and Cloudflare with Full SSL (Strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 23:39:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</guid>
+      <description>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.&#xA;At the end we will have the following configuration:&#xA;CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.</description>
+    </item>
+    <item>
+      <title>Practice of SQL Injection</title>
+      <link>http://localhost:1313/post/practice-of-sql-injection/</link>
+      <pubDate>Sat, 14 Dec 2019 18:38:29 +0000</pubDate>
+      <guid>http://localhost:1313/post/practice-of-sql-injection/</guid>
+      <description>First, do you know (or remember) what SQL Injection is? (para versão em português)&#xA;According to OWASP.org (https://www.owasp.org/index.php/SQL_Injection).&#xA;A SQL injection attack consists of insertion or &amp;ldquo;injection&amp;rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.&#xA;That is, a web service technique invasion through SQL commands.As long as the web service (website, webservice, REST API, amoung others) is susceptible to the SQL Injection attack, you can execute unforeseen SQL commands on the system.</description>
+    </item>
+    <item>
+      <title>C# Conversions - Casting, implicit and explicit conversion</title>
+      <link>http://localhost:1313/post/csharp-implicit-conversion-cast-explicit-conversion/</link>
+      <pubDate>Sun, 29 Sep 2019 20:35:05 +0000</pubDate>
+      <guid>http://localhost:1313/post/csharp-implicit-conversion-cast-explicit-conversion/</guid>
+      <description>Fist the data types available.&#xA;int whole numbers long whole numbers (bigger range) float floating-point numbers double double precision decimal monetary values char single character bool boolean DateTime moments in time&#x9;string sequence of characters Table of implicit conversion made by C#.&#xA;From To sbyte short int long float double decimal byte short ushort int uint long ulong float double decimal short int long float double decimal ushort int uint long ulong float double decimal int long float double decimal uint long ulong float double decimal long ulong float double decimal float double char ushort int uint long ulong float double decimal By the way, you cannot implicitly convert a long value to an int, because this conversion risks losing information (the long value might be outside the range supported by the int type).</description>
+    </item>
+    <item>
+      <title>Deploying .Net container App to Heroku cloud</title>
+      <link>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</link>
+      <pubDate>Sun, 18 Aug 2019 18:15:42 +0000</pubDate>
+      <guid>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</guid>
+      <description>I&amp;rsquo;m tired of searching every time I need to deploy to heroku cloud. Being that said I&amp;rsquo;m finally writing down the steps do deploy a docker container app to Heroku cloud.&#xA;By the way, Heroku Cloud it is really cool.&#xA;###Requirements to deploy&#xA;Docker client (windows or linux) installed Link Heroku CLI (command line interface) installed Link Application with a Dockerfile ###Changes you have to make in your Dockerfile&#xA;First remove the Entrypoint and EXPOSE statments of your Dockerfile.</description>
+    </item>
+    <item>
+      <title>Azure Kubernets - az cli</title>
+      <link>http://localhost:1313/post/azure-kubernets-az-cli/</link>
+      <pubDate>Mon, 03 Jun 2019 00:31:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-kubernets-az-cli/</guid>
+      <description>Steps to create Azure Kubernet Services (AKS) though azure cli tool.&#xA;#####Demo 1&#xA;// Create resource group az group create --name kbgroup2 --location eastus // Create AKS cluster az aks create \ --resource-group kbgroup2 \ --name kbcluster2 \ --node-count 1 \ --enable-addons monitoring \ --generate-ssh-keys ###Connect to the cluster #if you&amp;rsquo;re in Azure Cloud Shell skip this step az aks install-cli&#xA;#getting the credentials az aks get-credentials \ --resource-group kbgroup2 \ --name kbcluster2 kubectl get nodes Save the file deployment.</description>
+    </item>
+    <item>
+      <title>Demo - Azure Batch</title>
+      <link>http://localhost:1313/post/demo-azure-batch/</link>
+      <pubDate>Sun, 02 Jun 2019 21:25:27 +0000</pubDate>
+      <guid>http://localhost:1313/post/demo-azure-batch/</guid>
+      <description>####Creating the Resource Group&#xA;az group create --name &amp;quot;az203_batch_demo001&amp;quot; --location CentralUS ####Creating the storage account&#xA;az storage account create \ --name az203batchstoragexd \ --access-tier hot \ --https-only true \ --kind BlobStorage \ --location CentralUS \ --sku Standard_LRS \ --resource-group az203_batch_demo001 ####Creating the Batch Account az batch account create &amp;ndash;name az203batchaccountxd &amp;ndash;storage-account az203batchstoragexd &amp;ndash;resource-group az203_batch_demo001 &amp;ndash;location CentralUS&#xA;####Login and create the Pool az batch account login &amp;ndash;name az203batchaccountxd &amp;ndash;resource-group az203_batch_demo001 &amp;ndash;shared-key-auth</description>
+    </item>
+    <item>
+      <title>az cli (bash) create resource though Resource File</title>
+      <link>http://localhost:1313/post/azcli-create-resource-though-resource-file/</link>
+      <pubDate>Sun, 02 Jun 2019 18:49:19 +0000</pubDate>
+      <guid>http://localhost:1313/post/azcli-create-resource-though-resource-file/</guid>
+      <description>The resource file azuredeploy.json&#xA;{ &amp;quot;$schema&amp;quot;: &amp;quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#&amp;quot;, &amp;quot;contentVersion&amp;quot;: &amp;quot;1.0.0.0&amp;quot;, &amp;quot;parameters&amp;quot;: { &amp;quot;storageAccountType&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;, &amp;quot;defaultValue&amp;quot;: &amp;quot;Standard_LRS&amp;quot;, &amp;quot;allowedValues&amp;quot;: [ &amp;quot;Standard_LRS&amp;quot;, &amp;quot;Standard_GRS&amp;quot;, &amp;quot;Standard_ZRS&amp;quot;, &amp;quot;Premium_LRS&amp;quot; ], &amp;quot;metadata&amp;quot;: { &amp;quot;description&amp;quot;: &amp;quot;Storage Account type&amp;quot; } }, &amp;quot;location&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;, &amp;quot;defaultValue&amp;quot;: &amp;quot;[resourceGroup().location]&amp;quot;, &amp;quot;metadata&amp;quot;: { &amp;quot;description&amp;quot;: &amp;quot;Location for all resources.&amp;quot; } } }, &amp;quot;variables&amp;quot;: { &amp;quot;storageAccountName&amp;quot;: &amp;quot;[concat(&#39;store&#39;, uniquestring(resourceGroup().id))]&amp;quot; }, &amp;quot;resources&amp;quot;: [ { &amp;quot;type&amp;quot;: &amp;quot;Microsoft.Storage/storageAccounts&amp;quot;, &amp;quot;name&amp;quot;: &amp;quot;[variables(&#39;storageAccountName&#39;)]&amp;quot;, &amp;quot;location&amp;quot;: &amp;quot;[parameters(&#39;location&#39;)]&amp;quot;, &amp;quot;apiVersion&amp;quot;: &amp;quot;2018-07-01&amp;quot;, &amp;quot;sku&amp;quot;: { &amp;quot;name&amp;quot;: &amp;quot;[parameters(&#39;storageAccountType&#39;)]&amp;quot; }, &amp;quot;kind&amp;quot;: &amp;quot;StorageV2&amp;quot;, &amp;quot;properties&amp;quot;: {} } ], &amp;quot;outputs&amp;quot;: { &amp;quot;storageAccountName&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;, &amp;quot;value&amp;quot;: &amp;quot;[variables(&#39;storageAccountName&#39;)]&amp;quot; }, &amp;quot;storageUri&amp;quot;: { &amp;quot;type&amp;quot;:&amp;quot;string&amp;quot;, &amp;quot;value&amp;quot;:&amp;quot;[reference(variables(&#39;storageAccountName&#39;)).</description>
+    </item>
+    <item>
+      <title>Enable Local Cache in Azure Web App</title>
+      <link>http://localhost:1313/post/enable-local-cache-in-azure-web-app/</link>
+      <pubDate>Sat, 01 Jun 2019 19:01:27 +0000</pubDate>
+      <guid>http://localhost:1313/post/enable-local-cache-in-azure-web-app/</guid>
+      <description>##What is Local Cache in Azure WebApp?&#xA;Local cache in Azure Web is really a cache that caches the storage of your Web App.&#xA;##How to enable it?&#xA;To enable local cache you should go to your Azure Subscription them navigate to your Web App that you wishs to enable local cache.&#xA;Go to &amp;ldquo;Configuration&amp;rdquo; section then &amp;ldquo;Application Setttings&amp;rdquo; and under &amp;ldquo;Application settings&amp;rdquo;&#xA;You enable Local Cache on a per-web-app basis by using this app setting: WEBSITE_LOCAL_CACHE_OPTION = Always</description>
+    </item>
+    <item>
+      <title>C# DateTime Cheat sheet - ToString() Format</title>
+      <link>http://localhost:1313/post/c-datetime-tostring-format/</link>
+      <pubDate>Fri, 31 May 2019 20:38:34 +0000</pubDate>
+      <guid>http://localhost:1313/post/c-datetime-tostring-format/</guid>
+      <description>Cheat sheet with C# DateTime formats.&#xA;using System; using System.Globalization; public class Program { public static void Main(string[] args) { DateTime dt = DateTime.Now; string[] format = { &amp;#34;d&amp;#34;, &amp;#34;D&amp;#34;, &amp;#34;f&amp;#34;, &amp;#34;F&amp;#34;, &amp;#34;g&amp;#34;, &amp;#34;G&amp;#34;, &amp;#34;m&amp;#34;, &amp;#34;r&amp;#34;, &amp;#34;s&amp;#34;, &amp;#34;t&amp;#34;, &amp;#34;T&amp;#34;, &amp;#34;u&amp;#34;, &amp;#34;U&amp;#34;, &amp;#34;y&amp;#34;, &amp;#34;dddd, MMMM dd yyyy&amp;#34;, &amp;#34;ddd, MMM d \&amp;#34;&amp;#39;\&amp;#34;yy&amp;#34;, &amp;#34;dddd, MMMM dd&amp;#34;, &amp;#34;M/yy&amp;#34;, &amp;#34;dd-MM-yy&amp;#34;, }; string date; for (int i = 0; i &amp;lt; format.Length; i++) { date = dt.</description>
+    </item>
+    <item>
+      <title>Demo WebJob Azure - CRON expressions</title>
+      <link>http://localhost:1313/post/demo-webjob-azure-cron-expressions/</link>
+      <pubDate>Fri, 31 May 2019 19:39:35 +0000</pubDate>
+      <guid>http://localhost:1313/post/demo-webjob-azure-cron-expressions/</guid>
+      <description>#CRON expressions&#xA;Azure Functions uses the NCronTab library to interpret CRON expressions. A CRON expression includes six fields:&#xA;{second} {minute} {hour} {day} {month} {day-of-week}&#xA;Each field can have one of the following types of values:&#xA;Type Example When triggered A specific value 0 5 * * * * at hh:05:00 where hh is every hour (once an hour) All values (*) 0 * 5 * * * at 5:mm:00 every day, where mm is every minute of the hour (60 times a day) A range (- operator) 5-7 * * * * * at hh:mm:05,hh:mm:06, and hh:mm:07 where hh:mm is every minute of every hour (3 times a minute) A set of values (, operator) 5,8,10 * * * * * at hh:mm:05, hh:mm:08, and hh:mm:10 where hh:mm is every minute of every hour (3 times a minute) An interval value (/ operator) 0 */5 * * * * at hh:05:00, hh:10:00, hh:15:00, and so on through hh:55:00 where hh is every hour (12 times an hour) Refs.</description>
+    </item>
+    <item>
+      <title>Enable Azure Disk Encryption though az-cli</title>
+      <link>http://localhost:1313/post/enable-azure-disk-encryption-though-az-cli/</link>
+      <pubDate>Mon, 27 May 2019 23:04:34 +0000</pubDate>
+      <guid>http://localhost:1313/post/enable-azure-disk-encryption-though-az-cli/</guid>
+      <description>######Create Azure Key Vault service az keyvault create &amp;ndash;name &amp;ldquo;kvDemo006&amp;rdquo; &amp;ndash;resource-group &amp;ldquo;demo001&amp;rdquo; &amp;ndash;location centralUS &amp;ndash;enabled-for-disk-encryption True&#xA;######Enable disk encryption on VM az vm encryption enable &amp;ndash;resource-group &amp;ldquo;kvDemo006&amp;rdquo; &amp;ndash;name &amp;ldquo;devUScWeb003&amp;rdquo; &amp;ndash;disk-encryption-keyvault &amp;ldquo;demo006&amp;rdquo; &amp;ndash;volume-type &amp;ldquo;all&amp;rdquo;&#xA;######Show disk encryption az vm encryption show &amp;ndash;resource-group &amp;ldquo;demo006&amp;rdquo; &amp;ndash;name &amp;ldquo;devUScWeb003&amp;rdquo;`</description>
+    </item>
+    <item>
+      <title>Create Azure VM though PowerShell</title>
+      <link>http://localhost:1313/post/create-azure-vm-though-powershell/</link>
+      <pubDate>Mon, 27 May 2019 22:56:17 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-azure-vm-though-powershell/</guid>
+      <description>A right to the point guide of how to create Virtual Machines in Azure with Powershell</description>
+    </item>
+    <item>
+      <title>HSTS - What&#39;s it and how to enable it in IIS</title>
+      <link>http://localhost:1313/post/hsts-definition-and-how-to-enable-it-in-iis/</link>
+      <pubDate>Wed, 09 Aug 2017 18:10:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/hsts-definition-and-how-to-enable-it-in-iis/</guid>
+      <description>###HSTS, what&amp;rsquo;s it?&#xA;Definition from wikipedia:&#xA;HTTP Strict Transport Security (HSTS) is a web security policy mechanism which helps to protect websites against protocol downgrade attacks and cookie hijacking. It allows web servers to declare that web browsers (or other complying user agents) should only interact with it using secure HTTPS connections,[1] and never via the insecure HTTP protocol. HSTS is an IETF standards track protocol and is specified in RFC 6797.</description>
+    </item>
+    <item>
+      <title>How to migrate .Net Core 1.0 to 1.1</title>
+      <link>http://localhost:1313/post/how-to-migrate-asp-net-core-1-0-to-1-1/</link>
+      <pubDate>Wed, 04 Jan 2017 00:40:41 +0000</pubDate>
+      <guid>http://localhost:1313/post/how-to-migrate-asp-net-core-1-0-to-1-1/</guid>
+      <description>Hi guys!&#xA;In this post I&amp;rsquo;ll show how to migrate a .Net project from 1.0 to 1.1 (current the last version) using Visual Studio.&#xA;##Preparing the solution Let&amp;rsquo;s starting by creating our starting project.&#xA;In Visual Studio go to File -&amp;gt; New Project then choose the template ASP.NET Core Web Application (.NET Core)&#xA;Enter the name &amp;ldquo;SampleProject&amp;rdquo; then click OK.&#xA;Now select Empty and hit OK.&#xA;Build the app to verify you don&amp;rsquo;t have any compiler errors.</description>
+    </item>
+  </channel>
+</rss>

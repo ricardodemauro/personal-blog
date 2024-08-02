@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Reading appsettings.json from a Console Application | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="When developing C# .NET applications, it&rsquo;s common to store configuration settings in a JSON file, typically named appsettings.json.
+This approach is not only useful for ASP.NET applications but can also be effectively used in C# Console Applications.
+Before we start, let&rsquo;s make sure to have:
+.NET SDK installed on your machine. A basic understanding of C# and .NET. 🚗 Step-by-Step Guide First, create a new .NET console application.
+dotnet new console -n ConfigDemo cd ConfigDemo To read from appsettings.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/reading-appsettings-json-from-a-console-application/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/reading-appsettings-json-from-a-console-application/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Reading appsettings.json from a Console Application">
+  <meta property="og:description" content="When developing C# .NET applications, it’s common to store configuration settings in a JSON file, typically named appsettings.json.
+This approach is not only useful for ASP.NET applications but can also be effectively used in C# Console Applications.
+Before we start, let’s make sure to have:
+.NET SDK installed on your machine. A basic understanding of C# and .NET. 🚗 Step-by-Step Guide First, create a new .NET console application.
+dotnet new console -n ConfigDemo cd ConfigDemo To read from appsettings.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-07-10T14:18:00+00:00">
+    <meta property="article:modified_time" content="2024-07-10T14:18:00+00:00">
+    <meta property="article:tag" content="DotNet">
+    <meta property="article:tag" content="C#">
+
+  <meta itemprop="name" content="Reading appsettings.json from a Console Application">
+  <meta itemprop="description" content="When developing C# .NET applications, it’s common to store configuration settings in a JSON file, typically named appsettings.json.
+This approach is not only useful for ASP.NET applications but can also be effectively used in C# Console Applications.
+Before we start, let’s make sure to have:
+.NET SDK installed on your machine. A basic understanding of C# and .NET. 🚗 Step-by-Step Guide First, create a new .NET console application.
+dotnet new console -n ConfigDemo cd ConfigDemo To read from appsettings.">
+  <meta itemprop="datePublished" content="2024-07-10T14:18:00+00:00">
+  <meta itemprop="dateModified" content="2024-07-10T14:18:00+00:00">
+  <meta itemprop="wordCount" content="249">
+  <meta itemprop="keywords" content="DotNet,C#">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Reading appsettings.json from a Console Application">
+  <meta name="twitter:description" content="When developing C# .NET applications, it’s common to store configuration settings in a JSON file, typically named appsettings.json.
+This approach is not only useful for ASP.NET applications but can also be effectively used in C# Console Applications.
+Before we start, let’s make sure to have:
+.NET SDK installed on your machine. A basic understanding of C# and .NET. 🚗 Step-by-Step Guide First, create a new .NET console application.
+dotnet new console -n ConfigDemo cd ConfigDemo To read from appsettings.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Reading appsettings.json from a Console Application</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-07-10T14:18:00Z">July 10, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>When developing C# .NET applications, it&rsquo;s common to store configuration settings in a JSON file, typically named <code>appsettings.json</code>.</p>
+<p>This approach is not only useful for ASP.NET applications but can also be effectively used in C# Console Applications.</p>
+<p>Before we start, let&rsquo;s make sure to have:</p>
+<ul>
+<li>.NET SDK installed on your machine.</li>
+<li>A basic understanding of C# and .NET.</li>
+</ul>
+<h2 id="-step-by-step-guide">🚗 Step-by-Step Guide</h2>
+<p>First, create a new .NET console application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new console -n ConfigDemo cd ConfigDemo
+</span></span></code></pre></div><p>To read from <strong>appsettings.json</strong>, we need to add the <code>Microsoft.Extensions.Configuration</code> package.</p>
+<p>Run the following command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package Microsoft.Extensions.Configuration 
+</span></span><span style="display:flex;"><span>dotnet add package Microsoft.Extensions.Configuration.Json 
+</span></span><span style="display:flex;"><span>dotnet add package Microsoft.Extensions.Configuration.Binder
+</span></span></code></pre></div><p>In the root of your project, create a file named <code>appsettings.json</code> and add some configuration settings.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ApplicationName&#34;</span>: <span style="color:#e6db74">&#34;ConfigDemo&#34;</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Logging&#34;</span>: { 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;LogLevel&#34;</span>: { 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Default&#34;</span>: <span style="color:#e6db74">&#34;Information&#34;</span>, 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Microsoft&#34;</span>: <span style="color:#e6db74">&#34;Warning&#34;</span>, 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Microsoft.Hosting.Lifetime&#34;</span>: <span style="color:#e6db74">&#34;Information&#34;</span> 
+</span></span><span style="display:flex;"><span>	} 
+</span></span><span style="display:flex;"><span>  } 
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Let&rsquo;s modify the <code>Program.cs</code> file to read configurations from <code>appsettings.json</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Configuration; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Build configuration </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> basePath = System.IO.Directory.GetCurrentDirectory();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> configuration = <span style="color:#66d9ef">new</span> ConfigurationBuilder()
+</span></span><span style="display:flex;"><span>	.SetBasePath(basePath) 
+</span></span><span style="display:flex;"><span>	.AddJsonFile(<span style="color:#e6db74">&#34;appsettings.json&#34;</span>, optional: <span style="color:#66d9ef">false</span>, reloadOnChange: <span style="color:#66d9ef">true</span>) 	.Build(); 
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Read settings </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> appName = configuration[<span style="color:#e6db74">&#34;ApplicationName&#34;</span>]; 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> logLevelDefault = configuration[<span style="color:#e6db74">&#34;Logging:LogLevel:Default&#34;</span>]; 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> logLevelMicrosoft = configuration[<span style="color:#e6db74">&#34;Logging:LogLevel:Microsoft&#34;</span>]; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Console.WriteLine(<span style="color:#e6db74">$&#34;Application Name: {appName}&#34;</span>); 
+</span></span><span style="display:flex;"><span>Console.WriteLine(<span style="color:#e6db74">$&#34;Default Log Level: {logLevelDefault}&#34;</span>); 
+</span></span><span style="display:flex;"><span>Console.WriteLine(<span style="color:#e6db74">$&#34;Microsoft Log Level: {logLevelMicrosoft}&#34;</span>); } } }
+</span></span></code></pre></div><p>Run the application to see the configuration settings printed to the console.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet run
+</span></span></code></pre></div><p>You should see output similar to.</p>
+<pre tabindex="0"><code class="language-raw" data-lang="raw">Application Name: ConfigDemo
+Default Log Level: Information 
+Microsoft Log Level: Warning
+</code></pre><h4 id="conclusion">Conclusion</h4>
+<p>Using <code>appsettings.json</code> in console applications ensures consistency across different types of .NET applications and simplifies the management of configuration settings.</p>
+<p>Happy coding! 😎</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/DotNet/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/set-up-entity-framework-core-in-memory-store/">Set up Entity Framework Core In Memory Database Provider</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-get-jwt-token-request/">C# Get JWT Token from Request .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/jwt-authentication-with-csharp-dotnet/">C# JWT Authentication .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/serilog-custom-enricher-on-aspnet-core/">Getting Started with Serilog Custom Enrichers</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/">Getting Started with Chat GPT integration in a .NET C# Console Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/calculate-time-ago-with-csharp/">Calculate Time Ago with .NET C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-a-minimal-api-with-dotnet-6/">Create a Minimal API with .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/setup-serilog-in-net6-as-logging-provider/">Set up Serilog in .NET 6 as a logging provider</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/add-build-time-to-your-csharp-assembly/">Add Build Time to your C# Assembly</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/">Hangfire Implementing Background Jobs</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-odp-net-with-truly-async-methods-in-csharp/">Oracle ODP.NET with truly Async Methods in C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/">DALL-E Art-Generator with C# .NET</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/define-implicit-explicit-operator-csharp-tips/">Define Implicit and Explicit Operator - C# Tips</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/">Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

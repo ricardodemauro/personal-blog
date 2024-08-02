@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sql on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/sql/</link>
+    <description>Recent content in Sql on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Jun 2024 21:20:45 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oracle Remove Duplicate from Table</title>
+      <link>http://localhost:1313/post/oracle-remove-duplicate-from-table/</link>
+      <pubDate>Thu, 27 Jun 2024 21:20:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/oracle-remove-duplicate-from-table/</guid>
+      <description>Let&amp;rsquo;s explore a one effective method to remove duplicate rows from an Oracle table.&#xA;Duplicate data can be a common problem when working with databases, and it&amp;rsquo;s crucial to eliminate such redundancy to ensure data accuracy and improve query performance.&#xA;Using this simple query we can find and DELETE duplicate rows from Oracle TABLE.&#xA;DELETE FROM your_table WHERE rowid NOT IN ( SELECT MIN(rowid) FROM your_table GROUP BY column1 , column2 , column3 ); This solution uses the GROUP BY clause, which clusters the records based on the uniqueness of specified columns.</description>
+    </item>
+    <item>
+      <title>Oracle PIVOT Command - Turn Rows into Columns</title>
+      <link>http://localhost:1313/post/oracle-pivot-command-turn-rows-into-columns/</link>
+      <pubDate>Sun, 06 Aug 2023 23:13:31 +0000</pubDate>
+      <guid>http://localhost:1313/post/oracle-pivot-command-turn-rows-into-columns/</guid>
+      <description>Discover the technical prowess of Oracle&amp;rsquo;s PIVOT command, a robust feature that efficiently converts rows into columns.&#xA;This blog post delves into the syntax, use cases, and practical examples to illustrate how PIVOT simplifies data analysis and reporting in Oracle databases.&#xA;Understanding the PIVOT Command The PIVOT command is an extension of the SQL SELECT statement in Oracle. It lets you rotate rows into columns, effectively transposing data to achieve a more structured and readable output.</description>
+    </item>
+    <item>
+      <title>Oracle JSON_TABLE Transforming JSON into Table</title>
+      <link>http://localhost:1313/post/oracle-json-table-transforming-json-into-relational-format/</link>
+      <pubDate>Wed, 24 May 2023 17:35:29 +0000</pubDate>
+      <guid>http://localhost:1313/post/oracle-json-table-transforming-json-into-relational-format/</guid>
+      <description>The function JSON_TABLE allows us to transform JSON data into a table relational format.&#xA;This article will explore the Oracle JSON_TABLE function and its syntax and provide examples to demonstrate its usage and capabilities.</description>
+    </item>
+    <item>
+      <title>Oracle MERGE Statement SQL</title>
+      <link>http://localhost:1313/post/oracle-merge-to-update-sql/</link>
+      <pubDate>Sun, 21 May 2023 18:45:58 +0000</pubDate>
+      <guid>http://localhost:1313/post/oracle-merge-to-update-sql/</guid>
+      <description>Oracle MERGE statement is one of those powerful commands which allows you to perform INSERT and UPDATE operations in a single statement based on specific conditions.</description>
+    </item>
+  </channel>
+</rss>

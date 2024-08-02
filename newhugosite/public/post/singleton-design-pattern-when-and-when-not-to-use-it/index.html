@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Singleton Design Pattern - When Not to Use It | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
+It ensures that a class has only one instance and provides a global point of access to that instance.
+Let&rsquo;s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
+**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/singleton-design-pattern-when-and-when-not-to-use-it/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Singleton Design Pattern - When Not to Use It">
+  <meta property="og:description" content="The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
+It ensures that a class has only one instance and provides a global point of access to that instance.
+Let’s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
+**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-07-12T06:35:01+00:00">
+    <meta property="article:modified_time" content="2024-07-12T06:35:01+00:00">
+    <meta property="article:tag" content="Design Patterns">
+    <meta property="article:tag" content="Singleton">
+
+  <meta itemprop="name" content="Singleton Design Pattern - When Not to Use It">
+  <meta itemprop="description" content="The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
+It ensures that a class has only one instance and provides a global point of access to that instance.
+Let’s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
+**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.">
+  <meta itemprop="datePublished" content="2024-07-12T06:35:01+00:00">
+  <meta itemprop="dateModified" content="2024-07-12T06:35:01+00:00">
+  <meta itemprop="wordCount" content="555">
+  <meta itemprop="keywords" content="Design Patterns,Singleton">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Singleton Design Pattern - When Not to Use It">
+  <meta name="twitter:description" content="The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.
+It ensures that a class has only one instance and provides a global point of access to that instance.
+Let’s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.
+**📢**Table of Contents Singleton Design Pattern When to Use the Singleton Pattern When Not to Use the Singleton Pattern **🧾**Singleton Design Pattern The Singleton pattern restricts the instantiation of a class to one single instance.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Singleton Design Pattern - When Not to Use It</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-07-12T06:35:01Z">July 12, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>The Singleton design pattern is one of the simplest yet most powerful design patterns in software development.</p>
+<p>It ensures that a class has only one instance and provides a global point of access to that instance.</p>
+<p>Let&rsquo;s explore its implementation in C# and discuss scenarios where it is appropriate to use this pattern and when it is better to avoid it.</p>
+<h2 id="table-of-contents">**📢**Table of Contents</h2>
+<ul>
+<li><a href="#%F0%9F%A7%BEsingleton-design-pattern">Singleton Design Pattern</a></li>
+<li><a href="#when-to-use-the-singleton-pattern">When to Use the Singleton Pattern</a></li>
+<li><a href="#when-not-to-use-the-singleton-pattern">When Not to Use the Singleton Pattern</a></li>
+</ul>
+<h2 id="singleton-design-pattern">**🧾**Singleton Design Pattern</h2>
+<p>The Singleton pattern restricts the instantiation of a class to one single instance.</p>
+<p>This is particularly useful when exactly one object is needed to coordinate actions across the system.</p>
+<p>The pattern involves a private constructor, a static method or property that returns the instance, and typically a static variable to hold the single instance.</p>
+<figure><img src="https://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/SINGLE.png">
+</figure>
+
+<h3 id="c-implementation-of-singleton">C# Implementation of Singleton</h3>
+<p>A basic implementation of the Singleton pattern in C#.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Singleton</span> 
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> Singleton _instance; 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">object</span> _lock = <span style="color:#66d9ef">new</span>(); 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">private</span> Singleton() { } 
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> Singleton Instance 
+</span></span><span style="display:flex;"><span>  { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">get</span> 
+</span></span><span style="display:flex;"><span>    { 
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">lock</span> (_lock) 
+</span></span><span style="display:flex;"><span>      { 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (_instance == <span style="color:#66d9ef">null</span>) 
+</span></span><span style="display:flex;"><span>        { 
+</span></span><span style="display:flex;"><span>          _instance = <span style="color:#66d9ef">new</span> Singleton(); 
+</span></span><span style="display:flex;"><span>        } 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> _instance;
+</span></span><span style="display:flex;"><span>      } 
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>  } 
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><ul>
+<li>The constructor is private to prevent direct instantiation.</li>
+<li>The static <code>Instance</code> property provides a global access point to the Singleton instance.</li>
+<li>A lock is used to ensure thread safety when creating the instance.</li>
+</ul>
+<h2 id="when-to-use-the-singleton-pattern">When to Use the Singleton Pattern</h2>
+<p>Best scenario of usage is when things don&rsquo;t change. It needs to be static at all time.</p>
+<p>Example:</p>
+<ol>
+<li><strong>Configuration Settings.</strong> When you need a single point of access for configuration settings throughout an application, the Singleton pattern is an ideal choice.</li>
+<li><strong>Logging.</strong> A logging service that writes to a single log file or system can be managed effectively with a Singleton.</li>
+<li><strong>Database Connections.</strong> Managing a single connection to a database can help control access and ensure consistent transactions. Be aware of connection pooling, most ADO drivers don&rsquo;t need singleton.</li>
+<li><strong>Cache Management.</strong> A Singleton can manage a cache to ensure that data is stored and retrieved consistently across different parts of an application.</li>
+</ol>
+<p><strong>Attention:</strong> Cache should <strong>NOT</strong> be be Singleton. The proxy object to access cache can be Singleton. Manage your cache using an external systems such as Redis Cache for better performance.</p>
+<h2 id="when-not-to-use-the-singleton-pattern">When Not to Use the Singleton Pattern</h2>
+<p>When need changes.</p>
+<ol>
+<li><strong>High Concurrency.</strong> Singletons can become a bottleneck in highly concurrent systems where multiple threads need to access the Singleton instance simultaneously.</li>
+<li><strong>Testing and Maintainability.</strong> Singletons can make unit testing difficult because they introduce global state into an application. This can also lead to issues with maintainability and understanding dependencies.</li>
+<li><strong>Memory Management.</strong> Since Singletons are often kept alive for the lifetime of an application, they can contribute to higher memory usage and potential memory leaks if not managed carefully.</li>
+<li><strong>Hidden Dependencies.</strong> Overuse of Singletons can lead to hidden dependencies between classes, making the codebase harder to understand and refactor.</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>The Singleton design pattern is a powerful tool in a developer&rsquo;s arsenal, but it should be used judiciously.</p>
+<p>It can provide a simple and elegant solution for scenarios that require a single instance of a class, such as configuration management or logging.</p>
+<p>However, it&rsquo;s important to consider the potential downsides, particularly regarding concurrency, testing, and maintainability.</p>
+<p>For more insights and detailed examples of design patterns, check out other articles on <a href="__GHOST_URL__/">rmauro.dev</a>.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/Design-Patterns/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Design Patterns</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Singleton/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Singleton</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/understanding-the-monad-design-pattern/">Understanding the Monad Design Pattern</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

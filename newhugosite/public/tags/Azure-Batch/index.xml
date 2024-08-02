@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure-Batch on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/Azure-Batch/</link>
+    <description>Recent content in Azure-Batch on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jun 2019 21:25:27 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/Azure-Batch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Demo - Azure Batch</title>
+      <link>http://localhost:1313/post/demo-azure-batch/</link>
+      <pubDate>Sun, 02 Jun 2019 21:25:27 +0000</pubDate>
+      <guid>http://localhost:1313/post/demo-azure-batch/</guid>
+      <description>####Creating the Resource Group&#xA;az group create --name &amp;quot;az203_batch_demo001&amp;quot; --location CentralUS ####Creating the storage account&#xA;az storage account create \ --name az203batchstoragexd \ --access-tier hot \ --https-only true \ --kind BlobStorage \ --location CentralUS \ --sku Standard_LRS \ --resource-group az203_batch_demo001 ####Creating the Batch Account az batch account create &amp;ndash;name az203batchaccountxd &amp;ndash;storage-account az203batchstoragexd &amp;ndash;resource-group az203_batch_demo001 &amp;ndash;location CentralUS&#xA;####Login and create the Pool az batch account login &amp;ndash;name az203batchaccountxd &amp;ndash;resource-group az203_batch_demo001 &amp;ndash;shared-key-auth</description>
+    </item>
+  </channel>
+</rss>

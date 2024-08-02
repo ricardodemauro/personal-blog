@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AspNetCore on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/AspNetCore/</link>
+    <description>Recent content in AspNetCore on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Apr 2023 03:44:59 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/AspNetCore/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C# JWT Authentication .NET 6</title>
+      <link>http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/</link>
+      <pubDate>Fri, 28 Apr 2023 03:44:59 +0000</pubDate>
+      <guid>http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/</guid>
+      <description>In this article, we will work on implementing C# JWT Authentication using .NET 7 - which also works for .NET 6, and preview .NET 8 - using ASP.NET Core.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine-Learning on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/machine-learning/</link>
+    <description>Recent content in Machine-Learning on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 Apr 2023 20:21:04 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DALL-E Art-Generator with C# .NET</title>
+      <link>http://localhost:1313/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/</link>
+      <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
+      <guid>http://localhost:1313/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/</guid>
+      <description>In this blog post, we will explore the steps to develop a C# application using DALL-E model to generate images from text.</description>
+    </item>
+    <item>
+      <title>Começando com Machine Learning - Escrevendo um Perceptron</title>
+      <link>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</link>
+      <pubDate>Sun, 03 Nov 2019 03:04:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</guid>
+      <description>Você sabe o que é um Perceptron?&#xA;Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.&#xA;Segundo wikipedia:&#xA;In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.&#xA;Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).</description>
+    </item>
+  </channel>
+</rss>

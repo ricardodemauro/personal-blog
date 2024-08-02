@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Oracle MERGE Statement SQL | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Oracle MERGE statement is one of those powerful commands which allows you to perform INSERT and UPDATE operations in a single statement based on specific conditions.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/oracle-merge-to-update-sql/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/oracle-merge-to-update-sql/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Oracle MERGE Statement SQL">
+  <meta property="og:description" content="Oracle MERGE statement is one of those powerful commands which allows you to perform INSERT and UPDATE operations in a single statement based on specific conditions.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-05-21T18:45:58+00:00">
+    <meta property="article:modified_time" content="2023-05-21T18:45:58+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="Sql">
+    <meta property="article:tag" content="Oracle-Sql">
+    <meta property="article:tag" content="Oracle-Functions">
+    <meta property="article:tag" content="Merge">
+    <meta property="article:tag" content="Oracle-Merge">
+
+  <meta itemprop="name" content="Oracle MERGE Statement SQL">
+  <meta itemprop="description" content="Oracle MERGE statement is one of those powerful commands which allows you to perform INSERT and UPDATE operations in a single statement based on specific conditions.">
+  <meta itemprop="datePublished" content="2023-05-21T18:45:58+00:00">
+  <meta itemprop="dateModified" content="2023-05-21T18:45:58+00:00">
+  <meta itemprop="wordCount" content="514">
+  <meta itemprop="keywords" content="Oracle,Sql,Oracle-Sql,Oracle-Functions,Merge,Oracle-Merge">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Oracle MERGE Statement SQL">
+  <meta name="twitter:description" content="Oracle MERGE statement is one of those powerful commands which allows you to perform INSERT and UPDATE operations in a single statement based on specific conditions.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Oracle MERGE Statement SQL</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-05-21T18:45:58Z">May 21, 2023</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Oracle MERGE statement is one of those powerful commands which allows you to perform <strong>INSERT</strong> and <strong>UPDATE</strong> operations in a single statement based on specific conditions.</p>
+<p>This article will explore the <strong>MERGE</strong> command in <strong>Oracle</strong>.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#what-is-the-merge-to-update-command">What is the MERGE to UPDATE Command</a></li>
+<li><a href="#example-using-merge-to-update">Example Using MERGE to UPDATE</a></li>
+<li><a href="#additional-considerations">Additional Considerations</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="what-is-the-merge-command">What is the MERGE Command</h2>
+<p>The MERGE statement in Oracle combines the INSERT and UPDATE operations into a single statement.</p>
+<p>It compares the data in the <strong>Source Table</strong> (or staging table) with the data in the <strong>Target Table</strong> (table to be updated). Then, based on specified conditions, the MERGE statement either inserts new rows or updates existing rows in the target table.</p>
+<p>The basic syntax of the MERGE UPDATE command in Oracle:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>MERGE <span style="color:#66d9ef">INTO</span> target_table a
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">USING</span> source_table b
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ON</span> (condition)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> MATCHED <span style="color:#66d9ef">THEN</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">SET</span> a.column1 <span style="color:#f92672">=</span> b.value1, a.column2 <span style="color:#f92672">=</span> b.value2, ...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">NOT</span> MATCHED <span style="color:#66d9ef">THEN</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INSERT</span> (a.column1, a.column2, ...)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">VALUES</span> (b.value1, b.value2, ...)
+</span></span></code></pre></div><ul>
+<li><code>target_table</code>: The table to be updated.</li>
+<li><code>source_table</code>: The table containing the source data.</li>
+<li><code>condition</code>: The condition used to match rows between the source and target tables.</li>
+<li><code>column1, column2</code>: The columns in the target table to be updated.</li>
+<li><code>value1, value2</code>: The new values to be set for the corresponding columns.</li>
+</ul>
+<h2 id="example-using-merge-to-update">Example Using MERGE to UPDATE</h2>
+<p>Let&rsquo;s consider a practical example to demonstrate MERGE UPDATE command.</p>
+<p>In this example, we have defined two tables:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> CUSTOMER (
+</span></span><span style="display:flex;"><span>	ID_CUSTOMER NUMBER
+</span></span><span style="display:flex;"><span>    , NAME VARCHAR(<span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>    , EMAIL VARCHAR(<span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> CUSTOMER;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ID_CUSTOMER  NAME                   EMAIL
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-----------  ---------------------  -------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">1</span>            Robert L. Brown        robert.l.brown<span style="color:#f92672">@</span>sample.com
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>            John A. Wong           johna<span style="color:#f92672">@</span>sample.com
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>            Alexander W. Barclay   alexwb<span style="color:#f92672">@</span>sample.com
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> LEAD (
+</span></span><span style="display:flex;"><span>	ID_LEAD NUMBER
+</span></span><span style="display:flex;"><span>    , NAME VARCHAR(<span style="color:#ae81ff">200</span>)
+</span></span><span style="display:flex;"><span>    , EMAIL VARCHAR(<span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>    , ID_CUSTOMER NUMBER
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> LEAD;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ID_LEAD      NAME                   EMAIL                      ID_CUSTOMER
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-----------  ---------------------  -------------------------- -----------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#ae81ff">1</span>            John                   johna<span style="color:#f92672">@</span>sample.com           <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>            Alexander Barclay      alexwb<span style="color:#f92672">@</span>sample.com          <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>            Robert B.              robert.l.brown<span style="color:#f92672">@</span>sample.com  <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>We will update the LEAD table with existing CUSTOMER information and create when it does not exist in LEAD.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">/* CREATE A SEQUENCE HERE FOR SUPORTING THE INSERT CONDITION
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">CREATE SEQUENCE LEAD_SEQ;*/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MERGE <span style="color:#66d9ef">INTO</span> LEAD A
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">USING</span> (<span style="color:#66d9ef">SELECT</span> ID_CUSTOMER, NAME, EMAIL <span style="color:#66d9ef">FROM</span> CUSTOMER) B
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ON</span> (B.ID_CUSTOMER <span style="color:#f92672">=</span> A.ID_CUSTOMER)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> MATCHED <span style="color:#66d9ef">THEN</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">UPDATE</span> <span style="color:#66d9ef">SET</span> A.NAME <span style="color:#f92672">=</span> B.NAME, A.EMAIL <span style="color:#f92672">=</span> B.EMAIL
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHEN</span> <span style="color:#66d9ef">NOT</span> MATCHED <span style="color:#66d9ef">THEN</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">INSERT</span> (A.ID_LEAD, A.NAME, A.EMAIL, A.ID_CUSTOMER)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">VALUES</span> (LEAD_SEQ.NEXTVAL, B.NAME, B.EMAIL, B.ID_CUSTOMER);
+</span></span></code></pre></div><p>In the above example, we have merged the &ldquo;CUSTOMER&rdquo; table into the &ldquo;LEAD&rdquo; table based on matching <strong>ID_CUSTOMER</strong>.</p>
+<p>When a match is found, the corresponding NAME and EMAIL columns in the &ldquo;LEAD&rdquo; table are updated with the values from the &ldquo;CUSTOMER&rdquo; table.</p>
+<p>When no match is found, a new record is created.</p>
+<h2 id="additional-considerations">Additional Considerations</h2>
+<ul>
+<li>It is essential to ensure that the conditions used in the <strong>ON</strong> clause are accurate and precise to avoid unintended updates or insertions.</li>
+<li>Proper indexing on columns involved in the merge condition can significantly improve performance.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>The MERGE statement simplifies data manipulation tasks by combining the INSERT and UPDATE operations into a single statement.</p>
+<p>Understanding the syntax and usage of the MERGE UPDATE command empowers Oracle developers to perform complex data updates with ease and efficiency.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/oracle/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/sql/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Sql</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oracle-sql/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Sql</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oracle-functions/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Functions</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/merge/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Merge</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oracle-merge/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Merge</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/">Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-database-on-docker-for-development/">Oracle Database on Docker for Development</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

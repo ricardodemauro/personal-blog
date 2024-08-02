@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Oracle Database on Docker for Development | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Lets set up an Oracle Database instance for development purpose using Docker is very easy. And it also runs in WSL2 over Windows.
+Let&rsquo;s use the oracleinanutshell/oracle-xe-11g image.
+">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/oracle-database-on-docker-for-development/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/oracle-database-on-docker-for-development/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Oracle Database on Docker for Development">
+  <meta property="og:description" content="Lets set up an Oracle Database instance for development purpose using Docker is very easy. And it also runs in WSL2 over Windows.
+Let’s use the oracleinanutshell/oracle-xe-11g image.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-05-30T17:15:12+00:00">
+    <meta property="article:modified_time" content="2022-05-30T17:15:12+00:00">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="Oracle">
+
+  <meta itemprop="name" content="Oracle Database on Docker for Development">
+  <meta itemprop="description" content="Lets set up an Oracle Database instance for development purpose using Docker is very easy. And it also runs in WSL2 over Windows.
+Let’s use the oracleinanutshell/oracle-xe-11g image.">
+  <meta itemprop="datePublished" content="2022-05-30T17:15:12+00:00">
+  <meta itemprop="dateModified" content="2022-05-30T17:15:12+00:00">
+  <meta itemprop="wordCount" content="286">
+  <meta itemprop="keywords" content="Docker,Oracle">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Oracle Database on Docker for Development">
+  <meta name="twitter:description" content="Lets set up an Oracle Database instance for development purpose using Docker is very easy. And it also runs in WSL2 over Windows.
+Let’s use the oracleinanutshell/oracle-xe-11g image.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Oracle Database on Docker for Development</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2022-05-30T17:15:12Z">May 30, 2022</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Lets set up an <em>Oracle Database</em> instance for development purpose using Docker is very easy. And it also runs in WSL2 over Windows.</p>
+<p>Let&rsquo;s use the <strong>oracleinanutshell/oracle-xe-11g</strong> image. <a href="https://hub.docker.com/r/oracleinanutshell/oracle-xe-11g">https://hub.docker.com/r/oracleinanutshell/oracle-xe-11g</a></p>
+<h2 id="table-of-contents">Table Of Contents</h2>
+<ul>
+<li><a href="#running-oracle-database-on-docker">Running Oracle Database On Docker</a></li>
+<li><a href="#set-up-a-new-user-and-configure-the-tablespace">Set Up a New User and Configure the Tablespace</a></li>
+<li><a href="#connect-using-sql-developer">Connect Using SQL Developer</a></li>
+</ul>
+<h2 id="running-oracle-database-on-docker">Running Oracle Database on Docker</h2>
+<p>Run the following commands in your terminal.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#pulls the images from docker hub</span>
+</span></span><span style="display:flex;"><span>docker pull oracleinanutshell/oracle-xe-11g
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#runs the image using port forwarding </span>
+</span></span><span style="display:flex;"><span>docker run -d -p 49161:1521 oracleinanutshell/oracle-xe-11g
+</span></span></code></pre></div><p>The output should be something like this.</p>
+<figure><img src="https://res-3.cloudinary.com/dgoa5llvh/image/upload/q_auto/v1/ghost-blog-images/docker-run.png">
+</figure>
+
+<h2 id="set-up-a-new-user-and-configure-the-tablespace">Set Up a New User and Configure the Tablespace</h2>
+<p>With the Application running in the background let&rsquo;s create a new Oracle User and set up the appropriate tablespace and grants.</p>
+<p>Get the running container Id and attach it running <code>bash</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec -it <span style="color:#ae81ff">82</span> bash
+</span></span></code></pre></div><p>Type <code>sqlplus</code> to open SQLPlus in the terminal.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sqlplus
+</span></span></code></pre></div><p>Connect using the <em>username</em> and <em>password</em> below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Database Information
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hostname: localhost
+</span></span><span style="display:flex;"><span>internal port: <span style="color:#ae81ff">49161</span>
+</span></span><span style="display:flex;"><span>sid: xe
+</span></span><span style="display:flex;"><span>username: system
+</span></span><span style="display:flex;"><span>password: oracle
+</span></span></code></pre></div><figure><img src="https://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/v1/ghost-blog-images/sqlplus.png"
+    alt="Connected at SQLPlus"><figcaption>
+      <p>Connected at SQLPlus</p>
+    </figcaption>
+</figure>
+
+<p>Run the following commands to set up the new user and tablespace.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> TABLESPACE TSD_USERDB LOGGING DATAFILE <span style="color:#e6db74">&#39;TSD_USERDB.DBF&#39;</span> <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">200</span>M AUTOEXTEND <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">NEXT</span> <span style="color:#ae81ff">200</span>M MAXSIZE <span style="color:#ae81ff">400</span>M;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> TABLESPACE TSI_USERDB LOGGING DATAFILE <span style="color:#e6db74">&#39;TSI_USERDB.DBF&#39;</span> <span style="color:#66d9ef">SIZE</span> <span style="color:#ae81ff">200</span>M AUTOEXTEND <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">NEXT</span> <span style="color:#ae81ff">50</span>M MAXSIZE <span style="color:#ae81ff">400</span>M;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">USER</span> USERDB IDENTIFIED <span style="color:#66d9ef">BY</span> PASSWORD <span style="color:#66d9ef">DEFAULT</span> TABLESPACE TSI_USERDB QUOTA UNLIMITED <span style="color:#66d9ef">ON</span> TSD_USERDB QUOTA UNLIMITED <span style="color:#66d9ef">ON</span> TSI_USERDB;
+</span></span></code></pre></div><p>Then run the necessary grants.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">SESSION</span> <span style="color:#66d9ef">TO</span> USERDB;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> <span style="color:#66d9ef">TO</span> USERDB;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">VIEW</span> <span style="color:#66d9ef">TO</span> USERDB;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">TO</span> USERDB;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> SEQUENCE <span style="color:#66d9ef">TO</span> USERDB;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GRANT</span> <span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TRIGGER</span> <span style="color:#66d9ef">TO</span> USERDB;
+</span></span></code></pre></div><h2 id="connect-using-sql-developer">Connect Using SQL Developer</h2>
+<p>Connect using the recently created user to manage your database.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Database Information
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hostname: localhost
+</span></span><span style="display:flex;"><span>port: <span style="color:#ae81ff">49161</span>
+</span></span><span style="display:flex;"><span>sid: xe
+</span></span><span style="display:flex;"><span>username: USERDB
+</span></span><span style="display:flex;"><span>password: PASSWORD
+</span></span></code></pre></div><figure><img src="https://res-1.cloudinary.com/dgoa5llvh/image/upload/q_auto/v1/ghost-blog-images/sql-developer-connection.png">
+</figure>
+
+<h3 id="done">Done!</h3>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/Docker/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Docker</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oracle/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

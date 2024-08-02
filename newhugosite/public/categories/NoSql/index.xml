@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NoSql on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/NoSql/</link>
+    <description>Recent content in NoSql on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 19 Apr 2021 01:12:09 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/NoSql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Create a free MongoDb Cluster in the Cloud - Mongo Atlas free account</title>
+      <link>http://localhost:1313/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/</link>
+      <pubDate>Mon, 19 Apr 2021 01:12:09 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/</guid>
+      <description>MongoDB is a document-oriented NoSQL database used for high volume data storage. Instead of using tables and rows as in the traditional relational databases, MongoDB makes use of collections and documents.&#xA;MongoDb is very easy to get started - That is why I love MongoDb. I think it&amp;rsquo;s the best to get started as a software developer.&#xA;If you are like me - like MongoDb - or you&amp;rsquo;re just studying it.</description>
+    </item>
+  </channel>
+</rss>

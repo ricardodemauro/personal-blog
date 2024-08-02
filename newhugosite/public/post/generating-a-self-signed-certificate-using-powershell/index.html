@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Generating a Self-Signed Certificate using Powershell | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="A self-signed certificate it&rsquo;s very easy to create and helps on with local development and testing.
+With a Single Line of PowerShell code we create a certificate.
+First, open the PowerShell as Administrator and run the following command:
+New-SelfSignedCertificate ` –DnsName &lt;DNS-Name&gt; ` -CertStoreLocation &#34;cert:\LocalMachine\My&#34; The default expiration is 1 year. If you want a custom expiration date use option -NotAfter.
+New-SelfSignedCertificate ` –DnsName &lt;DNS-Name&gt; ` -CertStoreLocation &#34;cert:\LocalMachine\My&#34; ` -NotAfter [System.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Generating a Self-Signed Certificate using Powershell">
+  <meta property="og:description" content="A self-signed certificate it’s very easy to create and helps on with local development and testing.
+With a Single Line of PowerShell code we create a certificate.
+First, open the PowerShell as Administrator and run the following command:
+New-SelfSignedCertificate ` –DnsName &lt;DNS-Name&gt; ` -CertStoreLocation &#34;cert:\LocalMachine\My&#34; The default expiration is 1 year. If you want a custom expiration date use option -NotAfter.
+New-SelfSignedCertificate ` –DnsName &lt;DNS-Name&gt; ` -CertStoreLocation &#34;cert:\LocalMachine\My&#34; ` -NotAfter [System.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-09-16T22:57:25+00:00">
+    <meta property="article:modified_time" content="2020-09-16T22:57:25+00:00">
+    <meta property="article:tag" content="Https">
+    <meta property="article:tag" content="Powershell">
+    <meta property="article:tag" content="Tip">
+    <meta property="article:tag" content="En">
+    <meta property="article:tag" content="SSL">
+    <meta property="article:tag" content="Cert">
+
+  <meta itemprop="name" content="Generating a Self-Signed Certificate using Powershell">
+  <meta itemprop="description" content="A self-signed certificate it’s very easy to create and helps on with local development and testing.
+With a Single Line of PowerShell code we create a certificate.
+First, open the PowerShell as Administrator and run the following command:
+New-SelfSignedCertificate ` –DnsName &lt;DNS-Name&gt; ` -CertStoreLocation &#34;cert:\LocalMachine\My&#34; The default expiration is 1 year. If you want a custom expiration date use option -NotAfter.
+New-SelfSignedCertificate ` –DnsName &lt;DNS-Name&gt; ` -CertStoreLocation &#34;cert:\LocalMachine\My&#34; ` -NotAfter [System.">
+  <meta itemprop="datePublished" content="2020-09-16T22:57:25+00:00">
+  <meta itemprop="dateModified" content="2020-09-16T22:57:25+00:00">
+  <meta itemprop="wordCount" content="197">
+  <meta itemprop="keywords" content="Https,Powershell,Tip,En,SSL,Cert">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Generating a Self-Signed Certificate using Powershell">
+  <meta name="twitter:description" content="A self-signed certificate it’s very easy to create and helps on with local development and testing.
+With a Single Line of PowerShell code we create a certificate.
+First, open the PowerShell as Administrator and run the following command:
+New-SelfSignedCertificate ` –DnsName &lt;DNS-Name&gt; ` -CertStoreLocation &#34;cert:\LocalMachine\My&#34; The default expiration is 1 year. If you want a custom expiration date use option -NotAfter.
+New-SelfSignedCertificate ` –DnsName &lt;DNS-Name&gt; ` -CertStoreLocation &#34;cert:\LocalMachine\My&#34; ` -NotAfter [System.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Generating a Self-Signed Certificate using Powershell</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-09-16T22:57:25Z">September 16, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>A self-signed certificate it&rsquo;s very easy to create and helps on with local development and testing.</p>
+<p>With a <strong>Single Line</strong> of PowerShell code we create a certificate.</p>
+<p>First, open the <code>PowerShell</code> as <strong>Administrator</strong>  and run the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>New-SelfSignedCertificate `
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">–</span>DnsName &lt;DNS-Name&gt; `
+</span></span><span style="display:flex;"><span>   -CertStoreLocation <span style="color:#e6db74">&#34;cert:\LocalMachine\My&#34;</span>
+</span></span></code></pre></div><p>The <em>default</em> expiration is <strong>1 year</strong>. If you want a custom expiration date use option <code>-NotAfter</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>New-SelfSignedCertificate `
+</span></span><span style="display:flex;"><span>   <span style="color:#960050;background-color:#1e0010">–</span>DnsName &lt;DNS-Name&gt; `
+</span></span><span style="display:flex;"><span>   -CertStoreLocation <span style="color:#e6db74">&#34;cert:\LocalMachine\My&#34;</span> `
+</span></span><span style="display:flex;"><span>   -NotAfter [<span style="color:#66d9ef">System.DateTime</span>]::AddYears(<span style="color:#ae81ff">3</span>)
+</span></span></code></pre></div><figure><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/generating-cert.png"
+    alt="Generating Certificate"><figcaption>
+      <p>Generating Certificate</p>
+    </figcaption>
+</figure>
+
+<p>That is it. Done!! The certificate was created and stored in our <code>Certificate Store</code> of Windows.</p>
+<blockquote>
+<p>Note the parameter &ldquo;CertStoreLocation&rdquo;, this is where the cert will be stored. cert:\LocalMachine means Local Machine Cert store.</p>
+</blockquote>
+<p>Now let&rsquo;s export it as a <code>.pfx</code>file into a local directory.</p>
+<p>In the same PowerShell window run the following commands.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e">#create a password for our cert</span>
+</span></span><span style="display:flex;"><span>$pwd = ConvertTo-SecureString -String <span style="color:#e6db74">&#34;SOME-PASSWORD&#34;</span> -Force -AsPlainText
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#finds the certificate in our local store</span>
+</span></span><span style="display:flex;"><span>$cert = Get-ChildItem -Path cert<span style="color:#960050;background-color:#1e0010">:</span>\LocalMachine\my | where Subject <span style="color:#f92672">-eq</span> <span style="color:#e6db74">&#34;CN=rmauro.dev&#34;</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#exports the certificate to temp directory</span>
+</span></span><span style="display:flex;"><span>Export-PfxCertificate -FilePath c:\temp\rmauro.dev.pfx -Password $pwd -Cert $cert
+</span></span></code></pre></div><blockquote>
+<p>In my scenario, the cert name is rmauro.dev. Change it to yours.</p>
+</blockquote>
+<p>Check the directory <em>temp</em> to find the certificate - <code>rmauro.dev.pfx</code>.</p>
+<figure><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cert-powershell.png">
+</figure>
+
+<p>Leave a comment / Subscribe!</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/https/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Https</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/powershell/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Powershell</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/tip/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Tip</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/SSL/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">SSL</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/cert/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Cert</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-vm-though-powershell/">Create Azure VM though PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/hsts-definition-and-how-to-enable-it-in-iis/">HSTS - What&#39;s it and how to enable it in IIS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/az203-official-course-delivered-yes/">Yet Another AZ-203 Microsoft Official Course Delivered.</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-virtual-machine-using-powershell/">Create Azure Virtual Machine Using PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-storage-disks/">Azure Storage Disks - Managed and unmanaged disks</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/practice-of-sql-injection/">Practice of SQL Injection</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Getting Started with Chat GPT integration in a .NET C# Console Application | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="With the use of C#, we can develop a console application that uses the Chat GPT model to generate human-like responses to input.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Getting Started with Chat GPT integration in a .NET C# Console Application">
+  <meta property="og:description" content="With the use of C#, we can develop a console application that uses the Chat GPT model to generate human-like responses to input.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-04-02T16:42:29+00:00">
+    <meta property="article:modified_time" content="2023-04-02T16:42:29+00:00">
+    <meta property="article:tag" content="ChatGPT">
+    <meta property="article:tag" content="OpenAI">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="DotNet">
+
+  <meta itemprop="name" content="Getting Started with Chat GPT integration in a .NET C# Console Application">
+  <meta itemprop="description" content="With the use of C#, we can develop a console application that uses the Chat GPT model to generate human-like responses to input.">
+  <meta itemprop="datePublished" content="2023-04-02T16:42:29+00:00">
+  <meta itemprop="dateModified" content="2023-04-02T16:42:29+00:00">
+  <meta itemprop="wordCount" content="945">
+  <meta itemprop="keywords" content="ChatGPT,OpenAI,C#,DotNet">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Getting Started with Chat GPT integration in a .NET C# Console Application">
+  <meta name="twitter:description" content="With the use of C#, we can develop a console application that uses the Chat GPT model to generate human-like responses to input.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Getting Started with Chat GPT integration in a .NET C# Console Application</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-04-02T16:42:29Z">April 2, 2023</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>With the use of <strong>C#</strong>, we can develop a console application that uses the <strong>Chat GPT</strong> model to generate human-like responses to input.</p>
+<p>In this blog post, we will explore the steps to develop a console application using <strong>OpenAI&rsquo;s Chat GPT</strong> model using C#.</p>
+<p><em>OpenAI</em> is a leading organization in the field of artificial intelligence, and one of its popular AI models is the Chat GPT (Generative Pretrained Transformer).</p>
+<h2 id="-what-are-openai-and-chat-gpt">💬 What are OpenAI and Chat GPT?</h2>
+<p>OpenAI is a prominent organization that develops AI for various applications, including natural language processing. One of their popular AI models is the Chat GPT, a generative language model that uses a transformer architecture to process input text and generate human-like responses. It&rsquo;s commonly used for chatbots and other natural language processing tasks.</p>
+<h2 id="-development-with-source-code">🧵 Development with source code</h2>
+<p>To develop a console application using OpenAI&rsquo;s Chat GPT model in C#, we will follow these steps:</p>
+<h3 id="step-1-install-standardaiopenai-c-library">Step 1: Install Standard.AI.OpenAI C# library</h3>
+<p>To use the Chat GPT model in C#, we will need to install the <code>Standard.AI.OpenAI</code> C# library. We can install the library using the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add Standard.AI.OpenAI
+</span></span></code></pre></div><h3 id="step-2-create-an-openai-account">Step 2: Create an OpenAI account</h3>
+<p>To use the OpenAI API, we need to create an account on the OpenAI platform. The registration process is straightforward and can be completed in a few minutes.</p>
+<ul>
+<li>We just need to visit the OpenAI website at <a href="https://platform.openai.com/overview">https://platform.openai.com/overview</a>.</li>
+<li>Then click on the &ldquo;Sign Up&rdquo; button in the top right corner.</li>
+<li>Click on the button to start the registration process.</li>
+</ul>
+<p>Note that OpenAI&rsquo;s API is currently in beta, and access to the API may be limited. Additionally, OpenAI charges for API usage, so it&rsquo;s essential to keep track of usage and billing to avoid any unexpected charges.</p>
+<blockquote>
+<p>If you are getting started they usually give starting amount of dollars as credits without the need of a credit card.</p>
+</blockquote>
+<h3 id="step-3-create-the-class-openaiproxy">Step 3: Create the class OpenAIProxy</h3>
+<p>Within this class, we&rsquo;ll encapsulate the logic to access OpenAI APIs.</p>
+<p>Let&rsquo;s define our interface first.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Standard.AI.OpenAI.Models.Services.Foundations.ChatCompletions;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> ConsoleAppOpenAI;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">IOpenAIProxy</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  Task&lt;ChatCompletionMessage[]&gt; SendChatMessage(<span style="color:#66d9ef">string</span> message);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>That is right. We&rsquo;ll expose only the method responsible for sending and receiving messages.</p>
+<h3 id="step-4-create-the-implementation-class-openaiproxycs">Step 4: Create the implementation class OpenAIProxy.cs</h3>
+<p>Let&rsquo;s jump to the implementation now.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Standard.AI.OpenAI.Clients.OpenAIs;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Standard.AI.OpenAI.Models.Configurations;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Standard.AI.OpenAI.Models.Services.Foundations.ChatCompletions;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> ConsoleAppOpenAI;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OpenAIProxy</span> : IOpenAIProxy
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">readonly</span> OpenAIClient openAIClient;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//all messages in the conversation</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">readonly</span> List&lt;ChatCompletionMessage&gt; _messages;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> OpenAIProxy(<span style="color:#66d9ef">string</span> apiKey, <span style="color:#66d9ef">string</span> organizationId)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//initialize the configuration with api key and sub</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> openAIConfigurations = <span style="color:#66d9ef">new</span> OpenAIConfigurations
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      ApiKey = apiKey,
+</span></span><span style="display:flex;"><span>      OrganizationId = organizationId
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    openAIClient = <span style="color:#66d9ef">new</span> OpenAIClient(openAIConfigurations);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    _messages = <span style="color:#66d9ef">new</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> StackMessages(<span style="color:#66d9ef">params</span> ChatCompletionMessage[] message)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    _messages.AddRange(message);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">static</span> ChatCompletionMessage[] ToCompletionMessage(
+</span></span><span style="display:flex;"><span>    ChatCompletionChoice[] choices)
+</span></span><span style="display:flex;"><span>    =&gt; choices.Select(x =&gt; x.Message).ToArray();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//Public method to Send messages to OpenAI</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> Task&lt;ChatCompletionMessage[]&gt; SendChatMessage(<span style="color:#66d9ef">string</span> message)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> chatMsg = <span style="color:#66d9ef">new</span> ChatCompletionMessage() 
+</span></span><span style="display:flex;"><span>    { 
+</span></span><span style="display:flex;"><span>      Content = message, 
+</span></span><span style="display:flex;"><span>      Role = <span style="color:#e6db74">&#34;user&#34;</span> 
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> SendChatMessage(chatMsg);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//Where business happens</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> Task&lt;ChatCompletionMessage[]&gt; SendChatMessage(
+</span></span><span style="display:flex;"><span>    ChatCompletionMessage message)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//we should send all the messages</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//so we can give Open AI context of conversation</span>
+</span></span><span style="display:flex;"><span>    StackMessages(message);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> chatCompletion = <span style="color:#66d9ef">new</span> ChatCompletion
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      Request = <span style="color:#66d9ef">new</span> ChatCompletionRequest
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        Model = <span style="color:#e6db74">&#34;gpt-3.5-turbo&#34;</span>,
+</span></span><span style="display:flex;"><span>        Messages = _messages.ToArray(),
+</span></span><span style="display:flex;"><span>        Temperature = <span style="color:#ae81ff">0.2</span>,
+</span></span><span style="display:flex;"><span>        MaxTokens = <span style="color:#ae81ff">800</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> result = <span style="color:#66d9ef">await</span> openAIClient
+</span></span><span style="display:flex;"><span>      .ChatCompletions
+</span></span><span style="display:flex;"><span>      .SendChatCompletionAsync(chatCompletion);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> choices = result.Response.Choices;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> messages = ToCompletionMessage(choices);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//stack the response as well - everything is context to Open AI</span>
+</span></span><span style="display:flex;"><span>    StackMessages(messages);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> messages;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="step-5-set-up-the-api-key">Step 5: Set up the API key</h3>
+<p>To access the Chat GPT model, we&rsquo;ll need to set up the API key in our application. We can set up the API key using the following code:</p>
+<p>Back to  **<em>Program.cs</em> ** now.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>IOpenAIProxy chatOpenAI = <span style="color:#66d9ef">new</span> OpenAIProxy(
+</span></span><span style="display:flex;"><span>    apiKey: <span style="color:#e6db74">&#34;YOUR-API-KEY&#34;</span>,
+</span></span><span style="display:flex;"><span>    organizationId: <span style="color:#e6db74">&#34;YOUR-ORGANIZATION-ID&#34;</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></div><p>This code sets up the API key that we&rsquo;ll use to access the Chat GPT model.</p>
+<figure><img src="https://res-4.cloudinary.com/dgoa5llvh/image/upload/q_auto/where-to-get-api-key.png"
+    alt="Where to get API Key and Organization ID"><figcaption>
+      <p>Where to get API Key and Organization ID</p>
+    </figcaption>
+</figure>
+
+<h3 id="step-6-use-the-chat-gpt-model-in-our-application">Step 6: Use the Chat GPT model in our application</h3>
+<p>Once we&rsquo;ve set up the API key, we can use the Chat GPT model in our application using the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> msg = Console.ReadLine();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> results = <span style="color:#66d9ef">await</span> chatOpenAI.SendChatMessage(msg);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> item <span style="color:#66d9ef">in</span> results)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#e6db74">$&#34;{item.Role}: {item.Content}&#34;</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  Console.WriteLine(<span style="color:#e6db74">&#34;Next Prompt:&#34;</span>);
+</span></span><span style="display:flex;"><span>  msg = Console.ReadLine();
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">while</span> (msg != <span style="color:#e6db74">&#34;bye&#34;</span>);
+</span></span></code></pre></div><p>This code creates an infinite loop that prompts the user for input and generates a response using the Chat GPT model. If the user inputs &ldquo;bye,&rdquo; the loop will break, and the application will exit.</p>
+<h2 id="-final-touches">🎨 Final Touches</h2>
+<p>After we get everything working we can make it a little more professional using the following packages:</p>
+<ul>
+<li><strong><em>Spectre.Console</em></strong> ==&gt; for better Console Output Display</li>
+<li><strong><em>Humanizer.Core</em></strong> ==&gt; give us better formatting</li>
+<li><em><strong>Microsoft.Extensions.Configuration.Json</strong></em> - Read the configuration from Json files</li>
+</ul>
+<p>You can check it out on the source code below the implementation.</p>
+<figure class="kg-card kg-bookmark-card">
+  <a href="https://github.com/ricardodemauro/OpenAILabs.Console" class="kg-bookmark-container">
+    <div class="kg-bookmark-content">
+      <div class="kg-bookmark-title">GitHub - ricardodemauro/OpenAILabs.Console: Console Application with Open AI as backend</div>
+      <div class="kg-bookmark-description">Console Application with Open AI as backend. Contribute to ricardodemauro/OpenAILabs.Console development by creating an account on GitHub.</div>
+      <div class="kg-bookmark-metadata">
+        <img src="https://github.com/fluidicon.png" class="kg-bookmark-icon">
+        <span class="kg-bookmark-author">ricardodemauro</span>
+        <span class="kg-bookmark-publisher">GitHub</span>
+      </div>
+    </div>
+    
+    <div class="kg-bookmark-thumbnail">
+      <img src="https://opengraph.githubassets.com/e1c951772c9ac095c6bf420e43e6737f76322cc0545d06be24491ea5841b6b27/ricardodemauro/OpenAILabs.Console">
+    </div>
+    
+  </a>
+  
+  <figcaption>{map[author:ricardodemauro caption:Source code on Github description:Console Application with Open AI as backend. Contribute to ricardodemauro/OpenAILabs.Console development by creating an account on GitHub. icon:https://github.com/fluidicon.png publisher:GitHub thumbnail:https://opengraph.githubassets.com/e1c951772c9ac095c6bf420e43e6737f76322cc0545d06be24491ea5841b6b27/ricardodemauro/OpenAILabs.Console title:GitHub - ricardodemauro/OpenAILabs.Console: Console Application with Open AI as backend url:https://github.com/ricardodemauro/OpenAILabs.Console]  Page(/post/getting-started-with-chat-gpt-integration-with-csharp-console-application) &lt;nil&gt; bookmark true 1  {{{} 0} {0 0}}  {{{} 0} {0 0}} 6763 { 0 0 0} &lt;nil&gt;}</figcaption>
+  
+</figure>
+<p>Here is the final look.</p>
+<figure><img src="https://res-1.cloudinary.com/dgoa5llvh/image/upload/q_auto/image-1.png"
+    alt="Running Application"><figcaption>
+      <p>Running Application</p>
+    </figcaption>
+</figure>
+
+<h2 id="-conclusion">😎 Conclusion</h2>
+<p>In this blog post, we explored how to develop a console application using OpenAI&rsquo;s Chat GPT model in C#. We installed the <strong><em>Standard.AI.OpenAI</em></strong> C# library, set up the API key, and used the Chat GPT model to generate human-like responses to input. The Chat GPT model is powerful.</p>
+<p><strong>By the way. This blog post was created with the help of Chat GPT.</strong></p>
+<p>Don&rsquo;t forget to <strong>Like,</strong>  <strong>Comment,</strong> and most important **** &ndash;&gt; <strong>Share It</strong>.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/ChatGPT/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">ChatGPT</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/OpenAI/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">OpenAI</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/DotNet/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/calculate-time-ago-with-csharp/">Calculate Time Ago with .NET C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-a-minimal-api-with-dotnet-6/">Create a Minimal API with .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/setup-serilog-in-net6-as-logging-provider/">Set up Serilog in .NET 6 as a logging provider</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/add-build-time-to-your-csharp-assembly/">Add Build Time to your C# Assembly</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/define-implicit-explicit-operator-csharp-tips/">Define Implicit and Explicit Operator - C# Tips</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/">Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-startup-back-to-net-6-project/">Adding Startup.cs back to .NET 6 Project</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/api-key-authentication-extending-the-native-implementation/">API Key Authentication - Extending the native implementation</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/">Native Dependency Injection in Azure Functions with C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-ui/">Adding Health Checks UI</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

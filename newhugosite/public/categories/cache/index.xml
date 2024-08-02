@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cache on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/cache/</link>
+    <description>Recent content in Cache on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Jun 2019 19:01:27 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/cache/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enable Local Cache in Azure Web App</title>
+      <link>http://localhost:1313/post/enable-local-cache-in-azure-web-app/</link>
+      <pubDate>Sat, 01 Jun 2019 19:01:27 +0000</pubDate>
+      <guid>http://localhost:1313/post/enable-local-cache-in-azure-web-app/</guid>
+      <description>##What is Local Cache in Azure WebApp?&#xA;Local cache in Azure Web is really a cache that caches the storage of your Web App.&#xA;##How to enable it?&#xA;To enable local cache you should go to your Azure Subscription them navigate to your Web App that you wishs to enable local cache.&#xA;Go to &amp;ldquo;Configuration&amp;rdquo; section then &amp;ldquo;Application Setttings&amp;rdquo; and under &amp;ldquo;Application settings&amp;rdquo;&#xA;You enable Local Cache on a per-web-app basis by using this app setting: WEBSITE_LOCAL_CACHE_OPTION = Always</description>
+    </item>
+  </channel>
+</rss>

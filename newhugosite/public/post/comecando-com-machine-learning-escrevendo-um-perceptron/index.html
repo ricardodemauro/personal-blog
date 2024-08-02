@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Começando com Machine Learning - Escrevendo um Perceptron | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Você sabe o que é um Perceptron?
+Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.
+Segundo wikipedia:
+In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.
+Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Começando com Machine Learning - Escrevendo um Perceptron">
+  <meta property="og:description" content="Você sabe o que é um Perceptron?
+Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.
+Segundo wikipedia:
+In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.
+Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-11-03T03:04:13+00:00">
+    <meta property="article:modified_time" content="2019-11-03T03:04:13+00:00">
+    <meta property="article:tag" content="Machine-Learning">
+    <meta property="article:tag" content="Perceptron">
+    <meta property="article:tag" content="Pt">
+    <meta property="article:tag" content="Javascript">
+
+  <meta itemprop="name" content="Começando com Machine Learning - Escrevendo um Perceptron">
+  <meta itemprop="description" content="Você sabe o que é um Perceptron?
+Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.
+Segundo wikipedia:
+In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.
+Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).">
+  <meta itemprop="datePublished" content="2019-11-03T03:04:13+00:00">
+  <meta itemprop="dateModified" content="2019-11-03T03:04:13+00:00">
+  <meta itemprop="wordCount" content="3011">
+  <meta itemprop="keywords" content="Machine-Learning,Perceptron,Pt,Javascript">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Começando com Machine Learning - Escrevendo um Perceptron">
+  <meta name="twitter:description" content="Você sabe o que é um Perceptron?
+Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.
+Segundo wikipedia:
+In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.
+Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Começando com Machine Learning - Escrevendo um Perceptron</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-11-03T03:04:13Z">November 3, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Você sabe o que é um <strong>Perceptron</strong>?</p>
+<p>Perceptron é um dos ==building blocks== (componentes) da <strong>rede neural feed foward</strong>. Uma rede neural é essencialmente baseada em N Perceptrons.</p>
+<p>Segundo wikipedia:</p>
+<blockquote>
+<p>In machine learning, the <em>perceptron</em> is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.</p>
+</blockquote>
+<p>Ou seja, é um programa que com base em <strong>entradas</strong> (números), capaz de <strong>classificá-los</strong> em classes (números).</p>
+<p>Vamos entender mais essa frase quando desenvolvermos um pouco de código.</p>
+<p>Neste tutorial, você irá:</p>
+<blockquote>
+<ul>
+<li>Desenvolver um <strong>Perceptron</strong> utilizando a linguagem <strong>Javascript</strong></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Entender o que é um Perceptron</li>
+</ul>
+</blockquote>
+<h2 id="a-namepre-reqsa-pré-requisitos"><a name="pre-reqs"></a> Pré-requisitos</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a></li>
+<li><a href="https://www.google.com/intl/pt-BR/chrome/">Chrome</a></li>
+<li>Conhecimentos em Javascript</li>
+</ul>
+<h2 id="a-namegetting-started-with-teoria-um-pouco-de-teoria"><a name="getting-started-with-teori"></a> Um pouco de teoria</h2>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/neuron.png" alt="neuron"></p>
+<p>O <strong>Perceptron</strong> é uma representação, através de código, de um neurônio. Não é uma representação não exata, mas uma representação através de código do que é um neurônio.</p>
+<p>Passos do neurônio:</p>
+<ol>
+<li>Receber entradas através dos <em>detritos</em></li>
+<li>Processar as entradas dentro do neurônio (algoritmo)</li>
+<li>Enviar uma saída através do axônio</li>
+</ol>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/perceptron.png" alt="perceptron"></p>
+<p>Bem mais simples que o biológico, pois se trata de um programa de computador com alusão ao neurônio biológico.</p>
+<p>Ok. Mas e a rede neural?</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/multi-layer-perceptron.png" alt="multi-layer-perceptron"></p>
+<p>Bem, a rede neural (ou <em>neural network</em> em inglês), temos a combinação de vários <em>perceptrons</em> (vários neurônios), com alguns ajustes, ou muitos ajustes :)</p>
+<p>Mas a ideia é basicamente a combinação de vários <em>perceptrons</em>.</p>
+<h2 id="a-namegetting-the-problemaelaborando-melhor-nosso-problema---o-perceptron"><a name="getting-the-problem"></a>Elaborando melhor nosso problema - O <em>Perceptron</em></h2>
+<p>Ele deve receber duas entradas, vamos chamá-las de <code>X1</code> e <code>X2</code> (inputs), processá-las e retornar uma saída <code>Y1</code> (classe).</p>
+<p>Ou seja, nosso <em>perceptron</em> deve resolver um problema de classificação.</p>
+<p>Dado duas entradas (pode ser mais, para simplificação do problema somente duas agora) ele deve responder uma saída que corresponde a uma <em>classe</em>, de prefêrencia a correta.</p>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/classification-problem-2.png" alt="classification-problem-2"></p>
+<p>Nosso problema é a classificação dos círculos.</p>
+<blockquote>
+<p>Lembre-se do plano cartesiado, onde a linha azul é o <code>Y</code> e a linha vermelha é o <code>X</code>.</p>
+</blockquote>
+<p>Nosso <em>perceptron</em> deve classificar os círculos entre abaixo da seta (classe 1) ou acima da seta (classe 2).</p>
+<p>Vamos aos passos do algoritmo:</p>
+<ol>
+<li>
+<p>Pense em um dos desses pontos (qualquer um), ele é representado no plano por dois números (X e Y).
+Esses pontos serão as entradas do <em>perceptron</em>.</p>
+</li>
+<li>
+<p>A saída do perceptron deverá ser a um número que represente sua classificação (se pertence ao grupo dos <em>acima da linha</em> ou do grupo dos <em>abaixo da linha</em>).</p>
+</li>
+<li>
+<p>Caso nosso perceptron responda errado, iremos informar a ele o valor correto para ele se auto ajustar (algoritmo de Gradient Descent, já chegamos lá).</p>
+</li>
+<li>
+<p>Caso ele responda certo, também iremos informá-lo para se auto ajustar.</p>
+</li>
+</ol>
+<p>Não se preocupe, você vai entender melhor com o decorrer da leitura desse artigo.</p>
+<h3 id="componentes-do-perceptron">Componentes do Perceptron</h3>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/perceptron-1.png" alt="perceptron-1"></p>
+<p>Além de nossas entradas <code>X</code> e <code>Y</code>, nosso perceptron também tem <code>weight x</code> e <code>weight y</code>.</p>
+<p>Esses dois componentes são utilizados para <em>pesar</em> nossas entradas.</p>
+<p>Eles serão os itens passíveis de ajustes conforme o resultado e feedback do nosso programa.</p>
+<h3 id="o-algoritmos-do-perceptron">O Algoritmos do Perceptron</h3>
+<p>Passo-a-passo do algoritmo</p>
+<ol>
+<li>A formula: Y = X0 * W0 + X1 * W1</li>
+<li>Activation Function: <em>Sign(n)</em></li>
+<li>if (n &gt;= 0) return +1;</li>
+<li>else return -1;</li>
+<li>Caso número seja positivo ou igual a zero = <strong>+1</strong></li>
+<li>Caso contrário será <strong>-1</strong></li>
+<li>Inicialização dos <em>weights</em> randomicamente com valores entre <code>0</code> e <code>1</code></li>
+</ol>
+<blockquote>
+<p>Obs.: Existem outros tipos de <strong>Activation Function</strong>, mas esse é o mais fácil para entendermos no momento.</p>
+</blockquote>
+<p>##Chega de papo, vamos ao <strong>código</strong>.</p>
+<p>1 - Vamos criar uma pasta vazia chamada de <code>perceptron</code>, nela vamos criar três arquivos.</p>
+<blockquote>
+<ol>
+<li><code>index.html</code> (onde iremos depurar e observar resultados no <em>google chrome</em> &ndash; eu prefiro e gosto do <em>google chrome</em> para depurar o javascript)</li>
+</ol>
+</blockquote>
+<ol start="2">
+<li><code>sketch.js</code> onde irá rodar nosso programa, inicialização de variáveis, <em>main()</em>, etc.</li>
+<li><code>perceptron.js</code>, onde iremos escrever o código do <em>perceptron</em></li>
+<li><code>point.js</code> será nossa representação lógica do ponto no plano cartesiado</li>
+</ol>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/schema.png" alt="schema"></p>
+<p>Aqui estou usando o <strong>Visual Studio Code</strong>, mas você pode utilizar qualquer editor de texto (também é minha preferência para editor de texto).</p>
+<p>2 - Vamos começar pelo nosso arquivo <code>index.html</code>. Vamos colocar tudo que precisamos para começar.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!--index.html--&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">language</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;javascript&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">language</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;javascript&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;point.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;perceptron.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sketch.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>As primeiras duas dependências são necessárias para algumas funções de cálculo como o método <code>random()</code> e <code>map()</code> e também para nos ajudar a desenhar na tela.</p>
+<p>Assim também teremos um feedback visual (ajuda no entendimento da solução).</p>
+<p>3 - Agora ao que interessa, vamos para o arquivo <code>perceptron.js</code>.</p>
+<p>Como descrito acima, nosso perceptron precisa de <code>weights</code> (pesos), um para cada entrada, no nosso caso duas entradas (X1 e X2).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//perceptron.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Perceptron</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weights</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//inicializando os weights com valores random
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//random funcion vem das nossas dependências
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Temos uma classe <code>Perceptron</code>, com uma variáveis <code>weigths</code> (array com duas posições) e a inicializamos com valores randômicos.</p>
+<p>4 - Agora ao nosso método <code>guess()</code> (adivinhar), vamos aplicar a formula descrita acima <em>(Y = X1 * W1 + X2 * W2)</em>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//perceptron.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//inputs --&gt; entrada array de duas posiçoes (X1 e X2)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">guess</span>(<span style="color:#a6e22e">inputs</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">inputs</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">sum</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Coloque dentro da classe <code>Perceptron</code>.</p>
+<p>5 - O método <code>sign()</code>. Este vai fora da classe <code>Perceptron</code>, porém no mesmo arquivo.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//perceptron.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ótimo, agora vamos ver como ficou nosso arquivo <code>perceptron.js</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//perceptron.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//the activation function
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Perceptron</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weights</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lr</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">guess</span>(<span style="color:#a6e22e">inputs</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">inputs</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">sum</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ótimo, hora de testar o funcionamento.</p>
+<p>###<a name="testing-the-perceptron"></a> Testando o perceptron</p>
+<p>1 - Abra o arquivo <code>sketch.js</code> e cole o seguinte conteúdo.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">perceptron</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setup</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">createCanvas</span>(<span style="color:#ae81ff">550</span>, <span style="color:#ae81ff">550</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">perceptron</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Perceptron</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">inputs</span> <span style="color:#f92672">=</span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0.5</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">guess</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">perceptron</span>.<span style="color:#a6e22e">guess</span>(<span style="color:#a6e22e">inputs</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`nosso resultado </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">guess</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">draw</span>() {
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Abra o <code>browser</code> e o <code>console de desenvolvedor</code> com nosso arquivo <code>index.html</code> aberto.</p>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/result-1.png" alt="result-1"></p>
+<p>De <em>refresh</em> no browser por algumas vezes até ver o resultado mudar.</p>
+<p>Isso ocorre devido a nosso <em>weights</em> serem inicializados randomicamente a cada <code>construtor</code>, ou a cada <strong>refresh de página</strong>.</p>
+<p>Perfeito. Chegamos até aqui. Nosso <em>perceptron</em> já está funcionando. Não muito para ser ver aqui, mas avançamos bastante.</p>
+<p>###<a name="getting-ready-to-test-perceptron"></a> Preparando para testar nosso perceptron com uma massa maior - O <strong>Dataset</strong>.</p>
+<p>Nosso dataset (ou massa de dados) terá uma série de círculos, já com label (vamos saber de ante mão a classificação correta) e passar para nosso perceptron classificar - <strong>guess()</strong>.</p>
+<p>####1 - Point.js - Representação do ponto</p>
+<p>Primeiro abra o arquivo <code>point.js</code> e declare-o com o seguinte conteúdo. Ele será nossa representação de ponto no espaço.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//point.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getLabel</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getLabel</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getPixelX</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">px</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">width</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">px</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getPixelY</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">py</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">height</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">py</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">show</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">stroke</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">label</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">px</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getPixelX</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">py</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getPixelY</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ellipse</span>(<span style="color:#a6e22e">px</span>, <span style="color:#a6e22e">py</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">22</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">debug</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`label: </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">label</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> x </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> y </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Vamos entender um pouco da nossa classe.</p>
+<p><code>Construtor</code> recebe dois argumentos, <code>X</code> e <code>Y</code>. Dados os argumentos o próprio ponto se classifica (somente para comparação com o resultado do <code>perceptron</code>).</p>
+<p><code>getLabel</code> bem simples, se <code>x</code> &gt; <code>y</code> é 1, senão é 0.</p>
+<p><code>show()</code> irá se auto desenhar na tela utilizando métodos do <code>p5.js</code>.</p>
+<p><code>debug()</code> escreve no console do browser informações de debug (X, Y e Label).</p>
+<p><code>getPixelX()</code> e <code>getPixelY()</code> convertem o valor de <code>X</code> e <code>Y</code> do plano cartesiado para valores de tela (width e height). Ou seja, caso entrada seja 0.5, ele irá mapear para o valor correspondente na tela de acordo com nossa área de desenho.</p>
+<p>Ah, e antes que me esqueça. Nossas entradas estão entre <code>-1</code> e <code>1</code>, por exemplo <code>-1</code>, <code>0.2</code>, <code>0.993</code> e assim por diante.</p>
+<p>####2 - Preparando o sketch.js
+Legal, vamos criar uma serie de pontos e colocarmos na tela.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//sketch.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">points</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setup</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">createCanvas</span>(<span style="color:#ae81ff">550</span>, <span style="color:#ae81ff">550</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), <span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">draw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">background</span>(<span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">show</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Utilizando a biblioteca <code>p5.js</code> (uma de nossas dependências) só precisamos declarar dois métodos <code>setup()</code> e <code>draw()</code>.</p>
+<p><code>setup()</code> é onde iremos inicializar nossas variáveis.</p>
+<p><code>draw()</code> é onde manipulamos nossas variáveis e realizamos o desenho na tela.</p>
+<p>Pronto, agora um <strong>refresh</strong> no navegador <code>index.html</code> do nosso programa.</p>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/output-1.png" alt="output-1"></p>
+<p>O que vemos aqui? Um série de <em>círculos</em>, alguns <strong>brancos</strong> outros <strong>pretos</strong>. Agora, perceba o padrão, veja que podemos traçar uma linha separando os círculos de cada cor.</p>
+<p>Os brancos pertencem a <strong>classificação 0</strong> e os pretos a <strong>classificação 1</strong>.</p>
+<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/classification-problem-3.png" alt="classification-problem-3"></p>
+<p>###3 - Feedback e classificação para nosso perceptron</p>
+<p>Voltando ao nosso desenho inicial.</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/perceptron-2.png" alt="perceptron-2"></p>
+<p>Agora que temos os valores corretos, o que temos que fazer é informar ao <em>perceptron</em> se ele <strong>errou</strong>, e quão errado foi, para se autocorrigir (mais código claro).</p>
+<p>Para tal façanha, o algoritmo será:</p>
+<blockquote>
+<p>ERROR = DESIRED OUTPUT - GUESS OUTPUT</p>
+</blockquote>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/error-table.png" alt="error-table"></p>
+<p>Em nossa tabela, onde <em>deseired</em> é o desejado, <em>guess</em> foi o retornado pelo <em>perceptron</em> e <em>error</em> é o cálculo do erro (quão errado foi).</p>
+<p>Lembre-se, a ideia é encontrar os <strong>weights</strong> ótimos, com essa formula podemos ajustar para chegar lá.</p>
+<p>Uma das maneiras é a utilização do algoritmo de <strong>gradient descent</strong>, mas vamos utilizar um algoritmo um pouco mais simples nesse momento.</p>
+<p>Nossa formula:</p>
+<blockquote>
+<p>W0 = error * X0</p>
+</blockquote>
+<p>Nosso processo será:</p>
+<blockquote>
+<p>1 - Prover ao perceptron inputs que já sabemos a resposta</p>
+</blockquote>
+<blockquote>
+<p>2 - Perguntar ao perceptron a resposta</p>
+</blockquote>
+<blockquote>
+<p>3 - Computar o erro (acertou ou error)</p>
+</blockquote>
+<blockquote>
+<p>4 - Ajustar o <strong>Weigths</strong> de acordo com o erro</p>
+</blockquote>
+<blockquote>
+<p>5 - Retornar ao primeiro passo e repetir</p>
+</blockquote>
+<p>Vamos programar nosso método <strong>train()</strong>.</p>
+<p>####4 - Método Train()</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//perceptron.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">train</span>(<span style="color:#a6e22e">inputs</span>, <span style="color:#a6e22e">target</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">guess</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">guess</span>(<span style="color:#a6e22e">inputs</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">error</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">target</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">guess</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//tune all the weights
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+=</span> <span style="color:#a6e22e">error</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">inputs</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lr</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Mas espere, o que é essa variável <strong>this.lr</strong>? Não tínhamos isso antes.</p>
+<p>Bom, esse é nosso <strong>Learning Rate</strong>. Isso resolve o problema de <strong>over shoot</strong> (ajustar demais).</p>
+<blockquote>
+<p>O que é ótimo para uma *<em>entrada</em> não é o ótimo para <strong>outra</strong>.</p>
+</blockquote>
+<p>Essa variável <strong>Learning rate</strong> irá nos ajudar a ajustar de maneira mais assertiva os nossos <em>weights</em>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//perceptron.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">num</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Perceptron</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weights</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//learning rate
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">lr</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">numberWeigths</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#a6e22e">numberWeigths</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">guess</span>(<span style="color:#a6e22e">inputs</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">inputs</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">sum</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">train</span>(<span style="color:#a6e22e">inputs</span>, <span style="color:#a6e22e">target</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">guess</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">guess</span>(<span style="color:#a6e22e">inputs</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">error</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">target</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">guess</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">+=</span> <span style="color:#a6e22e">error</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">inputs</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">*</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lr</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Nosso <code>perceptron.js</code> por completo. Agora vamos ajustar nossa <code>sketch.js</code> para utilizamos o método <strong>train()</strong>.</p>
+<p>####5 - Ajustando sketch.js para utilizar o método Train()</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//sketch.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">perceptron</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">points</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setup</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">createCanvas</span>(<span style="color:#ae81ff">550</span>, <span style="color:#ae81ff">550</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">perceptron</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Perceptron</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), <span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//points[i].debug();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">draw</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">background</span>(<span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">show</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">noStroke</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">inputs</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">y</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">label</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">guess</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">perceptron</span>.<span style="color:#a6e22e">guess</span>(<span style="color:#a6e22e">inputs</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">guess</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">target</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">00</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ellipse</span>(<span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">getPixelX</span>(), <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">getPixelY</span>(), <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">15</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">drawLine</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">trainSinglePoint</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">drawLine</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stroke</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">line</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">height</span>, <span style="color:#a6e22e">width</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">trainningIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trainSinglePoint</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">trainningIndex</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">inputs</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">y</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">perceptron</span>.<span style="color:#a6e22e">train</span>(<span style="color:#a6e22e">inputs</span>, <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">trainningIndex</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">trainningIndex</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">trainningIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Execute novamente nosso programa no browser e veja que agora os circulos <em>verdes</em> indicam acerto do <em>perceptron</em> e os círculos <em>vermelhos</em> indicam erro.</p>
+<p>E a cada loop do método <strong>draw()</strong> executamos o método <strong>train()</strong> do perceptron.</p>
+<p>Por isso os círculos ficam mudando de cor para eventualmente parar até todos estarem certos.</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/perceptron-3-1.png" alt="perceptron-3-1"></p>
+<p>Faça um experimente, comente o método <strong>trainSinglePoint()</strong> no `sketch.js*, você verá o resultado sem nenhum treinamento.</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/perceptron-4.png" alt="perceptron-4"></p>
+<p>###O <em>Bias</em> (terceiro elemento)</p>
+<p>Mas nosso perceptron tem um grande problema. O que acontece quando enviamos o ponto 0,0 para ele?</p>
+<blockquote>
+<p>X0 = 0</p>
+</blockquote>
+<blockquote>
+<p>X1 = 0</p>
+</blockquote>
+<p>Segundo nosso algoritmo o resultado será sempre 0.</p>
+<blockquote>
+<p>Y0 = X0 * W0 + X1 * W1</p>
+</blockquote>
+<p>Mas isso é um problema por que? Você me pergunta.</p>
+<p>Considere a seguinte linha. (formula da reta &ndash;&gt; y = mx + b).</p>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/bias-sample.png" alt="bias-sample"></p>
+<p>O nosso algoritmo nunca irá acertar, porque a linha não passa pelo centro do plano (0,0). Nunca!</p>
+<p>Para evitar esse dilema, nosso perceptron exigirá uma terceira entrada, geralmente chamada de entrada de <strong>bias</strong>. Uma entrada de o valor de 1 e que também é ponderada.</p>
+<p>Aqui está o nosso <em>perceptron</em> com a adição do <strong>bias</strong>:</p>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/perceptron-5.png" alt="perceptron-5"></p>
+<p>###Adicionamento o Bias ao código</p>
+<p>Primeiro vamos utilizar uma formula genérica para calcular nossa linha de classificação.</p>
+<p>1-No arquivo <code>point.js</code> e adicione a seguinte função fora da classe.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//point.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">f</span>(<span style="color:#a6e22e">x</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//y = mx + b
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.3</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.2</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>2 - No mesmo arquivo modifique a função <strong>getLabel()</strong>. Isso irá obter a classificação de acordo com nossa função de reta.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">getLabel</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lineY</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">f</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">lineY</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>2- Arquivo <code>sketch.js</code> vamos modificar a escrita da linha para utilizar-se da nova função.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//scketh.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">drawLine</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stroke</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//código antigo
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//line(0, height, width, 0);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//construindo o primeiro ponto (-1 e -1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">f</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//construindo o segundo ponto (1 e 1)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">f</span>(<span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//desenhando a nova linha
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">line</span>(<span style="color:#a6e22e">p1</span>.<span style="color:#a6e22e">getPixelX</span>(), <span style="color:#a6e22e">p1</span>.<span style="color:#a6e22e">getPixelY</span>(), <span style="color:#a6e22e">p2</span>.<span style="color:#a6e22e">getPixelX</span>(), <span style="color:#a6e22e">p2</span>.<span style="color:#a6e22e">getPixelY</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Rode novamente no browser para ver a nova linha.</p>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/new-line.png" alt="new-line"></p>
+<p>Intencionalmente não passamos pelo centro da tela (0, 0 no plano cartesiado).</p>
+<p>Perceba que se você deixar rodando o programa nunca vai chegar ao correto resultado.</p>
+<p>###Adicionando o bias ao algoritmo</p>
+<p>O bias no perceptron.</p>
+<blockquote>
+<p>Y = W1 / W2 * X + B</p>
+</blockquote>
+<p>Onde B é o Bias.</p>
+<p>1 - No arquivo <code>perceptron.js</code>. Vamos modificá-lo para receber pelo construtor a quantidade de <code>weigths</code> (um deles será o bias).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Perceptron</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weights</span> <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">lr</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">numberWeigths</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array(<span style="color:#a6e22e">numberWeigths</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    } 
+</span></span><span style="display:flex;"><span>    ...
+</span></span></code></pre></div><p>2 - Arquivo <code>point.js</code> vamos adicionar o <strong>bias</strong>. Cada ponto irá carregar o próprio <strong>bias</strong>, mesmo que seja sempre o mesmo valor :)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//point.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Point</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">bias</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">bias</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getLabel</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>3 - no arquivo <code>sketch.js</code> vamos modificar o método <strong>draw()</strong> para passarmos o bias quando mandarmos treinar.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">//sketch.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">draw</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">background</span>(<span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">show</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//antigo método de train
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//perceptron.train(inputs, pt.label);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//input com o bias
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">inputs</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">bias</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">label</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">guess</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">perceptron</span>.<span style="color:#a6e22e">guess</span>(<span style="color:#a6e22e">inputs</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">guess</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">target</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">00</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">noStroke</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ellipse</span>(<span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">getPixelX</span>(), <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">getPixelY</span>(), <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">15</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">drawLine</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">trainSinglePoint</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>4 - Agora na função <strong>setup()</strong> vamos ajustar o construtor do <strong>perceptron</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setup</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">createCanvas</span>(<span style="color:#ae81ff">550</span>, <span style="color:#ae81ff">550</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">perceptron</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Perceptron</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), <span style="color:#a6e22e">random</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//points[i].debug();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>5 - E agora na função <strong>trainSinglePoint()</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">trainningIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">trainSinglePoint</span>() {  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pt</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">points</span>[<span style="color:#a6e22e">trainningIndex</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">inputs</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">bias</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">perceptron</span>.<span style="color:#a6e22e">train</span>(<span style="color:#a6e22e">inputs</span>, <span style="color:#a6e22e">pt</span>.<span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">trainningIndex</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">trainningIndex</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">points</span>.<span style="color:#a6e22e">length</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">trainningIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Tudo pronto. Rode novamente no browser. Tudo deve estar funcionando e o <em>perceptron</em> sendo capaz de determinar todos os pontos corretamente.</p>
+<h3 id="visualizando-o-que-o-perceptron-acha-que-é-a-linha-de-classificação">Visualizando o que o perceptron acha que é a linha de classificação</h3>
+<h4 id="1---adicionando-o-método-guessy-ao-perceptron">1 - Adicionando o método <em>guessY()</em>* ao perceptron</h4>
+<p>Abra arquivo <code>perceptron.js</code> e adicione o código do método <strong>guessY()</strong> a classe <strong>Perceptron</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">guessY</span>(<span style="color:#a6e22e">x</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">w0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">w1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">w2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">weights</span>[<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>(<span style="color:#a6e22e">w2</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">w1</span>) <span style="color:#f92672">-</span> (<span style="color:#a6e22e">w0</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">w1</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">x</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Agora abra o arquivo <code>sketch.js</code> novamente no método <strong>drawLine()</strong> e substitua por.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">drawLine</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stroke</span>(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//line(0, height, width, 0);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">f</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">f</span>(<span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">line</span>(<span style="color:#a6e22e">p1</span>.<span style="color:#a6e22e">getPixelX</span>(), <span style="color:#a6e22e">p1</span>.<span style="color:#a6e22e">getPixelY</span>(), <span style="color:#a6e22e">p2</span>.<span style="color:#a6e22e">getPixelX</span>(), <span style="color:#a6e22e">p2</span>.<span style="color:#a6e22e">getPixelY</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">guessP1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">perceptron</span>.<span style="color:#a6e22e">guessY</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">guessP2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Point</span>(<span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">perceptron</span>.<span style="color:#a6e22e">guessY</span>(<span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">line</span>(<span style="color:#a6e22e">guessP1</span>.<span style="color:#a6e22e">getPixelX</span>(), <span style="color:#a6e22e">guessP1</span>.<span style="color:#a6e22e">getPixelY</span>(), <span style="color:#a6e22e">guessP2</span>.<span style="color:#a6e22e">getPixelX</span>(), <span style="color:#a6e22e">guessP2</span>.<span style="color:#a6e22e">getPixelY</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Perceba que agora estamos construindo os pontos X1, Y1 e X2 e Y2 através do método <strong>guessY()</strong>. Isso irá nos dizer o que o <strong>Perceptron</strong> acha que é o correto.</p>
+<p>Pronto. Chegamos ao fim. <em>Refresh</em> na tela de novo.</p>
+<p>Agora te recomendo <em>brincar</em> um pouco com a variável <strong>learning rate</strong>, aumente e diminua ela para entender como ela funciona.</p>
+<h2 id="próximas-etapas">Próximas etapas</h2>
+<ul>
+<li>Adicione círculos para o <em>perceptron</em> resolver que não façam parte do dataset inicial</li>
+<li>Evolua o programa para resolver o problema XOR</li>
+</ul>
+<h2 id="referências">Referências</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ntKn5TPHHAk">Youtube&rsquo;s Daniel Shiffman I - 10.2: Neural Networks: Perceptron Part 1 - The Nature of Code</a></li>
+<li><a href="https://www.youtube.com/watch?v=XJ7HLz9VYz0&amp;list=PLRqwX-V7Uu6Y7MdSCaIfsxc561QI0U0Tb">Youtube&rsquo;s Daniel Shiffman II - 10.1: Introduction to Neural Networks - The Nature of Code</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Perceptron">Wikipedia - Perceptron</a></li>
+<li><a href="https://natureofcode.com/">Nature of Code E-Book</a></li>
+</ul>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/machine-learning/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Machine-Learning</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/perceptron/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Perceptron</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/pt/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Pt</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Javascript/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Javascript</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Azure App Service and Cloudflare with Full SSL (Strict) | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.
+At the end we will have the following configuration:
+CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Azure App Service and Cloudflare with Full SSL (Strict)">
+  <meta property="og:description" content="In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.
+At the end we will have the following configuration:
+CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-12-15T23:39:13+00:00">
+    <meta property="article:modified_time" content="2019-12-15T23:39:13+00:00">
+    <meta property="article:tag" content="Azure">
+    <meta property="article:tag" content="Devops">
+    <meta property="article:tag" content="En">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Websecurity">
+    <meta property="article:tag" content="Https">
+
+  <meta itemprop="name" content="Azure App Service and Cloudflare with Full SSL (Strict)">
+  <meta itemprop="description" content="In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.
+At the end we will have the following configuration:
+CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.">
+  <meta itemprop="datePublished" content="2019-12-15T23:39:13+00:00">
+  <meta itemprop="dateModified" content="2019-12-15T23:39:13+00:00">
+  <meta itemprop="wordCount" content="699">
+  <meta itemprop="keywords" content="Azure,Devops,En,Security,Websecurity,Https">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Azure App Service and Cloudflare with Full SSL (Strict)">
+  <meta name="twitter:description" content="In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.
+At the end we will have the following configuration:
+CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Azure App Service and Cloudflare with Full SSL (Strict)</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-12-15T23:39:13Z">December 15, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.</p>
+<p>At the end we will have the following configuration:</p>
+<ul>
+<li>CloudFlare as reverse proxy</li>
+<li>Azure Web App as a web service</li>
+<li>Valid SSL (green lock)</li>
+<li>Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate)</li>
+<li>Application Domains <em>/</em> (A Name) and <em><strong>GHOST_URL</strong>/</em> (C Name)</li>
+</ul>
+<p>Our goal beyond valid SSL (green lock) is end-to-end encryption.
+Encryption between Cloudflare and the user and between Cloudflare and Azure Web App.</p>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/illustration-strict-ssl--2-.png" alt="illustration-strict-ssl-2"></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><strong>Cloudflare Account</strong></li>
+<li><strong>Azure Web Apps</strong> with application running (may be native <em>blank</em> of App Service)</li>
+<li><strong>App Service Plan</strong> with minimum plan <em>Basic</em></li>
+<li><a href="https://www.openssl.org/">OpenSSL</a> installed</li>
+<li>Domain configured in Cloudflare</li>
+</ul>
+<p>Note: <em>shared</em> and <em>free</em> layers of <em>Azure App Service Plan</em> do not allow you to perform SSL configuration.</p>
+<h2 id="knowing-the-environment">Knowing the Environment</h2>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-1-1.png" alt="cf-blog-1-1"></p>
+<p><em>Blog <a href="https://github.com/YannickRe/Ghost-Azure">Ghost</a> running on the App Service and domain https: //ghost-azure5ae4.azurewebsites.net</em></p>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-2.png" alt="cf-blog-2">
+<em>Web App Service Application</em></p>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-3.png" alt="cf-blog-3">
+<em>Cloudflare created</em></p>
+<h2 id="setting-up-the-cloudflare-domain">Setting Up the Cloudflare Domain</h2>
+<p>First go to the <em>Custom domains</em> tab in Azure Web App and copy the <em>web app</em> IP.</p>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-7.png" alt="cf-blog-7"></p>
+<p>Go to <em>Cloudflare</em> and the <em>DNS</em> tab and configure as below.</p>
+<ul>
+<li>First Record
+<ul>
+<li>Type <strong>A</strong></li>
+<li>Name <strong>@</strong></li>
+<li>Target <strong>Web App IP</strong></li>
+<li>Proxy status: DNS only</li>
+</ul>
+</li>
+<li>Second Record
+<ul>
+<li>Type <strong>C</strong></li>
+<li>Name <strong>www</strong></li>
+<li>Target <strong>@</strong></li>
+<li>Proxy status: DNS only</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-23.png" alt="cf-blog-23"></p>
+<p>Finally configure the TXT register.</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-8.png" alt="cf-blog-8">
+<em>The TXT record shows Azure that you own the domain you want to configure.</em></p>
+<blockquote>
+<p>After all set up we will delete this record.</p>
+</blockquote>
+<p>Ready. We should have something like:
+<img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-9.png" alt="cf-blog-9"></p>
+<h2 id="setting-up-the-azure-web-app-domain">Setting Up the Azure Web App Domain</h2>
+<p>We are ready to configure the Azure App Service domain.</p>
+<ol>
+<li>Open the blade <strong>Custom domains</strong></li>
+<li>Click <strong>Add custom domain</strong></li>
+<li>Enter our domain in <strong>Custom domain</strong></li>
+<li>Click on <strong>Validate</strong></li>
+<li>Validate the domain</li>
+</ol>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-10.png" alt="cf-blog-10"></p>
+<p>We must perform the steps the main domain <code>@</code> and the sub domain <code>www</code>.</p>
+<p>Note: For the main domain (A Name - rmauro.com.br) use the record type <code>A record</code>.
+For the second domain (subdomain) (C Name - <a href="https://www.rmauro.com.br">www.rmauro.com.br</a>) use the record type <code>C record</code></p>
+<p>After validated click <strong>Add custom domain</strong></p>
+<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-11.png" alt="cf-blog-11"></p>
+<p>We should have something like:</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-12-1.png" alt="cf-blog-12-1"></p>
+<p>When we try to access the site we should receive the red lock. This is because the digital certificate returned is from *.azurewebsites.net. and not ours - for now.</p>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-13.png" alt="cf-blog-13"></p>
+<h3 id="setting-up-certificates">Setting Up Certificates</h3>
+<p>In cloudflare we will use the <strong>Full (strict)</strong> digital certificate template. This makes <strong>Cloudflare</strong> validate the certificate when communicating with the server, in this case Azure Web App.</p>
+<p>One more layer of verification, making our application even more secure.</p>
+<h3 id="configuring-encryption-mode-and-generating-keys">Configuring encryption mode and generating keys</h3>
+<p>Open <strong>Cloudflare</strong> on the <strong>SSL/TLS</strong> tab and the <strong>Overview</strong> subtab select the <strong>Full (strict)</strong> type.</p>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-14.png" alt="cf-blog-14"></p>
+<p>Now we will create the trusted digital certificate through Cloudflare and set it up in Azure.</p>
+<p>Go to the <strong>Origin Server</strong> tab and click <strong>Create certificate</strong></p>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-15-1.png" alt="cf-blog-15-1"></p>
+<p>Leave the default settings.</p>
+<ul>
+<li>Let Cloudflare generate a private key and CSR</li>
+<li>Private Key RSA</li>
+<li>List of hostnames - as configured in the previous steps.</li>
+</ul>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-16.png" alt="cf-blog-16"></p>
+<p>Copy the text content to <em>notepad</em> and save as:</p>
+<ul>
+<li>Origin Certificate -&gt; rmauro.com.br.pem</li>
+<li>Private Key -&gt; rmauro.com.br.key</li>
+</ul>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-17.png" alt="cf-blog-17"></p>
+<h4 id="configuring-azure-web-app-with-certificate">Configuring Azure Web App with Certificate</h4>
+<p>First let&rsquo;s generate the key in <strong>pfx</strong> format using <strong>openssl</strong>.</p>
+<p>Open the <em>command prompt</em> and navigate to the key folder and run the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; openssl pkcs12 -inkey rmauro.com.br.key -in rmauro.com.br.pem -export -out rmauro.com.br.pfx
+</span></span></code></pre></div><p>This command will prompt for <em>passowrd</em>. Enter a strong password for our key.</p>
+<p>In the Azure portal navigate to the <em>Custom domains</em> subblade again. Now let&rsquo;s upload the digital certificate we just created and configure it with our domain (Green Lock).</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-18-2.png" alt="cf-blog-18-2"></p>
+<ol>
+<li>Click <em>Add Binding</em></li>
+<li>Select the domain <em>rmauro.com.br</em></li>
+<li>Click <em>Upload PFX Certificate</em></li>
+<li>Select the newly generated PFX (rmauro.com.br.pfx)</li>
+<li>Enter the certificate password when prompted</li>
+</ol>
+<p>Okay, now we have the certificate to use on our site.</p>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-19-1.png" alt="cf-blog-19-1"></p>
+<p>Now select <em>Cloudflare Origin Certificate</em> and <em>TLS/SSL Type</em> - <em>SNI SSL</em> and click <em>Add Binding</em>.</p>
+<p>Do the same for the <em>www</em> subdomain.</p>
+<p>We should have something like:</p>
+<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-20-1.png" alt="cf-blog-20-1"></p>
+<h3 id="cloudflare-enabled-as-dns-and-proxy">Cloudflare Enabled as DNS and Proxy</h3>
+<p>Go back to Cloudflare and configure Proxy DNS for the domains.</p>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/cf-blog-21-1.png" alt="cf-blog-21-1"></p>
+<p>All done. Green lock and end-to-end encryption using Full (strict) cryption of Cloudflare.</p>
+<p>I hope you guys enjoy it. Share with your friends.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/Azure/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/devops/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Devops</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/security/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Security</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/websecurity/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Websecurity</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/https/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Https</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/hsts-definition-and-how-to-enable-it-in-iis/">HSTS - What&#39;s it and how to enable it in IIS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/practice-of-sql-injection/">Practice of SQL Injection</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-webjob-azure-cron-expressions/">Demo WebJob Azure - CRON expressions</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-azure-disk-encryption-though-az-cli/">Enable Azure Disk Encryption though az-cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-vm-though-powershell/">Create Azure VM though PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/sql-injection-na-pratica/">SQL Injection na Prática - Executando o Ataque</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

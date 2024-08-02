@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/Github/</link>
+    <description>Recent content in Github on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Jul 2024 21:52:26 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/Github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Set up GitHub with SSH Config</title>
+      <link>http://localhost:1313/post/github-ssh-key-authentication-and-ssh-config/</link>
+      <pubDate>Sat, 27 Jul 2024 21:52:26 +0000</pubDate>
+      <guid>http://localhost:1313/post/github-ssh-key-authentication-and-ssh-config/</guid>
+      <description>By setting up SSH keys for GitHub, you can securely connect to your repositories without the hassle of repeatedly entering your username and password.&#xA;This guide will walk you through the process of setting up and using SSH keys with GitHub via the SSH config file.&#xA;While many developers use the ssh-agent to manage their SSH keys, an alternative method involves configuring the SSH config file for even smoother operations.</description>
+    </item>
+  </channel>
+</rss>

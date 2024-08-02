@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure-Webjobs on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/azure-webjobs/</link>
+    <description>Recent content in Azure-Webjobs on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 May 2019 19:39:35 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/azure-webjobs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Demo WebJob Azure - CRON expressions</title>
+      <link>http://localhost:1313/post/demo-webjob-azure-cron-expressions/</link>
+      <pubDate>Fri, 31 May 2019 19:39:35 +0000</pubDate>
+      <guid>http://localhost:1313/post/demo-webjob-azure-cron-expressions/</guid>
+      <description>#CRON expressions&#xA;Azure Functions uses the NCronTab library to interpret CRON expressions. A CRON expression includes six fields:&#xA;{second} {minute} {hour} {day} {month} {day-of-week}&#xA;Each field can have one of the following types of values:&#xA;Type Example When triggered A specific value 0 5 * * * * at hh:05:00 where hh is every hour (once an hour) All values (*) 0 * 5 * * * at 5:mm:00 every day, where mm is every minute of the hour (60 times a day) A range (- operator) 5-7 * * * * * at hh:mm:05,hh:mm:06, and hh:mm:07 where hh:mm is every minute of every hour (3 times a minute) A set of values (, operator) 5,8,10 * * * * * at hh:mm:05, hh:mm:08, and hh:mm:10 where hh:mm is every minute of every hour (3 times a minute) An interval value (/ operator) 0 */5 * * * * at hh:05:00, hh:10:00, hh:15:00, and so on through hh:55:00 where hh is every hour (12 times an hour) Refs.</description>
+    </item>
+  </channel>
+</rss>

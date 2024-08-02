@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DotNet Core on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/DotNet-Core/</link>
+    <description>Recent content in DotNet Core on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 05 Jul 2024 02:30:13 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/DotNet-Core/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Set up Entity Framework Core In Memory Database Provider</title>
+      <link>http://localhost:1313/post/set-up-entity-framework-core-in-memory-store/</link>
+      <pubDate>Fri, 05 Jul 2024 02:30:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/set-up-entity-framework-core-in-memory-store/</guid>
+      <description>One of the useful features of EF Core is the In-Memory Database Provider, which is perfect for testing purposes. In this guide, we will walk through setting up EF Core with an in-memory database, demonstrating how to configure and use it effectively.&#xA;Step-by-Step Guide Start by creating a new .NET console using the .NET CLI and add the required packages.&#xA;dotnet new console -n EfCoreInMemoryDemo cd EfCoreInMemoryDemo dotnet add package Microsoft.</description>
+    </item>
+    <item>
+      <title>Health Checks on your ASP.NET Core Application</title>
+      <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
+      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-health-checks-to-net-core-application/</guid>
+      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.&#xA;Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.&#xA;Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
+    </item>
+    <item>
+      <title>API Key Authentication - Extending the native implementation</title>
+      <link>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</link>
+      <pubDate>Sun, 28 Mar 2021 21:43:45 +0000</pubDate>
+      <guid>http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/</guid>
+      <description>In this article, we&amp;rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.&#xA;services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&amp;gt; //here is our handler { opt.ApiKey = &amp;#34;Hello-World&amp;#34;; opt.QueryStringKey = &amp;#34;key&amp;#34;; }); Ok, ok, ok. I know it&amp;rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.</description>
+    </item>
+    <item>
+      <title>Adding Health Checks UI</title>
+      <link>http://localhost:1313/post/adding-health-checks-ui/</link>
+      <pubDate>Mon, 21 Sep 2020 18:17:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-health-checks-ui/</guid>
+      <description>This is the second article about Health Checks and Application Monitoring.&#xA;Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!&#xA;Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.</description>
+    </item>
+    <item>
+      <title>Getting the file name without extension in C# - #TIP</title>
+      <link>http://localhost:1313/post/getting-the-file-name-without-extenion-in-csharp/</link>
+      <pubDate>Tue, 08 Sep 2020 17:47:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-the-file-name-without-extenion-in-csharp/</guid>
+      <description>These days I was asking myself how to get the file name without the extension. I confess I was tempted to use a regex to solve this problem :)&#xA;But no worries. There is a method in System.IO.Path specific for this situation.&#xA;using System.IO; /// /// Get file name without extension /// static string GetFileName(string path) { return Path.GetFileNameWithoutExtension(path); } /// /// Get file name without extension /// static string GetFileName(FileInfo fileInfo) { return Path.</description>
+    </item>
+    <item>
+      <title>Deploying .Net container App to Heroku cloud</title>
+      <link>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</link>
+      <pubDate>Sun, 18 Aug 2019 18:15:42 +0000</pubDate>
+      <guid>http://localhost:1313/post/deploying-net-container-app-to-heroku-cloud/</guid>
+      <description>I&amp;rsquo;m tired of searching every time I need to deploy to heroku cloud. Being that said I&amp;rsquo;m finally writing down the steps do deploy a docker container app to Heroku cloud.&#xA;By the way, Heroku Cloud it is really cool.&#xA;###Requirements to deploy&#xA;Docker client (windows or linux) installed Link Heroku CLI (command line interface) installed Link Application with a Dockerfile ###Changes you have to make in your Dockerfile&#xA;First remove the Entrypoint and EXPOSE statments of your Dockerfile.</description>
+    </item>
+    <item>
+      <title>How to migrate .Net Core 1.0 to 1.1</title>
+      <link>http://localhost:1313/post/how-to-migrate-asp-net-core-1-0-to-1-1/</link>
+      <pubDate>Wed, 04 Jan 2017 00:40:41 +0000</pubDate>
+      <guid>http://localhost:1313/post/how-to-migrate-asp-net-core-1-0-to-1-1/</guid>
+      <description>Hi guys!&#xA;In this post I&amp;rsquo;ll show how to migrate a .Net project from 1.0 to 1.1 (current the last version) using Visual Studio.&#xA;##Preparing the solution Let&amp;rsquo;s starting by creating our starting project.&#xA;In Visual Studio go to File -&amp;gt; New Project then choose the template ASP.NET Core Web Application (.NET Core)&#xA;Enter the name &amp;ldquo;SampleProject&amp;rdquo; then click OK.&#xA;Now select Empty and hit OK.&#xA;Build the app to verify you don&amp;rsquo;t have any compiler errors.</description>
+    </item>
+  </channel>
+</rss>

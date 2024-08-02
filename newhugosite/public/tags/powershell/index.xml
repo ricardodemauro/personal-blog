@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Powershell on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/powershell/</link>
+    <description>Recent content in Powershell on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Sep 2020 22:57:25 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generating a Self-Signed Certificate using Powershell</title>
+      <link>http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/</link>
+      <pubDate>Wed, 16 Sep 2020 22:57:25 +0000</pubDate>
+      <guid>http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/</guid>
+      <description>A self-signed certificate it&amp;rsquo;s very easy to create and helps on with local development and testing.&#xA;With a Single Line of PowerShell code we create a certificate.&#xA;First, open the PowerShell as Administrator and run the following command:&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; The default expiration is 1 year. If you want a custom expiration date use option -NotAfter.&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; ` -NotAfter [System.</description>
+    </item>
+    <item>
+      <title>Create Azure VM though PowerShell</title>
+      <link>http://localhost:1313/post/create-azure-vm-though-powershell/</link>
+      <pubDate>Mon, 27 May 2019 22:56:17 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-azure-vm-though-powershell/</guid>
+      <description>A right to the point guide of how to create Virtual Machines in Azure with Powershell</description>
+    </item>
+  </channel>
+</rss>

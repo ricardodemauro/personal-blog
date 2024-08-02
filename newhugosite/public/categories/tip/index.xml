@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tip on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/tip/</link>
+    <description>Recent content in Tip on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Sep 2020 22:57:25 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/tip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generating a Self-Signed Certificate using Powershell</title>
+      <link>http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/</link>
+      <pubDate>Wed, 16 Sep 2020 22:57:25 +0000</pubDate>
+      <guid>http://localhost:1313/post/generating-a-self-signed-certificate-using-powershell/</guid>
+      <description>A self-signed certificate it&amp;rsquo;s very easy to create and helps on with local development and testing.&#xA;With a Single Line of PowerShell code we create a certificate.&#xA;First, open the PowerShell as Administrator and run the following command:&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; The default expiration is 1 year. If you want a custom expiration date use option -NotAfter.&#xA;New-SelfSignedCertificate ` –DnsName &amp;lt;DNS-Name&amp;gt; ` -CertStoreLocation &amp;#34;cert:\LocalMachine\My&amp;#34; ` -NotAfter [System.</description>
+    </item>
+    <item>
+      <title>Compress files in memory (.zip) using C#</title>
+      <link>http://localhost:1313/post/compress-zip-files-in-memory-using-csharp/</link>
+      <pubDate>Wed, 09 Sep 2020 19:59:29 +0000</pubDate>
+      <guid>http://localhost:1313/post/compress-zip-files-in-memory-using-csharp/</guid>
+      <description>Here is a code snippet of how to compress one or many files to a zip archive in memory using C#.&#xA;It works in .Net Core and .Net Full Framework&#xA;public static byte[] GetZipArchive(params InMemoryFile[] files) { byte[] archiveFile; using (var archiveStream = new MemoryStream()) { using (var archive = new ZipArchive(archiveStream, ZipArchiveMode.Create, true)) { foreach (var file in files) { var zipArchiveEntry = archive.CreateEntry(file.FileName, CompressionLevel.Fastest); using var zipStream = zipArchiveEntry.</description>
+    </item>
+    <item>
+      <title>Getting the file name without extension in C# - #TIP</title>
+      <link>http://localhost:1313/post/getting-the-file-name-without-extenion-in-csharp/</link>
+      <pubDate>Tue, 08 Sep 2020 17:47:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-the-file-name-without-extenion-in-csharp/</guid>
+      <description>These days I was asking myself how to get the file name without the extension. I confess I was tempted to use a regex to solve this problem :)&#xA;But no worries. There is a method in System.IO.Path specific for this situation.&#xA;using System.IO; /// /// Get file name without extension /// static string GetFileName(string path) { return Path.GetFileNameWithoutExtension(path); } /// /// Get file name without extension /// static string GetFileName(FileInfo fileInfo) { return Path.</description>
+    </item>
+    <item>
+      <title>Libraries.io - A Library of frameworks #tip</title>
+      <link>http://localhost:1313/post/libraries-io-a-library-of-frameworks-tip/</link>
+      <pubDate>Thu, 19 Jan 2017 15:27:55 +0000</pubDate>
+      <guid>http://localhost:1313/post/libraries-io-a-library-of-frameworks-tip/</guid>
+      <description>Theses days I was trying to find the latest version of some framework I was using. Searching on web I finally found this website https://libraries.io/.&#xA;This nice and complete website has informations about almost every library/framework you know.&#xA;Take a look, share https://libraries.io/</description>
+    </item>
+  </channel>
+</rss>

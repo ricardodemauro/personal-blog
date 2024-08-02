@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Oracle ODP.NET with truly Async Methods in C# | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Oracle&rsquo;s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
+Under PreRelease until today : 2023-08-24
+Oracle.ManagedDataAccess.Core - pre release
+Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let&rsquo;s take a moment to understand the power of asynchronous programming in C#.
+The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Oracle ODP.NET with truly Async Methods in C#">
+  <meta property="og:description" content="Oracle’s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
+Under PreRelease until today : 2023-08-24
+Oracle.ManagedDataAccess.Core - pre release
+Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let’s take a moment to understand the power of asynchronous programming in C#.
+The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-08-24T18:01:18+00:00">
+    <meta property="article:modified_time" content="2023-08-24T18:01:18+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="DotNet">
+    <meta property="article:tag" content="Oracle-Sql">
+    <meta property="article:tag" content=".NET 6">
+    <meta property="article:tag" content=".NET 7">
+
+  <meta itemprop="name" content="Oracle ODP.NET with truly Async Methods in C#">
+  <meta itemprop="description" content="Oracle’s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
+Under PreRelease until today : 2023-08-24
+Oracle.ManagedDataAccess.Core - pre release
+Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let’s take a moment to understand the power of asynchronous programming in C#.
+The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.">
+  <meta itemprop="datePublished" content="2023-08-24T18:01:18+00:00">
+  <meta itemprop="dateModified" content="2023-08-24T18:01:18+00:00">
+  <meta itemprop="wordCount" content="499">
+  <meta itemprop="keywords" content="Oracle,DotNet,Oracle-Sql,.NET 6,.NET 7">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Oracle ODP.NET with truly Async Methods in C#">
+  <meta name="twitter:description" content="Oracle’s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.
+Under PreRelease until today : 2023-08-24
+Oracle.ManagedDataAccess.Core - pre release
+Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let’s take a moment to understand the power of asynchronous programming in C#.
+The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Oracle ODP.NET with truly Async Methods in C#</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2023-08-24T18:01:18Z">August 24, 2023</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Oracle&rsquo;s ODP.NET 23c Dev (or <em>Oracle.ManagedDataAccess.Core</em>) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.</p>
+<p>Under <em>PreRelease</em> until today : 2023-08-24</p>
+<figure><img src="https://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/oracle-pre-release.png"
+    alt="Oracle.ManagedDataAccess.Core - pre release"><figcaption>
+      <p>Oracle.ManagedDataAccess.Core - pre release</p>
+    </figcaption>
+</figure>
+
+<h2 id="asyncawait-in-c">Async/Await in C#</h2>
+<p>Before delving into the specifics of ODP.NET 23c Dev for C#, let&rsquo;s take a moment to understand the power of asynchronous programming in C#.</p>
+<p>The <em>async/await</em> pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.</p>
+<p>This results in improved responsiveness, smoother user experiences, and efficient utilization of system resources.</p>
+<h2 id="oracle-odpnet-23c-dev-a-new-era-of-asynchronous-database-interaction">Oracle ODP.NET 23c Dev: A New Era of Asynchronous Database Interaction</h2>
+<p>While previous versions of ODP.NET have <em>async</em> methods, a closer inspection reveals that they were mere wrappers around <code>Task.FromResult</code> calls.</p>
+<blockquote>
+<p>These methods lacked true asynchronous behavior, limiting their potential in achieving optimal performance gains and making even worse then synchronous calls.</p>
+</blockquote>
+<p>With the eagerly anticipated ODP.NET 23c Dev release, Oracle has taken a significant step forward by offering genuine <em>async/await</em> support, transforming the landscape of database interactions.</p>
+<figure><img src="https://res-4.cloudinary.com/dgoa5llvh/image/upload/q_auto/oracle-pre-release-2.png"
+    alt="Pre Release until today - 2023-08-24"><figcaption>
+      <p>Pre Release until today - 2023-08-24</p>
+    </figcaption>
+</figure>
+
+<p>The issue <a href="https://github.com/oracle/dotnet-db-samples/issues/211">#144</a> on Github was open since November 2021. We&rsquo;re expecting this feature for a very long time.</p>
+<figure class="kg-card kg-bookmark-card">
+  <a href="https://github.com/oracle/dotnet-db-samples/issues/144" class="kg-bookmark-container">
+    <div class="kg-bookmark-content">
+      <div class="kg-bookmark-title">Implement Async versions of Ado.Net methods · Issue #144 · oracle/dotnet-db-samples</div>
+      <div class="kg-bookmark-description">Ado.Net classes such as DbCommand, DbConnection have async methods that aren’t truly async and just execute the non-async versions and return their result. It would be nice if ODP.NET had a real im…</div>
+      <div class="kg-bookmark-metadata">
+        <img src="https://github.com/fluidicon.png" class="kg-bookmark-icon">
+        <span class="kg-bookmark-author">oracle</span>
+        <span class="kg-bookmark-publisher">GitHub</span>
+      </div>
+    </div>
+    
+    <div class="kg-bookmark-thumbnail">
+      <img src="https://opengraph.githubassets.com/f5b1f67795b059ff8e7ecaafef4bd0df58984503824c87940ba8b2d53f3f03c3/oracle/dotnet-db-samples/issues/144">
+    </div>
+    
+  </a>
+  
+</figure>
+<h2 id="key-async-methods-in-odpnet-23c-dev">Key Async Methods in ODP.NET 23c Dev</h2>
+<p>Let&rsquo;s explore two pivotal <em>async</em> methods that are now available in their true asynchronous glory.</p>
+<ul>
+<li><strong>OpenAsync</strong>: Unlike its predecessor, the new <code>OpenAsync</code> method in ODP.NET 23c Dev truly opens a connection to the Oracle database asynchronously.</li>
+<li><strong>ExecuteReaderAsync</strong>: This method allows developers to execute queries and retrieve data from the Oracle database asynchronously.</li>
+</ul>
+<h2 id="sample-async-database-interactions">Sample Async Database Interactions</h2>
+<p>Let&rsquo;s dive into some code examples that illustrate the difference between the old and the new:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#75715e">// Opening a connection asynchronously (previous version)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Oracle.ManagedDataAccess.Client;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> Task OpenConnectionAsync(<span style="color:#66d9ef">string</span> connectionString)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> var connection = <span style="color:#66d9ef">new</span> OracleConnection(connectionString);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> connection.OpenAsync();
+</span></span><span style="display:flex;"><span>    Console.WriteLine(<span style="color:#e6db74">&#34;Connection opened asynchronously.&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Executing a query and reading data asynchronously (new ODP.NET 23c Dev version)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Oracle.ManagedDataAccess.Client;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> Task ExecuteQueryAsync(<span style="color:#66d9ef">string</span> connectionString, <span style="color:#66d9ef">string</span> query)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> var connection = <span style="color:#66d9ef">new</span> OracleConnection(connectionString);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> connection.OpenAsync();
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> var command = <span style="color:#66d9ef">new</span> OracleCommand(query, connection);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> var reader = <span style="color:#66d9ef">await</span> command.ExecuteReaderAsync();
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">await</span> reader.ReadAsync())
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>    	<span style="color:#75715e">// Process data asynchronously</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="embracing-the-future-leveraging-odpnet-23c-dev-for-superior-performance">Embracing the Future: Leveraging ODP.NET 23c Dev for Superior Performance</h2>
+<p>The introduction of true asynchronous support in ODP.NET 23c Dev is a significant milestone for developers working with Oracle databases.</p>
+<p>By embracing these new <em>async</em> methods, you can create applications that are more responsive, efficient, and user-friendly.</p>
+<p>As you transition to the latest version of ODP.NET, you&rsquo;ll unlock the full potential of asynchronous programming and usher in a new era of high-performance database interactions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/">Async/Await in C# - Microsoft Docs</a></li>
+<li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/23/odpnt/featAsyncPipelining.html#GUID-27CA3823-92BA-489A-9356-9EAA7B86A4FE">Oracle Data Provider for .NET (ODP.NET) Documentation</a></li>
+</ul>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/oracle/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/DotNet/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/oracle-sql/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Oracle-Sql</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/.NET-6/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 6</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/.NET-7/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 7</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/csharp-get-jwt-token-request/">C# Get JWT Token from Request .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/jwt-authentication-with-csharp-dotnet/">C# JWT Authentication .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-pivot-command-turn-rows-into-columns/">Oracle PIVOT Command - Turn Rows into Columns</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-json-table-transforming-json-into-relational-format/">Oracle JSON_TABLE Transforming JSON into Table</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-merge-to-update-sql/">Oracle MERGE Statement SQL</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/serilog-custom-enricher-on-aspnet-core/">Getting Started with Serilog Custom Enrichers</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/calculate-time-ago-with-csharp/">Calculate Time Ago with .NET C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-a-minimal-api-with-dotnet-6/">Create a Minimal API with .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/setup-serilog-in-net6-as-logging-provider/">Set up Serilog in .NET 6 as a logging provider</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/">DALL-E Art-Generator with C# .NET</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/">Getting Started with Chat GPT integration in a .NET C# Console Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/">Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-startup-back-to-net-6-project/">Adding Startup.cs back to .NET 6 Project</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/oracle-database-on-docker-for-development/">Oracle Database on Docker for Development</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

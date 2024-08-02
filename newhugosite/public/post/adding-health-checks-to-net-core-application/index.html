@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Health Checks on your ASP.NET Core Application | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
+Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
+Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/adding-health-checks-to-net-core-application/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/adding-health-checks-to-net-core-application/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Health Checks on your ASP.NET Core Application">
+  <meta property="og:description" content="Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
+Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
+Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-04-25T17:14:00+00:00">
+    <meta property="article:modified_time" content="2021-04-25T17:14:00+00:00">
+    <meta property="article:tag" content=".NET 5">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="HealthCheck">
+    <meta property="article:tag" content="MongoDb">
+    <meta property="article:tag" content="DotNet">
+    <meta property="article:tag" content="Monitoring">
+
+  <meta itemprop="name" content="Health Checks on your ASP.NET Core Application">
+  <meta itemprop="description" content="Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
+Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
+Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.">
+  <meta itemprop="datePublished" content="2021-04-25T17:14:00+00:00">
+  <meta itemprop="dateModified" content="2021-04-25T17:14:00+00:00">
+  <meta itemprop="wordCount" content="568">
+  <meta itemprop="keywords" content=".NET 5,C#,HealthCheck,MongoDb,DotNet,Monitoring,.NET 6,DotNet Core">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Health Checks on your ASP.NET Core Application">
+  <meta name="twitter:description" content="Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.
+Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.
+Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring
+Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Health Checks on your ASP.NET Core Application</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2021-04-25T17:14:00Z">April 25, 2021</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="health-endpoint-monitoring-pattern">Health Endpoint Monitoring pattern</h2>
+<p><code>Health Check</code> in <strong>.NET 5</strong> is very simple. With just a few lines of code, you can set up everything to monitor the <strong>Health of our Application</strong>.</p>
+<blockquote>
+<p>Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.</p>
+</blockquote>
+<p>Reference to: <a href="https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring">https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring</a></p>
+<h2 id="introduction">Introduction</h2>
+<p>In this series of posts, we walk through <strong>Health Checks</strong> and monitoring your web application / Web APIs.</p>
+<ol>
+<li><strong>How to Add Health Checks to ASP.Net Core Application</strong> [this post]</li>
+<li><a href="__GHOST_URL__/adding-health-checks-ui/">Adding UI Health Check</a></li>
+<li><a href="__GHOST_URL__/endpoint-monitoring-with-azure-application-insights/">Endpoint Monitoring with Azure Application Insights</a></li>
+<li>Using Azure App Services Endpoint Monitoring</li>
+</ol>
+<p>In this post, we&rsquo;ll add an endpoint to monitor our existing ASP.NET Core Application <strong>health status</strong>.</p>
+<p>We&rsquo;ll understand how it&rsquo;s pretty simple in .NET Core / .NET 5 Applications.
+With just a few lines of code, all the infrastructure is ready to display the <code>health status</code> of our ASP.NET Applications.</p>
+<p>We can monitor services such as:</p>
+<ul>
+<li>Database services, such as <em>SQL Server</em>, <em>Oracle</em>, <em>MySql</em>, <em>MongoDB</em>, among others;</li>
+<li>External API connectivity - external URLs;</li>
+<li>Disk connectivity (read/write);</li>
+<li>Cache services, such as <em>Redis</em>, <em>Memcache</em>, among others;</li>
+<li>Custom implementations (something unique to you).</li>
+</ul>
+<p>Anything you need is here. If you don&rsquo;t find an implementation that suits you, we can create our custom implementation.</p>
+<h2 id="adding-a-basic-health-check-to-aspnet-services">Adding a Basic Health Check to ASP.NET Services</h2>
+<p>First, modify the <strong>ConfigureServices</strong> method as described below. It will add the <code>HealthChecks</code> service to our <em>DI Container</em>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//adding health check services to container</span>
+</span></span><span style="display:flex;"><span>    services.AddHealthChecks();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p><code>Startup.cs</code></p>
+</blockquote>
+<p>Second, add on <strong>Configure</strong> pipeline the <em>health check</em> endpoint.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app, IHostingEnvironment env)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (env.IsDevelopment())
+</span></span><span style="display:flex;"><span>            app.UseDeveloperExceptionPage();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        app.UseRouting();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        app.UseEndpoints(endpoints =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            endpoints.MapGet(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#66d9ef">async</span> context =&gt;
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            endpoints.MapDefaultControllerRoute();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            endpoints.MapHealthChecks(<span style="color:#e6db74">&#34;/healthcheck&#34;</span>);
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p><code>Startup.cs</code></p>
+</blockquote>
+<p>Build, run, and access the URL <code>http://{YOUR-URL}/healthcheck</code> you should see something like this.</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/basic-health-check.png" alt="basic-health-check"></p>
+<p>All set and done to start adding services to the monitoring list. Now let&rsquo;s add one service to the monitor list - <strong>Mongo Db</strong>.</p>
+<h2 id="adding-mongo-db-as-a-monitor-service">Adding Mongo Db as a monitor service</h2>
+<p>Let&rsquo;s pick from <em>xabaril&rsquo;s</em> list. <em>xabaril&rsquo;s</em> Github repository contains a large number of <code>AspNetCore.Diagnostics.HealthChecks</code> packages ready for use.</p>
+<ul>
+<li>AspNetCore.HealthChecks.System</li>
+<li>AspNetCore.HealthChecks.Network</li>
+<li>AspNetCore.HealthChecks.SqlServer</li>
+<li>AspNetCore.HealthChecks.MongoDb</li>
+<li>AspNetCore.HealthChecks.Npgsql</li>
+<li>AspNetCore.HealthChecks.Elasticsearch</li>
+<li>AspNetCore.HealthChecks.Redis</li>
+<li>AspNetCore.HealthChecks.MySql</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks">https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks</a></p>
+</blockquote>
+<p>Add the Nuget package <code>AspNetCore.HealthChecks.MongoDb</code> to your project and modify the <code>AddHealthChecks</code> method to include the <strong>Mongo Db</strong> Health Check.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//adding health check services to container</span>
+</span></span><span style="display:flex;"><span>    services.AddHealthChecks()
+</span></span><span style="display:flex;"><span>        .AddMongoDb(mongodbConnectionString: <span style="color:#e6db74">&#34;YOUR-CONNECTION-STRING&#34;</span>,
+</span></span><span style="display:flex;"><span>        name: <span style="color:#e6db74">&#34;mongo&#34;</span>, 
+</span></span><span style="display:flex;"><span>        failureStatus: HealthStatus.Unhealthy); <span style="color:#75715e">//adding MongoDb Health Check</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p><code>Startup.cs</code></p>
+</blockquote>
+<p>After that, we are good to start monitoring the Mongo Db connectivity. Let&rsquo;s run our application again and retest the health status page.</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/basic-health-check.png" alt="basic-health-check"></p>
+<h2 id="adding-a-second-endpoint-with-more-details">Adding a second endpoint with more details</h2>
+<p>Let&rsquo;s create a second endpoint with more information about the status, such as which health check is failing.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Linq;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Diagnostics.HealthChecks;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Text.Json;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app, IWebHostEnvironment env)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*existing code*/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseEndpoints(endpoints =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/*existing code*/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        endpoints.MapHealthChecks(<span style="color:#e6db74">&#34;/healthcheck&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        endpoints.MapHealthChecks(<span style="color:#e6db74">&#34;/healthcheck-details&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">new</span> HealthCheckOptions
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                ResponseWriter = <span style="color:#66d9ef">async</span> (context, report) =&gt;
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">var</span> result = JsonSerializer.Serialize(
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">new</span>
+</span></span><span style="display:flex;"><span>                        {
+</span></span><span style="display:flex;"><span>                            status = report.Status.ToString(),
+</span></span><span style="display:flex;"><span>                            monitors = report.Entries.Select(e =&gt; <span style="color:#66d9ef">new</span> { key = e.Key, <span style="color:#66d9ef">value</span> = Enum.GetName(<span style="color:#66d9ef">typeof</span>(HealthStatus), e.Value.Status) })
+</span></span><span style="display:flex;"><span>                        });
+</span></span><span style="display:flex;"><span>                    context.Response.ContentType = MediaTypeNames.Application.Json;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">await</span> context.Response.WriteAsync(result);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p><code>Startup.cs</code></p>
+</blockquote>
+<p>Run again and access the endpoints <code>/healthcheck-details</code>.</p>
+<p><img src="https://res-1.cloudinary.com/dgoa5llvh/image/upload/q_auto/v1/ghost-blog-images/second-endpoint-monitor.jpg" alt="second-endpoint-monitor"></p>
+<p>Now you can customize the response of your Health Check Endpoint with anything you need.</p>
+<p>In the next article, I&rsquo;ll show you how to put a good UI (user interface) to it.</p>
+<h2 id="source-code">Source Code</h2>
+<p><a href="https://github.com/ricardodemauro/HerosApi-Blog">https://github.com/ricardodemauro/HerosApi-Blog</a></p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/.NET-5/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 5</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/HealthCheck/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">HealthCheck</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/MongoDb/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">MongoDb</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/DotNet/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Monitoring/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Monitoring</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/.NET-6/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 6</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/DotNet-Core/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet Core</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-ui/">Adding Health Checks UI</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/api-key-authentication-extending-the-native-implementation/">API Key Authentication - Extending the native implementation</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/add-build-time-to-your-csharp-assembly/">Add Build Time to your C# Assembly</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-a-free-mongodb-cluster-in-the-cloud-mongo-atlas-free-account/">Create a free MongoDb Cluster in the Cloud - Mongo Atlas free account</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/">Native Dependency Injection in Azure Functions with C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/endpoint-monitoring-with-azure-application-insights/">Endpoint Monitoring with Azure Application Insights</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

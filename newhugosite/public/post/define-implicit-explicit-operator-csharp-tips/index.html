@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Define Implicit and Explicit Operator - C# Tips | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="C# allows us to define Implicit and Explicit operators. Unlike casting Implicit __ and Explicit operators defines how C# should behave when encountering an equals sign.
+Implicit operator execution can be invoked when assigning a variable or calling a method.
+To use Explicit operator we should do the same as casting an object. It&rsquo;s similar to a cast an object.
+public record class Email(string Value) { //define implicit operator public static implicit operator string(Email value) =&gt; value.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/define-implicit-explicit-operator-csharp-tips/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/define-implicit-explicit-operator-csharp-tips/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Define Implicit and Explicit Operator - C# Tips">
+  <meta property="og:description" content="C# allows us to define Implicit and Explicit operators. Unlike casting Implicit __ and Explicit operators defines how C# should behave when encountering an equals sign.
+Implicit operator execution can be invoked when assigning a variable or calling a method.
+To use Explicit operator we should do the same as casting an object. It’s similar to a cast an object.
+public record class Email(string Value) { //define implicit operator public static implicit operator string(Email value) =&gt; value.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-11-10T18:48:49+00:00">
+    <meta property="article:modified_time" content="2022-11-10T18:48:49+00:00">
+    <meta property="article:tag" content="C#">
+
+  <meta itemprop="name" content="Define Implicit and Explicit Operator - C# Tips">
+  <meta itemprop="description" content="C# allows us to define Implicit and Explicit operators. Unlike casting Implicit __ and Explicit operators defines how C# should behave when encountering an equals sign.
+Implicit operator execution can be invoked when assigning a variable or calling a method.
+To use Explicit operator we should do the same as casting an object. It’s similar to a cast an object.
+public record class Email(string Value) { //define implicit operator public static implicit operator string(Email value) =&gt; value.">
+  <meta itemprop="datePublished" content="2022-11-10T18:48:49+00:00">
+  <meta itemprop="dateModified" content="2022-11-10T18:48:49+00:00">
+  <meta itemprop="wordCount" content="199">
+  <meta itemprop="keywords" content="C#">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Define Implicit and Explicit Operator - C# Tips">
+  <meta name="twitter:description" content="C# allows us to define Implicit and Explicit operators. Unlike casting Implicit __ and Explicit operators defines how C# should behave when encountering an equals sign.
+Implicit operator execution can be invoked when assigning a variable or calling a method.
+To use Explicit operator we should do the same as casting an object. It’s similar to a cast an object.
+public record class Email(string Value) { //define implicit operator public static implicit operator string(Email value) =&gt; value.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Define Implicit and Explicit Operator - C# Tips</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2022-11-10T18:48:49Z">November 10, 2022</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>C# allows us to define Implicit and Explicit operators. Unlike casting <em>I<strong>mplicit</strong></em> <strong>__</strong> and <strong><em>Explicit</em></strong> operators defines how C# should behave when encountering an equals sign.</p>
+<p><strong><em>Implicit</em></strong> operator execution can be invoked when assigning a variable or calling a method.</p>
+<p>To use <strong><em>Explicit</em></strong> operator we should do the same as casting an object. It&rsquo;s similar to a <strong><em>cast</em></strong> an object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">class</span> Email(<span style="color:#66d9ef">string</span> Value)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//define implicit operator</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">implicit</span> <span style="color:#66d9ef">operator</span> <span style="color:#66d9ef">string</span>(Email <span style="color:#66d9ef">value</span>) 
+</span></span><span style="display:flex;"><span>      =&gt; <span style="color:#66d9ef">value</span>.Value;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//define implicit operator</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">implicit</span> <span style="color:#66d9ef">operator</span> <span style="color:#66d9ef">byte</span>[](Email <span style="color:#66d9ef">value</span>) 
+</span></span><span style="display:flex;"><span>      =&gt; Encoding.UTF8.GetBytes(<span style="color:#66d9ef">value</span>.Value);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//define explict operator</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">explicit</span> <span style="color:#66d9ef">operator</span> Email(<span style="color:#66d9ef">string</span> <span style="color:#66d9ef">value</span>) 
+</span></span><span style="display:flex;"><span>      =&gt; <span style="color:#66d9ef">new</span> Email(<span style="color:#66d9ef">value</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>To define a implicit/explicit we need to make use of &ldquo;operator&rdquo;, &ldquo;implicit&rdquo; or &ldquo;explicit&rdquo; keywords.</p>
+<p>The following example demonstrates the use of both operators.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>Email email = <span style="color:#66d9ef">new</span>(<span style="color:#e6db74">&#34;some@email.com&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//use implicit operator. This is not a cast</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">string</span> stringEmail = email;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Email secondEmail = (Email)stringEmail;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//output rmauro@rmauro.dev</span>
+</span></span><span style="display:flex;"><span>System.Console.WriteLine(stringEmail); 
+</span></span><span style="display:flex;"><span>System.Console.WriteLine(secondEmail.Value.ToString());
+</span></span></code></pre></div><p>The explicit conversion is similar to a cast operation. We make visible the type to which we will convert the object. The implicit operator is less visible and difficult to understand if you don’t know that it exists.</p>
+<h2 id="-enjoy-this-article">❤️ Enjoy this article?</h2>
+<p><strong>Forward to a friend</strong> and let them know.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/calculate-time-ago-with-csharp/">Calculate Time Ago with .NET C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-a-minimal-api-with-dotnet-6/">Create a Minimal API with .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/setup-serilog-in-net6-as-logging-provider/">Set up Serilog in .NET 6 as a logging provider</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/">Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-startup-back-to-net-6-project/">Adding Startup.cs back to .NET 6 Project</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/add-build-time-to-your-csharp-assembly/">Add Build Time to your C# Assembly</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/api-key-authentication-extending-the-native-implementation/">API Key Authentication - Extending the native implementation</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/">Native Dependency Injection in Azure Functions with C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-ui/">Adding Health Checks UI</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

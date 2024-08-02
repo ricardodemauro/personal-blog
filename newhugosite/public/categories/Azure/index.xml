@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/Azure/</link>
+    <description>Recent content in Azure on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 01 Oct 2020 18:58:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/Azure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Native Dependency Injection in Azure Functions with C#</title>
+      <link>http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/</link>
+      <pubDate>Thu, 01 Oct 2020 18:58:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/native-dependency-injection-in-azure-functions-with-csharp/</guid>
+      <description>Adding Dependency Injection feature to Azure Functions without third part libraries.</description>
+    </item>
+    <item>
+      <title>Endpoint Monitoring with Azure Application Insights</title>
+      <link>http://localhost:1313/post/endpoint-monitoring-with-azure-application-insights/</link>
+      <pubDate>Mon, 28 Sep 2020 15:14:09 +0000</pubDate>
+      <guid>http://localhost:1313/post/endpoint-monitoring-with-azure-application-insights/</guid>
+      <description>Let&amp;rsquo;s explore the use of Microsoft Azure Application Insights to monitor the health of our application using the endpoint /healthcheck.&#xA;Applications Insights it&amp;rsquo;s a great tool for monitoring, error logging, performance monitoring, dependency mapping, and other things. In other words, it&amp;rsquo;s a full APM - Application Performance Management - ready for you to use in Production Environments.&#xA;Application Insights, a feature of Azure Monitor, is an extensible Application Performance Management (APM) service for developers and DevOps professionals.</description>
+    </item>
+    <item>
+      <title>Yet Another AZ-203 Microsoft Official Course Delivered.</title>
+      <link>http://localhost:1313/post/az203-official-course-delivered-yes/</link>
+      <pubDate>Wed, 22 Jan 2020 00:46:31 +0000</pubDate>
+      <guid>http://localhost:1313/post/az203-official-course-delivered-yes/</guid>
+      <description>Yet Another AZ-203 Microsoft Official Course Delivered.&#xA;Another AZ-203 official Microsoft course delivered with success! Class members feedback was great. And I loved to make over 22 new colleagues these two weeks.&#xA;I should say, this course is awesome. The level of topics is at beginning easy, them going to middle level and a lot of times pretty hard! :)&#xA;Ps.: Mostly as online class members! Over 32 students online.</description>
+    </item>
+    <item>
+      <title>Create Azure App Service though AZ Cli</title>
+      <link>http://localhost:1313/post/create-azure-app-service-though-az-cli/</link>
+      <pubDate>Wed, 08 Jan 2020 17:06:26 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-azure-app-service-though-az-cli/</guid>
+      <description># generate a unique name and store as a shell variable webappname=mywebapp$RANDOM # create a resource group az group create --location westeurope --name myResourceGroup # create an App Service plan az appservice plan create --name $webappname --resource-group myResourceGroup --sku FREE # create a Web App az webapp create --name $webappname --resource-group myResourceGroup --plan $webappname # store a repository url as a shell variable gitrepo=https://github.com/Azure-Samples/php-docs-hello-world # deploy code from a Git repository az webapp deployment source config --name $webappname --resource-group myResourceGroup --repo-url $gitrepo --branch master --manual-integration # print out the FQDN for the Web App echo http://$webappname.</description>
+    </item>
+    <item>
+      <title>Create Azure Virtual Machine Using PowerShell</title>
+      <link>http://localhost:1313/post/create-azure-virtual-machine-using-powershell/</link>
+      <pubDate>Fri, 03 Jan 2020 22:44:57 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-azure-virtual-machine-using-powershell/</guid>
+      <description>Quick Configuration Getting the public Ip Get-AzPublicIpAddress -ResourceGroupName &amp;#34;demo003&amp;#34; | Select &amp;#34;IpAddress&amp;#34; Full Configured Virtual Machine Getting the public Ip Get-AzPublicIpAddress -ResourceGroupName &amp;#34;demo004&amp;#34; | Select &amp;#34;IpAddress&amp;#34; Removing deployment Remove-AzResourceGroup -Name demo003 Remove-AzResourceGroup -Name demo004 </description>
+    </item>
+    <item>
+      <title>Azure Storage Disks - Managed and unmanaged disks</title>
+      <link>http://localhost:1313/post/azure-storage-disks/</link>
+      <pubDate>Fri, 03 Jan 2020 21:25:54 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-storage-disks/</guid>
+      <description>##Managed disks&#xA;The Azure platform manages the disk and the backing storage You don&amp;rsquo;t have to worry about storage account limits and thresholds ##Unmanaged disks&#xA;You manually create and manage virtual hard disks (VHDs) in your Storage account You will need to consider account throughput and capacity limits when using this model Managed disks - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure.</description>
+    </item>
+    <item>
+      <title>Azure App Service and Cloudflare with Full SSL (Strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 23:39:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</guid>
+      <description>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.&#xA;At the end we will have the following configuration:&#xA;CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.</description>
+    </item>
+    <item>
+      <title>Azure Kubernets - az cli</title>
+      <link>http://localhost:1313/post/azure-kubernets-az-cli/</link>
+      <pubDate>Mon, 03 Jun 2019 00:31:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-kubernets-az-cli/</guid>
+      <description>Steps to create Azure Kubernet Services (AKS) though azure cli tool.&#xA;#####Demo 1&#xA;// Create resource group az group create --name kbgroup2 --location eastus // Create AKS cluster az aks create \ --resource-group kbgroup2 \ --name kbcluster2 \ --node-count 1 \ --enable-addons monitoring \ --generate-ssh-keys ###Connect to the cluster #if you&amp;rsquo;re in Azure Cloud Shell skip this step az aks install-cli&#xA;#getting the credentials az aks get-credentials \ --resource-group kbgroup2 \ --name kbcluster2 kubectl get nodes Save the file deployment.</description>
+    </item>
+    <item>
+      <title>Demo - Azure Batch</title>
+      <link>http://localhost:1313/post/demo-azure-batch/</link>
+      <pubDate>Sun, 02 Jun 2019 21:25:27 +0000</pubDate>
+      <guid>http://localhost:1313/post/demo-azure-batch/</guid>
+      <description>####Creating the Resource Group&#xA;az group create --name &amp;quot;az203_batch_demo001&amp;quot; --location CentralUS ####Creating the storage account&#xA;az storage account create \ --name az203batchstoragexd \ --access-tier hot \ --https-only true \ --kind BlobStorage \ --location CentralUS \ --sku Standard_LRS \ --resource-group az203_batch_demo001 ####Creating the Batch Account az batch account create &amp;ndash;name az203batchaccountxd &amp;ndash;storage-account az203batchstoragexd &amp;ndash;resource-group az203_batch_demo001 &amp;ndash;location CentralUS&#xA;####Login and create the Pool az batch account login &amp;ndash;name az203batchaccountxd &amp;ndash;resource-group az203_batch_demo001 &amp;ndash;shared-key-auth</description>
+    </item>
+    <item>
+      <title>az cli (bash) create resource though Resource File</title>
+      <link>http://localhost:1313/post/azcli-create-resource-though-resource-file/</link>
+      <pubDate>Sun, 02 Jun 2019 18:49:19 +0000</pubDate>
+      <guid>http://localhost:1313/post/azcli-create-resource-though-resource-file/</guid>
+      <description>The resource file azuredeploy.json&#xA;{ &amp;quot;$schema&amp;quot;: &amp;quot;https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#&amp;quot;, &amp;quot;contentVersion&amp;quot;: &amp;quot;1.0.0.0&amp;quot;, &amp;quot;parameters&amp;quot;: { &amp;quot;storageAccountType&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;, &amp;quot;defaultValue&amp;quot;: &amp;quot;Standard_LRS&amp;quot;, &amp;quot;allowedValues&amp;quot;: [ &amp;quot;Standard_LRS&amp;quot;, &amp;quot;Standard_GRS&amp;quot;, &amp;quot;Standard_ZRS&amp;quot;, &amp;quot;Premium_LRS&amp;quot; ], &amp;quot;metadata&amp;quot;: { &amp;quot;description&amp;quot;: &amp;quot;Storage Account type&amp;quot; } }, &amp;quot;location&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;, &amp;quot;defaultValue&amp;quot;: &amp;quot;[resourceGroup().location]&amp;quot;, &amp;quot;metadata&amp;quot;: { &amp;quot;description&amp;quot;: &amp;quot;Location for all resources.&amp;quot; } } }, &amp;quot;variables&amp;quot;: { &amp;quot;storageAccountName&amp;quot;: &amp;quot;[concat(&#39;store&#39;, uniquestring(resourceGroup().id))]&amp;quot; }, &amp;quot;resources&amp;quot;: [ { &amp;quot;type&amp;quot;: &amp;quot;Microsoft.Storage/storageAccounts&amp;quot;, &amp;quot;name&amp;quot;: &amp;quot;[variables(&#39;storageAccountName&#39;)]&amp;quot;, &amp;quot;location&amp;quot;: &amp;quot;[parameters(&#39;location&#39;)]&amp;quot;, &amp;quot;apiVersion&amp;quot;: &amp;quot;2018-07-01&amp;quot;, &amp;quot;sku&amp;quot;: { &amp;quot;name&amp;quot;: &amp;quot;[parameters(&#39;storageAccountType&#39;)]&amp;quot; }, &amp;quot;kind&amp;quot;: &amp;quot;StorageV2&amp;quot;, &amp;quot;properties&amp;quot;: {} } ], &amp;quot;outputs&amp;quot;: { &amp;quot;storageAccountName&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;string&amp;quot;, &amp;quot;value&amp;quot;: &amp;quot;[variables(&#39;storageAccountName&#39;)]&amp;quot; }, &amp;quot;storageUri&amp;quot;: { &amp;quot;type&amp;quot;:&amp;quot;string&amp;quot;, &amp;quot;value&amp;quot;:&amp;quot;[reference(variables(&#39;storageAccountName&#39;)).</description>
+    </item>
+    <item>
+      <title>Enable Local Cache in Azure Web App</title>
+      <link>http://localhost:1313/post/enable-local-cache-in-azure-web-app/</link>
+      <pubDate>Sat, 01 Jun 2019 19:01:27 +0000</pubDate>
+      <guid>http://localhost:1313/post/enable-local-cache-in-azure-web-app/</guid>
+      <description>##What is Local Cache in Azure WebApp?&#xA;Local cache in Azure Web is really a cache that caches the storage of your Web App.&#xA;##How to enable it?&#xA;To enable local cache you should go to your Azure Subscription them navigate to your Web App that you wishs to enable local cache.&#xA;Go to &amp;ldquo;Configuration&amp;rdquo; section then &amp;ldquo;Application Setttings&amp;rdquo; and under &amp;ldquo;Application settings&amp;rdquo;&#xA;You enable Local Cache on a per-web-app basis by using this app setting: WEBSITE_LOCAL_CACHE_OPTION = Always</description>
+    </item>
+    <item>
+      <title>Demo WebJob Azure - CRON expressions</title>
+      <link>http://localhost:1313/post/demo-webjob-azure-cron-expressions/</link>
+      <pubDate>Fri, 31 May 2019 19:39:35 +0000</pubDate>
+      <guid>http://localhost:1313/post/demo-webjob-azure-cron-expressions/</guid>
+      <description>#CRON expressions&#xA;Azure Functions uses the NCronTab library to interpret CRON expressions. A CRON expression includes six fields:&#xA;{second} {minute} {hour} {day} {month} {day-of-week}&#xA;Each field can have one of the following types of values:&#xA;Type Example When triggered A specific value 0 5 * * * * at hh:05:00 where hh is every hour (once an hour) All values (*) 0 * 5 * * * at 5:mm:00 every day, where mm is every minute of the hour (60 times a day) A range (- operator) 5-7 * * * * * at hh:mm:05,hh:mm:06, and hh:mm:07 where hh:mm is every minute of every hour (3 times a minute) A set of values (, operator) 5,8,10 * * * * * at hh:mm:05, hh:mm:08, and hh:mm:10 where hh:mm is every minute of every hour (3 times a minute) An interval value (/ operator) 0 */5 * * * * at hh:05:00, hh:10:00, hh:15:00, and so on through hh:55:00 where hh is every hour (12 times an hour) Refs.</description>
+    </item>
+    <item>
+      <title>Enable Azure Disk Encryption though az-cli</title>
+      <link>http://localhost:1313/post/enable-azure-disk-encryption-though-az-cli/</link>
+      <pubDate>Mon, 27 May 2019 23:04:34 +0000</pubDate>
+      <guid>http://localhost:1313/post/enable-azure-disk-encryption-though-az-cli/</guid>
+      <description>######Create Azure Key Vault service az keyvault create &amp;ndash;name &amp;ldquo;kvDemo006&amp;rdquo; &amp;ndash;resource-group &amp;ldquo;demo001&amp;rdquo; &amp;ndash;location centralUS &amp;ndash;enabled-for-disk-encryption True&#xA;######Enable disk encryption on VM az vm encryption enable &amp;ndash;resource-group &amp;ldquo;kvDemo006&amp;rdquo; &amp;ndash;name &amp;ldquo;devUScWeb003&amp;rdquo; &amp;ndash;disk-encryption-keyvault &amp;ldquo;demo006&amp;rdquo; &amp;ndash;volume-type &amp;ldquo;all&amp;rdquo;&#xA;######Show disk encryption az vm encryption show &amp;ndash;resource-group &amp;ldquo;demo006&amp;rdquo; &amp;ndash;name &amp;ldquo;devUScWeb003&amp;rdquo;`</description>
+    </item>
+    <item>
+      <title>Create Azure VM though PowerShell</title>
+      <link>http://localhost:1313/post/create-azure-vm-though-powershell/</link>
+      <pubDate>Mon, 27 May 2019 22:56:17 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-azure-vm-though-powershell/</guid>
+      <description>A right to the point guide of how to create Virtual Machines in Azure with Powershell</description>
+    </item>
+  </channel>
+</rss>

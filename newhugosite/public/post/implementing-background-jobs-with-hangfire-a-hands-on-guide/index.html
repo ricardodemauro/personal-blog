@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Hangfire Implementing Background Jobs | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.
+Whether you&rsquo;re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we&rsquo;ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/implementing-background-jobs-with-hangfire-a-hands-on-guide/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Hangfire Implementing Background Jobs">
+  <meta property="og:description" content="Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.
+Whether you’re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we’ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-07-01T20:36:57+00:00">
+    <meta property="article:modified_time" content="2024-07-01T20:36:57+00:00">
+    <meta property="article:tag" content="Hangfire">
+    <meta property="article:tag" content="C#">
+
+  <meta itemprop="name" content="Hangfire Implementing Background Jobs">
+  <meta itemprop="description" content="Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.
+Whether you’re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we’ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure.">
+  <meta itemprop="datePublished" content="2024-07-01T20:36:57+00:00">
+  <meta itemprop="dateModified" content="2024-07-01T20:36:57+00:00">
+  <meta itemprop="wordCount" content="556">
+  <meta itemprop="keywords" content="Hangfire,C#">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hangfire Implementing Background Jobs">
+  <meta name="twitter:description" content="Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.
+Whether you’re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we’ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Hangfire Implementing Background Jobs</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2024-07-01T20:36:57Z">July 1, 2024</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Hangfire is a robust library for managing background jobs in .NET applications, allowing developers to easily create and manage tasks that run asynchronously.</p>
+<p>Whether you&rsquo;re scheduling recurring tasks, executing one-off jobs, or managing time-consuming operations without blocking the main thread, Hangfire provides a flexible and reliable solution. In this article, we&rsquo;ll walk through setting up Hangfire to automatically clean up expired JWT tokens from a database, ensuring your authentication system remains efficient and secure.</p>
+<h2 id="requirements">Requirements</h2>
+<p>Before we dive into the implementation, make sure you have the following:</p>
+<ul>
+<li>At least .NET 6.0 SDK installed</li>
+<li>A basic understanding of .NET and C#</li>
+<li>A running SQL Server instance</li>
+<li>Visual Studio or any preferred C# IDE</li>
+</ul>
+<h2 id="setting-up-the-project">Setting Up the Project</h2>
+<p>Open your terminal or command prompt and run the following commands to create a new .NET web application:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet new webapi -n HangfireBackgroundJob
+</span></span><span style="display:flex;"><span>cd HangfireBackgroundJob
+</span></span></code></pre></div><h3 id="install-hangfire">Install Hangfire</h3>
+<p>Add Hangfire and its SQL Server storage package to your project:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet add package Hangfire
+</span></span><span style="display:flex;"><span>dotnet add package Hangfire.SqlServer
+</span></span></code></pre></div><h3 id="configure-hangfire">Configure Hangfire</h3>
+<p>Open <code>Startup.cs</code> (or <code>Program.cs</code> if you&rsquo;re using the new minimal hosting model) and configure Hangfire in the <code>ConfigureServices</code> method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    services.AddControllers();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Configure Hangfire to use SQL Server storage</span>
+</span></span><span style="display:flex;"><span>    services.AddHangfire(configuration =&gt; 
+</span></span><span style="display:flex;"><span>        configuration.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+</span></span><span style="display:flex;"><span>                     .UseSimpleAssemblyNameTypeSerializer()
+</span></span><span style="display:flex;"><span>                     .UseRecommendedSerializerSettings()
+</span></span><span style="display:flex;"><span>                     .UseSqlServerStorage(<span style="color:#e6db74">&#34;Server=your_server;Database=your_database;User Id=your_user;Password=your_password;&#34;</span>, <span style="color:#66d9ef">new</span> SqlServerStorageOptions
+</span></span><span style="display:flex;"><span>                     {
+</span></span><span style="display:flex;"><span>                         CommandBatchMaxTimeout = TimeSpan.FromMinutes(<span style="color:#ae81ff">5</span>),
+</span></span><span style="display:flex;"><span>                         SlidingInvisibilityTimeout = TimeSpan.FromMinutes(<span style="color:#ae81ff">5</span>),
+</span></span><span style="display:flex;"><span>                         QueuePollInterval = TimeSpan.FromSeconds(<span style="color:#ae81ff">15</span>),
+</span></span><span style="display:flex;"><span>                         UseRecommendedIsolationLevel = <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>                         DisableGlobalLocks = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>                     }));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    services.AddHangfireServer();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app, IWebHostEnvironment env)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (env.IsDevelopment())
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        app.UseDeveloperExceptionPage();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseRouting();
+</span></span><span style="display:flex;"><span>    app.UseAuthorization();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Use Hangfire Dashboard (optional for monitoring jobs)</span>
+</span></span><span style="display:flex;"><span>    app.UseHangfireDashboard();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseEndpoints(endpoints =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        endpoints.MapControllers();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="creating-the-background-job">Creating the Background Job</h3>
+<p>Now, let&rsquo;s create a background job that deletes expired JWT tokens from the database.</p>
+<p><strong>Create a Service for Token Cleanup</strong></p>
+<p>First, create a service that will handle the token cleanup logic. Add a new class called <code>TokenCleanupService.cs</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Linq;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Threading.Tasks;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Logging;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.EntityFrameworkCore;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TokenCleanupService</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> ApplicationDbContext _context;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> ILogger&lt;TokenCleanupService&gt; _logger;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> TokenCleanupService(ApplicationDbContext context, ILogger&lt;TokenCleanupService&gt; logger)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        _context = context;
+</span></span><span style="display:flex;"><span>        _logger = logger;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">async</span> Task CleanUpExpiredTokensAsync()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> expiredTokens = <span style="color:#66d9ef">await</span> _context.JwtTokens
+</span></span><span style="display:flex;"><span>            .Where(t =&gt; t.ExpirationDate &lt; DateTime.UtcNow)
+</span></span><span style="display:flex;"><span>            .ToListAsync();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (expiredTokens.Any())
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            _context.JwtTokens.RemoveRange(expiredTokens);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> _context.SaveChangesAsync();
+</span></span><span style="display:flex;"><span>            _logger.LogInformation(<span style="color:#e6db74">&#34;Deleted {count} expired tokens.&#34;</span>, expiredTokens.Count);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>Schedule the Background Job</strong></p>
+<p>Open <code>Startup.cs</code> or <code>Program.cs</code> and schedule the background job using Hangfire:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app, IWebHostEnvironment env, IRecurringJobManager recurringJobManager)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (env.IsDevelopment())
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        app.UseDeveloperExceptionPage();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseRouting();
+</span></span><span style="display:flex;"><span>    app.UseAuthorization();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseHangfireDashboard();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseEndpoints(endpoints =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        endpoints.MapControllers();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Schedule the token cleanup job to run daily at midnight</span>
+</span></span><span style="display:flex;"><span>    recurringJobManager.AddOrUpdate(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;TokenCleanup&#34;</span>,
+</span></span><span style="display:flex;"><span>        () =&gt; <span style="color:#66d9ef">new</span> TokenCleanupService().CleanUpExpiredTokensAsync(),
+</span></span><span style="display:flex;"><span>        Cron.Daily);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="running-and-monitoring-the-job">Running and Monitoring the Job</h3>
+<p>Start your application by running</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet run
+</span></span></code></pre></div><p>Navigate to <code>http://localhost:5000/hangfire</code> to view the Hangfire Dashboard and monitor your jobs.</p>
+<p><strong>Verify the Job Execution</strong></p>
+<p>Check your database to ensure expired tokens are being deleted as expected. You can also view the job logs in the Hangfire Dashboard to verify successful execution.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Using Hangfire to manage background jobs in a .NET application is a straightforward and efficient way to handle tasks that need to run asynchronously.</p>
+<p>In this hands-on guide, we&rsquo;ve set up a Hangfire project and created a background job to clean up expired JWT tokens from a database.</p>
+<p>This ensures that your authentication system remains clean and performant without blocking your application&rsquo;s main thread. Hangfire&rsquo;s flexibility and ease of use make it an excellent choice for managing background tasks in any .NET application.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/Hangfire/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Hangfire</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/csharp-get-jwt-token-request/">C# Get JWT Token from Request .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/jwt-authentication-with-csharp-dotnet/">C# JWT Authentication .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/">DALL-E Art-Generator with C# .NET</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/serilog-custom-enricher-on-aspnet-core/">Getting Started with Serilog Custom Enrichers</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/">Getting Started with Chat GPT integration in a .NET C# Console Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/define-implicit-explicit-operator-csharp-tips/">Define Implicit and Explicit Operator - C# Tips</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/calculate-time-ago-with-csharp/">Calculate Time Ago with .NET C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-a-minimal-api-with-dotnet-6/">Create a Minimal API with .NET 6</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/setup-serilog-in-net6-as-logging-provider/">Set up Serilog in .NET 6 as a logging provider</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/optmizing-data-access-with-oracle-managed-ado-net/">Optimizing Query Performance on C# ODP.NET - Oracle Managed Data Access</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-startup-back-to-net-6-project/">Adding Startup.cs back to .NET 6 Project</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-to-net-core-application/">Health Checks on your ASP.NET Core Application</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/add-build-time-to-your-csharp-assembly/">Add Build Time to your C# Assembly</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/api-key-authentication-extending-the-native-implementation/">API Key Authentication - Extending the native implementation</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/">Native Dependency Injection in Azure Functions with C#</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

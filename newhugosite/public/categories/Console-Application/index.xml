@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Console Application on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/Console-Application/</link>
+    <description>Recent content in Console Application on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Jul 2024 17:32:06 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/Console-Application/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exit Codes in C# Applications</title>
+      <link>http://localhost:1313/post/exit-codes-in-csharp-applications/</link>
+      <pubDate>Wed, 17 Jul 2024 17:32:06 +0000</pubDate>
+      <guid>http://localhost:1313/post/exit-codes-in-csharp-applications/</guid>
+      <description>When developing console applications in C#, it&amp;rsquo;s important to communicate the success or failure of your program back to the operating system.&#xA;This is achieved through exit codes, which are integers returned by the program when it finishes execution.&#xA;An exit code of 0 typically signifies success, while any non-zero value indicates an error.&#xA;Setting Exit Codes in C# In C#, you can set the exit code using the Environment.ExitCode property or the Environment.</description>
+    </item>
+  </channel>
+</rss>

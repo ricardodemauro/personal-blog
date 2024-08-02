@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DotNet on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/DotNet/</link>
+    <description>Recent content in DotNet on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jul 2024 19:18:44 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/DotNet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Recursive Calls in C#: A Deep Dive</title>
+      <link>http://localhost:1313/post/recursive-calls-in-csharp/</link>
+      <pubDate>Fri, 19 Jul 2024 19:18:44 +0000</pubDate>
+      <guid>http://localhost:1313/post/recursive-calls-in-csharp/</guid>
+      <description>Recursion functions are like a magical mirror that reflects upon itself. It&amp;rsquo;s a concept where a function calls itself, creating a mesmerizing loop of self-referential elegance.&#xA;Let&amp;rsquo;s break it down how recursive functions works using Factorial Calculation as sample.&#xA;What is a Factorial? Before we dive into the code, let&amp;rsquo;s unravel the mystery of factorials. A factorial of a non-negative integer N, denoted as N!, is the product of all positive integers from 1 to N.</description>
+    </item>
+    <item>
+      <title>Exit Codes in C# Applications</title>
+      <link>http://localhost:1313/post/exit-codes-in-csharp-applications/</link>
+      <pubDate>Wed, 17 Jul 2024 17:32:06 +0000</pubDate>
+      <guid>http://localhost:1313/post/exit-codes-in-csharp-applications/</guid>
+      <description>When developing console applications in C#, it&amp;rsquo;s important to communicate the success or failure of your program back to the operating system.&#xA;This is achieved through exit codes, which are integers returned by the program when it finishes execution.&#xA;An exit code of 0 typically signifies success, while any non-zero value indicates an error.&#xA;Setting Exit Codes in C# In C#, you can set the exit code using the Environment.ExitCode property or the Environment.</description>
+    </item>
+    <item>
+      <title>Reading appsettings.json from a Console Application</title>
+      <link>http://localhost:1313/post/reading-appsettings-json-from-a-console-application/</link>
+      <pubDate>Wed, 10 Jul 2024 14:18:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/reading-appsettings-json-from-a-console-application/</guid>
+      <description>When developing C# .NET applications, it&amp;rsquo;s common to store configuration settings in a JSON file, typically named appsettings.json.&#xA;This approach is not only useful for ASP.NET applications but can also be effectively used in C# Console Applications.&#xA;Before we start, let&amp;rsquo;s make sure to have:&#xA;.NET SDK installed on your machine. A basic understanding of C# and .NET. 🚗 Step-by-Step Guide First, create a new .NET console application.&#xA;dotnet new console -n ConfigDemo cd ConfigDemo To read from appsettings.</description>
+    </item>
+    <item>
+      <title>Set up Entity Framework Core In Memory Database Provider</title>
+      <link>http://localhost:1313/post/set-up-entity-framework-core-in-memory-store/</link>
+      <pubDate>Fri, 05 Jul 2024 02:30:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/set-up-entity-framework-core-in-memory-store/</guid>
+      <description>One of the useful features of EF Core is the In-Memory Database Provider, which is perfect for testing purposes. In this guide, we will walk through setting up EF Core with an in-memory database, demonstrating how to configure and use it effectively.&#xA;Step-by-Step Guide Start by creating a new .NET console using the .NET CLI and add the required packages.&#xA;dotnet new console -n EfCoreInMemoryDemo cd EfCoreInMemoryDemo dotnet add package Microsoft.</description>
+    </item>
+    <item>
+      <title>Oracle ODP.NET with truly Async Methods in C#</title>
+      <link>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</link>
+      <pubDate>Thu, 24 Aug 2023 18:01:18 +0000</pubDate>
+      <guid>http://localhost:1313/post/oracle-odp-net-with-truly-async-methods-in-csharp/</guid>
+      <description>Oracle&amp;rsquo;s ODP.NET 23c Dev (or Oracle.ManagedDataAccess.Core) release brings genuine async/asynchronous methods to support to database interactions in C#, revolutionizing the way developers work with Oracle databases.&#xA;Under PreRelease until today : 2023-08-24&#xA;Oracle.ManagedDataAccess.Core - pre release&#xA;Async/Await in C# Before delving into the specifics of ODP.NET 23c Dev for C#, let&amp;rsquo;s take a moment to understand the power of asynchronous programming in C#.&#xA;The async/await pattern enables developers to write non-blocking code, freeing the main thread to perform other tasks while asynchronous operations are in progress.</description>
+    </item>
+    <item>
+      <title>C# Get JWT Token from Request .NET 6</title>
+      <link>http://localhost:1313/post/csharp-get-jwt-token-request/</link>
+      <pubDate>Mon, 29 May 2023 23:28:28 +0000</pubDate>
+      <guid>http://localhost:1313/post/csharp-get-jwt-token-request/</guid>
+      <description>&lt;p&gt;This blog post will explore extracting a JWT token from incoming requests using C#.&lt;/p&gt;&#xA;&lt;p&gt;How to Get JWT Token from Request using C#&lt;/p&gt;&#xA;</description>
+    </item>
+    <item>
+      <title>C# JWT Authentication .NET 6</title>
+      <link>http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/</link>
+      <pubDate>Fri, 28 Apr 2023 03:44:59 +0000</pubDate>
+      <guid>http://localhost:1313/post/jwt-authentication-with-csharp-dotnet/</guid>
+      <description>In this article, we will work on implementing C# JWT Authentication using .NET 7 - which also works for .NET 6, and preview .NET 8 - using ASP.NET Core.</description>
+    </item>
+    <item>
+      <title>Getting Started with Serilog Custom Enrichers</title>
+      <link>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</link>
+      <pubDate>Tue, 04 Apr 2023 00:05:15 +0000</pubDate>
+      <guid>http://localhost:1313/post/serilog-custom-enricher-on-aspnet-core/</guid>
+      <description>One of the key features of Serilog is the ability to Enrich Log Events with additional contextual information that can help in troubleshooting and debugging.&#xA;In this blog post, we will explore how to create a Custom Enricher with Serilog to add custom properties to log events.</description>
+    </item>
+    <item>
+      <title>Getting Started with Chat GPT integration in a .NET C# Console Application</title>
+      <link>http://localhost:1313/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/</link>
+      <pubDate>Sun, 02 Apr 2023 16:42:29 +0000</pubDate>
+      <guid>http://localhost:1313/post/getting-started-with-chat-gpt-integration-with-csharp-console-application/</guid>
+      <description>With the use of C#, we can develop a console application that uses the Chat GPT model to generate human-like responses to input.</description>
+    </item>
+    <item>
+      <title>Calculate Time Ago with .NET C#</title>
+      <link>http://localhost:1313/post/calculate-time-ago-with-csharp/</link>
+      <pubDate>Mon, 26 Sep 2022 14:00:52 +0000</pubDate>
+      <guid>http://localhost:1313/post/calculate-time-ago-with-csharp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Create a Minimal API with .NET 6</title>
+      <link>http://localhost:1313/post/create-a-minimal-api-with-dotnet-6/</link>
+      <pubDate>Mon, 04 Jul 2022 20:16:53 +0000</pubDate>
+      <guid>http://localhost:1313/post/create-a-minimal-api-with-dotnet-6/</guid>
+      <description>One of the new features of .NET 6 is the arrival of a new template, which will replace the default and bring a good reduction in code writing. Including the removal of the Startup.cs file.&#xA;.NET 6 was released as LTS (long-term stable) which means support for 3 years. So we have to learn about this new baby. Don&amp;rsquo;t forget the new C# 10 features as well.&#xA;Minimal APIs are architected to create HTTP APIs with minimal dependencies.</description>
+    </item>
+    <item>
+      <title>Set up Serilog in .NET 6 as a logging provider</title>
+      <link>http://localhost:1313/post/setup-serilog-in-net6-as-logging-provider/</link>
+      <pubDate>Sun, 26 Jun 2022 22:04:20 +0000</pubDate>
+      <guid>http://localhost:1313/post/setup-serilog-in-net6-as-logging-provider/</guid>
+      <description>Let&amp;rsquo;s set up Serilog as Logging Provider in the native logging system in .NET so you can use the Microsoft ILogger interface.</description>
+    </item>
+    <item>
+      <title>Health Checks on your ASP.NET Core Application</title>
+      <link>http://localhost:1313/post/adding-health-checks-to-net-core-application/</link>
+      <pubDate>Sun, 25 Apr 2021 17:14:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/adding-health-checks-to-net-core-application/</guid>
+      <description>Health Endpoint Monitoring pattern Health Check in .NET 5 is very simple. With just a few lines of code, you can set up everything to monitor the Health of our Application.&#xA;Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. This can help to verify that applications and services are performing correctly.&#xA;Reference to: https://docs.microsoft.com/en-us/azure/architecture/patterns/health-endpoint-monitoring&#xA;Introduction In this series of posts, we walk through Health Checks and monitoring your web application / Web APIs.</description>
+    </item>
+    <item>
+      <title>Add Build Time to your C# Assembly</title>
+      <link>http://localhost:1313/post/add-build-time-to-your-csharp-assembly/</link>
+      <pubDate>Thu, 22 Apr 2021 02:38:58 +0000</pubDate>
+      <guid>http://localhost:1313/post/add-build-time-to-your-csharp-assembly/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Enable Local Cache in Azure Web App</title>
+      <link>http://localhost:1313/post/enable-local-cache-in-azure-web-app/</link>
+      <pubDate>Sat, 01 Jun 2019 19:01:27 +0000</pubDate>
+      <guid>http://localhost:1313/post/enable-local-cache-in-azure-web-app/</guid>
+      <description>##What is Local Cache in Azure WebApp?&#xA;Local cache in Azure Web is really a cache that caches the storage of your Web App.&#xA;##How to enable it?&#xA;To enable local cache you should go to your Azure Subscription them navigate to your Web App that you wishs to enable local cache.&#xA;Go to &amp;ldquo;Configuration&amp;rdquo; section then &amp;ldquo;Application Setttings&amp;rdquo; and under &amp;ldquo;Application settings&amp;rdquo;&#xA;You enable Local Cache on a per-web-app basis by using this app setting: WEBSITE_LOCAL_CACHE_OPTION = Always</description>
+    </item>
+  </channel>
+</rss>

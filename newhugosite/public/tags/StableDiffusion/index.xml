@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>StableDiffusion on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/StableDiffusion/</link>
+    <description>Recent content in StableDiffusion on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 Apr 2023 20:21:04 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/StableDiffusion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DALL-E Art-Generator with C# .NET</title>
+      <link>http://localhost:1313/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/</link>
+      <pubDate>Sat, 15 Apr 2023 20:21:04 +0000</pubDate>
+      <guid>http://localhost:1313/post/generating-images-from-text-with-csharp-and-open-ai-dall-e/</guid>
+      <description>In this blog post, we will explore the steps to develop a C# application using DALL-E model to generate images from text.</description>
+    </item>
+  </channel>
+</rss>

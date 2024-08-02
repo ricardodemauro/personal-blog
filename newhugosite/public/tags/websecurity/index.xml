@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Websecurity on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/tags/websecurity/</link>
+    <description>Recent content in Websecurity on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Dec 2019 23:39:13 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/websecurity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure App Service and Cloudflare with Full SSL (Strict)</title>
+      <link>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</link>
+      <pubDate>Sun, 15 Dec 2019 23:39:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/azure-app-service-and-cloudflare-with-full-ssl-strict/</guid>
+      <description>In this article we will set up Cloudflare as a reverse proxy and Azure Web Apps as a web service. Looking for the best security configuration that Cloudflare offers in the free tier.&#xA;At the end we will have the following configuration:&#xA;CloudFlare as reverse proxy Azure Web App as a web service Valid SSL (green lock) Full trust SSL between Cloudflare and Azure Web Apps (Cloudflare validating server side certificate) Application Domains / (A Name) and GHOST_URL/ (C Name) Our goal beyond valid SSL (green lock) is end-to-end encryption.</description>
+    </item>
+    <item>
+      <title>Practice of SQL Injection</title>
+      <link>http://localhost:1313/post/practice-of-sql-injection/</link>
+      <pubDate>Sat, 14 Dec 2019 18:38:29 +0000</pubDate>
+      <guid>http://localhost:1313/post/practice-of-sql-injection/</guid>
+      <description>First, do you know (or remember) what SQL Injection is? (para versão em português)&#xA;According to OWASP.org (https://www.owasp.org/index.php/SQL_Injection).&#xA;A SQL injection attack consists of insertion or &amp;ldquo;injection&amp;rdquo; of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data.&#xA;That is, a web service technique invasion through SQL commands.As long as the web service (website, webservice, REST API, amoung others) is susceptible to the SQL Injection attack, you can execute unforeseen SQL commands on the system.</description>
+    </item>
+    <item>
+      <title>HSTS - What&#39;s it and how to enable it in IIS</title>
+      <link>http://localhost:1313/post/hsts-definition-and-how-to-enable-it-in-iis/</link>
+      <pubDate>Wed, 09 Aug 2017 18:10:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/hsts-definition-and-how-to-enable-it-in-iis/</guid>
+      <description>###HSTS, what&amp;rsquo;s it?&#xA;Definition from wikipedia:&#xA;HTTP Strict Transport Security (HSTS) is a web security policy mechanism which helps to protect websites against protocol downgrade attacks and cookie hijacking. It allows web servers to declare that web browsers (or other complying user agents) should only interact with it using secure HTTPS connections,[1] and never via the insecure HTTP protocol. HSTS is an IETF standards track protocol and is specified in RFC 6797.</description>
+    </item>
+  </channel>
+</rss>

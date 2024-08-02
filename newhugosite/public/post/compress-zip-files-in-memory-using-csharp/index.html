@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Compress files in memory (.zip) using C# | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Here is a code snippet of how to compress one or many files to a zip archive in memory using C#.
+It works in .Net Core and .Net Full Framework
+public static byte[] GetZipArchive(params InMemoryFile[] files) { byte[] archiveFile; using (var archiveStream = new MemoryStream()) { using (var archive = new ZipArchive(archiveStream, ZipArchiveMode.Create, true)) { foreach (var file in files) { var zipArchiveEntry = archive.CreateEntry(file.FileName, CompressionLevel.Fastest); using var zipStream = zipArchiveEntry.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/compress-zip-files-in-memory-using-csharp/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/compress-zip-files-in-memory-using-csharp/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Compress files in memory (.zip) using C#">
+  <meta property="og:description" content="Here is a code snippet of how to compress one or many files to a zip archive in memory using C#.
+It works in .Net Core and .Net Full Framework
+public static byte[] GetZipArchive(params InMemoryFile[] files) { byte[] archiveFile; using (var archiveStream = new MemoryStream()) { using (var archive = new ZipArchive(archiveStream, ZipArchiveMode.Create, true)) { foreach (var file in files) { var zipArchiveEntry = archive.CreateEntry(file.FileName, CompressionLevel.Fastest); using var zipStream = zipArchiveEntry.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-09-09T19:59:29+00:00">
+    <meta property="article:modified_time" content="2020-09-09T19:59:29+00:00">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="Tip">
+    <meta property="article:tag" content="Snippets">
+    <meta property="article:tag" content="En">
+
+  <meta itemprop="name" content="Compress files in memory (.zip) using C#">
+  <meta itemprop="description" content="Here is a code snippet of how to compress one or many files to a zip archive in memory using C#.
+It works in .Net Core and .Net Full Framework
+public static byte[] GetZipArchive(params InMemoryFile[] files) { byte[] archiveFile; using (var archiveStream = new MemoryStream()) { using (var archive = new ZipArchive(archiveStream, ZipArchiveMode.Create, true)) { foreach (var file in files) { var zipArchiveEntry = archive.CreateEntry(file.FileName, CompressionLevel.Fastest); using var zipStream = zipArchiveEntry.">
+  <meta itemprop="datePublished" content="2020-09-09T19:59:29+00:00">
+  <meta itemprop="dateModified" content="2020-09-09T19:59:29+00:00">
+  <meta itemprop="wordCount" content="249">
+  <meta itemprop="keywords" content="C#,Tip,Snippets,En">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Compress files in memory (.zip) using C#">
+  <meta name="twitter:description" content="Here is a code snippet of how to compress one or many files to a zip archive in memory using C#.
+It works in .Net Core and .Net Full Framework
+public static byte[] GetZipArchive(params InMemoryFile[] files) { byte[] archiveFile; using (var archiveStream = new MemoryStream()) { using (var archive = new ZipArchive(archiveStream, ZipArchiveMode.Create, true)) { foreach (var file in files) { var zipArchiveEntry = archive.CreateEntry(file.FileName, CompressionLevel.Fastest); using var zipStream = zipArchiveEntry.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Compress files in memory (.zip) using C#</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-09-09T19:59:29Z">September 9, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Here is a code snippet of how to compress one or many files to a zip archive in memory using C#.</p>
+<blockquote>
+<p><em>It works in .Net Core and .Net Full Framework</em></p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">byte</span>[] GetZipArchive(<span style="color:#66d9ef">params</span> InMemoryFile[] files)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">byte</span>[] archiveFile;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> archiveStream = <span style="color:#66d9ef">new</span> MemoryStream())
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> archive = <span style="color:#66d9ef">new</span> ZipArchive(archiveStream, ZipArchiveMode.Create, <span style="color:#66d9ef">true</span>))
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> file <span style="color:#66d9ef">in</span> files)
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">var</span> zipArchiveEntry = archive.CreateEntry(file.FileName, CompressionLevel.Fastest);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">using</span> var zipStream = zipArchiveEntry.Open();
+</span></span><span style="display:flex;"><span>                zipStream.Write(file.Content, <span style="color:#ae81ff">0</span>, file.Content.Length);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        archiveFile = archiveStream.ToArray();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> archiveFile;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Very simple, right?</p>
+<p>Here is a sample Console Application in C# <strong>.Net Core</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.IO;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.IO.Compression;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> ConsoleApp1
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InMemoryFile</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> FileName { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">byte</span>[] Content { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Program</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> Main(<span style="color:#66d9ef">string</span>[] args)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> var fs = File.OpenRead(<span style="color:#e6db74">@&#34;C:\Users\rmauro\Pictures\cool-computer.jpg&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> files = <span style="color:#66d9ef">new</span>[]
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                LoadFromFile(<span style="color:#e6db74">@&#34;C:\Users\rmauro\Pictures\cool-computer.jpg&#34;</span>),
+</span></span><span style="display:flex;"><span>                LoadFromFile(<span style="color:#e6db74">@&#34;C:\Users\rmauro\Pictures\34778.jpg&#34;</span>),
+</span></span><span style="display:flex;"><span>            };
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> result = GetZipArchive(files);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> var fw = File.OpenWrite(<span style="color:#e6db74">@&#34;C:\Users\rmauro\Pictures\out.zip&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> var memZip = <span style="color:#66d9ef">new</span> MemoryStream(result);
+</span></span><span style="display:flex;"><span>            memZip.CopyTo(fw);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            fw.Close();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            Console.ReadKey();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">static</span> InMemoryFile LoadFromFile(<span style="color:#66d9ef">string</span> path)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> var fs = File.OpenRead(path);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> var memFile = <span style="color:#66d9ef">new</span> MemoryStream();
+</span></span><span style="display:flex;"><span>            fs.CopyTo(memFile);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            memFile.Seek(<span style="color:#ae81ff">0</span>, SeekOrigin.Begin);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> InMemoryFile() { Content = memFile.ToArray(), FileName = Path.GetFileName(path) };
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">byte</span>[] GetZipArchive(<span style="color:#66d9ef">params</span> InMemoryFile[] files)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">byte</span>[] archiveFile;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> archiveStream = <span style="color:#66d9ef">new</span> MemoryStream())
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">var</span> archive = <span style="color:#66d9ef">new</span> ZipArchive(archiveStream, ZipArchiveMode.Create, <span style="color:#66d9ef">true</span>))
+</span></span><span style="display:flex;"><span>                {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> file <span style="color:#66d9ef">in</span> files)
+</span></span><span style="display:flex;"><span>                    {
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">var</span> zipArchiveEntry = archive.CreateEntry(file.FileName, CompressionLevel.Fastest);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">using</span> var zipStream = zipArchiveEntry.Open();
+</span></span><span style="display:flex;"><span>                        zipStream.Write(file.Content, <span style="color:#ae81ff">0</span>, file.Content.Length);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                archiveFile = archiveStream.ToArray();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> archiveFile;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/tip/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Tip</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/snippets/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Snippets</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/az203-official-course-delivered-yes/">Yet Another AZ-203 Microsoft Official Course Delivered.</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-virtual-machine-using-powershell/">Create Azure Virtual Machine Using PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-storage-disks/">Azure Storage Disks - Managed and unmanaged disks</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/practice-of-sql-injection/">Practice of SQL Injection</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-webjob-azure-cron-expressions/">Demo WebJob Azure - CRON expressions</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-azure-disk-encryption-though-az-cli/">Enable Azure Disk Encryption though az-cli</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

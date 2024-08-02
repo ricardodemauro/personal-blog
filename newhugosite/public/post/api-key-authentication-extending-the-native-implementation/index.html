@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>API Key Authentication - Extending the native implementation | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="In this article, we&rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
+services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it&rsquo;s hard to find a good implementation of API Key Authentication out there on the internet.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/api-key-authentication-extending-the-native-implementation/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="API Key Authentication - Extending the native implementation">
+  <meta property="og:description" content="In this article, we’re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
+services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it’s hard to find a good implementation of API Key Authentication out there on the internet.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-03-28T21:43:45+00:00">
+    <meta property="article:modified_time" content="2021-03-28T21:43:45+00:00">
+    <meta property="article:tag" content=".NET 5">
+    <meta property="article:tag" content="DotNet Core">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="Authentication">
+    <meta property="article:tag" content="Authorization">
+    <meta property="article:tag" content="En">
+
+  <meta itemprop="name" content="API Key Authentication - Extending the native implementation">
+  <meta itemprop="description" content="In this article, we’re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
+services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it’s hard to find a good implementation of API Key Authentication out there on the internet.">
+  <meta itemprop="datePublished" content="2021-03-28T21:43:45+00:00">
+  <meta itemprop="dateModified" content="2021-03-28T21:43:45+00:00">
+  <meta itemprop="wordCount" content="856">
+  <meta itemprop="keywords" content=".NET 5,DotNet Core,C#,Authentication,Authorization,En">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="API Key Authentication - Extending the native implementation">
+  <meta name="twitter:description" content="In this article, we’re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using MVC [Attributes] or any customized middleware to handle the Authentication.
+services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName) .AddApiKey(opt =&gt; //here is our handler { opt.ApiKey = &#34;Hello-World&#34;; opt.QueryStringKey = &#34;key&#34;; }); Ok, ok, ok. I know it’s hard to find a good implementation of API Key Authentication out there on the internet.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">API Key Authentication - Extending the native implementation</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2021-03-28T21:43:45Z">March 28, 2021</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In this article, we&rsquo;re going to create the code (and understand how it works) to handle API Key authentication with just three lines of code extending the native Authentication mechanism.We want a simple and stupid solution and not some crazy implementation using <em>MVC</em>  <code>[Attributes]</code> or any customized <em>middleware</em> to handle the Authentication.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName)
+</span></span><span style="display:flex;"><span>    .AddApiKey(opt =&gt; <span style="color:#75715e">//here is our handler</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        opt.ApiKey = <span style="color:#e6db74">&#34;Hello-World&#34;</span>;
+</span></span><span style="display:flex;"><span>        opt.QueryStringKey = <span style="color:#e6db74">&#34;key&#34;</span>;
+</span></span><span style="display:flex;"><span>    });
+</span></span></code></pre></div><p>Ok, ok, ok. I know it&rsquo;s hard to find a good implementation of API Key Authentication out there on the internet. I think it&rsquo;s also hard to ourself&rsquo;s needing of API Key Authentication on daily basis.But now you found it now! Hope you like it. Leave a comment :)</p>
+<p><strong>Disclaimer:</strong> Maybe I&rsquo;m writing this article mad with someone hahahahaha. Please forgive me.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The native implementation of ASP.NET Authentication allows us to extend it and create our validation logic. With the <code>AddScheme</code> builder, we&rsquo;re going to implement the APIKey Authentication.</p>
+<p>Everything begins with the <code>services.AddAuthentication</code> code. This builder provides us the ability to use the method <code>AddScheme</code>. Here is where our Auth ApiKey handler goes.</p>
+<h2 id="starting-with-the-code">Starting with the Code</h2>
+<p>Let&rsquo;s start by creating the file <code>ApiKeyAuthNOptions.cs</code>. This file will contain all configurations of our <code>ApiKeyAuthN</code> service, such as the <code>QueryStringKey</code> and <code>ApiKey</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.AspNetCore.Authentication;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> APIAuthentication.Resource.Infrastructure
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApiKeyAuthNOptions</span> : AuthenticationSchemeOptions
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> ApiKey { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> QueryStringKey { <span style="color:#66d9ef">get</span>; <span style="color:#66d9ef">set</span>; }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The second step is the file <code>ApiKeyAuthN.cs</code> __ with the following content.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.AspNetCore.Authentication;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Logging;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> Microsoft.Extensions.Options;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Text.Encodings.Web;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System.Threading.Tasks;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> APIAuthentication.Resource.Infrastructure
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApiKeyAuthNDefaults</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">string</span> SchemaName = <span style="color:#e6db74">&#34;ApiKey&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApiKeyAuthN</span> : AuthenticationHandler&lt;ApiKeyAuthNOptions&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ApiKeyAuthN(
+</span></span><span style="display:flex;"><span>            IOptionsMonitor&lt;ApiKeyAuthNOptions&gt; options, 
+</span></span><span style="display:flex;"><span>            ILoggerFactory logger, 
+</span></span><span style="display:flex;"><span>            UrlEncoder encoder, 
+</span></span><span style="display:flex;"><span>            ISystemClock clock) 
+</span></span><span style="display:flex;"><span>            : <span style="color:#66d9ef">base</span>(options, logger, encoder, clock)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">override</span> Task&lt;AuthenticateResult&gt; HandleAuthenticateAsync()
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> System.NotImplementedException();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The class <code>AuthenticationHandler</code> is responsible for making the validation and create the Authentication Ticket for the user.</p>
+<p>I think you can guess where to put the validation logic, right? Here is the implementation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">override</span> Task&lt;AuthenticateResult&gt; HandleAuthenticateAsync()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> apiKey = ParseApiKey(); <span style="color:#75715e">// handles parsing QueryString</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">string</span>.IsNullOrEmpty(apiKey)) <span style="color:#75715e">//no key was provided - return NoResult</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Task.FromResult(AuthenticateResult.NoResult());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">string</span>.Compare(apiKey, Options.ApiKey, StringComparison.Ordinal) == <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> principal = BuildPrincipal(Scheme.Name, Options.ApiKey, Options.ClaimsIssuer ?? <span style="color:#e6db74">&#34;ApiKey&#34;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Task.FromResult(AuthenticateResult.Success(<span style="color:#66d9ef">new</span> AuthenticationTicket(principal, Scheme.Name))); <span style="color:#75715e">//Success. Key matched</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Task.FromResult(AuthenticateResult.Fail(<span style="color:#e6db74">$&#34;Invalid API Key provided.&#34;</span>)); <span style="color:#75715e">//Wrong key was provided</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">string</span> ParseApiKey()
+</span></span><span style="display:flex;"><span>{	
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (Request.Query.TryGetValue(Options.QueryStringKey, <span style="color:#66d9ef">out</span> <span style="color:#66d9ef">var</span> <span style="color:#66d9ef">value</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">value</span>.FirstOrDefault();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">string</span>.Empty;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> ClaimsPrincipal BuildPrincipal(
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">string</span> schemeName, 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> name, 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> issuer, 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">params</span> Claim[] claims)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> identity = <span style="color:#66d9ef">new</span> ClaimsIdentity(schemeName);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    identity.AddClaim(<span style="color:#66d9ef">new</span> Claim(ClaimTypes.NameIdentifier, name, ClaimValueTypes.String, issuer));
+</span></span><span style="display:flex;"><span>    identity.AddClaim(<span style="color:#66d9ef">new</span> Claim(ClaimTypes.Name, name, ClaimValueTypes.String, issuer));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    identity.AddClaims(claims);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> principal = <span style="color:#66d9ef">new</span> ClaimsPrincipal(identity);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> principal;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The implementation of <code>BuildPrincipal</code> is up to you. You should customize the ClaimsIdentity with the Claims you find necessary in your application, such as <em>Role, PhoneNumber, Issuer, Partner Id,</em> among others.</p>
+<h2 id="wrapping-thing-up---were-almost-there">Wrapping thing up - We&rsquo;re almost there</h2>
+<p>We have everything we need to start the authentication. Open your <code>Startup.cs</code> file and add the following contents.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName)
+</span></span><span style="display:flex;"><span>        .AddScheme&lt;ApiKeyAuthNOptions, ApiKeyAuthN&gt;(ApiKeyAuthNDefaults.SchemaName, opt =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            opt.ApiKey = <span style="color:#e6db74">&#34;Hello-World&#34;</span>;
+</span></span><span style="display:flex;"><span>            opt.QueryStringKey = <span style="color:#e6db74">&#34;key&#34;</span>;
+</span></span><span style="display:flex;"><span>            opt.ClaimsIssuer = <span style="color:#e6db74">&#34;API-Issuer&#34;</span>;
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    services.AddAuthorization();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In <code>AddScheme</code> we&rsquo;re configuring the <em>service</em> to use our <strong>Authentication handler</strong>. Next set up the <code>Configure</code> method to use <strong>Authentication</strong> and <strong>Authorization</strong> middlewares.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app, IWebHostEnvironment env)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (env.IsDevelopment())
+</span></span><span style="display:flex;"><span>        app.UseDeveloperExceptionPage();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseRouting();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseAuthentication(); <span style="color:#75715e">//adds authentication middleware</span>
+</span></span><span style="display:flex;"><span>    app.UseAuthorization(); <span style="color:#75715e">//adds authorization middleware</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseEndpoints(endpoints =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        endpoints.MapGet(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#66d9ef">async</span> context =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">$&#34;Hello World!{Environment.NewLine}&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> WriteClaims(context);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }).RequireAuthorization(); <span style="color:#75715e">//forces user to be authenticated</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        endpoints.MapGet(<span style="color:#e6db74">&#34;/anonymous&#34;</span>, <span style="color:#66d9ef">async</span> context =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">$&#34;Hello World!{Environment.NewLine}&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> WriteClaims(context);
+</span></span><span style="display:flex;"><span>        }); <span style="color:#75715e">//allow anonymous</span>
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">async</span> Task WriteClaims(HttpContext context)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (context.User.Identity.IsAuthenticated)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">$&#34;Hello {context.User.Identity.Name}!{Environment.NewLine}&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">foreach</span> (<span style="color:#66d9ef">var</span> item <span style="color:#66d9ef">in</span> context.User.Identities.First().Claims)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">$&#34;Claim {item.Issuer} {item.Type} {item.Value}{Environment.NewLine}&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We also added <code>WriteClaims</code> method to see the user&rsquo;s <em>Claims</em>.</p>
+<h2 id="lets-run-it">Let&rsquo;s run it.</h2>
+<p>Without API Key</p>
+<figure><img src="https://res-2.cloudinary.com/dgoa5llvh/image/upload/q_auto/API-Key-Failed-To-Load.png"
+    alt="Failed to load without API Key"><figcaption>
+      <p>Failed to load without API Key</p>
+    </figcaption>
+</figure>
+
+<p>With API Key added</p>
+<figure><img src="https://res-5.cloudinary.com/dgoa5llvh/image/upload/q_auto/API-Key-Show-Claims.png"
+    alt="Claims of API Key"><figcaption>
+      <p>Claims of API Key</p>
+    </figcaption>
+</figure>
+
+<h2 id="making-it-easier-to-use">Making it easier to use</h2>
+<p>Let&rsquo;s create an extension method builder for our AddApiKey handler.Create the file <code>ApiKeyAuthNExtensions.cs</code> with the following contents.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> APIAuthentication.Resource.Infrastructure;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> System;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">namespace</span> Microsoft.AspNetCore.Authentication
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApiKeyAuthNExtensions</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> AuthenticationBuilder AddApiKey(<span style="color:#66d9ef">this</span> AuthenticationBuilder builder, Action&lt;ApiKeyAuthNOptions&gt;? configureOptions)
+</span></span><span style="display:flex;"><span>            =&gt; AddApiKey(builder, ApiKeyAuthNDefaults.SchemaName, configureOptions);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> AuthenticationBuilder AddApiKey(<span style="color:#66d9ef">this</span> AuthenticationBuilder builder, <span style="color:#66d9ef">string</span> authenticationScheme, Action&lt;ApiKeyAuthNOptions&gt;? configureOptions)
+</span></span><span style="display:flex;"><span>            =&gt; builder.AddScheme&lt;ApiKeyAuthNOptions, ApiKeyAuthN&gt;(authenticationScheme, configureOptions);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This adds the extension method <code>AddApiKey</code> instead of calling <code>AddScheme</code>.Change the <code>Configure</code> method in <code>Startup</code> class to use the new method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    services.AddAuthentication(ApiKeyAuthNDefaults.SchemaName)
+</span></span><span style="display:flex;"><span>        .AddApiKey(opt =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            opt.ApiKey = <span style="color:#e6db74">&#34;Hello-World&#34;</span>;
+</span></span><span style="display:flex;"><span>            opt.QueryStringKey = <span style="color:#e6db74">&#34;key&#34;</span>;
+</span></span><span style="display:flex;"><span>        }); <span style="color:#75715e">//new version</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//.AddScheme&lt;ApiKeyAuthNOptions, ApiKeyAuthN&gt;(ApiKeyAuthNDefaults.SchemaName, opt =&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//    opt.ApiKey = &#34;Hello-World&#34;;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//    opt.QueryStringKey = &#34;key&#34;;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//}); //old version</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    services.AddAuthorization();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This is it! Hope you like it. Leave a comment.</p>
+<p><strong>Source Code</strong></p>
+<figure class="kg-card kg-bookmark-card">
+  <a href="https://github.com/ricardodemauro/article-APIAuthentication" class="kg-bookmark-container">
+    <div class="kg-bookmark-content">
+      <div class="kg-bookmark-title">ricardodemauro/article-APIAuthentication</div>
+      <div class="kg-bookmark-description">Contribute to ricardodemauro/article-APIAuthentication development by creating an account on GitHub.</div>
+      <div class="kg-bookmark-metadata">
+        <img src="https://github.githubassets.com/favicons/favicon.svg" class="kg-bookmark-icon">
+        <span class="kg-bookmark-author">ricardodemauro</span>
+        <span class="kg-bookmark-publisher">GitHub</span>
+      </div>
+    </div>
+    
+    <div class="kg-bookmark-thumbnail">
+      <img src="https://avatars.githubusercontent.com/u/3687018?s=400&amp;v=4">
+    </div>
+    
+  </a>
+  
+  <figcaption>{map[author:ricardodemauro caption:source code at github description:Contribute to ricardodemauro/article-APIAuthentication development by creating an account on GitHub. icon:https://github.githubassets.com/favicons/favicon.svg publisher:GitHub thumbnail:https://avatars.githubusercontent.com/u/3687018?s=400&amp;v=4 title:ricardodemauro/article-APIAuthentication url:https://github.com/ricardodemauro/article-APIAuthentication]  Page(/post/api-key-authentication-extending-the-native-implementation) &lt;nil&gt; bookmark true 2  {{{} 0} {0 0}}  {{{} 0} {0 0}} 9140 { 0 0 0} &lt;nil&gt;}</figcaption>
+  
+</figure>
+<p>Disclaimer: There is a good implementation in the format of <strong>nuget</strong> package here: <a href="https://github.com/mihirdilip/aspnetcore-authentication-apikey">https://github.com/mihirdilip/aspnetcore-authentication-apikey</a>.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/.NET-5/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 5</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/DotNet-Core/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet Core</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Authentication/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Authentication</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Authorization/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Authorization</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/adding-health-checks-ui/">Adding Health Checks UI</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/native-dependency-injection-in-azure-functions-with-csharp/">Native Dependency Injection in Azure Functions with C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/endpoint-monitoring-with-azure-application-insights/">Endpoint Monitoring with Azure Application Insights</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/generating-a-self-signed-certificate-using-powershell/">Generating a Self-Signed Certificate using Powershell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/az203-official-course-delivered-yes/">Yet Another AZ-203 Microsoft Official Course Delivered.</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-virtual-machine-using-powershell/">Create Azure Virtual Machine Using PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-storage-disks/">Azure Storage Disks - Managed and unmanaged disks</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/practice-of-sql-injection/">Practice of SQL Injection</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

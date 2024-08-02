@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Azure Storage Disks - Managed and unmanaged disks | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="##Managed disks
+The Azure platform manages the disk and the backing storage You don&rsquo;t have to worry about storage account limits and thresholds ##Unmanaged disks
+You manually create and manage virtual hard disks (VHDs) in your Storage account You will need to consider account throughput and capacity limits when using this model Managed disks - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/azure-storage-disks/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/azure-storage-disks/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Azure Storage Disks - Managed and unmanaged disks">
+  <meta property="og:description" content="##Managed disks
+The Azure platform manages the disk and the backing storage You don’t have to worry about storage account limits and thresholds ##Unmanaged disks
+You manually create and manage virtual hard disks (VHDs) in your Storage account You will need to consider account throughput and capacity limits when using this model Managed disks - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-01-03T21:25:54+00:00">
+    <meta property="article:modified_time" content="2020-01-03T21:25:54+00:00">
+    <meta property="article:tag" content="AZ-203">
+    <meta property="article:tag" content="En">
+    <meta property="article:tag" content="Azure">
+
+  <meta itemprop="name" content="Azure Storage Disks - Managed and unmanaged disks">
+  <meta itemprop="description" content="##Managed disks
+The Azure platform manages the disk and the backing storage You don’t have to worry about storage account limits and thresholds ##Unmanaged disks
+You manually create and manage virtual hard disks (VHDs) in your Storage account You will need to consider account throughput and capacity limits when using this model Managed disks - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure.">
+  <meta itemprop="datePublished" content="2020-01-03T21:25:54+00:00">
+  <meta itemprop="dateModified" content="2020-01-03T21:25:54+00:00">
+  <meta itemprop="wordCount" content="299">
+  <meta itemprop="keywords" content="AZ-203,En,Azure">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Azure Storage Disks - Managed and unmanaged disks">
+  <meta name="twitter:description" content="##Managed disks
+The Azure platform manages the disk and the backing storage You don’t have to worry about storage account limits and thresholds ##Unmanaged disks
+You manually create and manage virtual hard disks (VHDs) in your Storage account You will need to consider account throughput and capacity limits when using this model Managed disks - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Azure Storage Disks - Managed and unmanaged disks</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-01-03T21:25:54Z">January 3, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>##Managed disks</p>
+<ul>
+<li>The Azure platform manages the disk and the backing storage</li>
+<li>You don&rsquo;t have to worry about storage account limits and thresholds</li>
+</ul>
+<p>##Unmanaged disks</p>
+<ul>
+<li>You manually create and manage virtual hard disks (VHDs) in your Storage account</li>
+<li>You will need to consider account throughput and capacity limits when using this model</li>
+</ul>
+<p><strong>Managed disks</strong> - Managed disks are the newer and recommended disk storage model. They elegantly solve this complexity by putting the burden of managing the storage accounts onto Azure. You specify the size of the disk, which can be up to 4 terabytes (TB), and Azure creates and manages both the disk and the storage. You don&rsquo;t have to worry about storage account limits, which makes managed disks easier to scale out than managed discs.</p>
+<p><strong>Unmanaged disks</strong> - With unmanaged disks, you’re responsible for the storage accounts that hold the virtual hard disks (VHDs) that correspond to your VM disks. You pay the storage account rates for the amount of space you use. A single storage account has a fixed-rate limit of 20,000 input/output (I/O) operations per second. This means that a storage account is capable of supporting 40 standard VHDs at full utilization. If you need to scale out with more disks, then you&rsquo;ll need more storage accounts, which can get complicated.</p>
+<h2 id="disk-types-in-azure">Disk Types in Azure</h2>
+<h3 id="ultra-disk">Ultra disk</h3>
+<p>Azure ultra disks deliver high throughput, high IOPS, and consistent low latency disk storage for Azure IaaS VMs.</p>
+<h3 id="premium-ssd">Premium SSD</h3>
+<p>Azure premium SSDs deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads.</p>
+<h3 id="standard-ssd">Standard SSD</h3>
+<p>Azure standard SSDs are a cost-effective storage option optimized for workloads that need consistent performance at lower IOPS levels.</p>
+<h3 id="standard-hdd">Standard HDD</h3>
+<p>Azure standard HDDs deliver reliable, low-cost disk support for VMs running latency-insensitive workloads.</p>
+<p>Checkout the official <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#disk-comparison">disk comparison</a></p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/AZ-203/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">AZ-203</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Azure/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Azure</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-local-cache-in-azure-web-app/">Enable Local Cache in Azure Web App</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-webjob-azure-cron-expressions/">Demo WebJob Azure - CRON expressions</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/enable-azure-disk-encryption-though-az-cli/">Enable Azure Disk Encryption though az-cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-vm-though-powershell/">Create Azure VM though PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/practice-of-sql-injection/">Practice of SQL Injection</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/hsts-definition-and-how-to-enable-it-in-iis/">HSTS - What&#39;s it and how to enable it in IIS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

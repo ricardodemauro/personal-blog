@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Perceptron on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/perceptron/</link>
+    <description>Recent content in Perceptron on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Nov 2019 03:04:13 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/perceptron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Começando com Machine Learning - Escrevendo um Perceptron</title>
+      <link>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</link>
+      <pubDate>Sun, 03 Nov 2019 03:04:13 +0000</pubDate>
+      <guid>http://localhost:1313/post/comecando-com-machine-learning-escrevendo-um-perceptron/</guid>
+      <description>Você sabe o que é um Perceptron?&#xA;Perceptron é um dos ==building blocks== (componentes) da rede neural feed foward. Uma rede neural é essencialmente baseada em N Perceptrons.&#xA;Segundo wikipedia:&#xA;In machine learning, the perceptron is an algorithm for supervised learning of binary classifiers. A binary classifier is a function which can decide whether or not an input, represented by a vector of numbers, belongs to some specific class.&#xA;Ou seja, é um programa que com base em entradas (números), capaz de classificá-los em classes (números).</description>
+    </item>
+  </channel>
+</rss>

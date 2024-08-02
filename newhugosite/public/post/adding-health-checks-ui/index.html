@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Adding Health Checks UI | rmauro.dev {blog}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="This is the second article about Health Checks and Application Monitoring.
+Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
+Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.">
+    <meta name="generator" content="Hugo 0.130.0">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/post/adding-health-checks-ui/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/post/adding-health-checks-ui/">
+  <meta property="og:site_name" content="rmauro.dev {blog}">
+  <meta property="og:title" content="Adding Health Checks UI">
+  <meta property="og:description" content="This is the second article about Health Checks and Application Monitoring.
+Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
+Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-09-21T18:17:00+00:00">
+    <meta property="article:modified_time" content="2020-09-21T18:17:00+00:00">
+    <meta property="article:tag" content=".NET 5">
+    <meta property="article:tag" content="HealthCheck">
+    <meta property="article:tag" content="DotNet Core">
+    <meta property="article:tag" content="Devops">
+    <meta property="article:tag" content="C#">
+    <meta property="article:tag" content="En">
+
+  <meta itemprop="name" content="Adding Health Checks UI">
+  <meta itemprop="description" content="This is the second article about Health Checks and Application Monitoring.
+Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
+Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.">
+  <meta itemprop="datePublished" content="2020-09-21T18:17:00+00:00">
+  <meta itemprop="dateModified" content="2020-09-21T18:17:00+00:00">
+  <meta itemprop="wordCount" content="470">
+  <meta itemprop="keywords" content=".NET 5,HealthCheck,DotNet Core,Devops,C#,En,Monitoring,Application Insights,Cloud,Container">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Adding Health Checks UI">
+  <meta name="twitter:description" content="This is the second article about Health Checks and Application Monitoring.
+Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!
+Adding Health Check endpoint Adding UI Health Check [this article] Endpoint Monitoring with Azure Application Insights Using Azure App Services Endpoint Monitoring This article assumes that you already have Health Checks up and running. If not go back to article.">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        rmauro.dev {blog}
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside>
+      
+
+
+
+
+
+
+
+
+
+
+  <div id="sharing" class="mt3 ananke-socials">
+    
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Adding Health Checks UI</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-09-21T18:17:00Z">September 21, 2020</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>This is the second article about <strong>Health Checks</strong> and <strong>Application Monitoring</strong>.</p>
+<p>Health check by it self is very good feature. But Health Checks with a UI is much better, in fact is awesome!</p>
+<ol>
+<li><a href="__GHOST_URL__/adding-health-checks-to-net-core-application/">Adding Health Check endpoint</a></li>
+<li><strong>Adding UI Health Check</strong> [this article]</li>
+<li><a href="__GHOST_URL__/endpoint-monitoring-with-azure-application-insights/">Endpoint Monitoring with Azure Application Insights</a></li>
+<li>Using Azure App Services Endpoint Monitoring</li>
+</ol>
+<p>This article assumes that you already have Health Checks up and running.
+If not go back to <a href="__GHOST_URL__/adding-health-checks-to-net-core-application/">article</a>.</p>
+<h4 id="before-start">Before start</h4>
+<p>The source code of the last article can be found at (<a href="https://github.com/ricardodemauro/Health-Check-Series">https://github.com/ricardodemauro/Health-Check-Series</a>) - <strong>branch article-1</strong>.</p>
+<p>In the last blog post we discuss how to add health checks to your application returning JSON format.</p>
+<p>But would be nice to have some UI to easily check the status of your application.</p>
+<blockquote>
+<p>Remember <em>JSON</em> is machine friendly and <em>UI</em> is human friendly.</p>
+</blockquote>
+<p>By the way, this configuration works for .NET and .Net CORE 3.1. Be happy!</p>
+<h4 id="adding-ui-to-our-health-checks">Adding UI to our Health Checks</h4>
+<p>First add the dependency packages to our project.</p>
+<ul>
+<li>AspNetCore.HealthChecks.UI</li>
+<li>AspNetCore.HealthChecks.UI.Client</li>
+<li>AspNetCore.HealthChecks.UI.InMemory.Storage</li>
+</ul>
+<p>Now let&rsquo;s register the dependencies.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> ConfigureServices(IServiceCollection services)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//adding health check services to container</span>
+</span></span><span style="display:flex;"><span>        services.AddHealthChecks()
+</span></span><span style="display:flex;"><span>                .AddMongoDb(mongodbConnectionString: _configuration.GetConnectionString(<span style="color:#e6db74">&#34;DefaultMongo&#34;</span>),
+</span></span><span style="display:flex;"><span>                        name: <span style="color:#e6db74">&#34;mongo&#34;</span>,
+</span></span><span style="display:flex;"><span>                        failureStatus: HealthStatus.Unhealthy); <span style="color:#75715e">//adding MongoDb Health Check</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//adding healthchecks UI</span>
+</span></span><span style="display:flex;"><span>        services.AddHealthChecksUI(opt =&gt;
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>                opt.SetEvaluationTimeInSeconds(<span style="color:#ae81ff">15</span>); <span style="color:#75715e">//time in seconds between check</span>
+</span></span><span style="display:flex;"><span>                opt.MaximumHistoryEntriesPerEndpoint(<span style="color:#ae81ff">60</span>); <span style="color:#75715e">//maximum history of checks</span>
+</span></span><span style="display:flex;"><span>                opt.SetApiMaxActiveRequests(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">//api requests concurrency</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                opt.AddHealthCheckEndpoint(<span style="color:#e6db74">&#34;default api&#34;</span>, <span style="color:#e6db74">&#34;/healthz&#34;</span>); <span style="color:#75715e">//map health check api</span>
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .AddInMemoryStorage();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And them add to the application pipeline.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Configure(IApplicationBuilder app, IWebHostEnvironment env)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    app.UseRouting();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    app.UseEndpoints(endpoints =&gt;
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//adding endpoint of health check for the health check ui in UI format</span>
+</span></span><span style="display:flex;"><span>        endpoints.MapHealthChecks(<span style="color:#e6db74">&#34;/healthz&#34;</span>, <span style="color:#66d9ef">new</span> HealthCheckOptions
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            Predicate = _ =&gt; <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//map healthcheck ui endpoing - default is /healthchecks-ui/</span>
+</span></span><span style="display:flex;"><span>        endpoints.MapHealthChecksUI();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        endpoints.MapGet(<span style="color:#e6db74">&#34;/&#34;</span>, <span style="color:#66d9ef">async</span> context =&gt; <span style="color:#66d9ef">await</span> context.Response.WriteAsync(<span style="color:#e6db74">&#34;Hello World!&#34;</span>));
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p><code>Startup.cs</code></p>
+</blockquote>
+<p>Note that we&rsquo;re adding another <code>Health Check API</code> endpoint called <code>/healthz</code> with a specific configuration, custom <code>ResponseWriter</code>.</p>
+<p>This is will be used by the UI Health Check client (ajax call).</p>
+<h4 id="wrap-it-up">Wrap it up</h4>
+<p>Now build, run, and open the browser Url <code>http://{YOUR-SERVER}/healthchecks-ui</code>.</p>
+<p><img src="https://res-3.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/health-check-ui-1.png" alt="health-check-ui-1"></p>
+<h4 id="final-toughts">Final toughts</h4>
+<p>You can also customize the branding though CSS. For that I recommend going to the official website - <a href="https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks">xabaril&rsquo;s site</a>.</p>
+<h4 id="source-code">Source Code</h4>
+<p>The source code can be found at <a href="https://github.com/ricardodemauro/Health-Check-Series">https://github.com/ricardodemauro/Health-Check-Series</a> - <strong>branch article-2</strong>.</p>
+<figure class="kg-card kg-bookmark-card">
+  <a href="__GHOST_URL__/endpoint-monitoring-with-azure-application-insights/" class="kg-bookmark-container">
+    <div class="kg-bookmark-content">
+      <div class="kg-bookmark-title">Endpoint Monitoring with Azure Application Insights</div>
+      <div class="kg-bookmark-description">Let’s work with Application Insights - an Microsoft Azure service - to monitor our application through the endpoint /healthcheck.\nThis is the third article about Health Checks and Application Monitoring.</div>
+      <div class="kg-bookmark-metadata">
+        <img src="__GHOST_URL__/favicon.ico" class="kg-bookmark-icon">
+        <span class="kg-bookmark-author">Ricardo</span>
+        <span class="kg-bookmark-publisher">rmauro.dev</span>
+      </div>
+    </div>
+    
+    <div class="kg-bookmark-thumbnail">
+      <img src="https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/application-insights-cover-1.jpg">
+    </div>
+    
+  </a>
+  
+  <figcaption>{map[author:Ricardo caption:Next of the series - Endpoint Monitoring with Azure Application Insights description:Let’s work with Application Insights - an Microsoft Azure service - to monitor our application through the endpoint /healthcheck.\nThis is the third article about Health Checks and Application Monitoring. icon:__GHOST_URL__/favicon.ico publisher:rmauro.dev thumbnail:https://res-5.cloudinary.com/ht54oxr6q/image/upload/q_auto/v1/ghost-blog-images/application-insights-cover-1.jpg title:Endpoint Monitoring with Azure Application Insights url:__GHOST_URL__/endpoint-monitoring-with-azure-application-insights/]  Page(/post/adding-health-checks-ui) &lt;nil&gt; bookmark true 0  {{{} 0} {0 0}}  {{{} 0} {0 0}} 4244 { 0 0 0} &lt;nil&gt;}</figcaption>
+  
+</figure>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/.NET-5/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">.NET 5</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/HealthCheck/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">HealthCheck</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/DotNet-Core/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">DotNet Core</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/devops/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Devops</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/C%23/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">C#</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/en/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">En</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Monitoring/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Monitoring</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/Application-Insights/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Application Insights</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/cloud/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Cloud</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/container/" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">Container</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/post/deploying-net-container-app-to-heroku-cloud/">Deploying .Net container App to Heroku cloud</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/getting-the-file-name-without-extenion-in-csharp/">Getting the file name without extension in C# - #TIP</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/compress-zip-files-in-memory-using-csharp/">Compress files in memory (.zip) using C#</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-app-service-and-cloudflare-with-full-ssl-strict/">Azure App Service and Cloudflare with Full SSL (Strict)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/csharp-implicit-conversion-cast-explicit-conversion/">C# Conversions - Casting, implicit and explicit conversion</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/c-datetime-tostring-format/">C# DateTime Cheat sheet - ToString() Format</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/how-to-migrate-asp-net-core-1-0-to-1-1/">How to migrate .Net Core 1.0 to 1.1</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/generating-a-self-signed-certificate-using-powershell/">Generating a Self-Signed Certificate using Powershell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/az203-official-course-delivered-yes/">Yet Another AZ-203 Microsoft Official Course Delivered.</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/create-azure-virtual-machine-using-powershell/">Create Azure Virtual Machine Using PowerShell</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-storage-disks/">Azure Storage Disks - Managed and unmanaged disks</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/practice-of-sql-injection/">Practice of SQL Injection</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azure-kubernets-az-cli/">Azure Kubernets - az cli</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/demo-azure-batch/">Demo - Azure Batch</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/post/azcli-create-resource-though-resource-file/">az cli (bash) create resource though Resource File</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  rmauro.dev {blog} 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

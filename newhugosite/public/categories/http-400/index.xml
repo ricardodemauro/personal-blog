@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Http-400 on rmauro.dev {blog}</title>
+    <link>http://localhost:1313/categories/http-400/</link>
+    <description>Recent content in Http-400 on rmauro.dev {blog}</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Jun 2024 22:45:07 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/http-400/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTTP 400 Bad Request</title>
+      <link>http://localhost:1313/post/400-bad-request/</link>
+      <pubDate>Fri, 28 Jun 2024 22:45:07 +0000</pubDate>
+      <guid>http://localhost:1313/post/400-bad-request/</guid>
+      <description>HTTP status code 400, known as &amp;ldquo;Bad Request,&amp;rdquo; indicates that the server cannot process the client&amp;rsquo;s request due to client-side errors. These errors can include malformed request syntax, invalid request message framing, or deceptive request routing.&#xA;A common scenario for a 400 status code is when the client sends a request with incorrect parameters, such as an invalid query string or body data that doesn&amp;rsquo;t conform to the expected format. This response helps in debugging issues during API development, signaling the need to correct the request before resubmission.</description>
+    </item>
+  </channel>
+</rss>
