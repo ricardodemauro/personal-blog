@@ -1,3 +1,119 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://silver-carnival-xvxg6rg6v7fp5rw-1313.app.github.dev/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'GhostBlog'
+theme = 'PaperMod'
+
+[params]
+  env = "production"
+  title = "GhostBlog"
+  description = "My personal blog migrated from Ghost to Hugo"
+  keywords = ["blog", "hugo", "personal"]
+  author = "Your Name"
+  
+  defaultTheme = "auto" # auto, dark, light
+  disableThemeToggle = false
+  
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = false
+  tocopen = false
+
+  [params.assets]
+    # disableHLJS = true # to disable highlight.js
+    # disableFingerprinting = true
+    favicon = "<link / abs url>"
+    favicon16x16 = "<link / abs url>"
+    favicon32x32 = "<link / abs url>"
+    apple_touch_icon = "<link / abs url>"
+    safari_pinned_tab = "<link / abs url>"
+
+  [params.label]
+    text = "GhostBlog"
+    icon = "/apple-touch-icon.png"
+    iconHeight = 35
+
+  # profile-mode
+  [params.profileMode]
+    enabled = false # needs to be explicitly set
+    title = "Welcome to GhostBlog"
+    subtitle = "A blog about technology, development, and life"
+    imageUrl = "<title / alt>"
+    imageWidth = 120
+    imageHeight = 120
+    imageTitle = "my image"
+    buttons = [
+      { name = "Posts", url = "/posts/" },
+      { name = "About", url = "/about/" }
+    ]
+
+  # home-info mode
+  [params.homeInfoParams]
+    Title = "Hi there 👋"
+    Content = "Welcome to my blog! I write about technology, development, and other interesting topics."
+
+  [[params.socialIcons]]
+    name = "twitter"
+    url = "https://twitter.com/"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://linkedin.com/"
+
+[params.analytics.google]
+  SiteVerificationTag = "XYZabc"
+
+[params.analytics.bing]
+  SiteVerificationTag = "XYZabc"
+
+[params.analytics.yandex]
+  SiteVerificationTag = "XYZabc"
+
+[markup.highlight]
+  noClasses = false
+  # anchorLineNos = true
+  # codeFences = true
+  # guessSyntax = true
+  # lineNos = true
+  # style = "github"
+
+[services.rss]
+  limit = 10
+
+[[menu.main]]
+  identifier = "home"
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 40
