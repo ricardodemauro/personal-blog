@@ -7,3 +7,6 @@
 [submodule "newhugosite/themes/PaperMod"]
 	path = newhugosite/themes/PaperMod
 	url = https://github.com/adityatelange/hugo-PaperMod.git
+[submodule "GhostBlog/themes/PaperMod"]
+	path = GhostBlog/themes/PaperMod
+	url = https://github.com/adityatelange/hugo-PaperMod.git
